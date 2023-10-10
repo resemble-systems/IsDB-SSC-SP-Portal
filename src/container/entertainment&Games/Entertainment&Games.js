@@ -25,25 +25,28 @@ export default function Entertainment() {
 
   useEffect(() => {
     axios
-      .get(`${CONST.BASE_URL}${CONST.API.LIST('Entertainment')}${CONST.API.QUERY('Title,Date,Link,Category,Status,AttachmentFiles')} ${CONST.API.ATTACHMENT}`
+      .get(
+        `${CONST.BASE_URL}${CONST.API.LIST("Entertainment")}${CONST.API.QUERY(
+          "Title,Date,Link,Category,Status,AttachmentFiles"
+        )} ${CONST.API.ATTACHMENT}`
       )
-      .then(res => {
+      .then((res) => {
         let onlineGames = res.data.value.filter(
-          data => data.Category.toLowerCase() === "OnlineGames".toLowerCase(),
+          (data) => data.Category.toLowerCase() === "OnlineGames".toLowerCase()
         );
         setOnlineGames(onlineGames);
         let groupData = res.data.value.filter(
-          data => data.Category.toLowerCase() === "TopGroups".toLowerCase(),
+          (data) => data.Category.toLowerCase() === "TopGroups".toLowerCase()
         );
         setGroupData(groupData);
         let tournaments = res.data.value.filter(
-          data => data.Category.toLowerCase() === "Tournaments".toLowerCase(),
+          (data) => data.Category.toLowerCase() === "Tournaments".toLowerCase()
         );
         setTournaments(tournaments);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
-  let skeletonData = [{}, {}, {}]
+  let skeletonData = [{}, {}, {}];
 
   return (
     <>
@@ -56,16 +59,15 @@ export default function Entertainment() {
               backgroundImage: `url(${Hero}),url(${DottedLine})`,
             }}
           ></div>
-          <InnerPageTitleSection title={"Online Games"} />
+          <div className="container">
+            <InnerPageTitleSection title={"Online Games"} />
+          </div>
           <GamingBannerImage />
-          {
-            onlineGames && onlineGames.length > 0 ?
-              (
-                <OnlineGames cardData={onlineGames} />
-              )
-              :
-              <OnlineGames cardData={skeletonData} />
-          }
+          {onlineGames && onlineGames.length > 0 ? (
+            <OnlineGames cardData={onlineGames} />
+          ) : (
+            <OnlineGames cardData={skeletonData} />
+          )}
         </div>
         <div
           className={`${styles.gamecard_section_bg}`}
@@ -73,21 +75,16 @@ export default function Entertainment() {
             backgroundImage: `url(${EventSection})`,
           }}
         >
-          {
-            groupData && groupData.length > 0 ?
-              (
-                <TopGroups groupData={groupData} />
-              )
-              :
-              <TopGroups groupData={skeletonData} />
-          }
-          {
-            tournaments && tournaments.length > 0 ?
-              (
-                <Tournament cardData={tournaments} />
-              ) :
-              <Tournament cardData={skeletonData} />
-          }
+          {groupData && groupData.length > 0 ? (
+            <TopGroups groupData={groupData} />
+          ) : (
+            <TopGroups groupData={skeletonData} />
+          )}
+          {tournaments && tournaments.length > 0 ? (
+            <Tournament cardData={tournaments} />
+          ) : (
+            <Tournament cardData={skeletonData} />
+          )}
         </div>
       </Layout>
     </>

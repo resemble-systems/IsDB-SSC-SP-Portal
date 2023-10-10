@@ -59,7 +59,9 @@ export default function EventsDetails({ routePath }) {
                 backgroundImage: `url(${Hero}),url(${Dotted})`,
               }}
             ></div>
-            <InnerPageTitleSection title={"Event Details"} />
+            <div className="container">
+              <InnerPageTitleSection title={"Event Details"} />
+            </div>
             {eventsData && eventsData?.length > 0 && (
               <EventDetailsIntro eventData={eventsData} />
             )}

@@ -19,6 +19,8 @@ import styles from "./events-activities.module.sass";
 import Hero from "../../assets/general/hero.svg";
 import DottedLine from "../../assets/general/Dotted-line-path-301.svg";
 import SearchBar from "../../common_components/searchBar/SearchBar";
+import { Button, Popconfirm } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 
 const items = [];
 
@@ -73,6 +75,10 @@ export default function EventsActivities() {
     }
   }, [events, services]);
 
+  const title = () => {
+    return <SearchBar search={"events"} styleApply={true} />;
+  };
+
   return (
     <>
       {eventsData &&
@@ -80,7 +86,7 @@ export default function EventsActivities() {
         serviceData &&
         serviceData.length > 0 && (
           <Layout>
-            <div className={`position-relative`}>
+            <div /* className={`position-relative`} */>
               <div className={`${styles.bg_color}`}></div>
               <div
                 className={`${styles.bg_pattern}`}
@@ -88,8 +94,19 @@ export default function EventsActivities() {
                   backgroundImage: `url(${Hero}),url(${DottedLine})`,
                 }}
               ></div>
-              <InnerPageTitleSection title={"events & activities"} />
-              <SearchBar />
+              <div className="d-flex container">
+                <InnerPageTitleSection title={"events & activities"} />
+                <div className="mt-5 mx-2">
+                  <Popconfirm title={title} okText="" cancelText="">
+                    <Button
+                      type="text"
+                      icon={<SearchOutlined className={styles.search_icon} />}
+                      className={`${styles.search_btn}`}
+                    />
+                  </Popconfirm>
+                </div>
+              </div>
+              {/* <SearchBar search={"events"} styleApply={true} /> */}
               <Slider items={items} eventsData={eventsData} />
             </div>
             <Calendar />

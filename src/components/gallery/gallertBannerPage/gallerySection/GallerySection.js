@@ -10,7 +10,7 @@ import styles from "./gallery-section.module.sass";
 //Bg
 import GalleryBg from "../../../../assets/gallery/gallery.svg";
 
-const openNotification = setToDate => {
+const openNotification = (setToDate) => {
   notification.error({
     message: "Wrong Date Selection",
     description: "Date(To) should be ahead Date(From)",
@@ -42,19 +42,19 @@ export default function GallerySection({ galleryData }) {
       if (new Date(fromDate).getTime() && new Date(toDate).getTime()) {
         if (new Date(fromDate).getTime() === new Date(toDate).getTime())
           list = listData.filter(
-            listItem =>
+            (listItem) =>
               new Date(fromDate).getTime() <
-              new Date(listItem.EventOccurDate).getTime() &&
+                new Date(listItem.EventOccurDate).getTime() &&
               new Date(fromDate).getTime() + 86400000 >
-              new Date(listItem.EventOccurDate).getTime(),
+                new Date(listItem.EventOccurDate).getTime()
           );
         else
           list = listData.filter(
-            listItem =>
+            (listItem) =>
               new Date(fromDate).getTime() <
-              new Date(listItem.EventOccurDate).getTime() &&
+                new Date(listItem.EventOccurDate).getTime() &&
               new Date(toDate).getTime() + 86400000 >
-              new Date(listItem.EventOccurDate).getTime(),
+                new Date(listItem.EventOccurDate).getTime()
           );
       }
     }
@@ -69,21 +69,20 @@ export default function GallerySection({ galleryData }) {
       } else {
         if (list.length > 0) {
           list = list.filter(
-            listItem =>
-              listItem.EventType.toLowerCase() === category.toLowerCase(),
+            (listItem) =>
+              listItem.EventType.toLowerCase() === category.toLowerCase()
           );
         } else {
           if (!fromDate && !toDate)
             list = listData.filter(
-              listItem =>
-                listItem.EventType.toLowerCase() === category.toLowerCase(),
+              (listItem) =>
+                listItem.EventType.toLowerCase() === category.toLowerCase()
             );
         }
       }
     }
     setFilteredGalleryList(list);
   }, [galleryData, category, toDate, fromDate]);
-
 
   return (
     <div
@@ -101,26 +100,24 @@ export default function GallerySection({ galleryData }) {
           setFromDate={setFromDate}
           setCategory={setCategory}
         />
-        {
-          filteredGalleryList && filteredGalleryList.length > 0
-            ? (
-              <>
-                <GalleryList
-                  listData={filteredGalleryList}
-                  listSize={listSize}
-                  pageNumber={pageNumber}
-                />
-                <GalleryFooter
-                  listData={filteredGalleryList}
-                  listSize={listSize}
-                  pageNumber={pageNumber}
-                  setListSize={setListSize}
-                  setPageNumber={setPageNumber}
-                />
-              </>
-            ) : (
-              <Empty className={`mb-4`} />
-            )}
+        {filteredGalleryList && filteredGalleryList.length > 0 ? (
+          <>
+            <GalleryList
+              listData={filteredGalleryList}
+              listSize={listSize}
+              pageNumber={pageNumber}
+            />
+            <GalleryFooter
+              listData={filteredGalleryList}
+              listSize={listSize}
+              pageNumber={pageNumber}
+              setListSize={setListSize}
+              setPageNumber={setPageNumber}
+            />
+          </>
+        ) : (
+          <Empty className={`mb-4`} />
+        )}
       </div>
     </div>
   );

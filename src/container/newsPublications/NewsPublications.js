@@ -65,7 +65,9 @@ export default function NewsPublications({
                 backgroundImage: `url(${Hero}),url(${Dotted})`,
               }}
             ></div>
-            <InnerPageTitleSection title={"News & Publications"} />
+            <div className="container">
+              <InnerPageTitleSection title={"News & Publications"} />
+            </div>
             <Slider items={items} news={newsData} />
           </div>
           <PublicationsSection news={newsData} />

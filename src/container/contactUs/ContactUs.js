@@ -24,7 +24,9 @@ export default function ContactUs() {
           }}
         >
           <Layout>
-            <InnerPageTitleSection title={"Contact Us"} />
+            <div className="container">
+              <InnerPageTitleSection title={"Contact Us"} />
+            </div>
             <ContactUsSection />
           </Layout>
         </div>

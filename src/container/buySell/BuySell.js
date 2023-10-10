@@ -20,7 +20,9 @@ export default function BuySell() {
               backgroundImage: `url(${Hero}),url(${Dotted})`,
             }}
           ></div>
-          <InnerPageTitleSection title={"Buy & Sell"} />
+          <div className="container">
+            <InnerPageTitleSection title={"Buy & Sell"} />
+          </div>
           <BuysellSection />
         </div>
       </Layout>

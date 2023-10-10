@@ -8,7 +8,7 @@ import styles from "../../components/search/search.module.sass";
 import SearchCard from "../../components/search/SearchCard";
 
 const SearchEvents = () => {
-  const { events, services } = useContext(AppContext);
+  const { events, services, news } = useContext(AppContext);
   const history = useHistory();
   const location = useLocation();
   const [searchVal, setSearchVal] = useState(null);
@@ -22,12 +22,13 @@ const SearchEvents = () => {
     console.log("searchVal", urlSplit.split("&")[0].split("=").pop());
     setSearchVal(decodeURIComponent(searchValue));
     setType(whatType);
+    console.log("test-->", searchValue);
   }, [location.pathname]);
 
   useEffect(() => {
-    if (searchVal?.length > 0 && events?.length > 0) {
-      console.log("events", events);
-      let filterSearch = events?.filter(
+    let filterSearch;
+    if (searchVal && type === "events" && events?.length > 0) {
+      filterSearch = events?.filter(
         (data, index) =>
           data.Author0.toLowerCase().includes(searchVal.toLowerCase()) ||
           data.Description.toLowerCase().includes(searchVal.toLowerCase()) ||
@@ -36,10 +37,25 @@ const SearchEvents = () => {
           data.Title?.toLowerCase().includes(searchVal.toLowerCase())
       );
       setFilteredEvents(filterSearch);
-      console.log("filterEVE-->", filterSearch);
+    }
+    if (searchVal && type === "news" && news?.length > 0) {
+      filterSearch = news?.filter(
+        (data, index) =>
+          data.Description.toLowerCase().includes(searchVal.toLowerCase()) ||
+          data.Title?.toLowerCase().includes(searchVal.toLowerCase())
+      );
+      setFilteredEvents(filterSearch);
+    }
+    if (searchVal && type === "activities" && news?.length > 0) {
+      filterSearch = services?.filter(
+        (data, index) =>
+          data.Description.toLowerCase().includes(searchVal.toLowerCase()) ||
+          data.Title?.toLowerCase().includes(searchVal.toLowerCase())
+      );
+      setFilteredEvents(filterSearch);
     }
   }, [searchVal, events]);
-
+  console.log("searchVal", searchVal);
   return (
     <Layout>
       <div className={`${styles.buysellsetion_section_bg}`}>

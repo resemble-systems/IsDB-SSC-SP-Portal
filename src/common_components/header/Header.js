@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Row,
   Col,
@@ -42,9 +42,17 @@ function Header({
   const history = useHistory();
   const location = useLocation();
   const [removeVal, setRemoveVal] = useState("");
+  const [searchFor, setSearchFor] = useState("");
+
   // const [displayPop, setDisplayPop] = useState(false);
   // const [inputValue, setInputValue] = useState("hello");
   // console.log(location.pathname);
+
+  useEffect(() => {
+    let urlSplit = window.location.href.split("/").pop();
+    setSearchFor(urlSplit);
+    console.log("test-->", urlSplit);
+  }, [location.pathname]);
 
   const onSearch = (value) => {
     if (value && value.length > 0) {
@@ -60,11 +68,17 @@ function Header({
       //     },
       //   });
       // }
-      window.open(
-        `https://resembleae.sharepoint.com/sites/powerbi/IDBSocialClub/Pages/Search.aspx?k=${value}`,
+      if (searchFor === "activities") {
+        history.push(
+          searchFor === "activities" ? `/search?type=activities&${value}` : ""
+        );
+      } else {
+        window.open(
+          `https://resembleae.sharepoint.com/sites/powerbi/IDBSocialClub/Pages/Search.aspx?k=${value}`,
 
-        "_blank"
-      );
+          "_blank"
+        );
+      }
       // setDisplayPop(true);
       // setRemoveVal("");
     }
@@ -148,7 +162,7 @@ function Header({
               </Col>
               <Col xs={8} sm={8} md={7} lg={8} xl={8}>
                 <div className={`${styles.header_contain} justify-content-end`}>
-                  <Popconfirm title={title} okText="" cancelText={""}>
+                  {/* <Popconfirm title={title} okText="" cancelText={""}>
                     {
                       <Button
                         type="text"
@@ -156,7 +170,7 @@ function Header({
                         className={`${styles.search_btn} mb-2`}
                       />
                     }
-                  </Popconfirm>
+                  </Popconfirm> */}
                   <div>
                     {!user ? (
                       <>
@@ -227,13 +241,13 @@ function Header({
               </Col>
               <Col xs={8} sm={8} md={7} lg={8} xl={8}>
                 <div className={`${styles.header_contain} justify-content-end`}>
-                  <Popconfirm title={title} okText="" cancelText="">
+                  {/* <Popconfirm title={title} okText="" cancelText="">
                     <Button
                       type="text"
                       icon={<SearchOutlined className={styles.search_icon} />}
                       className={`${styles.search_btn} mb-2`}
                     />
-                  </Popconfirm>
+                  </Popconfirm> */}
                   {/* <Button
                     type="text"
                     icon={<SearchOutlined className={styles.search_icon} />}

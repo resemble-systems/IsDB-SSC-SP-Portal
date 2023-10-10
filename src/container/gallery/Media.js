@@ -20,27 +20,27 @@ export default function Media({ routePath }) {
       axios
         .get(
           `${CONST.BASE_URL}${CONST.API.LIST("Gallery")}${CONST.API.QUERY(
-            "Title,EventOccurDate,EventType,Id,Location",
-          )} ${CONST.API.FILTER("Id", routePath.id)}`,
+            "Title,EventOccurDate,EventType,Id,Location"
+          )} ${CONST.API.FILTER("Id", routePath.id)}`
         )
-        .then(res => {
+        .then((res) => {
           setTitleData(res.data.value);
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
       axios
         .get(
           `${CONST.BASE_URL}${CONST.API.LIST(
-            "GalleryContent",
+            "GalleryContent"
           )}${CONST.API.QUERY(
-            "Title,VideoImage,ContentType0,Id,AttachmentFiles",
-          )} ${CONST.API.ATTACHMENT}`,
+            "Title,VideoImage,ContentType0,Id,AttachmentFiles"
+          )} ${CONST.API.ATTACHMENT}`
         )
-        .then(res2 => {
+        .then((res2) => {
           setEventData(res2.data.value);
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     }
   }, [routePath]);
 
@@ -55,7 +55,9 @@ export default function Media({ routePath }) {
               backgroundImage: `url(${Hero})`,
             }}
           ></div>
-          <InnerPageTitleSection title={"Media Gallery"} />
+          <div className="container">
+            <InnerPageTitleSection title={"Media Gallery"} />
+          </div>
           {eventData &&
             eventData.length > 0 &&
             titleData &&

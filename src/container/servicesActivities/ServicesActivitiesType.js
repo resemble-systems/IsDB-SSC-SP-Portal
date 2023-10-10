@@ -64,7 +64,9 @@ export default function ServicesActivitiesType({ routePath }) {
                   backgroundImage: `url(${Hero}),url(${DottedLine})`,
                 }}
               ></div>
-              <InnerPageTitleSection title={"Activities"} />
+              <div className="container">
+                <InnerPageTitleSection title={"Activities"} />
+              </div>
               <ServicesActivitiesTypeIntro serviceActivity={cardsData} />
             </div>
             <ConceptGallery

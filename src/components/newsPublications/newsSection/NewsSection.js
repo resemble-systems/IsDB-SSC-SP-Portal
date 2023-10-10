@@ -7,6 +7,7 @@ import AppBtn from "../../../common_components/appBtn/AppBtn";
 import NewsPublicationsCard from "../../../common_components/newsPublicationsCard/NewsPublicationsCard";
 // css
 import styles from "./news-section.module.sass";
+import SearchBar from "../../../common_components/searchBar/SearchBar";
 
 export default function NewsSection() {
   const { news } = useContext(AppContext);
@@ -36,7 +37,14 @@ export default function NewsSection() {
       <div className={`${styles.news_container} pb-5`}>
         <Row gutter={[16, 16]}>
           <Col span={24}>
-            <h3 className={`${styles.news_tilte} mb-5`}>News</h3>
+            <div className="d-flex justify-content-between mb-5">
+              <div>
+                <h3 className={`${styles.news_tilte} `}>News</h3>
+              </div>
+              <div>
+                <SearchBar styleApply={false} search={"news"} />
+              </div>
+            </div>
           </Col>
           {dispalyData &&
             dispalyData.length > 0 &&

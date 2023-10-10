@@ -25,7 +25,9 @@ export default function AboutUs() {
               backgroundImage: `url(${Hero}),url(${Dotted})`,
             }}
           ></div>
-          <InnerPageTitleSection title={"about us"} />
+          <div className="container">
+            <InnerPageTitleSection title={"about us"} />
+          </div>
           <AboutUsIntroSection />
         </div>
         <OurObjectiveSection />

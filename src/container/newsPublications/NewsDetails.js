@@ -9,12 +9,10 @@ import styles from "./news-details.module.sass";
 import Hero from "../../assets/general/hero.svg";
 import Dotted from "../../assets/general/Dotted-line-path-301.svg";
 
-export default function NewsDetails({
-  routePath,
-}) {
+export default function NewsDetails({ routePath }) {
   return (
     <>
-      <Layout >
+      <Layout>
         <div className={`position-relative`}>
           <div className={`${styles.bg_color}`}></div>
           <div
@@ -23,7 +21,9 @@ export default function NewsDetails({
               backgroundImage: `url(${Hero}),url(${Dotted})`,
             }}
           ></div>
-          <InnerPageTitleSection title={"News Details"} />
+          <div className="container">
+            <InnerPageTitleSection title={"News Details"} />
+          </div>
           <NewsDetailsIntro routePath={routePath} />
         </div>
         <AllNews />

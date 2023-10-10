@@ -75,13 +75,17 @@ export default function VideoSection() {
   });
 
   return (
-    <div className={`${styles.video}`} ref={videoRef}>
+    <div
+      className={`${styles.video}`}
+      // style={{ marginTop: "200px" }}
+      ref={videoRef}
+    >
       <div className={`${styles.viewPort_container}`} ref={observe}>
         {video && video.length > 0 ? (
           backgroundVideo ? (
             <div className={inView ? css(animationStyles.zoomIn) : ""}>
               <div
-                className={`${styles.image_container}`}
+                className={`${styles.image_container} `}
                 onClick={() => setBackgroundVideo(false)}
               >
                 <div

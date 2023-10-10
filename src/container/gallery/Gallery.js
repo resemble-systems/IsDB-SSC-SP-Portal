@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { CONST } from "../../constant/index"
+import { CONST } from "../../constant/index";
 // Common Components
 import Layout from "../layout/Layout";
 import InnerPageTitleSection from "../../common_components/innerPageTitleSection/InnerPageTitleSection";
@@ -17,14 +17,17 @@ export default function GalleryPage() {
   const [galleryData, setGalleryData] = useState(null);
   useEffect(() => {
     axios
-      .get(`${CONST.BASE_URL}${CONST.API.LIST('Gallery')}${CONST.API.QUERY('Title,EventOccurDate,EventType,Id,Location')}`
+      .get(
+        `${CONST.BASE_URL}${CONST.API.LIST("Gallery")}${CONST.API.QUERY(
+          "Title,EventOccurDate,EventType,Id,Location"
+        )}`
       )
-      .then(res => {
+      .then((res) => {
         setGalleryData(res.data.value);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
-  let skeletonData = [{}, {}, {}]
+  let skeletonData = [{}, {}, {}];
   return (
     <>
       <Layout>
@@ -34,15 +37,18 @@ export default function GalleryPage() {
             backgroundImage: `url(${Hero})`,
           }}
         >
-          <InnerPageTitleSection title={"Media Gallery"} />
-          <GalleryBannerImage />
+          <div className="container">
+            <InnerPageTitleSection title={"Media Gallery"} />
+          </div>
+          <div className="mt-5">
+            <GalleryBannerImage />
+          </div>
         </div>
         {galleryData && galleryData.length > 0 ? (
           <GallerySection galleryData={galleryData} />
-        )
-          :
+        ) : (
           <GallerySection galleryData={skeletonData} />
-        }
+        )}
       </Layout>
     </>
   );

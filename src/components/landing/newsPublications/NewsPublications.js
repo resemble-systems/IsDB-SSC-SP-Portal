@@ -77,7 +77,7 @@ export default function NewsPublications() {
   const [newsData, setNewsData] = useState(null);
   let finalIndex;
   useEffect(() => {
-    if (news && news.length > 0) {
+    if (news && news?.length > 0) {
       finalIndex = Math.floor(parseInt(news.length) / 3);
       setItem(news);
       setNewsData(news);
@@ -169,7 +169,7 @@ export default function NewsPublications() {
           )}
         </Col>
         <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-          {news && news.length > 0 ? (
+          {news && news?.length > 0 ? (
             <AppMultiSlider
               responsive={responsive}
               items={itemMobile}

@@ -19,7 +19,9 @@ export default function OfferContainer() {
               backgroundImage: `url(${Hero}),url(${Dotted})`,
             }}
           ></div>
-          <InnerPageTitleSection title={"Reward Application"} />
+          <div className="container">
+            <InnerPageTitleSection title={"Reward Application"} />
+          </div>
           <OfferComp />
         </div>
       </Layout>

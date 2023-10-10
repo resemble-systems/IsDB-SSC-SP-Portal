@@ -40,7 +40,18 @@ export default function SearchCard({ cardData, type }) {
                   // history.push(
                   //   `${cardData?.Type}/${cardData?.SharePoint_path}`
                   // );
-                  history.push(`/${type}/${cardData.Id}`);
+
+                  history.push(
+                    type === "events"
+                      ? `/${type}/${cardData.Id}`
+                      : type === "news"
+                      ? `/news-publications/${cardData.Id}`
+                      : type === "activities"
+                      ? `/activities/${cardData.Title.toLowerCase()
+                          .split(" ")
+                          .join("-")}`
+                      : ""
+                  );
                 }}
               />
             </div>
