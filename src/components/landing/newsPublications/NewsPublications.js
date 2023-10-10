@@ -131,7 +131,7 @@ export default function NewsPublications() {
     if (activeIndex === finalIndex) setNextBtn("disable");
     else setNextBtn("enable");
   }, [activeIndex, finalIndex]);
-  console.log("newsData-->", news);
+  console.log("newsData2-->", news);
   return (
     <div className={`${styles.news_container} py-5`}>
       <CommonSectionHeader
