@@ -15,8 +15,6 @@
     "caniuse-lite": "^1.0.30001517",
     "dotenv": "^9.0.2",
     "env-cmd": "^10.1.0",
-    "google-map-react": "^2.1.9",
-    "google-maps-react": "^2.0.6",
     "is-image": "^3.0.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
