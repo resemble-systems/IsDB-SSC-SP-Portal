@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
 import { Row, Col, Button } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
@@ -23,83 +23,114 @@ const items = [];
 const itemsTab = [];
 const itemMobile = [];
 
-function setItem(data) {
-  data.forEach((item, index) => {
-    if ((index + 1) % 3 === 0) {
-      items.push(
-        <div className={`${styles.news_container}`} data-value="1">
-          <Row gutter={[16, 16]}>
-            <Col span={8} className={`d-flex justify-content-center my-4`}>
-              <NewsPublicationsCard data={data[index - 2]} />
-            </Col>
-            <Col span={8} className={`d-flex justify-content-center my-4`}>
-              <NewsPublicationsCard data={data[index - 1]} />
-            </Col>
-            <Col span={8} className={`d-flex justify-content-center my-4`}>
-              <NewsPublicationsCard data={data[index]} />
-            </Col>
-          </Row>
-        </div>
-      );
-      itemsTab.push(
-        <div className={`${styles.news_container}`} data-value="1">
-          <Row gutter={[8, 8]}>
-            <Col span={8} className={`d-flex justify-content-center my-4`}>
-              <NewsPublicationsCard data={data[index - 2]} />
-            </Col>
-            <Col span={8} className={`d-flex justify-content-center my-4`}>
-              <NewsPublicationsCard data={data[index - 1]} />
-            </Col>
-            <Col span={8} className={`d-flex justify-content-center my-4`}>
-              <NewsPublicationsCard data={data[index]} />
-            </Col>
-          </Row>
-        </div>
-      );
-    }
-    itemMobile.push(
-      <div className={`${styles.news_container}`} data-value="1">
-        <Row gutter={[8, 8]}>
-          <Col span={24} className={`d-flex justify-content-center my-4 px-3`}>
-            <NewsPublicationsCard data={item} />
-          </Col>
-        </Row>
-      </div>
-    );
-  });
-}
-
 export default function NewsPublications() {
   const { news } = useContext(AppContext);
+  const newspublicationsRef = useRef(null);
+  const newspublicationsTabRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [prevBtn, setPrevBtn] = useState("disable");
+  const [prevBtn, setPrevBtn] = useState("enable");
   const [nextBtn, setNextBtn] = useState("enable");
-  const [newsData, setNewsData] = useState(null);
-  let finalIndex;
+  const [newsItemsData, setNewsItemsData] = useState(null);
+  const [newsItemsTabData, setNewsItemsTabData] = useState(null);
+  const [newsItemsMobileData, setNewsItemsMobileData] = useState(null);
+  const [finalIndex, setFinalIndex] = useState(0);
+
+  function setItem(data) {
+    data.forEach((item, index) => {
+      if (index % 3 === 0) {
+        items.push(
+          <div className={`${styles.news_container}`} data-value="1">
+            <Row gutter={[16, 16]}>
+              <Col span={8} className={`d-flex justify-content-center my-4`}>
+                <NewsPublicationsCard data={data[index]} />
+              </Col>
+              <Col span={8} className={`d-flex justify-content-center my-4`}>
+                {data.length > index + 1 ? (
+                  <NewsPublicationsCard data={data[index + 1]} />
+                ) : (
+                  ""
+                )}
+              </Col>
+              <Col span={8} className={`d-flex justify-content-center my-4`}>
+                {data.length > index + 2 ? (
+                  <NewsPublicationsCard data={data[index + 2]} />
+                ) : (
+                  ""
+                )}
+              </Col>
+            </Row>
+          </div>
+        );
+        itemsTab.push(
+          <div className={`${styles.news_container}`} data-value="1">
+            <Row gutter={[8, 8]}>
+              <Col span={8} className={`d-flex justify-content-center my-4`}>
+                <NewsPublicationsCard data={data[index]} />
+              </Col>
+              <Col span={8} className={`d-flex justify-content-center my-4`}>
+                {data.length > index + 1 ? (
+                  <NewsPublicationsCard data={data[index + 1]} />
+                ) : (
+                  ""
+                )}
+              </Col>
+              <Col span={8} className={`d-flex justify-content-center my-4`}>
+                {data.length > index + 2 ? (
+                  <NewsPublicationsCard data={data[index + 2]} />
+                ) : (
+                  ""
+                )}
+              </Col>
+            </Row>
+          </div>
+        );
+      }
+      itemMobile.push(
+        <div className={`${styles.news_container}`} data-value="1">
+          <Row gutter={[8, 8]}>
+            <Col
+              span={24}
+              className={`d-flex justify-content-center my-4 px-3`}
+            >
+              <NewsPublicationsCard data={item} />
+            </Col>
+          </Row>
+        </div>
+      );
+    });
+    setFinalIndex(Math.floor(parseInt(news.length) / 3));
+    setNewsItemsData(items);
+    setNewsItemsTabData(itemsTab);
+    setNewsItemsMobileData(itemMobile);
+  }
+
   useEffect(() => {
-    if (news && news?.length > 0) {
-      finalIndex = Math.floor(parseInt(news.length) / 3);
+    if (news && news.length > 0) {
       setItem(news);
-      setNewsData(news);
     }
   }, [news]);
 
   const slidePrev = () => {
-    if (activeIndex > 0) setActiveIndex(activeIndex - 1);
+    newspublicationsTabRef.current.slidePrev();
+    newspublicationsRef.current.slidePrev();
   };
 
   const slideNext = () => {
-    if (activeIndex < finalIndex - 1) setActiveIndex(activeIndex + 1);
+    newspublicationsTabRef.current.slideNext();
+    newspublicationsRef.current.slideNext();
   };
 
-  const onSlideChanged = ({ item }) => setActiveIndex(item);
+  const onSlideChanged = ({ item }) => {
+    setActiveIndex(item);
+  };
 
   useEffect(() => {
+    console.log("activeindexnews", activeIndex, finalIndex);
     if (activeIndex === 0) setPrevBtn("disable");
     else setPrevBtn("enable");
-    if (activeIndex === finalIndex - 1) setNextBtn("disable");
+    if (activeIndex === finalIndex) setNextBtn("disable");
     else setNextBtn("enable");
-  }, [activeIndex]);
+  }, [activeIndex, finalIndex]);
 
   return (
     <div className={`${styles.news_container} py-5`}>
@@ -108,21 +139,23 @@ export default function NewsPublications() {
         sliderSection={true}
         prevBtn={prevBtn}
         nextBtn={nextBtn}
-        onClickPrev={slidePrev}
-        onClickNext={slideNext}
+        onClickPrev={() => slidePrev()}
+        onClickNext={() => slideNext()}
       />
       <Row>
         <Col xs={0} sm={0} md={0} lg={24} xl={24}>
-          {news && news.length > 0 ? (
+          {newsItemsData && newsItemsData.length > 0 ? (
             <AppMultiSlider
+              section={"newspublicationslarge"}
               responsive={responsive}
-              items={items}
+              items={newsItemsData}
               activeIndex={activeIndex}
               onSlideChanged={onSlideChanged}
               paddingLeft={0}
               paddingRight={0}
               animationType={"fadeout"}
               disableDotsControls={true}
+              refVariable={newspublicationsRef}
             />
           ) : (
             <div className={`${styles.news_container}`} data-value="1">
@@ -141,16 +174,18 @@ export default function NewsPublications() {
           )}
         </Col>
         <Col xs={0} sm={0} md={24} lg={0} xl={0}>
-          {news && news.length > 0 ? (
+          {newsItemsTabData && newsItemsTabData.length > 0 ? (
             <AppMultiSlider
+              section={"newspublicationsmedium"}
               responsive={responsive}
-              items={itemsTab}
+              items={newsItemsTabData}
               activeIndex={activeIndex}
               onSlideChanged={onSlideChanged}
               paddingLeft={0}
               paddingRight={0}
               animationType={"slide"}
               disableDotsControls={true}
+              refVariable={newspublicationsTabRef}
             />
           ) : (
             <div className={`${styles.news_container}`} data-value="1">
@@ -169,8 +204,9 @@ export default function NewsPublications() {
           )}
         </Col>
         <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-          {news && news?.length > 0 ? (
+          {news && news.length > 0 ? (
             <AppMultiSlider
+              section={"newspublicationssmall"}
               responsive={responsive}
               items={itemMobile}
               activeIndex={activeIndex}
