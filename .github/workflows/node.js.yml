@@ -26,8 +26,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install react-custom-scrollbars --force
-    - run: npm install @ant-design/icon --force
+    - run: npm install react-custom-scrollbars --legacy-peer-deps
+    - run: npm install @ant-design/icon --legacy-peer-deps
     #- run: npm install react-image-lightbox@5.1.1 --legacy-peer-deps
     #- run: npm install @syncfusion/ej2-base@19.1.63 --legacy-peer-deps
     #- run: npm install @syncfusion/ej2-react-calendars@19.1.63 --legacy-peer-deps
