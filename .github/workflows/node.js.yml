@@ -26,10 +26,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    #- run: npm install --save google-map-react@2.1.9
+    - run: npm install react-custom-scrollbars --force
     #- run: npm install react-image-lightbox@5.1.1 --legacy-peer-deps
     #- run: npm install @syncfusion/ej2-base@19.1.63 --legacy-peer-deps
     #- run: npm install @syncfusion/ej2-react-calendars@19.1.63 --legacy-peer-deps
+  
     - run: npm ci #--legacy-peer-deps
     - run: npm run build --if-present
     - run: npm test
