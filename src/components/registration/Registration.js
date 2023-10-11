@@ -47,7 +47,7 @@ export default function RegistrationForm({ eventId, setVisiblety }) {
     department: "",
     gender: [],
     user: [],
-    location: [],
+    // location: [],
   };
   // Error Initial Object
   const errorObj = {
