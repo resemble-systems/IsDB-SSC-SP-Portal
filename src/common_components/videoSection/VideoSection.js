@@ -63,7 +63,7 @@ export default function VideoSection() {
     }
   };
 
-  const handleClickInside = () => setClickedOutside(false);
+  // const handleClickInside = () => setClickedOutside(false);
 
   useEffect(() => {
     setBackgroundVideo(true);
@@ -96,7 +96,11 @@ export default function VideoSection() {
                 <div
                   className={`w-100 h-100 position-absolute ${styles.vimage_container}`}
                 >
-                  <img className={`${styles.image}`} src={videoImg}></img>
+                  <img
+                    className={`${styles.image}`}
+                    src={videoImg}
+                    alt=""
+                  ></img>
                 </div>
                 <ReactPlayer
                   url={video[0].VideoLink}
