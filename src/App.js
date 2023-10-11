@@ -82,6 +82,7 @@ function App() {
             const responseEvent = responses[3].data.value;
             const responseServiceLogo = responses[4].data.value;
             const responseOtherResources = responses[5].data.value;
+            console.log("resServices-->", responseService);
             setUser(responseUser);
             setNewsData(responseNews);
             setServicesData(responseService);

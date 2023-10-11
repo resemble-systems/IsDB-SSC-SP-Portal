@@ -20,9 +20,9 @@ export default function GalleryInnerPageSection({
   useEffect(() => {
     if (eventData && eventData.length > 0) {
       let data = eventData.filter(
-        data =>
+        (data) =>
           data.ContentType0.toLowerCase() === category.toLowerCase() &&
-          data.Title === routePath.id,
+          data.Title === routePath.id
       );
       setFilteredCardData(data);
     }
@@ -30,7 +30,7 @@ export default function GalleryInnerPageSection({
 
   useEffect(() => {
     if (eventData && eventData.length > 0) {
-      let data = eventData.filter(data => data.Title === routePath.id);
+      let data = eventData.filter((data) => data.Title === routePath.id);
       setAllData(data);
     }
   }, [eventData, category, routePath]);

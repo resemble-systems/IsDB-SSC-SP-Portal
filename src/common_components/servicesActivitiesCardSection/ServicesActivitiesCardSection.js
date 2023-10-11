@@ -41,7 +41,7 @@ export default function ServicesActivitiesCardSection() {
     // More useful options...
   });
   let scletonData = [{}, {}, {}, {}, {}, {}, {}, {}, {}];
-
+  console.log("services-->", services);
   return (
     <Row ref={observe}>
       <Col xs={0} sm={0} md={0} lg={24} xl={24}>
