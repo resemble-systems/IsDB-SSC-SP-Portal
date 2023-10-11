@@ -93,6 +93,8 @@ export default function UseContactForm(
         return textAreaValidator(value);
       case "phoneNumber":
         return phoneNumberValidator(value);
+      default: // do nothing;
+        break;
     }
   };
 

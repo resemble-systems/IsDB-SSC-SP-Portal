@@ -100,6 +100,8 @@ const UseForm = (
         return firstNameValidator(value);
       case "phoneNumber":
         return phoneNumberValidator(value);
+      default: // do nothing;
+        break;
     }
   };
 

@@ -93,7 +93,14 @@ function App() {
       .catch((errors) => {
         console.log("=====================>", errors);
       });
-  }, []);
+  }, [
+    userApi,
+    newsApi,
+    serviceApi,
+    eventsApi,
+    otherResourcesApi,
+    servicesLogoApi,
+  ]);
 
   return (
     <AppContext.Provider

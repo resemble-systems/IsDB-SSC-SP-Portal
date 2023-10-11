@@ -1,6 +1,5 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 
 import { Drawer, Row, Col, Avatar } from "antd";
 import { CloseOutlined, UserOutlined } from "@ant-design/icons";
@@ -28,21 +27,21 @@ export default function AppDrawer({
 }) {
   const history = useHistory();
   const { user, services } = useContext(AppContext);
-  const [otResource, setOtResource] = useState(null);
+  // const [otResource, setOtResource] = useState(null);
 
-  useEffect(() => {
-    // API Call Other resources
-    axios
-      .get(
-        CONST.BASE_URL +
-          CONST.API.LIST("OtherResources") +
-          CONST.API.QUERY("Link, Title")
-      )
-      .then((res) => {
-        setOtResource(res.data.value);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   // API Call Other resources
+  //   axios
+  //     .get(
+  //       CONST.BASE_URL +
+  //         CONST.API.LIST("OtherResources") +
+  //         CONST.API.QUERY("Link, Title")
+  //     )
+  //     .then((res) => {
+  //       setOtResource(res.data.value);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   let menuLists = [
     {
