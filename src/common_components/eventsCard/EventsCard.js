@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { Skeleton } from "antd";
 import moment from "moment";
@@ -58,7 +57,7 @@ export default function EventsCard({ data, bg, bgImage, boxShadow, btn }) {
         )}
         {data && data.StartDate ? (
           <p className={`${styles.event_time}`}>{`${moment(
-            data.StartDate,
+            data.StartDate
           ).format("MMMM D")} - ${moment(data.EndDate).format("MMMM D")}`}</p>
         ) : (
           <Skeleton.Input active style={{ width: 180 }} className={"mb-5"} />
@@ -80,7 +79,7 @@ export default function EventsCard({ data, bg, bgImage, boxShadow, btn }) {
                 //   setEventRegistrationModal(true);
                 //   setEventId(data.id);
                 // }}
-                onClickHandler={e => {
+                onClickHandler={(e) => {
                   history.push(`/events/${data.Id}`);
                 }}
               />

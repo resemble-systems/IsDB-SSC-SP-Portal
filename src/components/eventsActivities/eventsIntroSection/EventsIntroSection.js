@@ -1,6 +1,5 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
-import { Row, Col, Button } from "antd";
+import { Row, Col } from "antd";
 import { Scrollbars } from "react-custom-scrollbars";
 import { useHistory } from "react-router-dom";
 //component
@@ -17,7 +16,6 @@ export default function EventsIntroSection({
   bgImage,
   boxShadow,
 }) {
-  const router = useRouter();
   const [eventRegistrationModal, setEventRegistrationModal] = useState(false);
   const history = useHistory();
 
@@ -58,7 +56,7 @@ export default function EventsIntroSection({
                   long={true}
                   href={"none"}
                   btnStyle={{}}
-                  onClickHandler={e => {
+                  onClickHandler={(e) => {
                     history.push(`/events/${event.Id}`);
                   }}
                 />

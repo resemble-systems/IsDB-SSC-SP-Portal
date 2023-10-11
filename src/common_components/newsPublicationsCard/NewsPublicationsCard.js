@@ -6,7 +6,6 @@ import { fadeIn } from "react-animations";
 import { StyleSheet, css } from "aphrodite";
 //css
 import styles from "./news-publications-card.module.sass";
-import { VAR } from "../../env";
 
 const animationStyles = StyleSheet.create({
   fadeIn: {
@@ -18,8 +17,7 @@ const animationStyles = StyleSheet.create({
 export default function NewsPublicationsCard({ data }) {
   const history = useHistory();
 
-  const base_url = VAR.BASE_URL;
-  const { observe, unobserve, inView, scrollDirection, entry } = useInView({
+  const { observe, inView } = useInView({
     threshold: 0.25, // Default is 0
     onChange: ({ inView, scrollDirection, entry, observe, unobserve }) => {
       // Triggered whenever the target meets a threshold, e.g. [0.25, 0.5, ...]

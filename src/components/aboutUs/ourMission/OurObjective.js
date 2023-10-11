@@ -18,7 +18,7 @@ const animationStyles = StyleSheet.create({
 });
 
 export default function OurObjectiveSection() {
-  const { observe, unobserve, inView, scrollDirection, entry } = useInView({
+  const { observe, inView } = useInView({
     threshold: 0.25, // Default is 0
     onChange: ({ inView, scrollDirection, entry, observe, unobserve }) => {
       // Triggered whenever the target meets a threshold, e.g. [0.25, 0.5, ...]

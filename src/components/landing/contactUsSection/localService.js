@@ -1,5 +1,4 @@
 import axios from "axios";
-import $ from "jquery";
 //service
 import { inpuChangeHandler } from "../../../services/inputService";
 import { emailValidator } from "../../../services/validationService";
@@ -29,7 +28,7 @@ export const onClickSubscribeHandler = async (
   if (isCorrectEmail) {
     let resp = await getDigest();
     // let url = process.env.BASE_URL + process.env.PATH.NEWSLETTER;
-    let body = { NewsletterEmail: emailValue };
+    // let body = { NewsletterEmail: emailValue };
     const url = CONST.BASE_URL + CONST.API.LIST("Newsletter");
     const stringifyPostData = JSON.stringify({
       __metadata: {

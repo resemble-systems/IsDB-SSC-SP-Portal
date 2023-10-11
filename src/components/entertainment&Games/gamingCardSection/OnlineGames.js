@@ -18,8 +18,6 @@ export default function OnlineGames({ cardData }) {
     }
   }, [seeAll, cardData]);
 
-  let skeletonData = [{}, {}, {}];
-
   return (
     <div className={`${styles.gamecard_section_bg}`}>
       <div className={`${styles.gamecard_section_container}`}>

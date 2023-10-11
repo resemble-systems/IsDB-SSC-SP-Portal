@@ -13,8 +13,6 @@ import styles from "./news-intro-details.module.sass";
 
 export default function EventDetailsIntro({ routePath }) {
   const { newsd } = useContext(AppContext);
-
-  const [displayedImage, setDisplayedImage] = useState(null);
   const [news, setNews] = useState(null);
   useEffect(() => {
     if (newsd && newsd.length > 0) {

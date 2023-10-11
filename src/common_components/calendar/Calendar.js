@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Row, Col } from "antd";
 import { AppContext } from "../../App";
-import { Scrollbars } from "react-custom-scrollbars";
 // component
 import AppCalendar from "./AppCalender";
 import Indicators from "../indicator/Indicators";

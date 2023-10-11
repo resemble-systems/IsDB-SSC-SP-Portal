@@ -4,7 +4,6 @@ import ServicesActivitiesCardSection from "../../../common_components/servicesAc
 // css
 import styles from "./services-activities-intro.module.sass";
 //BG
-import Bg from "../../../assets/serviceActivities/Bg1.svg";
 
 export default function ServicesActivitiesIntro() {
   return (

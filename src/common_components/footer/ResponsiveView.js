@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom";
 import { Row, Col } from "antd";
-import { useContext, useEffect, useState } from "react";
-import axios from "axios";
-import { CONST } from "../../constant/index";
+import { useContext } from "react";
+
 //css
 import styles from "./footer.module.sass";
 import { AppContext } from "../../App";
 
 export default function ResponsiveView({ view, logo }) {
   const { otherResourcesData } = useContext(AppContext);
-  const [fLinks, setFooterLink] = useState(null);
+
   // const [sMedia, setSocialMedia] = useState(null);
-  const [otResource, setOtResource] = useState(null);
   // useEffect(() => {
   //   // API Call Other resources
   //   axios

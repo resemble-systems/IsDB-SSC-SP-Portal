@@ -1,6 +1,5 @@
 // Common Components
 import Layout from "../layout/Layout";
-import CommonInnerPagesTitleBg from "../../common_components/commonInnerPagesTitleBg/CommonInnerPagesTitleBg";
 import InnerPageTitleSection from "../../common_components/innerPageTitleSection/InnerPageTitleSection";
 
 // Components
@@ -10,7 +9,6 @@ import styles from "./contact-us.module.sass";
 //Bg
 import Hero from "../../assets/general/hero.svg";
 import Dotted from "../../assets/general/Dotted-line-path-301.svg";
-import GalleryBg from "../../assets/gallery/gallery.svg";
 
 export default function ContactUs() {
   return (

@@ -1,7 +1,4 @@
 import { Row, Col } from "antd";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { CONST } from "../../../constant/index";
 // CSS
 import styles from "./contact-details.module.sass";
 

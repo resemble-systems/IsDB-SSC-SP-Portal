@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
-import { AppContext } from "../../App";
+import React, { useState } from "react";
+
 import Head from "../../common_components/head/Head";
 import Header from "../../common_components/header/Header";
 import Footer from "../../common_components/footer/Footer";

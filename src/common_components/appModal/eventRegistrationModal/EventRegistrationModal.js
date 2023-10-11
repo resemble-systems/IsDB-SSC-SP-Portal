@@ -127,7 +127,7 @@ export default function EventRegistrationModal({
         {/* Loading section */}
         {loading && (
           <div span={24} className={`${styles.loader_container}`}>
-            <div className={`spinner-grow ${styles.loader}`} role={`status `}>
+            <div className={`spinner-grow ${styles.loader}`} role="status">
               <span className={`sr-only `}>Loading...</span>
             </div>
           </div>

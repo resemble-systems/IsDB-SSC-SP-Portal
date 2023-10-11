@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import $ from "jquery";
 
 //constant
 import { CONST } from "../../constant";
@@ -45,16 +44,16 @@ const UseRegForm = (
       let resp = await getDigest();
       setLoaderTime(true);
 
-      let body = {
-        FirstName: inputs.firstName,
-        LastName: inputs.lastName,
-        Email: inputs.email,
-        Gender: inputs.gender,
-        UserType: inputs.user,
-        EmployeeId: inputs.employeeId,
-        Location: inputs.location,
-        Phone: inputs.phoneNumber,
-      };
+      // let body = {
+      //   FirstName: inputs.firstName,
+      //   LastName: inputs.lastName,
+      //   Email: inputs.email,
+      //   Gender: inputs.gender,
+      //   UserType: inputs.user,
+      //   EmployeeId: inputs.employeeId,
+      //   Location: inputs.location,
+      //   Phone: inputs.phoneNumber,
+      // };
 
       const url = CONST.BASE_URL + CONST.API.LIST("UserRegistration");
       const stringifyPostData = JSON.stringify({
@@ -111,6 +110,8 @@ const UseRegForm = (
         return dropDownValidator(value);
       case "phoneNumber":
         return phoneNumberValidator(value);
+      default: // do nothing;
+        break;
     }
   };
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { Input, Space } from "antd";
-import styles from "./searchBar.module.sass";
 import { useHistory } from "react-router-dom";
 
 const SearchBar = ({ styleApply, search }) => {

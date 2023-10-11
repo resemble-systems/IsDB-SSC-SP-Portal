@@ -1,24 +1,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Row, Col, notification } from "antd";
 import { WarningOutlined } from "@ant-design/icons";
-import useInView from "react-cool-inview";
+
 import { CONST } from "../../../constant/index";
 
 import bgImg1 from "../../../assets/background/contactUs.svg";
 import bgImg2 from "../../../assets/background/contactImgSec.svg";
 import bgImg3 from "../../../assets/background/newsletter.svg";
 
-import IsDBLogo from "../../../assets/IsdbGroup/IsDB-Logo.svg";
-import ICIEC from "../../../assets/IsdbGroup/ICIEC-Logo.svg";
-import ICDLogo from "../../../assets/IsdbGroup/ICD-Logo.svg";
-import Itfc from "../../../assets/IsdbGroup/Itfc-logo.svg";
-import IDBF from "../../../assets/IsdbGroup/IDBF-logo.svg";
-
 //animation
-import { slideInLeft, slideInUp } from "react-animations";
-import { StyleSheet, css } from "aphrodite";
+
 //component
 import AppBtn from "../../../common_components/appBtn/AppBtn";
 //service
@@ -47,16 +40,16 @@ const openSuccessNotification = ({ title, description }) => {
   });
 };
 
-const animationStyles = StyleSheet.create({
-  slideInLeft: {
-    animationName: slideInLeft,
-    animationDuration: "1.5s",
-  },
-  slideInUp: {
-    animationName: slideInUp,
-    animationDuration: "1.5s",
-  },
-});
+// const animationStyles = StyleSheet.create({
+//   slideInLeft: {
+//     animationName: slideInLeft,
+//     animationDuration: "1.5s",
+//   },
+//   slideInUp: {
+//     animationName: slideInUp,
+//     animationDuration: "1.5s",
+//   },
+// });
 
 export default function ContactUsSection() {
   const [validEmail, setEmailValidation] = useState(0);
@@ -64,7 +57,6 @@ export default function ContactUsSection() {
   const [logoMainData, setLogoMainData] = useState(null);
   const [logoSubData, setLogoSubData] = useState(null);
   // console.log("logoSubData", logoSubData);
-  const history = useHistory();
 
   useEffect(() => {
     axios

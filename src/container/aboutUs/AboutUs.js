@@ -5,7 +5,6 @@ import AboutUsIntroSection from "../../components/aboutUs/aboutUsIntroSection/Ab
 import OurObjectiveSection from "../../components/aboutUs/ourMission/OurObjective";
 import StaffSocialClub from "../../components/aboutUs/staffSocialClub/StaffSocialClub";
 import VideoSection from "../../common_components/videoSection/VideoSection";
-import CommonInnerPagesTitleBg from "../../common_components/commonInnerPagesTitleBg/CommonInnerPagesTitleBg";
 import ExeTeamStructure from "../../components/aboutUs/exeTeamStructure/ExeTeamStructure";
 //css
 import styles from "./about-us.module.sass";

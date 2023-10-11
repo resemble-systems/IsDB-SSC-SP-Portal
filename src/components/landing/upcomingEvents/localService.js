@@ -20,5 +20,7 @@ export const setBackground = (item) => {
       bg = "#223771";
       boxShadow = "0px 3px 18px #22377140";
       return [bg, bgImage, boxShadow];
+    default: // do nothing;
+      break;
   }
 };

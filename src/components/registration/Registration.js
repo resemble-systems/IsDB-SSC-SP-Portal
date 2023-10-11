@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Row, Col } from "antd";
 import { CheckCircleOutlined } from "@ant-design/icons";
 
@@ -134,7 +134,7 @@ export default function RegistrationForm({ eventId, setVisiblety }) {
                       <div span={24} className={`${styles.loader_container}`}>
                         <div
                           className={`spinner-grow ${styles.loader}`}
-                          role={`status `}
+                          role="status"
                         >
                           <span className={`sr-only `}>Loading...</span>
                         </div>

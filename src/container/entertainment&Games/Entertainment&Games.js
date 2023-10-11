@@ -3,7 +3,6 @@ import axios from "axios";
 import { CONST } from "../../constant/index";
 // Common Components
 import Layout from "../layout/Layout";
-import CommonInnerPagesTitleBg from "../../common_components/commonInnerPagesTitleBg/CommonInnerPagesTitleBg";
 import InnerPageTitleSection from "../../common_components/innerPageTitleSection/InnerPageTitleSection";
 
 // Components

@@ -91,7 +91,7 @@ export default function ContactForm() {
                 <div span={24} className={`${styles.loader_container}`}>
                   <div
                     className={`spinner-grow ${styles.loader}`}
-                    role={`status `}
+                    role="status"
                   >
                     <span className={`sr-only `}>Loading...</span>
                   </div>

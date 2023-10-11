@@ -1,7 +1,7 @@
 import { Row, Col } from "antd";
 import isImage from "is-image";
 import ReactPlayer from "react-player";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 //css

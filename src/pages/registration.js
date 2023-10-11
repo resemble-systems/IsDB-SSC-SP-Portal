@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import RegistrationContainer from "../container/registration/RegistrationContainer";
 //Logo
 import Logo from "../assets/Image/header/IsDB _ EN _ logo _ primary _ colour.png";
-import Layout from "../container/layout/Layout";
 
 export default function Registration() {
   return (

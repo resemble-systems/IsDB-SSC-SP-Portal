@@ -8,7 +8,7 @@ import moment from "moment";
 import styles from "./view-ad.module.sass";
 //componet
 import AppSlider from "../../../common_components/appSlider/AppSlider";
-import { CONST } from "../../../constant";
+
 import location from "../../../assets/buySell/map-pin.svg";
 import mail from "../../../assets/buySell/mail.svg";
 import phone from "../../../assets/buySell/phone.svg";
@@ -175,7 +175,7 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
             <Col xs={3} sm={3} md={3} lg={3} xl={3}>
               <img
                 src={location}
-                //alt={`${icon.toString()}`}
+                alt={"videoAD modal img"}
                 width="22"
                 height="22"
               />
@@ -220,7 +220,7 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
             <Col xs={3} sm={3} md={3} lg={3} xl={3}>
               <img
                 src={mail}
-                //alt={`${icon.toString()}`}
+                alt={"videoAD modal img"}
                 width="22"
                 height="22"
               />
@@ -263,7 +263,7 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
             <Col xs={3} sm={3} md={3} lg={3} xl={3}>
               <img
                 src={phone}
-                //alt={`${icon.toString()}`}
+                alt={"videoAD modal img"}
                 width="22"
                 height="22"
               />

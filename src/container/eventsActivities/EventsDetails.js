@@ -5,7 +5,6 @@ import { AppContext } from "../../App";
 //component
 import Layout from "../layout/Layout";
 import InnerPageTitleSection from "../../common_components/innerPageTitleSection/InnerPageTitleSection";
-import CommonInnerPagesTitleBg from "../../common_components/commonInnerPagesTitleBg/CommonInnerPagesTitleBg";
 import EventDetailsIntro from "../../components/eventDetails/eventDetailsIntro/EventDetailsIntro";
 import RecentEventActivities from "../../components/eventDetails/recentEventActivities/RecentEventActivities";
 //css

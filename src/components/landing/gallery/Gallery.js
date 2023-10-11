@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Row, Col, Skeleton } from "antd";
+import React, { useState, useRef } from "react";
+import { Row } from "antd";
 import "react-image-lightbox/style.css";
-import isImage from "is-image";
+
 import { useHistory } from "react-router-dom";
 // component
 import CommonSectionHeader from "../commonSectionHeader/CommonSectionHeader";
@@ -1266,22 +1266,22 @@ const responsive = {
   1440: { items: 9 },
 };
 
-function viewImage(index, setIsopen, setPhotoUrl) {
-  setIsopen(true);
-  setPhotoUrl(index);
-}
-function viewVideo(
-  index,
-  setPlay,
-  setVideoUrl,
-  setModalVisibility,
-  setAutoPlay
-) {
-  setPlay(true);
-  setVideoUrl(index);
-  setModalVisibility(true);
-  setAutoPlay(false);
-}
+// function viewImage(index, setIsopen, setPhotoUrl) {
+//   setIsopen(true);
+//   setPhotoUrl(index);
+// }
+// function viewVideo(
+//   index,
+//   setPlay,
+//   setVideoUrl,
+//   setModalVisibility,
+//   setAutoPlay
+// ) {
+//   setPlay(true);
+//   setVideoUrl(index);
+//   setModalVisibility(true);
+//   setAutoPlay(false);
+// }
 
 export default function Gallery({ galleryContent }) {
   const history = useHistory();

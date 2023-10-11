@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import { CONST } from "../../constant/index";
 //component
 import Layout from "../layout/Layout";
 import InnerPageTitleSection from "../../common_components/innerPageTitleSection/InnerPageTitleSection";
@@ -10,7 +8,6 @@ import Slider from "../../components/eventsActivities/slider/Slider";
 import Calendar from "../../common_components/calendar/Calendar";
 
 import { AppContext } from "../../App";
-
 //services
 import { setBackground } from "../../services/eventService";
 //css

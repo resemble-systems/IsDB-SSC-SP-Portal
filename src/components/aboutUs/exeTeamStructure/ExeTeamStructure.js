@@ -3,7 +3,7 @@ import useInView from "react-cool-inview";
 //Components
 import AppSlider from "../../../common_components/appSlider/AppSlider";
 //animation
-import { slideInLeft, slideInUp } from "react-animations";
+import { slideInLeft } from "react-animations";
 import { StyleSheet, css } from "aphrodite";
 //css
 import styles from "./exe-team-structure.module.sass";
@@ -41,7 +41,7 @@ export default function ExeTeamStructure() {
     },
   ];
 
-  const { observe, unobserve, inView, scrollDirection, entry } = useInView({
+  const { observe, inView } = useInView({
     threshold: 0.25, // Default is 0
     onChange: ({ inView, scrollDirection, entry, observe, unobserve }) => {
       // Triggered whenever the target meets a threshold, e.g. [0.25, 0.5, ...]

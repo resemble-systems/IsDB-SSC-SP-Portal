@@ -10,7 +10,6 @@ import EventsCard from "../../../common_components/eventsCard/EventsCard";
 import { setBackground } from "../../../services/eventService";
 //css
 import styles from "./upcoming-events.module.sass";
-import { Route } from "react-router";
 
 const responsive = {
   0: { items: 1 },

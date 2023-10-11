@@ -1,4 +1,3 @@
-import { useHistory } from "react-router-dom";
 import { Dropdown, Button } from "antd";
 //css
 import styles from "./app-rounded-btn.module.sass";
@@ -39,7 +38,6 @@ export default function AppRoundedBtn({
   dropDownData,
   disabled,
 }) {
-  const history = useHistory();
   const btnCls = getBtnStyle(bg, outline);
   setDropDownData(dropDownData);
 

@@ -17,8 +17,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import styles from "./header.module.sass";
 
 import { AppContext } from "../../App";
-import { Route } from "react-router";
-import { VAR } from "../../env";
+
 const { Search } = Input;
 
 function getMyPictureUrl(accountName, size) {
@@ -41,7 +40,7 @@ function Header({
 }) {
   const history = useHistory();
   const location = useLocation();
-  const [removeVal, setRemoveVal] = useState("");
+
   const [searchFor, setSearchFor] = useState("");
 
   // const [displayPop, setDisplayPop] = useState(false);
@@ -102,7 +101,7 @@ function Header({
       // />
     );
   };
-  const { user, setUser } = useContext(AppContext);
+  const { user } = useContext(AppContext);
   const router = useRouter();
   const ddmenu = (
     <Menu>

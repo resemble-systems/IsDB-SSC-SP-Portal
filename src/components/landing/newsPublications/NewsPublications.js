@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import axios from "axios";
-import { Row, Col, Button } from "antd";
+
+import { Row, Col } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 // component
 import AppBtn from "../../../common_components/appBtn/AppBtn";

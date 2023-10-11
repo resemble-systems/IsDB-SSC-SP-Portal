@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Row, Col, Button, Skeleton } from "antd";
-import axios from "axios";
+
 import { useHistory } from "react-router-dom";
-import { CONST } from "../../constant/index";
+
 //service
 import { mapTypeToRoutePath } from "../../services/serviceActivitieService";
 //css

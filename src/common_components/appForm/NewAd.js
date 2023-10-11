@@ -81,7 +81,7 @@ const UseForm = (
           "X-RequestDigest": resp,
           "X-HTTP-Method": "POST",
           "IF-MATCH": "*",
-          "X-HTTP-Method": "MERGE",
+          // "X-HTTP-Method": "MERGE",
         },
       };
 
@@ -112,6 +112,8 @@ const UseForm = (
         return textAreaValidator(value);
       case "phone":
         return phoneNumberValidator(value);
+      default: // do nothing;
+        break;
     }
   };
 
