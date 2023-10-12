@@ -17,55 +17,90 @@ const { SubMenu } = Menu;
 
 let ddmenu;
 function setDDMenu(setSubMenu, adCategories, subCategoryList) {
+  console.log("menu-->", setSubMenu, adCategories, subCategoryList);
   ddmenu = (
-    <Menu>
-      <Menu.Item>
-        <a
-          className={`${styles.dropDownList} py-3`}
-          onClick={() => setSubMenu("All")}
-        >
-          All
-        </a>
-      </Menu.Item>
-      {adCategories &&
-        subCategoryList &&
-        adCategories.length > 0 &&
-        subCategoryList.length > 0 &&
-        adCategories.map((data) => (
-          <>
-            <Menu.Divider />
-            <SubMenu
-              title={data.Title}
-              className={`${styles.dropDownList} py-3`}
-            >
-              {subCategoryList
-                .filter((subData) => subData.CategoryId === data.ID.toString())
-                .map((finalData) => (
-                  <>
-                    <Menu.Item>
-                      <a
-                        className={`${styles.dropDownList} py-3`}
-                        onClick={() => setSubMenu(finalData.Title)}
-                      >
+    <>
+      <Menu>
+        <Menu.Item>
+          {/* <a
+            className={`${styles.dropDownList} py-3`}
+            onClick={() => setSubMenu("All")}
+          >
+            All
+          </a> */}
+
+          <button
+            className={`${styles.dropDownList} py-3`}
+            onClick={() => setSubMenu("All")}
+            style={{
+              background: "none",
+              border: "none",
+              padding: "0",
+              textDecoration: "none",
+              cursor: "pointer",
+              outline: "none",
+            }}
+          >
+            All
+          </button>
+        </Menu.Item>
+        {adCategories &&
+          subCategoryList &&
+          adCategories?.length > 0 &&
+          subCategoryList?.length > 0 &&
+          adCategories?.map((data) => (
+            <>
+              <Menu.Divider />
+              <SubMenu
+                title={data?.Title}
+                className={`${styles.dropDownList} py-3`}
+              >
+                {subCategoryList
+                  ?.filter(
+                    (subData) => subData.CategoryId === data.ID.toString()
+                  )
+                  ?.map((finalData) => (
+                    <>
+                      <Menu.Item>
+                        <button
+                          className={`${styles.dropDownList} py-3`}
+                          onClick={() => setSubMenu(finalData.Title)}
+                          style={{
+                            background: "none",
+                            border: "none",
+                            padding: "0",
+                            textDecoration: "none",
+                            cursor: "pointer",
+                            outline: "none",
+                          }}
+                        ></button>
                         {finalData.Title}
-                      </a>
-                    </Menu.Item>
-                    <Menu.Divider />
-                  </>
-                ))}
-            </SubMenu>
-          </>
-        ))}
-      <Menu.Divider />
-      <Menu.Item>
-        <a
-          className={`${styles.dropDownList} py-3`}
-          onClick={() => setSubMenu("Others")}
-        >
-          Others
-        </a>
-      </Menu.Item>
-    </Menu>
+                      </Menu.Item>
+                      <Menu.Divider />
+                    </>
+                  ))}
+              </SubMenu>
+            </>
+          ))}
+        <Menu.Divider />
+        <Menu.Item>
+          <button
+            className={`${styles.dropDownList} py-3`}
+            onClick={() => setSubMenu("Others")}
+            style={{
+              background: "none",
+              border: "none",
+              padding: "0",
+              textDecoration: "none",
+              cursor: "pointer",
+              outline: "none",
+            }}
+          >
+            Others
+          </button>
+        </Menu.Item>
+      </Menu>
+    </>
   );
 }
 

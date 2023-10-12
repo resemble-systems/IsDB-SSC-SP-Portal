@@ -124,6 +124,8 @@ function Header({
       </Menu.Item>
     </Menu>
   );
+
+  console.log("ddmenuHeader-->", ddmenu);
   return (
     <header className={styles.header_container}>
       <Row>
@@ -187,13 +189,13 @@ function Header({
                         >{`Sign in`}</Button>
                       </>
                     ) : (
-                      <Dropdown menu={ddmenu}>
+                      <Dropdown overlay={ddmenu}>
                         <Avatar
                           size={72}
                           src={
-                            user.data.UserProfileProperties[18].Value ? (
+                            user?.data?.UserProfileProperties[18].Value ? (
                               <img
-                                src={getMyPictureUrl(user.data.Email, "M")}
+                                src={getMyPictureUrl(user?.data?.Email, "M")}
                                 alt="user"
                                 width="150"
                                 height="150"
@@ -269,7 +271,7 @@ function Header({
                         >{`Sign in`}</Button>
                       </>
                     ) : (
-                      <Dropdown menu={ddmenu}>
+                      <Dropdown overlay={ddmenu}>
                         <Avatar
                           size={72}
                           src={

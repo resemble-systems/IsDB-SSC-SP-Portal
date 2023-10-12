@@ -210,14 +210,22 @@ export default function AppDrawer({
                       listItem.links.length > 0 &&
                       listItem.links.map((list, index) => (
                         <li className={`mb-4`} key={index}>
-                          <a
+                          <button
                             onClick={() => {
                               setVisbility(false);
                               history.push(list.link);
                             }}
+                            style={{
+                              background: "none",
+                              border: "none",
+                              padding: "0",
+                              textDecoration: "none",
+                              cursor: "pointer",
+                              outline: "none",
+                            }}
                           >
                             {list.name}
-                          </a>
+                          </button>
                         </li>
                       ))}
                     {/* </Scrollbars> */}

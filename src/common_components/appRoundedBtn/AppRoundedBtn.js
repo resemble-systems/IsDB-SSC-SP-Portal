@@ -44,7 +44,7 @@ export default function AppRoundedBtn({
   return (
     <>
       {dropDown ? (
-        <Dropdown menu={menu} placement="bottomRight" trigger="hover">
+        <Dropdown overlay={menu} placement="bottomRight" trigger="hover">
           <Button
             type="text"
             shape="round"

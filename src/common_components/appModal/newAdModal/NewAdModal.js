@@ -41,6 +41,17 @@ export default function NewAdModal({
   setCallApi,
   callApi,
 }) {
+  console.log(
+    "newAdModal",
+    visible,
+    setVisiblety,
+    citems,
+    setSelectedCategory,
+    subitems,
+    selectedCategory,
+    setCallApi,
+    callApi
+  );
   const [loading, setLoaderTime] = useState(false);
   const [registerDone, setRegisterDone] = useState(false);
   // Form Initial Objects
@@ -76,7 +87,7 @@ export default function NewAdModal({
     setInputs,
   } = useForm(fromObject, errorObj, setLoaderTime, setRegisterDone, itemId);
 
-  setSelectedCategory(inputs.category);
+  setSelectedCategory(inputs?.category);
 
   useEffect(() => {
     if (visible) {
