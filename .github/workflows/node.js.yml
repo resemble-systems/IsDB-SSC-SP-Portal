@@ -50,8 +50,8 @@ jobs:
 
           npm install -g @pnp/cli-microsoft365
 
-          office365 login --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
+          m365 login --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
 
-          office365 spo login $SP_SITE_URL
+          m365 spo login $SP_SITE_URL
 
-          office365 spo upload --path "./build" --libraryPath $SP_LIBRARY_PATH --force
+          m365 spo upload --path "./build" --libraryPath $SP_LIBRARY_PATH --force
