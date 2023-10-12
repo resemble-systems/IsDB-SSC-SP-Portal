@@ -56,4 +56,4 @@ jobs:
 
           # m365 spo upload --path "./build" --libraryPath $SP_LIBRARY_PATH --force
           
-          m365 spo file add --webUrl $SP_SITE_URL --folder  $SP_LIBRARY_PATH --path './build'
+          m365 spo file add --webUrl $SP_SITE_URL --folder  $SP_LIBRARY_PATH --path './build/index.html'
