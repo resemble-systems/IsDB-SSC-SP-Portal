@@ -36,22 +36,14 @@ jobs:
     - run: CI=false npm run build --if-present
     - run: npm test
 
-    - name: Deploy to SharePoint Online
-      env:
-          SP_CLIENT_ID: ${{ secrets.SP_CLIENT_ID }}
-
-          SP_CLIENT_SECRET: ${{ secrets.SP_CLIENT_SECRET }}
-
-          SP_SITE_URL: ${{ secrets.SP_SITE_URL }}
-
-          SP_LIBRARY_PATH: "SiteAssets/Build" # Change this to your destination folder path
-
-      run: |
-
-          npm install -g @pnp/cli-microsoft365
-
-          office365 login --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
-
-          office365 spo login $SP_SITE_URL
-
-          office365 spo upload --path "./build" --libraryPath $SP_LIBRARY_PATH --force
+    - name: Publish to Sharepoint
+    # You may pin to the exact commit or the version.
+    # uses: obrassard/action-sharepoint-publish@81f579c09846644d84642642eeb30981c2848f50
+      uses: obrassard/action-sharepoint-publish@v1.1.1
+      with:
+      # The Sharepoint site url
+        site_url: $SP_SITE_URL
+        sharepoint_client_id: $SP_CLIENT_ID
+        sharepoint_client_secret: $SP_CLIENT_SECRET        
+        library_folder: $SP_LIBRARY_PATH
+        #file_path: "./build"
