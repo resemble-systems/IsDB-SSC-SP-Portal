@@ -42,8 +42,8 @@ jobs:
       uses: obrassard/action-sharepoint-publish@v1.1.1
       with:
       # The Sharepoint site url
-        site_url: $SP_SITE_URL
-        sharepoint_client_id: $SP_CLIENT_ID
-        sharepoint_client_secret: $SP_CLIENT_SECRET        
-        library_folder: $SP_LIBRARY_PATH
+        site_url: 'https://isdb.sharepoint.com/sites/ssc'
+        sharepoint_client_id: ${{ secrets.SP_CLIENT_ID }}
+        sharepoint_client_secret: ${{ secrets.SP_CLIENT_SECRET }}       
+        library_folder: 'SiteAssets/Build'
         #file_path: "./build"
