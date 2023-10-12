@@ -35,3 +35,23 @@ jobs:
     - run: npm ci --legacy-peer-deps
     - run: CI=false npm run build --if-present
     - run: npm test
+
+    - name: Deploy to SharePoint Online
+      env:
+          SP_CLIENT_ID: ${{ secrets.SP_CLIENT_ID }}
+
+          SP_CLIENT_SECRET: ${{ secrets.SP_CLIENT_SECRET }}
+
+          SP_SITE_URL: ${{ secrets.SP_SITE_URL }}
+
+          SP_LIBRARY_PATH: "SiteAssets/Build" # Change this to your destination folder path
+
+      run: |
+
+          npm install -g @pnp/office365-cli
+
+          office365 login --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
+
+          office365 spo login $SP_SITE_URL
+
+          office365 spo upload --path "./build" --libraryPath $SP_LIBRARY_PATH --force
