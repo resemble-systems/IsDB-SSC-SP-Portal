@@ -36,6 +36,12 @@ jobs:
     - run: CI=false npm run build --if-present
     - run: npm test
 
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: path/to/artifact
+      
     - name: Deploy to SharePoint Online
       env:
           SP_CLIENT_ID: ${{ secrets.SP_CLIENT_ID }}
