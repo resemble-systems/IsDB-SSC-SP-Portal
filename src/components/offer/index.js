@@ -28,14 +28,14 @@ export default function OfferComp() {
 
   return (
     <>
-      <Row className={`h-100`}>
+      <Row className={`h-100 `}>
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
           <div className={`${styles.offers_container}`}>
             <div
               className={`d-flex justify-content-center align-items-center flex-column`}
             >
-              {OffersData && OffersData.length > 0 ? (
-                OffersData.map((data, index) => (
+              {OffersData && OffersData?.length > 0 ? (
+                OffersData?.map((data, index) => (
                   <div className={`mb-4`} key={index}>
                     <img
                       src={data?.AttachmentFiles[0]?.ServerRelativeUrl}
