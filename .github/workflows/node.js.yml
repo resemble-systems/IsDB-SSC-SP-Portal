@@ -61,4 +61,4 @@ jobs:
           m365 spo login $SP_SITE_URL  --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
 
           #m365 spo upload --path "path/to/artifact/" --libraryPath $SP_LIBRARY_PATH --force   
-          m365 spo file add --webUrl https://isdb.sharepoint.com/sites/ssc --folder '/sites/project-x/Shared Documents' --path 'path/to/artifact/' 
+          m365 spo file add --webUrl https://isdb.sharepoint.com/sites/ssc --folder '/sites/ssc/Shared Documents' --path './build' 
