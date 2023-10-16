@@ -73,6 +73,7 @@ export default function NewAdModal({
     category: null,
     adTitle: null,
     phone: null,
+    subcategory: null,
   };
   const [itemId, setItemId] = useState(null);
 
@@ -129,7 +130,7 @@ export default function NewAdModal({
         .catch((err) => {});
     }
   }, [visible]);
-
+  console.log("errors", errors);
   return (
     <Modal
       centered
@@ -248,6 +249,11 @@ export default function NewAdModal({
                 value={inputs.subcategory}
                 error={null}
               />
+              {errors.subcategory !== null && !errors.subcategory && (
+                <p className={`text-danger mt-2 mb-0 pl-4`}>
+                  {"Please enter Subcategory."}
+                </p>
+              )}
             </Col>
 
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>

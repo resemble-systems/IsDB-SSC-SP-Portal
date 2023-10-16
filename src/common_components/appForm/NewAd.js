@@ -108,6 +108,8 @@ const UseForm = (
         return emailValidator(value);
       case "category":
         return dropDownValidator(value);
+      case "subcategory":
+        return dropDownValidator(value);
       case "adTitle":
         return textAreaValidator(value);
       case "phone":
@@ -133,6 +135,11 @@ const UseForm = (
 
   // category Handling
   const handleSubCategory = (e) => {
+    let error = validator("subcategory", e);
+    setErrors({
+      ...errors,
+      ["subcategory"]: error,
+    });
     setInputs((inputs) => ({
       ...inputs,
       ["subcategory"]: e,
