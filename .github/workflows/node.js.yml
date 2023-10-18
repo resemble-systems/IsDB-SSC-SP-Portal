@@ -55,7 +55,7 @@ jobs:
       run: |
 
         npm install -g @pnp/cli-microsoft365
-        m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f3 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
+        m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
 
           #m365 login $SP_SITE_URL  --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
