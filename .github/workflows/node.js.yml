@@ -52,18 +52,13 @@ jobs:
 
           SP_LIBRARY_PATH: 'SiteAssets/Build'
 
+      run: |
 
-  publish:
-    runs-on: ubuntu-latest
-    steps:  
-    
-    - name: Cloning repo
-      uses: actions/checkout@v2
+        npm install -g @pnp/cli-microsoft365
+        m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f3 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
+          #m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
 
-    - name: Publish to Sharepoint
-      uses: obrassard/action-sharepoint-publish@v1.1.1
-      with:
-       site_url: 'https://isdb.sharepoint.com/sites/ssc'
-       library_folder: 'Shared documents/releases'
-       sharepoint_client_id: ${{ secrets.SP_CLIENT_ID }}
-       sharepoint_client_secret: ${{ secrets.SP_CLIENT_SECRET }}
+          #m365 login $SP_SITE_URL  --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
+
+          #m365 spo upload --path "path/to/artifact/" --libraryPath $SP_LIBRARY_PATH --force   
+        m365 spo file add --webUrl $SP_SITE_URL --folder '/sites/SSC/Shared Documents' --path './build' 
