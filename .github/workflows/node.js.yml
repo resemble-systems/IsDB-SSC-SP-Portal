@@ -64,7 +64,7 @@ jobs:
           #test
           #o365 spo file add --path "./build/index.html" --libraryPath 'Shared Documents' --force   
           #o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc --folder 'Shared Documents' --path './build' 
-          o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc -s './build' -t 'Shared Documents'  
+          o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc -s './build' -t 'https://isdb.sharepoint.com/sites/ssc/Shared Documents'  
 
     
 
