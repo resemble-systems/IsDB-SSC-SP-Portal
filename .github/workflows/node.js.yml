@@ -55,7 +55,7 @@ jobs:
       run: |
           #npm install -g @pnp/cli-microsoft365
           npm install -g @pnp/office365-cli
-          o365 login https://isdb.sharepoint.com/sites/ssc --authType password --userName 'SVC-IDBPAP@isdb.org' --password $(SP_CLIENT_SECRET)
+          o365 login https://isdb.sharepoint.com/sites/ssc --authType password --userName 'SVC-IDBPAP@isdb.org' --password 'IsDBGconnect@2022Main'
           #m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #m365 login --appId $SP_CLIENT_ID --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35
