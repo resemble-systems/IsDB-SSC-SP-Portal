@@ -62,7 +62,7 @@ jobs:
           #m365 login --authType secret --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --appId $SP_CLIENT_ID --secret $SP_CLIENT_SECRET
           #m365 login $SP_SITE_URL  --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #test
-          #m365 spo upload --path "path/to/artifact/" --libraryPath $SP_LIBRARY_PATH --force   
+          o365 spo upload --path "./build" --libraryPath 'Shared Documents' --force   
         #m365 spo file add --webUrl $SP_SITE_URL --folder '/sites/SSC/Shared Documents' --path './build' 
 
     
