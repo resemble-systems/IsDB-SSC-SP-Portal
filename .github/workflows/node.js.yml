@@ -54,8 +54,8 @@ jobs:
 
       run: |
           #npm install -g @pnp/cli-microsoft365
-          #npm install -g @pnp/office365-cli
-          #o365 login https://isdb.sharepoint.com/sites/ssc --authType password --userName 'SVC-IDBPAP@isdb.org' --password 'IsDBGconnect@2022Main'
+          npm install -g @pnp/office365-cli
+          o365 login https://isdb.sharepoint.com/sites/ssc --authType password --userName 'SVC-IDBPAP@isdb.org' --password 'IsDBGconnect@2022Main'
           #m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #m365 login --appId $SP_CLIENT_ID --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35
@@ -63,14 +63,7 @@ jobs:
           #m365 login $SP_SITE_URL  --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #test
           #o365 spo file add --path "./build/index.html" --libraryPath 'Shared Documents' --force   
-          #o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc --folder 'Shared Documents' --path './build/index.html' 
+          o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc --folder 'Shared Documents' --path './build/index.html' 
           #o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc -s './build/static' -t 'https://isdb.sharepoint.com/sites/ssc/Shared Documents'  
 
-          - name: Deploy to SharePoint
-            uses: paztek/sharepoint-upload-file@v1
-            with:
-              username: ${{ secrets.SP_CLIENT_ID }}
-              password: ${{ secrets.SP_CLIENT_SECRET }}
-              siteUrl: 'https://isdb.sharepoint.com/sites/ssc'
-              libraryName: 'Shared Documents'
-              filePath: './build'
+        
