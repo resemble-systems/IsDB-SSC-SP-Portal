@@ -82,6 +82,7 @@ jobs:
         $password = "IsDBGconnect@2022Main"
         $siteURL = "https://isdb.sharepoint.com/sites/ssc"
         $libraryName = "Shared Documents"
+        Import-Module -Name Microsoft.Online.SharePoint.PowerShell
         Connect-SPOService -url $siteURL -Credential (New-Object PSCredential $username, (ConvertTo-SecureString $password -AsPlainText -Force))
         Add-SPOFile -Path "./build" -Folder $libraryName
       shell: pwsh
