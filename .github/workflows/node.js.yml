@@ -54,8 +54,8 @@ jobs:
 
       run: |
           #npm install -g @pnp/cli-microsoft365
-          #npm install -g @pnp/office365-cli
-          #o365 login https://isdb.sharepoint.com/sites/ssc --authType password --userName 'SVC-IDBPAP@isdb.org' --password 'IsDBGconnect@2022Main'
+          npm install -g @pnp/office365-cli
+          o365 login https://isdb.sharepoint.com/sites/ssc --authType password --userName 'SVC-IDBPAP@isdb.org' --password 'IsDBGconnect@2022Main'
           #m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #m365 login --appId $SP_CLIENT_ID --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35
@@ -64,29 +64,5 @@ jobs:
           #test
           #o365 spo file add --path "./build/index.html" --libraryPath 'Shared Documents' --force   
           #o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc --folder 'Shared Documents' --path './build' 
-          #o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc -s './build' -t 'https://isdb.sharepoint.com/sites/ssc/Shared Documents'  
+          o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc -s './build/static' -t 'https://isdb.sharepoint.com/sites/ssc/Shared Documents'  
 
-    
-      
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Install SharePoint Online Management Shell
-      run: |
-        Install-Module -Name Microsoft.Online.SharePoint.PowerShell -Force -AllowClobber
-      shell: pwsh
-
-    - name: Upload Artifacts to SharePoint
-      run: |
-
-        Import-Module -Name Microsoft.Online.SharePoint.PowerShell
-        $siteURL = "https://isdb.sharepoint.com/sites/ssc"
-        $libraryName = "Shared Documents"
-        $username = "SVC-IDBPAP@isdb.org"
-        $password = "IsDBGconnect@2022Main"
-        $cred = New-Object -TypeName System.Management.Automation.PSCredential -argumentlist $userName, $(convertto-securestring $Password -asplaintext -force)
-        Connect-SPOService -Url https://isdb.sharepoint.com/sites/ssc -Credential $cred
-        #Connect-SPOService -url $siteURL -Credential (New-Object PSCredential $username, (ConvertTo-SecureString $password -AsPlainText -Force))
-        Add-SPOFile -Path "./build" -Folder $libraryName
-      shell: pwsh
-    
