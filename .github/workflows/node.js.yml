@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: my-artifact
-        path: ./build/release.zip
+        path: ./build
       
     - name: Deploy to SharePoint Online
       env:
