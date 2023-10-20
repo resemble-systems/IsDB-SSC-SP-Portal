@@ -37,13 +37,13 @@ jobs:
     - run: npm test
 
     - name: Zip artifact for deployment
-      run: zip release.zip ./* -r
+      run: zip build/release.zip ./* -r
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: my-artifact
         #path: ./build
-        path: release.zip
+        path: build/release.zip
       
     - name: Deploy to SharePoint Online
       env:
