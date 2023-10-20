@@ -43,8 +43,6 @@ jobs:
         name: my-artifact
         path: ./build
         
-    - name: Zip artifact for deployment
-      run: zip build.zip ./* -r
     - name: Deploy to SharePoint Online
       env:
           SP_CLIENT_ID: ${{ secrets.SP_CLIENT_ID }}
@@ -66,7 +64,7 @@ jobs:
           #m365 login $SP_SITE_URL  --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #test
           #o365 spo file add --path "./build/index.html" --libraryPath 'Shared Documents' --force   
-          o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc --folder 'Shared Documents' --path 'build.zip' 
+          o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc --folder 'Shared Documents' --path './build' 
           #o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc -s './build/static' -t 'https://isdb.sharepoint.com/sites/ssc/Shared Documents'  
 
         
