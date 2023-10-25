@@ -36,12 +36,21 @@ jobs:
     - run: CI=false npm run build --if-present
     - run: npm test
 
+    - uses: actions/checkout@master
+    - name: Archive Release
+      uses: thedoctor0/zip-release@0.7.1
+      with:
+        type: 'zip'
+        filename: 'release.zip'
+        exclusions: '*.git* /*node_modules/*'
+   
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: my-artifact
-        path: ./build
-      
+        #path: ./build
+        path: release.zip
+        
     - name: Deploy to SharePoint Online
       env:
           SP_CLIENT_ID: ${{ secrets.SP_CLIENT_ID }}
@@ -53,12 +62,17 @@ jobs:
           SP_LIBRARY_PATH: 'SiteAssets/Build'
 
       run: |
-
-        npm install -g @pnp/cli-microsoft365
-        m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
+          #npm install -g @pnp/cli-microsoft365
+          npm install -g @pnp/office365-cli
+          o365 login https://isdb.sharepoint.com/sites/ssc --authType password --userName 'SVC-IDBPAP@isdb.org' --password 'IsDBGconnect@2022Main'
           #m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
-
+          #m365 login --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
+          #m365 login --appId $SP_CLIENT_ID --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35
+          #m365 login --authType secret --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --appId $SP_CLIENT_ID --secret $SP_CLIENT_SECRET
           #m365 login $SP_SITE_URL  --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #test
-          #m365 spo upload --path "path/to/artifact/" --libraryPath $SP_LIBRARY_PATH --force   
-        m365 spo file add --webUrl $SP_SITE_URL --folder '/sites/SSC/Shared Documents' --path './build' 
+          #o365 spo file add --path "./build/index.html" --libraryPath 'Shared Documents' --force   
+          o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc --folder 'Shared Documents' --path 'release.zip' 
+          #o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc -s './build/static' -t 'https://isdb.sharepoint.com/sites/ssc/Shared Documents'  
+
+        
