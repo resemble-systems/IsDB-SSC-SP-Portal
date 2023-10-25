@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Drawer, Row, Col, Avatar } from "antd";
@@ -8,6 +8,7 @@ import { CONST } from "../../constant/index";
 import { mapTypeToRoutePath } from "../../services/serviceActivitieService";
 //
 import styles from "./drawer.module.sass";
+import axios from "axios";
 
 function getMyPictureUrl(accountName, size) {
   return (
@@ -27,7 +28,12 @@ export default function AppDrawer({
 }) {
   const history = useHistory();
   const { user, services } = useContext(AppContext);
+  const [isAdmin, setIsAdmin] = useState(false);
   // const [otResource, setOtResource] = useState(null);
+
+  let adminMembersApi = `${CONST.BASE_URL}${CONST.API.LIST(
+    "Admin Members"
+  )}${CONST.API.QUERY("Title")}`;
 
   // useEffect(() => {
   //   // API Call Other resources
@@ -42,6 +48,21 @@ export default function AppDrawer({
   //     })
   //     .catch((err) => console.log(err));
   // }, []);
+
+  useEffect(() => {
+    // const adminMembers = axios.get(adminMembersApi);
+    if (user) {
+      axios.get(adminMembersApi).then((res) => {
+        console.log("adminMenbers-->", res.data.value, user);
+        const membersArray = res.data.value;
+        const filterAdmin = membersArray?.map((data) => {
+          return user?.data.Email.includes(data.Title);
+        });
+        setIsAdmin(filterAdmin);
+      });
+    }
+  }, [user]);
+  console.log("adminCheck-->", isAdmin[0] === true);
 
   let menuLists = [
     {
@@ -103,6 +124,14 @@ export default function AppDrawer({
     //       }),
     //   },
   ];
+
+  if (isAdmin[0]) {
+    menuLists[0].links.push({
+      name: "Admin Panel",
+      link: "/sites/powerbi/IDBSocialClub/Pages/admin.aspx",
+    });
+  }
+
   return (
     <>
       <Drawer
@@ -215,6 +244,9 @@ export default function AppDrawer({
                               setVisbility(false);
                               history.push(list.link);
                             }}
+                            target={
+                              list.name === "Admin Panel" ? "_blank" : undefined
+                            }
                           >
                             {list.name}
                           </a>
