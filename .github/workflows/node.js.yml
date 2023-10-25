@@ -36,18 +36,20 @@ jobs:
     - run: CI=false npm run build --if-present
     - run: npm test
 
-    
-    #- name: Zip artifact for deployment
-      #run: zip release.zip ./* -r
+    - uses: actions/checkout@master
+    - name: Archive Release
+      uses: thedoctor0/zip-release@0.7.1
+      with:
+        type: 'zip'
+        filename: 'release.zip'
+        exclusions: '*.git* /*node_modules/*'
+   
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: my-artifact
         #path: ./build
-        run: zip build.zip ./* -r
-        path: |
-         ./build
-         !./build/node_modules
+        path: release.zip
         
     - name: Deploy to SharePoint Online
       env:
@@ -70,7 +72,7 @@ jobs:
           #m365 login $SP_SITE_URL  --tenant 8fa69c26-409d-43e5-973c-17a8be1a7f35 --authType password --userName $SP_CLIENT_ID --password $SP_CLIENT_SECRET
           #test
           #o365 spo file add --path "./build/index.html" --libraryPath 'Shared Documents' --force   
-          o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc --folder 'Shared Documents' --path 'build.zip' 
+          o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc --folder 'Shared Documents' --path 'release.zip' 
           #o365 spo  file add --webUrl https://isdb.sharepoint.com/sites/ssc -s './build/static' -t 'https://isdb.sharepoint.com/sites/ssc/Shared Documents'  
 
         
