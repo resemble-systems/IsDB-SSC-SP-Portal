@@ -45,8 +45,8 @@ jobs:
         name: my-artifact
         #path: ./build
         path: |
-         .
-         !./node_modules
+         ./build
+         !./build/node_modules
         
     - name: Deploy to SharePoint Online
       env:
