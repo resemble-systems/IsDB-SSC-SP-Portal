@@ -2,7 +2,7 @@
   "name": "idb-sharepoint",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://127.0.0.1/sites/ssc/",
+  "homepage": "http://127.0.0.1/sites/ssc/reactfiles/",
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@syncfusion/ej2-base": "^19.1.54",
