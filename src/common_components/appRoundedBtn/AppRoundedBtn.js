@@ -21,6 +21,7 @@ function getBtnStyle(bg, outline) {
   if (bg.toLowerCase() === "yellow" && outline.toLowerCase() === "none") {
     return styles.btn_yellow_none;
   }
+
   return "";
 }
 

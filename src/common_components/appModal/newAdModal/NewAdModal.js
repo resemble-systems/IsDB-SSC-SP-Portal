@@ -65,6 +65,7 @@ export default function NewAdModal({
     city: "",
     email: "",
     phone: "",
+    address: "",
     description: "",
   };
   // Error Initial Object
@@ -73,6 +74,7 @@ export default function NewAdModal({
     category: null,
     adTitle: null,
     phone: null,
+    address: null,
     subcategory: null,
   };
   const [itemId, setItemId] = useState(null);
@@ -107,6 +109,7 @@ export default function NewAdModal({
         Category: "",
         SubCategory: "",
         Phone: "",
+        Address: "",
         Author0: "",
         AuthorImage: "",
         status: "draft",
@@ -131,6 +134,7 @@ export default function NewAdModal({
     }
   }, [visible]);
   console.log("errors", errors);
+
   return (
     <Modal
       centered
@@ -247,7 +251,7 @@ export default function NewAdModal({
                     : loading
                 }
                 value={inputs.subcategory}
-                error={null}
+                error={errors.subcategory}
               />
               {errors.subcategory !== null && !errors.subcategory && (
                 <p className={`text-danger mt-2 mb-0 pl-4`}>
@@ -359,6 +363,23 @@ export default function NewAdModal({
             </Col>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <TextArea
+                label={`Address`}
+                mandatory={true}
+                placeholder={`Enter Address`}
+                name="address"
+                disabled={loading}
+                onChange={handleInputChange}
+                value={inputs.description}
+                error={errors.address}
+              />
+              {errors.address !== null && !errors.address && (
+                <p className={`text-danger mt-2 mb-0 pl-4`}>
+                  {"Enter Address."}
+                </p>
+              )}
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+              <TextArea
                 label={`Description`}
                 mandatory={false}
                 placeholder={`Enter Description`}
@@ -463,7 +484,7 @@ export default function NewAdModal({
                     disabled={loading}
                     btnStyle={{ width: "235px", height: "60px" }}
                     onClickHandler={() => {
-                      setVisiblety(true);
+                      // setVisiblety(true);
                       handleSubmit();
                     }}
                   />

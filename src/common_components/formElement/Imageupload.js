@@ -98,7 +98,12 @@ function hideDiv(id, itemId, filename, listName) {
   });
 }
 
-export default function TestUpload({ itemId, listName, setLoaderTime }) {
+export default function TestUpload({
+  itemId,
+  listName,
+  setLoaderTime,
+  uploadedPic,
+}) {
   const [count, setCount] = useState(0);
 
   var elements = [];

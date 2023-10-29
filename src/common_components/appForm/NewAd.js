@@ -27,7 +27,10 @@ const UseForm = (
   errorObj,
   setLoaderTime,
   setRegisterDone,
-  eventId
+  eventId,
+  mode,
+  listId,
+  updatedValues
 ) => {
   //State Setting
   const [inputs, setInputs] = useState(initialValues);
@@ -36,42 +39,35 @@ const UseForm = (
   const { user } = useContext(AppContext);
   // Submit Handling
   const handleSubmit = async () => {
-    let errorObject = {};
-    Object.keys(inputs).forEach((input) => {
-      let error = validator(input, inputs[input]);
-      if (error !== undefined) errorObject[input] = error;
-      setErrors((err) => ({
-        ...err,
-        [input]: error,
-      }));
-    });
-    console.log("errorObject-------->", errorObject);
-    if (
-      Object.values(errorObject).filter((err) => err === false).length === 0
-    ) {
+    console.log("inputs-->", inputs);
+    if (mode === "update") {
+      console.log("update-->", mode, listId, inputs);
       setLoaderTime(true);
       let resp = await getDigest();
       const url =
-        CONST.BASE_URL + CONST.API.LIST("Advertisement") + `(${eventId})`;
+        CONST.BASE_URL + CONST.API.LIST("Advertisement") + `(${listId})`;
       const stringifyPostData = JSON.stringify({
         __metadata: {
           type: "SP.Data.AdvertisementListItem",
         },
-        Title: inputs.adTitle,
-        Description: inputs.description,
-        Price: inputs.price,
-        Brand: inputs.brand,
-        Email: inputs.email,
-        Country: inputs.country,
-        City: inputs.city,
-        Category: inputs.category,
+        Title: updatedValues.Title,
+        Description: updatedValues.Description,
+        Price: updatedValues.Price,
+        Brand: updatedValues.Brand,
+        Email: updatedValues.Email,
+        Country: updatedValues.Country,
+        City: updatedValues.City,
+        Category: updatedValues.Category,
         SubCategory:
-          inputs.category.toLowerCase() === "others" ? "" : inputs.subcategory,
-        Phone: inputs.phone,
-        Author0: user.data.DisplayName,
+          updatedValues.Category.toLowerCase() === "others"
+            ? ""
+            : inputs.SubCategory,
+        Phone: updatedValues.Phone,
+        Address: updatedValues.Address,
+        Author0: updatedValues.Author0,
         //AuthorImage: user.data.UserProfileProperties[18].Value.replace(':443', ''),
-        AuthorImage: getMyPictureUrl(user.data.Email, "M"),
         status: "published",
+        AuthorImage: updatedValues.AuthorImage,
       });
       // $("#__REQUESTDIGEST").val()
       const configAxios = {
@@ -81,13 +77,13 @@ const UseForm = (
           "X-RequestDigest": resp,
           "X-HTTP-Method": "POST",
           "IF-MATCH": "*",
-          // "X-HTTP-Method": "MERGE",
+          "X-HTTP-Method": "MERGE",
         },
       };
-
       axios
         .post(url, stringifyPostData, configAxios)
         .then((r) => {
+          console.log("getDigest-->", r);
           setLoaderTime(false);
           setRegisterDone(true);
           setInputs(initialValues);
@@ -98,6 +94,75 @@ const UseForm = (
           console.log("err==>", err);
           alert("Oops! Something went wrong.");
         });
+    } else {
+      let errorObject = {};
+      Object.keys(inputs).forEach((input) => {
+        let error = validator(input, inputs[input]);
+        if (error !== undefined) errorObject[input] = error;
+        setErrors((err) => ({
+          ...err,
+          [input]: error,
+        }));
+      });
+      console.log("errorObject-------->", errorObject);
+
+      if (
+        Object.values(errorObject).filter((err) => err === false).length === 0
+      ) {
+        setLoaderTime(true);
+        let resp = await getDigest();
+        const url =
+          CONST.BASE_URL + CONST.API.LIST("Advertisement") + `(${eventId})`;
+        const stringifyPostData = JSON.stringify({
+          __metadata: {
+            type: "SP.Data.AdvertisementListItem",
+          },
+          Title: inputs.adTitle,
+          Description: inputs.description,
+          Price: inputs.price,
+          Brand: inputs.brand,
+          Email: inputs.email,
+          Country: inputs.country,
+          City: inputs.city,
+          Category: inputs.category,
+          SubCategory:
+            inputs.category.toLowerCase() === "others"
+              ? ""
+              : inputs.subcategory,
+          Phone: inputs.phone,
+          Address: inputs.Address,
+          Author0: user.data.DisplayName,
+          //AuthorImage: user.data.UserProfileProperties[18].Value.replace(':443', ''),
+          AuthorImage: getMyPictureUrl(user.data.Email, "M"),
+          status: "published",
+        });
+        // $("#__REQUESTDIGEST").val()
+        const configAxios = {
+          headers: {
+            accept: "application/json;odata=verbose",
+            "content-type": "application/json;odata=verbose",
+            "X-RequestDigest": resp,
+            "X-HTTP-Method": "POST",
+            "IF-MATCH": "*",
+            "X-HTTP-Method": "MERGE",
+          },
+        };
+        console.log("testData-->", url, stringifyPostData, configAxios);
+        axios
+          .post(url, stringifyPostData, configAxios)
+          .then((r) => {
+            console.log("getDigest-->", r);
+            setLoaderTime(false);
+            setRegisterDone(true);
+            setInputs(initialValues);
+            setErrors(errorObj);
+          })
+          .catch((err) => {
+            setLoaderTime(false);
+            console.log("err==>", err);
+            alert("Oops! Something went wrong.");
+          });
+      }
     }
   };
 
@@ -114,6 +179,8 @@ const UseForm = (
         return textAreaValidator(value);
       case "phone":
         return phoneNumberValidator(value);
+      case "address":
+        return textAreaValidator(value);
       default: // do nothing;
         break;
     }
@@ -147,6 +214,7 @@ const UseForm = (
   };
   // category Handling
   const handleCategory = (e) => {
+    console.log("category-->", e);
     let error = validator("category", e);
     setErrors({
       ...errors,

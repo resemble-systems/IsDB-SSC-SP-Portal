@@ -6,11 +6,26 @@ import noimg from "../../../assets/buySell/No_Image_Available.jpg";
 import styles from "./buy-sell.module.sass";
 //Library
 import moment from "moment";
+import NewAdModal from "../../../common_components/appModal/newAdModal/NewAdModal";
+import EditAdModal from "../../../common_components/appModal/EditAdModal/EditAdModal";
 
-export default function BuySellCard({ cardData }) {
+export default function BuySellCard({
+  cardData,
+  setSelectedCategory,
+  subitems,
+  selectedCategory,
+  callApi,
+  setCallApi,
+  citems,
+  adCategories,
+  user,
+}) {
   //process.env.BASE_URL +
   const [viewAdModal, setViewAdModal] = useState(false);
   const [eventId, setEventId] = useState("");
+  const [isEditModal, setIsEditModal] = useState(false);
+
+  console.log("cardData-->", cardData);
   return (
     <>
       <div className={`${styles.buysell_card} my-2`}>
@@ -64,16 +79,43 @@ export default function BuySellCard({ cardData }) {
               md={19}
               lg={19}
               xl={19}
-              className={`${styles.buysell_price}`}
+              className={`${styles.buysell_price} pl-2`}
             >
               {cardData.Price ? cardData.Price : "N/A"}
             </Col>
           </Row>
-          <Row className={"pr-2 pl-2 p-1"}>
-            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-              <div className={`${styles.buysell_PriceText}`}>Posted By :</div>
+          <Row className={"pr-2 pl-2 "}>
+            <Col
+              xs={5}
+              sm={5}
+              md={5}
+              lg={5}
+              xl={5}
+              className={`${styles.buysell_PriceText}`}
+            >
+              {"Modified"}
+            </Col>
+            <Col
+              xs={19}
+              sm={19}
+              md={19}
+              lg={19}
+              xl={19}
+              className={`${styles.buysell_price} pl-2`}
+            >
+              {moment(cardData.Modified).format("D MMM YYYY")}
             </Col>
           </Row>
+          {/* <Row className={"pr-2 pl-2 p-1"}>
+            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+              <div className={`${styles.buysell_PriceText}`}>
+                Modified{" "}
+                <span className={`${styles.buysell_price}`}>
+                  {moment(cardData.Modified).format("D MMM YYYY")}
+                </span>
+              </div>
+            </Col>
+          </Row> */}
           <Row className={"pr-2 pl-2 p-1"}>
             <Col
               xs={5}
@@ -105,15 +147,29 @@ export default function BuySellCard({ cardData }) {
               </Row>
             </Col>
             <Col xs={5} sm={5} md={5} lg={5} xl={5}>
-              <Button
-                onClick={e => {
-                  setViewAdModal(true);
-                }}
-                className={`${styles.buysell_linkBtn} `}
-                icon={
-                  <i className={`fa fa-external-link `} aria-hidden="true"></i>
-                }
-              ></Button>
+              <div className="d-flex">
+                <Button
+                  onClick={(e) => {
+                    setViewAdModal(true);
+                  }}
+                  className={`${styles.buysell_linkBtn} mx-1`}
+                  icon={
+                    <i
+                      className={`fa fa-external-link `}
+                      aria-hidden="true"
+                    ></i>
+                  }
+                ></Button>
+                {cardData?.Author0 === user && (
+                  <Button
+                    onClick={(e) => {
+                      setIsEditModal(true); // Make sure it's correctly defined and obtained from useState.
+                    }}
+                    className={`${styles.buysell_linkBtn} `}
+                    icon={<i className={`fa fa-pencil`} aria-hidden="true"></i>}
+                  ></Button>
+                )}
+              </div>
             </Col>
           </Row>
         </div>
@@ -124,6 +180,20 @@ export default function BuySellCard({ cardData }) {
         eventId={eventId}
         cardData={cardData}
       />
+      {isEditModal && (
+        <EditAdModal
+          isEditModal={isEditModal}
+          setIsEditModal={setIsEditModal}
+          setSelectedCategory={setSelectedCategory}
+          subitems={subitems}
+          selectedCategory={selectedCategory}
+          callApi={callApi}
+          setCallApi={setCallApi}
+          citems={citems}
+          cardData={cardData}
+          adCategories={adCategories}
+        />
+      )}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col, Menu, Empty } from "antd";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -12,6 +12,7 @@ import { CONST } from "../../../constant/index";
 //css
 import styles from "./buysell-section.module.sass";
 import filterimg from "../../../assets/eventsActivities/filter.svg";
+import { AppContext } from "../../../App";
 
 const { SubMenu } = Menu;
 
@@ -70,8 +71,11 @@ function setDDMenu(setSubMenu, adCategories, subCategoryList) {
 }
 
 export default function BuysellSection() {
+  const { user } = useContext(AppContext);
   const [subMenu, setSubMenu] = useState("All");
   const [newAdModal, setNewAdModal] = useState(false);
+
+  const [dataToBeEdited, setDataToBeEdited] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [adCategories, setAdCategories] = useState([]);
 
@@ -82,16 +86,19 @@ export default function BuysellSection() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [cardsData, setcardsData] = useState(null);
   const [callApi, setCallApi] = useState(null);
+  const [yourAds, setYourAds] = useState(false);
+  const [changeColor, setChangeColor] = useState(false);
 
   useEffect(() => {
     //advertisement api call
     axios
       .get(
         `${CONST.BASE_URL}${CONST.API.LIST("Advertisement")}${CONST.API.QUERY(
-          "Title,Description,Author0,Created,AuthorImage,Price,Brand,Email,Country,City,Category,SubCategory,Phone,AttachmentFiles"
+          "Title,Description,Author0,Created,AuthorImage,Price,Brand,Email,Country,City,Category,SubCategory,Phone,AttachmentFiles,Modified"
         )} ${CONST.API.ATTACHMENT} ${CONST.API.FILTER("status", "published")}`
       )
       .then((res) => {
+        console.log("responseId", res);
         setcardsData(res.data.value);
       })
       .catch((err) => console.log(err));
@@ -157,35 +164,74 @@ export default function BuysellSection() {
   }, [selectedCategory]);
 
   useEffect(() => {
-    if (subMenu.toLowerCase() === "all") {
-      setFilterData(cardsData);
-    } else if (subMenu.toLowerCase() === "others") {
-      let filteredData = cardsData.filter(
-        (data) => data.Category.toLowerCase() === subMenu.toLowerCase()
-      );
-      setFilterData(filteredData);
-    } else {
-      let filteredData = cardsData.filter(
-        (data) =>
-          data.SubCategory &&
-          data.SubCategory.toLowerCase() === subMenu.toLowerCase()
-      );
-      setFilterData(filteredData);
+    if (yourAds === false) {
+      if (subMenu.toLowerCase() === "all") {
+        setFilterData(cardsData);
+      } else if (subMenu.toLowerCase() === "others") {
+        let filteredData = cardsData.filter(
+          (data) => data.Category.toLowerCase() === subMenu.toLowerCase()
+        );
+        setFilterData(filteredData);
+      } else {
+        let filteredData = cardsData.filter(
+          (data) =>
+            data.SubCategory &&
+            data.SubCategory.toLowerCase() === subMenu.toLowerCase()
+        );
+        setFilterData(filteredData);
+      }
+      setDDMenu(setSubMenu, adCategories, subCategoryList);
     }
-    setDDMenu(setSubMenu, adCategories, subCategoryList);
-  }, [subMenu, cardsData, adCategories, subCategoryList]);
+  }, [subMenu, cardsData, adCategories, subCategoryList, yourAds]);
 
+  useEffect(() => {
+    if (yourAds === true) {
+      console.log("filteredData", filterData);
+      console.log("user-->", user);
+      let filterByUser = filterData.filter(
+        (data) => data.Author0 === user.data.DisplayName
+      );
+      setFilterData(filterByUser);
+    }
+    if (yourAds === false) {
+      setSubMenu("all");
+    }
+  }, [yourAds]);
+
+  console.log("yourAds", yourAds, filterData, subMenu);
   return (
     <>
       <div className={`${styles.buysellsetion_section_bg}`}>
         <div className={`${styles.buysellsetion_section_container}`}>
           <Row className={"mb-4"}>
             <Col xs={24} sm={24} md={16} lg={18} xl={18} className={"mb-4"}>
-              <h3
-                className={`${styles.buysellsection_section_tilte} mb-0 d-flex h-100 align-items-center`}
-              >
-                All Items for Sale
-              </h3>
+              <div className="d-flex">
+                <h3
+                  className={`${styles.buysellsection_section_tilte} mb-0 d-flex h-100 align-items-center`}
+                >
+                  All Items for Sale ({subMenu})
+                </h3>
+                <div
+                  className={`d-flex h-100 mx-2 mt-1 align-items-center justify-content-between`}
+                >
+                  <AppRoundedBtn
+                    text={yourAds === false ? "View Your Ads" : "Show All"}
+                    prefix={""}
+                    suffix={""}
+                    bg={"white"}
+                    outline={"dark"}
+                    long={false}
+                    href={"none"}
+                    onClickHandler={() => {
+                      setYourAds(!yourAds);
+                      setChangeColor(!changeColor);
+                    }}
+                    changeColor={""}
+                    // dropDown={true}
+                    // dropDownData={ddmenu}
+                  />
+                </div>
+              </div>
             </Col>
             <Col xs={16} sm={16} md={8} lg={6} xl={6}>
               <div
@@ -193,7 +239,11 @@ export default function BuysellSection() {
               >
                 <AppRoundedBtn
                   text={"Sell"}
-                  prefix={<PlusSquareOutlined className={`ml-2 pt-1 mx-1`} />}
+                  prefix={
+                    <PlusSquareOutlined
+                      className={`d-flex align-items-center mx-2`}
+                    />
+                  }
                   suffix={""}
                   bg={"yellow"}
                   outline={"none"}
@@ -228,19 +278,31 @@ export default function BuysellSection() {
           </Row>
           <Row gutter={[16, 16]}>
             {filterData && filterData.length > 0 ? (
-              filterData.map((data, index) => (
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={8}
-                  xl={8}
-                  className={"pb-3"}
-                  key={index}
-                >
-                  <BuySellCard cardData={data} />
-                </Col>
-              ))
+              filterData.map((data, index) => {
+                return (
+                  <Col
+                    xs={24}
+                    sm={24}
+                    md={12}
+                    lg={8}
+                    xl={8}
+                    className={"pb-3"}
+                    key={index}
+                  >
+                    <BuySellCard
+                      cardData={data}
+                      citems={cItems}
+                      setSelectedCategory={setSelectedCategory}
+                      subitems={subitems}
+                      selectedCategory={selectedCategory}
+                      setCallApi={setCallApi}
+                      callApi={callApi}
+                      adCategories={adCategories}
+                      user={user?.data?.DisplayName}
+                    />
+                  </Col>
+                );
+              })
             ) : (
               <Col span={24}>
                 <div

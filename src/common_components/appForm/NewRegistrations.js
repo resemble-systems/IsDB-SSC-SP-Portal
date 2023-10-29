@@ -78,7 +78,7 @@ const UseRegForm = (
           "IF-MATCH": "*",
         },
       };
-
+      console.log("testData-->", url, stringifyPostData, configAxios);
       axios
         .post(url, stringifyPostData, configAxios)
         .then((r) => {
