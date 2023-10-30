@@ -25,7 +25,6 @@ export default function BuySellCard({
   const [eventId, setEventId] = useState("");
   const [isEditModal, setIsEditModal] = useState(false);
 
-  console.log("cardData-->", cardData);
   return (
     <>
       <div className={`${styles.buysell_card} my-2`}>

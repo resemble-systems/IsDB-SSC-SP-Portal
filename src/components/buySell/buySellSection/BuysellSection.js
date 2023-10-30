@@ -185,20 +185,43 @@ export default function BuysellSection() {
   }, [subMenu, cardsData, adCategories, subCategoryList, yourAds]);
 
   useEffect(() => {
+    // if (yourAds === true) {
+    //   console.log("filteredData", filterData);
+    //   let filterByUser = filterData.filter(
+    //     (data) => data.Author0 === user.data.DisplayName
+    //   );
+    //   setFilterData(filterByUser);
+    // }
+    // if (yourAds === false) {
+    //   setSubMenu("all");
+    // }
     if (yourAds === true) {
-      console.log("filteredData", filterData);
-      console.log("user-->", user);
-      let filterByUser = filterData.filter(
-        (data) => data.Author0 === user.data.DisplayName
-      );
-      setFilterData(filterByUser);
+      if (subMenu.toLowerCase() === "all") {
+        let filterAll = filterData.filter(
+          (data) => data.Author0 === user.data.DisplayName
+        );
+        setFilterData(filterAll);
+      } else if (subMenu.toLowerCase() === "others") {
+        let filteredData = cardsData.filter(
+          (data) =>
+            data.Category.toLowerCase() === subMenu.toLowerCase() &&
+            data.Author0 === user.data.DisplayName
+        );
+        setFilterData(filteredData);
+      } else {
+        let filteredData = cardsData.filter(
+          (data) =>
+            data.SubCategory &&
+            data.SubCategory.toLowerCase() === subMenu.toLowerCase() &&
+            data.Author0 === user.data.DisplayName
+        );
+        setFilterData(filteredData);
+      }
+      setDDMenu(setSubMenu, adCategories, subCategoryList);
     }
-    if (yourAds === false) {
-      setSubMenu("all");
-    }
-  }, [yourAds]);
+  }, [yourAds, subMenu]);
 
-  console.log("yourAds", yourAds, filterData, subMenu);
+  console.log("yourAds", cardsData);
   return (
     <>
       <div className={`${styles.buysellsetion_section_bg}`}>

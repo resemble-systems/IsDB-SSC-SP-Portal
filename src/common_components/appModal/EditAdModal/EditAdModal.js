@@ -884,7 +884,7 @@ export default function EditAdModal({
                 itemId={itemId}
                 listName={"Advertisement"}
                 setLoaderTime={setLoaderTime}
-                uploadedPic={cardData.AttachmentFiles}
+                uploadedPic={cardData?.AttachmentFiles}
               />
             </Col>
             {/* For large screen */}
