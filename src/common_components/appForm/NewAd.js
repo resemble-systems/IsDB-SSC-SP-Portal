@@ -39,7 +39,7 @@ const UseForm = (
   const { user } = useContext(AppContext);
   // Submit Handling
   const handleSubmit = async () => {
-    console.log("inputs-->", inputs);
+    console.log("inputs-->", updatedValues);
     if (mode === "update") {
       console.log("update-->", mode, listId, inputs);
       setLoaderTime(true);
@@ -104,8 +104,8 @@ const UseForm = (
           [input]: error,
         }));
       });
+      console.log("inputVal-->", inputs);
       console.log("errorObject-------->", errorObject);
-
       if (
         Object.values(errorObject).filter((err) => err === false).length === 0
       ) {
@@ -130,7 +130,7 @@ const UseForm = (
               ? ""
               : inputs.subcategory,
           Phone: inputs.phone,
-          Address: inputs.Address,
+          Address: inputs.address,
           Author0: user.data.DisplayName,
           //AuthorImage: user.data.UserProfileProperties[18].Value.replace(':443', ''),
           AuthorImage: getMyPictureUrl(user.data.Email, "M"),

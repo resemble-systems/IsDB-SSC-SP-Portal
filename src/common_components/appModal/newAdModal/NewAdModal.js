@@ -369,7 +369,7 @@ export default function NewAdModal({
                 name="address"
                 disabled={loading}
                 onChange={handleInputChange}
-                value={inputs.description}
+                value={inputs.address}
                 error={errors.address}
               />
               {errors.address !== null && !errors.address && (

@@ -99,7 +99,7 @@ export default function EditAdModal({
     cardData?.Phone?.length > 0 ? cardData.Phone : ""
   );
   const [Address, setAddress] = useState(
-    cardData?.Address?.length > 0 ? cardData.Address : ""
+    cardData?.Address?.length > 0 ? cardData?.Address : ""
   );
   const [Author0, setAuthor0] = useState(
     cardData?.Author0?.length > 0 ? cardData.Author0 : ""
@@ -148,8 +148,6 @@ export default function EditAdModal({
   );
 
   setSelectedCategory(inputs?.category);
-
-  console.log("modal-->", cardData);
 
   useEffect(() => {
     //advertisement sub-categories api call
@@ -313,9 +311,7 @@ export default function EditAdModal({
       );
     });
   }
-
-  console.log("subitems-->", listId);
-
+  console.log("Address-->", updatedValues.Address);
   return (
     <Modal
       centered
@@ -881,7 +877,7 @@ export default function EditAdModal({
             </Col>
             <Col span={24}>
               <ImageUpload
-                itemId={itemId}
+                itemId={listId}
                 listName={"Advertisement"}
                 setLoaderTime={setLoaderTime}
                 uploadedPic={cardData?.AttachmentFiles}
@@ -975,6 +971,7 @@ export default function EditAdModal({
                     btnStyle={{ width: "235px", height: "60px" }}
                     onClickHandler={() => {
                       // setVisiblety(true);
+
                       handleSubmit();
                     }}
                   />

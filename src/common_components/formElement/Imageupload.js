@@ -131,69 +131,150 @@ export default function TestUpload({
       </Col>
     );
   }
+  console.log("attachment-->", itemId, uploadedPic);
   return (
     <>
-      <Row id="mainBG">
-        <Col span={24}>
-          <label className={`${styles.label}`}>Upload Pictures</label>
-        </Col>
-        <Col p-3>
-          <Row>
-            <Col id="H1" className={`${styles.imageDiv}`}>
-              <label for="files" className={`${styles.labelStyle}`}>
-                <img src={camera} alt="Img_Item" width={20} height={20} />
-                <input
-                  type="file"
-                  className={`${styles.fileStyle}`}
-                  accept="image/*"
-                  id="files"
-                  multiple
-                  onChange={(e) =>
-                    handleFileSelect(e, "H1", itemId, listName, setLoaderTime)
-                  }
-                />
-              </label>
+      {uploadedPic?.length > 0 ? (
+        <>
+          <Row id="mainBG">
+            <Col span={24}>
+              <label className={`${styles.label}`}>Upload Pictures</label>
             </Col>
-            <Col id="H2" className={`${styles.imageDiv}`}>
-              <label for="files1" className={`${styles.labelStyle}`}>
-                <img src={camera} alt="Img_Item" width={20} height={20} />
-                <input
-                  type="file"
-                  className={`${styles.fileStyle}`}
-                  accept="image/*"
-                  id="files1"
-                  multiple
-                  onChange={(e) =>
-                    handleFileSelect(e, "H2", itemId, listName, setLoaderTime)
-                  }
-                />
-              </label>
-            </Col>
+            <Col>
+              <Row>
+                {uploadedPic?.map((data, index) => (
+                  <Col id={"H" + (index + 1)} className={`${styles.imageDiv}`}>
+                    {/* <label for="files" className={`${styles.labelStyle}`}>
+                      <img src={camera} alt="Img_Item" width={20} height={20} />
+                      <input
+                        type="file"
+                        className={`${styles.fileStyle}`}
+                        accept="image/*"
+                        id="files"
+                        multiple
+                        onChange={(e) =>
+                          handleFileSelect(
+                            e,
+                            "H1",
+                            itemId,
+                            listName,
+                            setLoaderTime
+                          )
+                        }
+                      />
+                    </label> */}
+                    <div
+                      onClick={() =>
+                        hideDiv(
+                          "H" + (index + 1),
+                          itemId,
+                          data.FileName,
+                          listName
+                        )
+                      }
+                    >
+                      <img
+                        src={deleteicon}
+                        alt="Img_Item"
+                        width={20}
+                        height={20}
+                        style={{
+                          position: "absolute",
+                          top: "20px",
+                          left: "20px",
+                        }}
+                      />
+                      <img
+                        src={
+                          /* "resembleae.sharepoint.com" + */ data?.ServerRelativeUrl
+                        }
+                        alt={"Img_Item"}
+                        width={70}
+                        height={70}
+                      />
+                    </div>
+                  </Col>
+                ))}
 
-            <Col id="H3" className={`${styles.imageDiv}`}>
-              <label for="files2" className={`${styles.labelStyle}`}>
-                <img src={camera} alt="Img_Item" width={20} height={20} />
-                <input
-                  type="file"
-                  className={`${styles.fileStyle}`}
-                  accept="image/*"
-                  id="files2"
-                  multiple
-                  onChange={(e) =>
-                    handleFileSelect(e, "H3", itemId, listName, setLoaderTime)
-                  }
-                />
-              </label>
+                {elements}
+              </Row>
             </Col>
-            {elements}
+            <Col className={`${styles.sPadding}`}>
+              <b
+                style={{ cursor: "pointer" }}
+                onClick={() => setCount(count + 1)}
+              >
+                Add more
+              </b>{" "}
+            </Col>
           </Row>
-        </Col>
-        <Col className={`${styles.sPadding}`}>
-          <b style={{ cursor: "pointer" }} onClick={() => setCount(count + 1)}>
-            Add more
-          </b>{" "}
-        </Col>
-      </Row>
+        </>
+      ) : (
+        <Row id="mainBG">
+          <Col span={24}>
+            <label className={`${styles.label}`}>Upload Pictures</label>
+          </Col>
+          <Col p-3>
+            <Row>
+              <Col id="H1" className={`${styles.imageDiv}`}>
+                <label for="files" className={`${styles.labelStyle}`}>
+                  <img src={camera} alt="Img_Item" width={20} height={20} />
+                  <input
+                    type="file"
+                    className={`${styles.fileStyle}`}
+                    accept="image/*"
+                    id="files"
+                    multiple
+                    onChange={(e) =>
+                      handleFileSelect(e, "H1", itemId, listName, setLoaderTime)
+                    }
+                  />
+                </label>
+              </Col>
+              <Col id="H2" className={`${styles.imageDiv}`}>
+                <label for="files1" className={`${styles.labelStyle}`}>
+                  <img src={camera} alt="Img_Item" width={20} height={20} />
+                  <input
+                    type="file"
+                    className={`${styles.fileStyle}`}
+                    accept="image/*"
+                    id="files1"
+                    multiple
+                    onChange={(e) =>
+                      handleFileSelect(e, "H2", itemId, listName, setLoaderTime)
+                    }
+                  />
+                </label>
+              </Col>
+
+              <Col id="H3" className={`${styles.imageDiv}`}>
+                <label for="files2" className={`${styles.labelStyle}`}>
+                  <img src={camera} alt="Img_Item" width={20} height={20} />
+                  <input
+                    type="file"
+                    className={`${styles.fileStyle}`}
+                    accept="image/*"
+                    id="files2"
+                    multiple
+                    onChange={(e) =>
+                      handleFileSelect(e, "H3", itemId, listName, setLoaderTime)
+                    }
+                  />
+                </label>
+              </Col>
+              {elements}
+            </Row>
+          </Col>
+          <Col className={`${styles.sPadding}`}>
+            <b
+              style={{ cursor: "pointer" }}
+              onClick={() => setCount(count + 1)}
+            >
+              Add more
+            </b>{" "}
+          </Col>
+        </Row>
+      )}
     </>
   );
 }

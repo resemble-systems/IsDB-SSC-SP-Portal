@@ -275,6 +275,35 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
           </Row>
         </Col>
       </Row>
+      <Row className={"pt-2 pb-2"}>
+        <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+          <Row>
+            <Col
+              xs={5}
+              sm={5}
+              md={5}
+              lg={5}
+              xl={5}
+              className={`${styles.buysell_HText}`}
+            >
+              Address
+            </Col>
+            <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+              :
+            </Col>
+            <Col
+              xs={18}
+              sm={18}
+              md={18}
+              lg={18}
+              xl={18}
+              className={`${styles.buysell_valText}`}
+            >
+              {cardData.Address ? cardData.Address : "N/A"}
+            </Col>
+          </Row>
+        </Col>
+      </Row>
       <Row className={"mt-5 mb-2"}>
         <Col xs={0} sm={0} md={24} lg={24} xl={24}>
           <div className={`${styles.buysell_HText}`}>Posted By :</div>
