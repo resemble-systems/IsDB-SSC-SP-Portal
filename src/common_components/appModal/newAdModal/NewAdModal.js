@@ -61,8 +61,8 @@ export default function NewAdModal({
     adTitle: "",
     brand: "",
     price: "",
-    country: "",
-    city: "",
+    // country: "",
+    // city: "",
     email: "",
     phone: "",
     address: "",
@@ -104,8 +104,8 @@ export default function NewAdModal({
         Price: "",
         Brand: "",
         Email: "",
-        Country: "",
-        City: "",
+        // Country: "",
+        // City: "",
         Category: "",
         SubCategory: "",
         Phone: "",
@@ -301,7 +301,7 @@ export default function NewAdModal({
                 error={null}
               />
             </Col>
-            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+            {/* <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <InputElement
                 label={`Country`}
                 mandatory={false}
@@ -324,7 +324,7 @@ export default function NewAdModal({
                 value={inputs.city}
                 error={null}
               />
-            </Col>
+            </Col> */}
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <InputElement
                 label={`Email Address`}

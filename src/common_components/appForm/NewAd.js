@@ -55,8 +55,8 @@ const UseForm = (
         Price: updatedValues.Price,
         Brand: updatedValues.Brand,
         Email: updatedValues.Email,
-        Country: updatedValues.Country,
-        City: updatedValues.City,
+        // Country: updatedValues.Country,
+        // City: updatedValues.City,
         Category: updatedValues.Category,
         SubCategory:
           updatedValues.Category.toLowerCase() === "others"
@@ -66,7 +66,7 @@ const UseForm = (
         Address: updatedValues.Address,
         Author0: updatedValues.Author0,
         //AuthorImage: user.data.UserProfileProperties[18].Value.replace(':443', ''),
-        status: "published",
+        status: updatedValues.Status,
         AuthorImage: updatedValues.AuthorImage,
       });
       // $("#__REQUESTDIGEST").val()
@@ -122,8 +122,8 @@ const UseForm = (
           Price: inputs.price,
           Brand: inputs.brand,
           Email: inputs.email,
-          Country: inputs.country,
-          City: inputs.city,
+          // Country: inputs.country,
+          // City: inputs.city,
           Category: inputs.category,
           SubCategory:
             inputs.category.toLowerCase() === "others"
@@ -134,7 +134,7 @@ const UseForm = (
           Author0: user.data.DisplayName,
           //AuthorImage: user.data.UserProfileProperties[18].Value.replace(':443', ''),
           AuthorImage: getMyPictureUrl(user.data.Email, "M"),
-          status: "published",
+          status: "Active",
         });
         // $("#__REQUESTDIGEST").val()
         const configAxios = {

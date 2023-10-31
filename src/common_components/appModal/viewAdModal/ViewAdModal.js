@@ -170,7 +170,7 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
             </Col>
           </Row>
         </Col>
-        <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+        {/* <Col xs={12} sm={12} md={12} lg={12} xl={12}>
           <Row>
             <Col xs={3} sm={3} md={3} lg={3} xl={3}>
               <img
@@ -179,13 +179,13 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
                 width="22"
                 height="22"
               />
-              {/* <i class={`${styles.buysell_iconBig} fa fa-map-marker`} aria-hidden="true" ></i> */}
+
             </Col>
             <Col className={`${styles.buysell_col}`}>
               {cardData.City ? cardData.City : "N/A"}
             </Col>
           </Row>
-        </Col>
+        </Col> */}
       </Row>
       <Row className={"pt-2 pb-2"}>
         <Col xs={12} sm={12} md={12} lg={12} xl={12}>

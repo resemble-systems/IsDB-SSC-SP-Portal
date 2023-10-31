@@ -54,8 +54,6 @@ export default function EditAdModal({
     adTitle: "",
     brand: "",
     price: "",
-    country: "",
-    city: "",
     email: "",
     phone: "",
     address: "",
@@ -70,6 +68,7 @@ export default function EditAdModal({
     address: null,
     subcategory: null,
   };
+  const [isSold, setIsSold] = useState(false);
   const [itemId, setItemId] = useState(null);
   const [subitems, setsubitems] = useState([]);
   const [subCategoryList, setSubCategoryList] = useState([]);
@@ -87,12 +86,12 @@ export default function EditAdModal({
   const [Email, setEmail] = useState(
     cardData?.Email?.length > 0 ? cardData.Email : ""
   );
-  const [Country, setCountry] = useState(
-    cardData?.Country?.length > 0 ? cardData.Country : ""
-  );
-  const [City, setCity] = useState(
-    cardData?.City?.length > 0 ? cardData.City : ""
-  );
+  // const [Country, setCountry] = useState(
+  //   cardData?.Country?.length > 0 ? cardData.Country : ""
+  // );
+  // const [City, setCity] = useState(
+  //   cardData?.City?.length > 0 ? cardData.City : ""
+  // );
   const [Category, setCategory] = useState(cardData?.Category);
   const [SubCategory, setSubCategory] = useState(cardData?.SubCategory);
   const [Phone, setPhone] = useState(
@@ -116,8 +115,6 @@ export default function EditAdModal({
     Price: Price,
     Brand: Brand,
     Email: Email,
-    Country: Country,
-    City: City,
     Category: Category,
     SubCategory: Category.toLowerCase() === "others" ? "" : SubCategory,
     Phone: Phone,
@@ -126,6 +123,7 @@ export default function EditAdModal({
     //AuthorImage: user.data.UserProfileProperties[18].Value.replace(':443', ''),
     status: "published",
     AuthorImage: cardData.AuthorImage,
+    Status: isSold === false ? "Active" : "Sold",
   };
   const {
     handleSubmit,
@@ -255,16 +253,16 @@ export default function EditAdModal({
         setPrice(value.target.value);
         break;
       }
-      case "country": {
-        setCountry("");
-        setCountry(value.target.value);
-        break;
-      }
-      case "city": {
-        setCity("");
-        setCity(value.target.value);
-        break;
-      }
+      // case "country": {
+      //   setCountry("");
+      //   setCountry(value.target.value);
+      //   break;
+      // }
+      // case "city": {
+      //   setCity("");
+      //   setCity(value.target.value);
+      //   break;
+      // }
       case "email": {
         setEmail("");
         setEmail(value.target.value);
@@ -641,11 +639,11 @@ export default function EditAdModal({
                 value={inputs.country}
                 error={null}
               /> */}
-              <Row>
+              {/* <Row>
                 <Col span={24}>
                   <label className={`${styles.label}`}>
                     {"Country"}
-                    {/* {<span className={`text-danger mx-2`}>*</span>} */}
+
                   </label>
                 </Col>
                 <Col span={24}>
@@ -664,7 +662,7 @@ export default function EditAdModal({
                     />
                   </div>
                 </Col>
-              </Row>
+              </Row> */}
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               {/* <InputElement
@@ -677,12 +675,9 @@ export default function EditAdModal({
                 value={inputs.city}
                 error={null}
               /> */}
-              <Row>
+              {/* <Row>
                 <Col span={24}>
-                  <label className={`${styles.label}`}>
-                    {"City"}
-                    {/* {<span className={`text-danger mx-2`}>*</span>} */}
-                  </label>
+                  <label className={`${styles.label}`}>{"City"}</label>
                 </Col>
                 <Col span={24}>
                   <div className={`${styles.input_container} `}>
@@ -700,7 +695,7 @@ export default function EditAdModal({
                     />
                   </div>
                 </Col>
-              </Row>
+              </Row> */}
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               {/* <InputElement
@@ -886,6 +881,19 @@ export default function EditAdModal({
             {/* For large screen */}
             <Col xs={0} sm={0} md={24} lg={24} xl={24}>
               <div className={`d-flex justify-content-end`}>
+                <div className={`d-flex justify-content-center p-2`}>
+                  {/* <button type="button" class="btn btn-primary btn-lg">
+                    {cardData?.Status === "Active" ? "Active" : "Sold"}
+                  </button> */}
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      setIsSold(!isSold);
+                    }}
+                  >
+                    {isSold === false ? "Active" : "Sold"}
+                  </button>
+                </div>
                 <div className={`mx-3`}>
                   <AppRoundedBtn
                     text={"Cancel"}
@@ -911,7 +919,7 @@ export default function EditAdModal({
                 </div>
                 <div className={`mx-3`}>
                   <AppRoundedBtn
-                    text={"Post Ad"}
+                    text={"Update Ad"}
                     prefix={""}
                     suffix={""}
                     bg={"blue"}
@@ -921,8 +929,18 @@ export default function EditAdModal({
                     disabled={loading}
                     btnStyle={{ width: "235px", height: "60px" }}
                     onClickHandler={() => {
-                      setIsEditModal(true);
-                      handleSubmit();
+                      if (
+                        Address?.length > 0 &&
+                        Email.match(
+                          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                        ) &&
+                        Category?.length > 0 &&
+                        SubCategory?.length > 0 &&
+                        Title?.length > 0
+                      ) {
+                        setIsEditModal(true);
+                        handleSubmit();
+                      }
                     }}
                   />
                 </div>
@@ -931,6 +949,19 @@ export default function EditAdModal({
             {/* For small screen */}
             <Col xs={24} sm={24} md={0} lg={0} xl={0}>
               <div className={`d-flex justify-content-center`}>
+                <div className={`d-flex justify-content-center p-2`}>
+                  {/* <button type="button" class="btn btn-primary btn-lg">
+                    {cardData?.Status === "Active" ? "Active" : "Sold"}
+                  </button> */}
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      setIsSold(!isSold);
+                    }}
+                  >
+                    {isSold === false ? "Active" : "Sold"}
+                  </button>
+                </div>
                 <div className={`mx-3`}>
                   <AppRoundedBtn
                     text={"Cancel"}
@@ -960,7 +991,7 @@ export default function EditAdModal({
               <div className={`d-flex justify-content-center mt-3`}>
                 <div className={`mx-3`}>
                   <AppRoundedBtn
-                    text={"Post Ad"}
+                    text={"Update Ad"}
                     prefix={""}
                     suffix={""}
                     bg={"blue"}
@@ -970,9 +1001,18 @@ export default function EditAdModal({
                     disabled={loading}
                     btnStyle={{ width: "235px", height: "60px" }}
                     onClickHandler={() => {
-                      // setVisiblety(true);
-
-                      handleSubmit();
+                      if (
+                        Address?.length > 0 &&
+                        Email?.match(
+                          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                        ) &&
+                        Category?.length > 0 &&
+                        SubCategory?.length > 0 &&
+                        Title?.length > 0
+                      ) {
+                        setIsEditModal(true);
+                        handleSubmit();
+                      }
                     }}
                   />
                 </div>

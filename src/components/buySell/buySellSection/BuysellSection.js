@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Row, Col, Menu, Empty } from "antd";
+import { Row, Col, Menu, Empty, Pagination } from "antd";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { PlusSquareOutlined } from "@ant-design/icons";
@@ -88,14 +88,16 @@ export default function BuysellSection() {
   const [callApi, setCallApi] = useState(null);
   const [yourAds, setYourAds] = useState(false);
   const [changeColor, setChangeColor] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     //advertisement api call
     axios
       .get(
         `${CONST.BASE_URL}${CONST.API.LIST("Advertisement")}${CONST.API.QUERY(
-          "Title,Description,Address,Author0,Created,AuthorImage,Price,Brand,Email,Country,City,Category,SubCategory,Phone,AttachmentFiles,Modified"
-        )} ${CONST.API.ATTACHMENT} ${CONST.API.FILTER("status", "published")}`
+          "Title,Description,Address,Author0,Created,AuthorImage,Price,Brand,Email,Category,SubCategory,Phone,AttachmentFiles,Modified"
+        )} ${CONST.API.ATTACHMENT} ${CONST.API.FILTER("status", "Active")}`
       )
       .then((res) => {
         console.log("responseId", res);
@@ -221,6 +223,14 @@ export default function BuysellSection() {
     }
   }, [yourAds, subMenu]);
 
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const displayedData =
+    filterData && filterData?.length > 0
+      ? filterData?.slice(startIndex, endIndex)
+      : [];
+
   console.log("yourAds", cardsData);
   return (
     <>
@@ -300,8 +310,8 @@ export default function BuysellSection() {
             </Col>
           </Row>
           <Row gutter={[16, 16]}>
-            {filterData && filterData.length > 0 ? (
-              filterData.map((data, index) => {
+            {displayedData && displayedData.length > 0 ? (
+              displayedData.map((data, index) => {
                 return (
                   <Col
                     xs={24}
@@ -336,6 +346,14 @@ export default function BuysellSection() {
               </Col>
             )}
           </Row>
+          <div className="d-flex align-items-center justify-content-center mb-4">
+            <Pagination
+              current={currentPage}
+              pageSize={itemsPerPage}
+              total={filterData?.length}
+              onChange={(page) => setCurrentPage(page)}
+            />
+          </div>
         </div>
       </div>
       {newAdModal && (
