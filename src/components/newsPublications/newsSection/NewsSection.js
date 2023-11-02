@@ -10,24 +10,24 @@ import styles from "./news-section.module.sass";
 import SearchBar from "../../../common_components/searchBar/SearchBar";
 
 export default function NewsSection() {
-  const { news } = useContext(AppContext);
+  const { newsLib } = useContext(AppContext);
   const [seeAll, setSeeAll] = useState(false);
   const [newsData, setNewsData] = useState(null);
   const [dispalyData, setDisplayData] = useState(null);
 
   useEffect(() => {
-    if (news && news.length > 0) {
-      setNewsData(news);
-      setDisplayData(news.slice(0, 3));
+    if (newsLib && newsLib?.length > 0) {
+      setNewsData(newsLib);
+      setDisplayData(newsLib?.slice(0, 3));
     }
-  }, [news]);
+  }, [newsLib]);
 
   useEffect(() => {
-    if (newsData && newsData.length > 0) {
+    if (newsData && newsData?.length > 0) {
       if (seeAll) {
         setDisplayData(newsData);
       } else {
-        setDisplayData(newsData.slice(0, 3));
+        setDisplayData(newsData?.slice(0, 3));
       }
     }
   }, [seeAll]);
@@ -47,8 +47,8 @@ export default function NewsSection() {
             </div>
           </Col>
           {dispalyData &&
-            dispalyData.length > 0 &&
-            dispalyData.map((newsObject, index) => (
+            dispalyData?.length > 0 &&
+            dispalyData?.map((newsObject, index) => (
               <Col xs={24} sm={24} md={8} lg={8} xl={8} key={index}>
                 <NewsPublicationsCard data={newsObject} />
               </Col>
