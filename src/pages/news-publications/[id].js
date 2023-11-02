@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 
 export default function NewsTypes({ routePath }) {
   const location = useLocation();
-  const { news } = useContext(AppContext);
+  const { newsLib } = useContext(AppContext);
   let data = window.location.href.split("/");
   // let itemId = data[data.length - 1];
   const [itemId, setItemId] = useState(null);
@@ -31,8 +31,8 @@ export default function NewsTypes({ routePath }) {
       {itemId?.length > 0 && (
         <NewsDetails
           routePath={{ id: itemId }}
-          newsDetails={news}
-          news={news}
+          newsDetails={newsLib}
+          news={newsLib}
         />
       )}
     </>
