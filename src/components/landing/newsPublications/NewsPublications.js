@@ -24,7 +24,7 @@ const itemsTab = [];
 const itemMobile = [];
 
 export default function NewsPublications() {
-  const { news } = useContext(AppContext);
+  const { newsLib } = useContext(AppContext);
   const newspublicationsRef = useRef(null);
   const newspublicationsTabRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -98,17 +98,17 @@ export default function NewsPublications() {
         </div>
       );
     });
-    setFinalIndex(Math.floor(parseInt(news.length) / 3));
+    setFinalIndex(Math.floor(parseInt(newsLib.length) / 3));
     setNewsItemsData(items);
     setNewsItemsTabData(itemsTab);
     setNewsItemsMobileData(itemMobile);
   }
 
   useEffect(() => {
-    if (news && news.length > 0) {
-      setItem(news);
+    if (newsLib && newsLib.length > 0) {
+      setItem(newsLib);
     }
-  }, [news]);
+  }, [newsLib]);
 
   const slidePrev = () => {
     newspublicationsTabRef.current.slidePrev();
@@ -204,7 +204,7 @@ export default function NewsPublications() {
           )}
         </Col>
         <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-          {news && news.length > 0 ? (
+          {newsLib && newsLib.length > 0 ? (
             <AppMultiSlider
               section={"newspublicationssmall"}
               responsive={responsive}
