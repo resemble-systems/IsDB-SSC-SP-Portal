@@ -43,18 +43,18 @@ export default function ServicesActivitiesTypeIntro({ serviceActivity }) {
           >
             <div className={`${styles.service_type_image_box} mb-5`}>
               {isImage(
-                serviceActivity.AttachmentFiles[
-                  serviceActivity.AttachmentFiles?.length - 1
-                ].ServerRelativeUrl
+                serviceActivity?.AttachmentFiles[
+                  serviceActivity?.AttachmentFiles?.length - 1
+                ]?.ServerRelativeUrl
               ) ? (
                 <div
                   className={`d-flex justify-content-center align-items-center overflow-hidden h-100 w-100`}
                 >
                   <img
                     src={
-                      serviceActivity.AttachmentFiles[
-                        serviceActivity.AttachmentFiles?.length - 1
-                      ].ServerRelativeUrl
+                      serviceActivity?.AttachmentFiles[
+                        serviceActivity?.AttachmentFiles?.length - 1
+                      ]?.ServerRelativeUrl
                     }
                     alt="ssc"
                     // width="530"
@@ -65,9 +65,9 @@ export default function ServicesActivitiesTypeIntro({ serviceActivity }) {
               ) : (
                 <ReactPlayer
                   url={
-                    serviceActivity.AttachmentFiles[
-                      serviceActivity.AttachmentFiles?.length - 1
-                    ].ServerRelativeUrl
+                    serviceActivity?.AttachmentFiles[
+                      serviceActivity?.AttachmentFiles?.length - 1
+                    ]?.ServerRelativeUrl
                   }
                   // width={"450px"}
                   // height={`450px`}

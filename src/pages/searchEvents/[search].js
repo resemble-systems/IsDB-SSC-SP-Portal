@@ -60,8 +60,14 @@ const SearchEvents = () => {
     <Layout>
       <div className={`${styles.buysellsetion_section_bg}`}>
         <div className={`${styles.buysellsetion_section_container}`}>
-          <Row className={"mb-4"}>
-            <Col xs={24} sm={24} md={16} lg={18} xl={18} className={"mb-4"}>
+          <Row /* className={"mb-4"} */>
+            <Col
+              xs={24}
+              sm={24}
+              md={16}
+              lg={18}
+              xl={18} /* className={"mb-4"} */
+            >
               <h3
                 className={`${styles.buysellsection_section_tilte} mb-0 d-flex h-100 align-items-center`}
               >

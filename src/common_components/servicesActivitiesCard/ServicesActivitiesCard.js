@@ -41,7 +41,7 @@ export default function ServicesActivitiesCard({ data }) {
       setLogo(logos?.AttachmentFiles[0]?.ServerRelativeUrl);
     }
   }, [serviceLogoData, data]);
-  console.log("cardData-->", data);
+  console.log("cardDatas-->", data);
   return (
     <div
       className={`${styles.services_card}`}

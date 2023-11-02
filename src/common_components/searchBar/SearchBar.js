@@ -9,12 +9,14 @@ const SearchBar = ({ styleApply, search }) => {
   console.log("searchBar");
 
   const onSearch = (value) => {
-    if (value && value.length > 0) {
+    const trimmedValue = value.trim();
+
+    if (trimmedValue) {
       history.push(
         search === "events"
-          ? `/search?type=events&${value}`
+          ? `/search?type=events&${trimmedValue}`
           : search === "news"
-          ? `/search?type=news&${value}`
+          ? `/search?type=news&${trimmedValue}`
           : ""
       );
     }

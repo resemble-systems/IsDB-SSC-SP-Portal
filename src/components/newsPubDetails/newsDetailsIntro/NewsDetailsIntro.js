@@ -12,23 +12,41 @@ import AppSlider from "../../../common_components/appSlider/AppSlider";
 import styles from "./news-intro-details.module.sass";
 
 export default function EventDetailsIntro({ routePath }) {
-  const { newsd } = useContext(AppContext);
+  const { newsLib } = useContext(AppContext);
   const [news, setNews] = useState(null);
+
+  // useEffect(() => {
+  //   if (newsLib && newsLib?.length > 0) {
+  //     let data = newsLib?.filter((item) => item.Id.toString() === routePath.id);
+  //     setNews(data);
+  //   } else {
+  //     axios
+  //       .get(
+  //         `${CONST.BASE_URL}${CONST.API.LIST("News")}${CONST.API.QUERY(
+  //           "Title,Id,Author0,Description,AttachmentFiles"
+  //         )} ${CONST.API.ATTACHMENT}${CONST.API.FILTER("Id", routePath.id)}`
+  //       )
+  //       .then((res) => {
+  //         setNews(res.data.value);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  // }, [routePath]);
+
   useEffect(() => {
-    if (newsd && newsd.length > 0) {
-      let data = newsd.filter((item) => item.Id.toString() === routePath.id);
-      setNews(data);
-    } else {
-      axios
-        .get(
-          `${CONST.BASE_URL}${CONST.API.LIST("News")}${CONST.API.QUERY(
-            "Title,Id,Author0,Description,AttachmentFiles"
-          )} ${CONST.API.ATTACHMENT}${CONST.API.FILTER("Id", routePath.id)}`
-        )
-        .then((res) => {
-          setNews(res.data.value);
-        })
-        .catch((err) => console.log(err));
+    if (routePath && newsLib && newsLib?.length > 0) {
+      const filterNews = newsLib.filter((data) => {
+        console.log(
+          "newsLib->",
+          news,
+          newsLib,
+
+          routePath.id,
+          data.ID.toString()
+        );
+        return data.ID.toString() === routePath.id;
+      });
+      setNews(filterNews);
     }
   }, [routePath]);
 
@@ -40,10 +58,10 @@ export default function EventDetailsIntro({ routePath }) {
           <Col xs={0} sm={0} md={0} lg={12} xl={12}>
             <div>
               <h3 className={`${styles.event_details_title} mb-5`}>
-                {news && news[0].Title}
+                {news && news[0]?.Title}
               </h3>
               <p>
-                {news && news[0].Author0 && (
+                {news && news[0]?.Author0 && (
                   <Row>
                     <Col span={3} className={`${styles.event_details_heading}`}>
                       {`Author`}
@@ -60,7 +78,7 @@ export default function EventDetailsIntro({ routePath }) {
               {news && (
                 <p className={`${styles.event_details_des}`}>
                   <Scrollbars style={{ height: "360px" }}>
-                    {news[0].Description}
+                    {news[0]?.Description}
                   </Scrollbars>
                 </p>
               )}
@@ -70,10 +88,10 @@ export default function EventDetailsIntro({ routePath }) {
           <Col xs={24} sm={24} md={24} lg={0} xl={0}>
             <div className={` px-5 `}>
               <h3 className={`${styles.event_details_title} mt-3 mb-4`}>
-                {news && news[0].Title}
+                {news && news[0]?.Title}
               </h3>
               <p>
-                {news && news[0].Author0 && (
+                {news && news[0]?.Author0 && (
                   <Row>
                     <Col
                       xs={5}
@@ -111,7 +129,7 @@ export default function EventDetailsIntro({ routePath }) {
               {news && (
                 <p className={`${styles.event_details_des} pr-4`}>
                   <Scrollbars style={{ height: "360px" }}>
-                    {news[0].Description}
+                    {news[0]?.Description}
                   </Scrollbars>
                 </p>
               )}
@@ -136,8 +154,8 @@ export default function EventDetailsIntro({ routePath }) {
                 dynamicHeight={true}
               >
                 {news &&
-                  news[0].AttachmentFiles.map((image, index) =>
-                    image.ServerRelativeUrl ? (
+                  news[0]?.AttachmentFiles?.map((image, index) =>
+                    image?.ServerRelativeUrl ? (
                       <img
                         src={`${image.ServerRelativeUrl}`}
                         alt="ssc"
@@ -146,7 +164,7 @@ export default function EventDetailsIntro({ routePath }) {
                       />
                     ) : (
                       <img
-                        src={`${image.ServerRelativeUrl}`}
+                        src={`${image?.ServerRelativeUrl}`}
                         alt="ssc"
                         className={`${styles.event_details_image}`}
                         key={index}
@@ -157,8 +175,8 @@ export default function EventDetailsIntro({ routePath }) {
             </div>
             <div className={`d-flex ${styles.thumbnail_container}`}>
               {news &&
-                news[0].AttachmentFiles.length > 0 &&
-                news[0].AttachmentFiles.slice(0, 4).map((image, index) => (
+                news[0]?.AttachmentFiles?.length > 0 &&
+                news[0]?.AttachmentFiles?.slice(0, 4).map((image, index) => (
                   <div
                     className={`mx-3 `}
                     key={index}

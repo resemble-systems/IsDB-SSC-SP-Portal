@@ -15,7 +15,7 @@ export default function ServiceTypes() {
     let itemId = data[data.length - 1];
     setItemId(itemId);
   }, [location.pathname]);
-
+  console.log("activitesID", itemId);
   return (
     <>
       <Helmet>

@@ -74,8 +74,6 @@ export default function BuysellSection() {
   const { user } = useContext(AppContext);
   const [subMenu, setSubMenu] = useState("All");
   const [newAdModal, setNewAdModal] = useState(false);
-
-  const [dataToBeEdited, setDataToBeEdited] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [adCategories, setAdCategories] = useState([]);
 
@@ -353,6 +351,11 @@ export default function BuysellSection() {
               total={filterData?.length}
               onChange={(page) => setCurrentPage(page)}
             />
+          </div>
+          <div className="text-danger" style={{ fontWeight: "800" }}>
+            {
+              "IsDB Group and SSC assume no responsibility or liability whatsoever for any negotiation(s), dealing(s) and/or transaction(s) between the Staff members initiated through this Buy & Sell App, for further informaion please contact us: SSC@isdb.org"
+            }
           </div>
         </div>
       </div>

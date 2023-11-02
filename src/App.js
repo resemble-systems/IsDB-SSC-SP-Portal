@@ -25,13 +25,13 @@ export const AppContext = createContext();
 function App() {
   //State setting
   const [user, setUser] = useState(null);
-  const [news, setNewsData] = useState(null);
+  const [newsLib, setNewsData] = useState(null);
   const [services, setServicesData] = useState(null);
   const [events, setEventsData] = useState(null);
   const [serviceLogoData, setSeviceLogoData] = useState(null);
   const [otherResourcesData, setOtherResourcesData] = useState(null);
   console.log("USER", user);
-  console.log("NEWS", news);
+  console.log("NEWS", newsLib);
   console.log("SERVICES", services);
   console.log("EVENTS", events);
 
@@ -106,7 +106,7 @@ function App() {
     <AppContext.Provider
       value={{
         user,
-        news,
+        newsLib,
         services,
         events,
         serviceLogoData,

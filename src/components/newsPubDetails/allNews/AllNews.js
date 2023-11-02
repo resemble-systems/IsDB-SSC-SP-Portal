@@ -9,20 +9,23 @@ import NewsPublicationsCard from "../../../common_components/newsPublicationsCar
 //Css
 import styles from "./all-news.module.sass";
 
-export default function NewsSection() {
-  const { news } = useContext(AppContext);
+export default function NewsSection({ routePath }) {
+  const { newsLib } = useContext(AppContext);
   const [seeAll, setSeeAll] = useState(false);
   const [newsData, setNewsData] = useState(null);
 
   useEffect(() => {
-    if (news && news.length > 0) {
+    if (newsLib && newsLib?.length > 0) {
+      const filterLib = newsLib.filter(
+        (data) => data.ID.toString() !== routePath.id
+      );
       if (seeAll) {
-        setNewsData(news);
+        setNewsData(filterLib);
       } else {
-        setNewsData(news.slice(0, 3));
+        setNewsData(filterLib.slice(0, 3));
       }
     }
-  }, [seeAll, news]);
+  }, [seeAll, newsLib, routePath]);
 
   return (
     <div className={`${styles.news_bg}`}>
@@ -32,7 +35,7 @@ export default function NewsSection() {
             <h3 className={`${styles.news_tilte} mb-5`}>News</h3>
           </Col>
           {newsData &&
-            newsData.length > 0 &&
+            newsData?.length > 0 &&
             newsData.map((newsObject, index) => (
               <Col xs={24} sm={24} md={8} lg={8} xl={8} key={index}>
                 <NewsPublicationsCard data={newsObject} />

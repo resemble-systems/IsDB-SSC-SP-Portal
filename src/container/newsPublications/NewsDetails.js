@@ -26,7 +26,7 @@ export default function NewsDetails({ routePath }) {
           </div>
           <NewsDetailsIntro routePath={routePath} />
         </div>
-        <AllNews />
+        <AllNews routePath={routePath} />
       </Layout>
     </>
   );
