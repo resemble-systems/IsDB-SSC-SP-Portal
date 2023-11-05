@@ -43,7 +43,7 @@ export default function ServicesActivitiesCardSection() {
   let scletonData = [{}, {}, {}, {}, {}, {}, {}, {}, {}];
   console.log("services-->", services);
   return (
-    <Row ref={observe}>
+    <Row /* ref={observe} */ ref={(el) => el && observe(el)}>
       <Col xs={0} sm={0} md={0} lg={24} xl={24}>
         <Row gutter={[16, 16]}>
           {cardsData && cardsData?.length > 0

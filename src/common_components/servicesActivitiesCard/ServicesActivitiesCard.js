@@ -34,14 +34,28 @@ export default function ServicesActivitiesCard({ data }) {
   // }, [data]);
 
   useEffect(() => {
-    if (data && Object.keys(data)?.length > 0) {
+    console.log("Hello--->");
+    if (
+      data &&
+      Object.keys(data)?.length > 0 &&
+      serviceLogoData &&
+      serviceLogoData?.length > 0
+    ) {
       let logos = serviceLogoData?.find(
         (logo) => logo.Title === data.ID.toString()
       );
+      console.log("Hello--->inside", logos);
       setLogo(logos?.AttachmentFiles[0]?.ServerRelativeUrl);
     }
-  }, [serviceLogoData, data]);
-  console.log("cardDatas-->", data);
+  }, [serviceLogoData]);
+
+  // console.log(
+  //   "cardDatas-->",
+  //   data,
+  //   Object.keys(data)?.length > 0,
+  //   serviceLogoData,
+  //   serviceLogoData?.length > 0
+  // );
   return (
     <div
       className={`${styles.services_card}`}
@@ -52,8 +66,8 @@ export default function ServicesActivitiesCard({ data }) {
           <div className={`${styles.card_text_container} pl-2`}>
             <div>
               <h4 className={`${styles.services_card_text} mb-5`}>
-                {data && data.Title ? (
-                  data.Title
+                {data && data?.Title ? (
+                  data?.Title
                 ) : (
                   <Skeleton.Input
                     style={{ width: 150 }}
@@ -63,7 +77,7 @@ export default function ServicesActivitiesCard({ data }) {
                   />
                 )}
               </h4>
-              {data && data.Title ? (
+              {data && data?.Title ? (
                 <Button className={`${styles.services_know_more_btn}`}>
                   <h6 className={`${styles.services_know_more} m-0`}>
                     Know More
@@ -77,7 +91,7 @@ export default function ServicesActivitiesCard({ data }) {
         </Col>
         <Col xs={12} sm={12} md={12} lg={12} xl={12}>
           <div className={`${styles.card_avatar_container} pr-2`}>
-            {data && logo && logo.length > 0 ? (
+            {data && logo && logo?.length > 0 ? (
               <>
                 <img src={logo} alt="Logo" width="140" height="140" />
               </>

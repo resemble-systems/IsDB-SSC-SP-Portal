@@ -17,7 +17,7 @@ export default function ServiceTypes() {
     let data = window.location.href.split("/");
     let itemId = data[data.length - 1];
     setItemID(itemId);
-  }, [/* history. */ location.pathname]);
+  }, [/* history. */ location.pathname, itemId]);
 
   return (
     <>

@@ -127,13 +127,17 @@ export default function NewAdModal({
       axios
         .post(url, stringifyPostData, configAxios)
         .then((r) => {
-          // console.log("Id===", r.data.d.Id);
+          console.log("Id===>", r, r.data.d.Id);
           setItemId(r.data.d.Id);
         })
-        .catch((err) => {});
+        .catch((err) => {
+          console.log("buyandsell-->", err);
+        });
     }
   }, [visible]);
   console.log("errors", errors);
+
+  console.log("AdvertisementId", itemId);
 
   return (
     <Modal

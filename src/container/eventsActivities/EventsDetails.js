@@ -18,34 +18,52 @@ export default function EventsDetails({ routePath }) {
   const [allData, setAllData] = useState(null);
   const [eventsData, setEventsData] = useState(null);
 
+  // useEffect(() => {
+  //   if (
+  //     routePath &&
+  //     Object.keys(routePath).length > 0 &&
+  //     events &&
+  //     events.length > 0
+  //   ) {
+  //     console.log("EVENTS", events);
+  //     if (!window.location.hash) {
+  //       window.location = window.location + "#loaded";
+  //       window.location.reload();
+  //     }
+  //     // For single data
+  //     axios
+  //       .get(
+  //         `${CONST.BASE_URL}${CONST.API.LIST("Event")}${CONST.API.QUERY(
+  //           "Title,Id,CreatedDate,StartDate,EndDate,RegistrationLink,Speaker,Location,EventType,Author0,Description,AttachmentFiles"
+  //         )} ${CONST.API.ATTACHMENT} ${CONST.API.FILTER("Id", routePath.id)}`
+  //       )
+  //       .then((res) => {
+  //         setEventsData(res.data.value);
+  //       })
+  //       .catch((err) => console.log(err));
+  //     // For all data
+  //     setAllData(events);
+  //   }
+  // }, [routePath, events]);
+
   useEffect(() => {
-    if (
-      routePath &&
-      Object.keys(routePath).length > 0 &&
-      events &&
-      events.length > 0
-    ) {
-      console.log("EVENTS", events);
-      if (!window.location.hash) {
-        window.location = window.location + "#loaded";
-        window.location.reload();
-      }
-      // For single data
-      axios
-        .get(
-          `${CONST.BASE_URL}${CONST.API.LIST("Event")}${CONST.API.QUERY(
-            "Title,Id,CreatedDate,StartDate,EndDate,RegistrationLink,Speaker,Location,EventType,Author0,Description,AttachmentFiles"
-          )} ${CONST.API.ATTACHMENT} ${CONST.API.FILTER("Id", routePath.id)}`
-        )
-        .then((res) => {
-          setEventsData(res.data.value);
-        })
-        .catch((err) => console.log(err));
-      // For all data
+    if (routePath && events && events?.length > 0) {
+      const filterNews = events.filter((data) => {
+        console.log(
+          "newsLib->",
+          events,
+
+          routePath.id,
+          data.ID.toString()
+        );
+        return data.ID.toString() === routePath.id;
+      });
+      setEventsData(filterNews);
       setAllData(events);
     }
-  }, [routePath, events]);
-  console.log("EventsData-->", allData, events, services);
+  }, [routePath]);
+
+  console.log("EventsData-->", routePath);
   return (
     <>
       {

@@ -6,7 +6,7 @@ import ServiceBg from "../../../assets/background/ServicesActivities.svg";
 //css
 import styles from "./services-activities.module.sass";
 
-export default function ServicesActivities({ servicesActivities }) {
+export default function ServicesActivities() {
   return (
     <div
       style={{ backgroundImage: `url(${ServiceBg})` }}
@@ -14,7 +14,7 @@ export default function ServicesActivities({ servicesActivities }) {
     >
       <div className={`${styles.service_container} py-5`}>
         <CommonSectionHeader title={"Activities"} sliderSection={false} />
-        <ServicesActivitiesCardSection cardsData={servicesActivities} />
+        <ServicesActivitiesCardSection />
       </div>
     </div>
   );

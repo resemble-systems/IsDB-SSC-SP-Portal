@@ -61,7 +61,8 @@ export default function AppDrawer({
         setIsAdmin(filterAdmin);
       });
     }
-  }, [user]);
+  }, []);
+
   console.log("adminCheck-->", isAdmin[0] === true);
 
   let menuLists = [
@@ -131,7 +132,7 @@ export default function AppDrawer({
       link: "/sites/powerbi/IDBSocialClub/Pages/admin.aspx",
     });
   }
-
+  console.log("list-->", services);
   return (
     <>
       <Drawer

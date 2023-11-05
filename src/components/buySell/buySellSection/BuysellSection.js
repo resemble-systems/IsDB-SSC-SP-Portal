@@ -168,12 +168,12 @@ export default function BuysellSection() {
       if (subMenu.toLowerCase() === "all") {
         setFilterData(cardsData);
       } else if (subMenu.toLowerCase() === "others") {
-        let filteredData = cardsData.filter(
+        let filteredData = cardsData?.filter(
           (data) => data.Category.toLowerCase() === subMenu.toLowerCase()
         );
         setFilterData(filteredData);
       } else {
-        let filteredData = cardsData.filter(
+        let filteredData = cardsData?.filter(
           (data) =>
             data.SubCategory &&
             data.SubCategory.toLowerCase() === subMenu.toLowerCase()
@@ -197,19 +197,19 @@ export default function BuysellSection() {
     // }
     if (yourAds === true) {
       if (subMenu.toLowerCase() === "all") {
-        let filterAll = filterData.filter(
+        let filterAll = filterData?.filter(
           (data) => data.Author0 === user.data.DisplayName
         );
         setFilterData(filterAll);
       } else if (subMenu.toLowerCase() === "others") {
-        let filteredData = cardsData.filter(
+        let filteredData = cardsData?.filter(
           (data) =>
             data.Category.toLowerCase() === subMenu.toLowerCase() &&
             data.Author0 === user.data.DisplayName
         );
         setFilterData(filteredData);
       } else {
-        let filteredData = cardsData.filter(
+        let filteredData = cardsData?.filter(
           (data) =>
             data.SubCategory &&
             data.SubCategory.toLowerCase() === subMenu.toLowerCase() &&
@@ -229,7 +229,6 @@ export default function BuysellSection() {
       ? filterData?.slice(startIndex, endIndex)
       : [];
 
-  console.log("yourAds", cardsData);
   return (
     <>
       <div className={`${styles.buysellsetion_section_bg}`}>

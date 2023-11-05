@@ -58,6 +58,7 @@ export default function UseContactForm(
           "X-RequestDigest": resp,
           "X-HTTP-Method": "POST",
           "IF-MATCH": "*",
+          "X-HTTP-Method": "MERGE",
         },
       };
 
