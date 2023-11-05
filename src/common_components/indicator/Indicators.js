@@ -10,15 +10,15 @@ export default function Indicators({ onColorIndicatorClick }) {
   const [indicatorTexts, setIndicatorTexts] = useState(null);
 
   useEffect(() => {
-    if (services && services.length > 0) {
-      let filteredService = services.filter(
+    if (services && services?.length > 0) {
+      let filteredService = services?.filter(
         (service) => service.IsEvent === "Yes"
       );
-      let indicators = filteredService.map((data) => {
+      let indicators = filteredService?.map((data) => {
         return {
-          text: data.Title,
+          text: data?.Title,
           serviceType: data?.ServiceType,
-          color: data.Color,
+          color: data?.Color,
         };
       });
       setIndicatorTexts(indicators);
@@ -42,17 +42,17 @@ export default function Indicators({ onColorIndicatorClick }) {
                 keys={index.toString()}
               >
                 <div
-                  style={{ backgroundColor: indicator.color }}
+                  style={{ backgroundColor: indicator?.color }}
                   className={`${styles.indicator_box}`}
                   onClick={() => {
                     onColorIndicatorClick(indicator?.serviceType);
                   }}
                 ></div>
                 <div
-                  style={{ color: indicator.color }}
+                  style={{ color: indicator?.color }}
                   className={`${styles.indecator_text}`}
                 >
-                  {indicator.text}
+                  {indicator?.text}
                 </div>
               </Col>
             );

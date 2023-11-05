@@ -82,11 +82,11 @@ export default function ExeTeamStructure() {
               swipeable={false}
             >
               {structureData &&
-                structureData.map((data, index) => (
+                structureData?.map((data, index) => (
                   <div className={`${styles.hex_container_r}`} key={index}>
-                    <div className={`${styles.hex_border} ${data.color}`}>
+                    <div className={`${styles.hex_border} ${data?.color}`}>
                       <div className={`${styles.hex_white_space}`}>
-                        <div className={`${styles.hex} ${data.color}`}>
+                        <div className={`${styles.hex} ${data?.color}`}>
                           <p className={`${styles.hex_text} px-5 m-0`}>
                             {data.para}
                           </p>
