@@ -23,28 +23,56 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
       reader.readAsArrayBuffer(file);
       return deferred.promise();
     };
-    getFileBuffer(file).then(function (buffer) {
-      $.ajax({
-        url: `/_api/web/lists/getbytitle('${listName}')/items( ${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
-        type: "POST",
-        cache: false,
-        contentType: false,
+
+    const GetDigest = async () => {
+      const requestOptions = {
         method: "POST",
-        data: buffer,
-        processData: false,
+
         headers: {
+          "Content-Type": "application/json",
+
           Accept: "application/json; odata=verbose",
-          "content-type": "application/json; odata=verbose",
-          "X-RequestDigest": $("#__REQUESTDIGEST").val(),
         },
-        success: function (data, textStatus, jqXHR) {
-          setLoaderTime(false);
-          console.log("Img uploaded successfully");
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-          setLoaderTime(false);
-          console.log("ERRORS: " + textStatus);
-        },
+      };
+
+      const response = await fetch(
+        `/sites/ssc/_api/contextinfo`,
+        requestOptions
+      );
+
+      const data = await response.json();
+      $("#__REQUESTDIGEST").val(
+        data.d.GetContextWebInformation.FormDigestValue
+      );
+
+      return data.d.GetContextWebInformation.FormDigestValue;
+    };
+
+    getFileBuffer(file).then(function (buffer) {
+      GetDigest().then((digest) => {
+        $.ajax({
+          url: `/_api/web/lists/getbytitle('${listName}')/items( ${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
+          type: "POST",
+          cache: false,
+          contentType: false,
+          method: "POST",
+          data: buffer,
+          processData: false,
+          headers: {
+            Accept: "application/json; odata=verbose",
+            "content-type": "application/json; odata=verbose",
+            // "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+            "X-RequestDigest": digest,
+          },
+          success: function (data, textStatus, jqXHR) {
+            setLoaderTime(false);
+            console.log("Img uploaded successfully");
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            setLoaderTime(false);
+            console.log("ERRORS: " + textStatus);
+          },
+        });
       });
     });
     // Render thumbnail.
