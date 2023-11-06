@@ -54,7 +54,7 @@ export default function UseContactForm(
 
       const GetDigest = async () => {
         const requestOptions = {
-          method: "MERGE",
+          method: "POST",
 
           headers: {
             "Content-Type": "application/json",
@@ -84,7 +84,7 @@ export default function UseContactForm(
             "X-RequestDigest": digest,
             "X-HTTP-Method": "POST",
             "IF-MATCH": "*",
-            "X-HTTP-Method": "MERGE",
+            // "X-HTTP-Method": "MERGE",
           },
         };
 
