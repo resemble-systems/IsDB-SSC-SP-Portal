@@ -128,7 +128,7 @@ export default function NewAdModal({
         };
 
         const response = await fetch(
-          `${VAR.REACT_APP_BUILD_URL}/_api/contextinfo`,
+          `/sites/ssc/_api/contextinfo`,
           requestOptions
         );
 
