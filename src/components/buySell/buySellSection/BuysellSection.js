@@ -234,7 +234,7 @@ export default function BuysellSection() {
       }
       setDDMenu(setSubMenu, adCategories, subCategoryList);
     }
-  }, [yourAds, subMenu]);
+  }, [yourAds, subMenu, user]);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -255,6 +255,7 @@ export default function BuysellSection() {
         data.status === "Active" && data.Author0 === user?.data?.DisplayName
     )
   );
+  console.log("user--->", user, user?.data?.DisplayName);
   return (
     <>
       <div className={`${styles.buysellsetion_section_bg}`}>
