@@ -54,7 +54,7 @@ export default function UseContactForm(
 
       const GetDigest = async () => {
         const requestOptions = {
-          method: "POST",
+          method: "MERGE",
 
           headers: {
             "Content-Type": "application/json",
