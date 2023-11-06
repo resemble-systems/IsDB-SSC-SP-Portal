@@ -50,6 +50,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
 
     getFileBuffer(file).then(function (buffer) {
       GetDigest().then((digest) => {
+        console.log("digestVal-->", digest);
         $.ajax({
           url: `/_api/web/lists/getbytitle('${listName}')/items( ${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
           type: "POST",
