@@ -211,15 +211,15 @@ export default function BuysellSection() {
       if (subMenu.toLowerCase() === "all") {
         let filterAll = filterData?.filter(
           (data) =>
-            data.Author0 === user?.data.DisplayName && data.status !== "draft"
+            data.Author0 === user?.data?.DisplayName && data?.status !== "draft"
         );
         setFilterData(filterAll);
       } else if (subMenu.toLowerCase() === "others") {
         let filteredData = cardsData?.filter(
           (data) =>
             data.Category.toLowerCase() === subMenu.toLowerCase() &&
-            data.Author0 === user?.data.DisplayName &&
-            data.status !== "draft"
+            data.Author0 === user?.data?.DisplayName &&
+            data?.status !== "draft"
         );
         setFilterData(filteredData);
       } else {
@@ -227,7 +227,7 @@ export default function BuysellSection() {
           (data) =>
             data.SubCategory &&
             data.SubCategory.toLowerCase() === subMenu.toLowerCase() &&
-            data.Author0 === user?.data.DisplayName &&
+            data.Author0 === user?.data?.DisplayName &&
             data.status !== "draft"
         );
         setFilterData(filteredData);
@@ -247,15 +247,17 @@ export default function BuysellSection() {
     "soldCard-->",
     cardsData?.filter(
       (data) =>
-        data.status === "Sold" && data.Author0 === user?.data?.DisplayName
-    ),
-    "activeCard-->",
-    cardsData?.filter(
-      (data) =>
-        data.status === "Active" && data.Author0 === user?.data?.DisplayName
+        data?.status === "Sold" && data?.Author0 === user?.data?.DisplayName
     )
   );
   console.log("user--->", user, user?.data?.DisplayName);
+  console.log(
+    "activeCard-->",
+    cardsData?.filter(
+      (data) =>
+        data?.status === "Active" && data?.Author0 === user?.data?.DisplayName
+    )
+  );
   return (
     <>
       <div className={`${styles.buysellsetion_section_bg}`}>
