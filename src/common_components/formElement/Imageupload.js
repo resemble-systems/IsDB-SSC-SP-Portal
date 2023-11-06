@@ -47,7 +47,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
 
       return data.d.GetContextWebInformation.FormDigestValue;
     };
-
+    console.log("itemID2--->", itemId);
     getFileBuffer(file).then(function (buffer) {
       GetDigest().then((digest) => {
         console.log("digestVal-->", digest);

@@ -94,12 +94,21 @@ export default function BuysellSection() {
     axios
       .get(
         `${CONST.BASE_URL}${CONST.API.LIST("Advertisement")}${CONST.API.QUERY(
-          "Title,Description,Address,Author0,Created,AuthorImage,Price,Brand,Email,Category,SubCategory,Phone,AttachmentFiles,Modified"
-        )} ${CONST.API.ATTACHMENT} ${CONST.API.FILTER("status", "Active")}`
+          "Title,Description,Address,Author0,Created,AuthorImage,Price,Brand,Email,Category,SubCategory,Phone,AttachmentFiles,Modified,status"
+        )} ${CONST.API.ATTACHMENT} `
       )
+      // .get(
+      //   `${CONST.BASE_URL}${CONST.API.LIST("Advertisement")}${CONST.API.QUERY(
+      //     "Title,Description,Address,Author0,Created,AuthorImage,Price,Brand,Email,Category,SubCategory,Phone,AttachmentFiles,Modified"
+      //   )} ${CONST.API.ATTACHMENT} ${CONST.API.FILTER("status", "Active")} `
+      // )
       .then((res) => {
         console.log("responseId", res);
-        setcardsData(res.data.value);
+        setcardsData(
+          res.data.value?.filter(
+            (data) => data.status === "Active" || data.status === "Sold"
+          )
+        );
       })
       .catch((err) => console.log(err));
 
@@ -166,17 +175,20 @@ export default function BuysellSection() {
   useEffect(() => {
     if (yourAds === false) {
       if (subMenu.toLowerCase() === "all") {
-        setFilterData(cardsData);
+        setFilterData(cardsData?.filter((data) => data.status === "Active"));
       } else if (subMenu.toLowerCase() === "others") {
         let filteredData = cardsData?.filter(
-          (data) => data.Category.toLowerCase() === subMenu.toLowerCase()
+          (data) =>
+            data.Category.toLowerCase() === subMenu.toLowerCase() &&
+            data.status === "Active"
         );
         setFilterData(filteredData);
       } else {
         let filteredData = cardsData?.filter(
           (data) =>
             data.SubCategory &&
-            data.SubCategory.toLowerCase() === subMenu.toLowerCase()
+            data.SubCategory.toLowerCase() === subMenu.toLowerCase() &&
+            data.status === "Active"
         );
         setFilterData(filteredData);
       }
@@ -198,14 +210,17 @@ export default function BuysellSection() {
     if (yourAds === true) {
       if (subMenu.toLowerCase() === "all") {
         let filterAll = filterData?.filter(
-          (data) => data.Author0 === user.data.DisplayName
+          (data) =>
+            data.Author0 === user.data.DisplayName &&
+            (data.status === "Active" || data.status === "Sold")
         );
         setFilterData(filterAll);
       } else if (subMenu.toLowerCase() === "others") {
         let filteredData = cardsData?.filter(
           (data) =>
             data.Category.toLowerCase() === subMenu.toLowerCase() &&
-            data.Author0 === user.data.DisplayName
+            data.Author0 === user.data.DisplayName &&
+            (data.status === "Active" || data.status === "Sold")
         );
         setFilterData(filteredData);
       } else {
@@ -213,7 +228,8 @@ export default function BuysellSection() {
           (data) =>
             data.SubCategory &&
             data.SubCategory.toLowerCase() === subMenu.toLowerCase() &&
-            data.Author0 === user.data.DisplayName
+            data.Author0 === user.data.DisplayName &&
+            (data.status === "Active" || data.status === "Sold")
         );
         setFilterData(filteredData);
       }
@@ -245,7 +261,7 @@ export default function BuysellSection() {
                   className={`d-flex h-100 mx-2 mt-1 align-items-center justify-content-between`}
                 >
                   <AppRoundedBtn
-                    text={yourAds === false ? "View Your Ads" : "Show All"}
+                    text={yourAds === false ? "View My Ads" : "Show All"}
                     prefix={""}
                     suffix={""}
                     bg={"white"}
