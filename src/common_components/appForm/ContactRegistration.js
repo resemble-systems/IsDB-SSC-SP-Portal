@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+import $ from "jquery";
 import { CONST } from "../../constant/index";
 import getDigest from "../../services/GetDigest/GetDigest";
 
@@ -37,7 +37,7 @@ export default function UseContactForm(
     if (
       Object.values(errorObject).filter((err) => err === false).length === 0
     ) {
-      let resp = await getDigest();
+      // let resp = await getDigest();
       setLoaderTime(true);
 
       const url = CONST.BASE_URL + CONST.API.LIST("Contact");
@@ -51,31 +51,58 @@ export default function UseContactForm(
         Phone: inputs.phoneNumber,
         Message: inputs.textarea,
       });
-      const configAxios = {
-        headers: {
-          accept: "application/json;odata=verbose",
-          "content-type": "application/json;odata=verbose",
-          "X-RequestDigest": resp,
-          "X-HTTP-Method": "POST",
-          "IF-MATCH": "*",
-          "X-HTTP-Method": "MERGE",
-        },
+
+      const GetDigest = async () => {
+        const requestOptions = {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json",
+
+            Accept: "application/json; odata=verbose",
+          },
+        };
+
+        const response = await fetch(
+          `/sites/ssc/_api/contextinfo`,
+          requestOptions
+        );
+
+        const data = await response.json();
+        $("#__REQUESTDIGEST").val(
+          data.d.GetContextWebInformation.FormDigestValue
+        );
+
+        return data.d.GetContextWebInformation.FormDigestValue;
       };
 
-      axios
-        .post(url, stringifyPostData, configAxios)
-        .then((r) => {
-          setLoaderTime(false);
-          console.log("Success");
-          setRegisterDone(true);
-          setInputs(fromObject);
-          setErrors(errorObj);
-        })
-        .catch((err) => {
-          setLoaderTime(false);
-          console.log("err==>", err);
-          alert("Oops! Something went wrong.");
-        });
+      GetDigest().then((digest) => {
+        const configAxios = {
+          headers: {
+            accept: "application/json;odata=verbose",
+            "content-type": "application/json;odata=verbose",
+            "X-RequestDigest": digest,
+            "X-HTTP-Method": "POST",
+            "IF-MATCH": "*",
+            "X-HTTP-Method": "MERGE",
+          },
+        };
+
+        axios
+          .post(url, stringifyPostData, configAxios)
+          .then((r) => {
+            setLoaderTime(false);
+            console.log("Success");
+            setRegisterDone(true);
+            setInputs(fromObject);
+            setErrors(errorObj);
+          })
+          .catch((err) => {
+            setLoaderTime(false);
+            console.log("err==>", err);
+            alert("Oops! Something went wrong.");
+          });
+      });
     }
 
     // setTimeout(() => {
