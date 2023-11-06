@@ -152,7 +152,7 @@ export default function NewAdModal({
         };
 
         axios
-          .post(url, stringifyPostData, configAxios)
+          .post(url, JSON.stringify(stringifyPostData), configAxios)
           .then((r) => {
             console.log("Id===>", r, r.data.d.Id);
             setItemId(r.data.d.Id);

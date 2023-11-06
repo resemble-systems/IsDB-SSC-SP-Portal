@@ -63,7 +63,7 @@ export default function AppDrawer({
     }
   }, [user]);
 
-  console.log("adminCheck-->", isAdmin, user);
+  console.log("adminCheck-->", isAdmin, user, isAdmin[0]);
 
   let menuLists = [
     {
