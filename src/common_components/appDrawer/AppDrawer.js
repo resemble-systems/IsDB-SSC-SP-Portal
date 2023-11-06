@@ -28,7 +28,7 @@ export default function AppDrawer({
 }) {
   const history = useHistory();
   const { user, services } = useContext(AppContext);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState([]);
   // const [otResource, setOtResource] = useState(null);
 
   let adminMembersApi = `${CONST.BASE_URL}${CONST.API.LIST(
@@ -61,9 +61,9 @@ export default function AppDrawer({
         setIsAdmin(filterAdmin);
       });
     }
-  }, []);
+  }, [user]);
 
-  console.log("adminCheck-->", isAdmin[0] === true);
+  console.log("adminCheck-->", isAdmin, user);
 
   let menuLists = [
     {

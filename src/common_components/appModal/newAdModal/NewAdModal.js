@@ -99,7 +99,7 @@ export default function NewAdModal({
         __metadata: {
           type: "SP.Data.AdvertisementListItem",
         },
-        Title: "",
+        Title: "Test Title",
         Description: "",
         Price: "",
         Brand: "",
@@ -114,25 +114,52 @@ export default function NewAdModal({
         AuthorImage: "",
         status: "draft",
       });
-      const configAxios = {
-        headers: {
-          accept: "application/json;odata=verbose",
-          "content-type": "application/json;odata=verbose",
-          "X-RequestDigest": $("#__REQUESTDIGEST").val(),
-          "X-HTTP-Method": "POST",
-          "IF-MATCH": "*",
-        },
-      };
 
-      axios
-        .post(url, stringifyPostData, configAxios)
-        .then((r) => {
-          console.log("Id===>", r, r.data.d.Id);
-          setItemId(r.data.d.Id);
-        })
-        .catch((err) => {
-          console.log("buyandsell-->", err);
-        });
+      const GetDigest = async () => {
+        const requestOptions = {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json",
+
+            Accept: "application/json; odata=verbose",
+          },
+        };
+
+        const response = await fetch(
+          `${process.env.REACT_APP_BUILD_URL}/_api/contextinfo`,
+          requestOptions
+        );
+
+        const data = await response.json();
+        $("#__REQUESTDIGEST").val(
+          data.d.GetContextWebInformation.FormDigestValue
+        );
+
+        return data.d.GetContextWebInformation.FormDigestValue;
+      };
+      GetDigest().then((digest) => {
+        const configAxios = {
+          headers: {
+            accept: "application/json;odata=verbose",
+            "content-type": "application/json;odata=verbose",
+            // "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+            "X-RequestDigest": digest,
+            "X-HTTP-Method": "POST",
+            "IF-MATCH": "*",
+          },
+        };
+
+        axios
+          .post(url, stringifyPostData, configAxios)
+          .then((r) => {
+            console.log("Id===>", r, r.data.d.Id);
+            setItemId(r.data.d.Id);
+          })
+          .catch((err) => {
+            console.log("buyandsell-->", err);
+          });
+      });
     }
   }, [visible]);
   console.log("errors", errors);
