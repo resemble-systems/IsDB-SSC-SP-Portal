@@ -52,7 +52,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
       GetDigest().then((digest) => {
         console.log("digestVal-->", digest);
         $.ajax({
-          url: `/_api/web/lists/getbytitle('${listName}')/items( ${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
+          url: `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
           type: "POST",
           cache: false,
           contentType: false,
