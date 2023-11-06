@@ -105,9 +105,9 @@ export default function BuysellSection() {
       .then((res) => {
         console.log("responseId", res);
         setcardsData(
-          res.data.value?.filter(
+          res.data.value /* ?.filter(
             (data) => data.status === "Active" || data.status === "Sold"
-          )
+          ) */
         );
       })
       .catch((err) => console.log(err));
@@ -208,7 +208,7 @@ export default function BuysellSection() {
     //   setSubMenu("all");
     // }
     console.log("yourAds-->", yourAds);
-    if (yourAds === true && user && user?.length > 0) {
+    if (yourAds === true /* && user && user?.length > 0 */) {
       if (subMenu.toLowerCase() === "all") {
         console.log("alllll");
         let filterAll = filterData?.filter(
