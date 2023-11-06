@@ -207,7 +207,7 @@ export default function BuysellSection() {
     // if (yourAds === false) {
     //   setSubMenu("all");
     // }
-    if (yourAds === true) {
+    if (yourAds === true && user && user?.length > 0) {
       if (subMenu.toLowerCase() === "all") {
         let filterAll = filterData?.filter(
           (data) =>
@@ -336,8 +336,8 @@ export default function BuysellSection() {
             </Col>
           </Row>
           <Row gutter={[16, 16]}>
-            {displayedData && displayedData.length > 0 ? (
-              displayedData.map((data, index) => {
+            {displayedData && displayedData?.length > 0 ? (
+              displayedData?.map((data, index) => {
                 return (
                   <Col
                     xs={24}
