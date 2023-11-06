@@ -209,6 +209,7 @@ export default function BuysellSection() {
     // }
     if (yourAds === true && user && user?.length > 0) {
       if (subMenu.toLowerCase() === "all") {
+        console.log("alllll");
         let filterAll = filterData?.filter(
           (data) =>
             data.Author0 === user?.data?.DisplayName && data?.status !== "draft"
@@ -223,6 +224,7 @@ export default function BuysellSection() {
         );
         setFilterData(filteredData);
       } else {
+        console.log("else");
         let filteredData = cardsData?.filter(
           (data) =>
             data.SubCategory &&
