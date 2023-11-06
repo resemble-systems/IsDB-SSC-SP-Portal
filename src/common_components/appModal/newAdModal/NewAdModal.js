@@ -15,6 +15,7 @@ import TextArea from "../../formElement/TextArea";
 
 // css
 import styles from "./new-ad.module.sass";
+import { VAR } from "../../../env";
 
 // onCancel Handler
 function onCancelHandler(
@@ -127,7 +128,7 @@ export default function NewAdModal({
         };
 
         const response = await fetch(
-          `${process.env.REACT_APP_BUILD_URL}/_api/contextinfo`,
+          `${VAR.REACT_APP_BUILD_URL}/_api/contextinfo`,
           requestOptions
         );
 
