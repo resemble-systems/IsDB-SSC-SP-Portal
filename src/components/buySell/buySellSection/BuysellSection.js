@@ -211,8 +211,7 @@ export default function BuysellSection() {
       if (subMenu.toLowerCase() === "all") {
         let filterAll = filterData?.filter(
           (data) =>
-            data.Author0 === user.data.DisplayName &&
-            (data.status === "Active" || data.status === "Sold")
+            data.Author0 === user.data.DisplayName && data.status !== "draft"
         );
         setFilterData(filterAll);
       } else if (subMenu.toLowerCase() === "others") {
@@ -220,7 +219,7 @@ export default function BuysellSection() {
           (data) =>
             data.Category.toLowerCase() === subMenu.toLowerCase() &&
             data.Author0 === user.data.DisplayName &&
-            (data.status === "Active" || data.status === "Sold")
+            data.status !== "draft"
         );
         setFilterData(filteredData);
       } else {
@@ -229,7 +228,7 @@ export default function BuysellSection() {
             data.SubCategory &&
             data.SubCategory.toLowerCase() === subMenu.toLowerCase() &&
             data.Author0 === user.data.DisplayName &&
-            (data.status === "Active" || data.status === "Sold")
+            data.status !== "draft"
         );
         setFilterData(filteredData);
       }
