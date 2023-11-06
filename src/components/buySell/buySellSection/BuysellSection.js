@@ -210,8 +210,8 @@ export default function BuysellSection() {
     console.log("yourAds-->", yourAds);
     if (yourAds === true /* && user && user?.length > 0 */) {
       if (subMenu.toLowerCase() === "all") {
-        console.log("alllll");
-        let filterAll = filterData?.filter(
+        console.log("alllll", filterData);
+        let filterAll = cardsData?.filter(
           (data) =>
             data.Author0 === user?.data?.DisplayName &&
             (data?.status === "Active" || data?.status === "Sold")
@@ -255,6 +255,7 @@ export default function BuysellSection() {
     )
   );
   console.log("user--->", user, user?.data?.DisplayName);
+  console.log("filterData--->", filterData);
   console.log(
     "activeCard-->",
     cardsData?.filter(
