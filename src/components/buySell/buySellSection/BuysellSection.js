@@ -207,12 +207,14 @@ export default function BuysellSection() {
     // if (yourAds === false) {
     //   setSubMenu("all");
     // }
+    console.log("yourAds-->", yourAds);
     if (yourAds === true && user && user?.length > 0) {
       if (subMenu.toLowerCase() === "all") {
         console.log("alllll");
         let filterAll = filterData?.filter(
           (data) =>
-            data.Author0 === user?.data?.DisplayName && data?.status !== "draft"
+            data.Author0 === user?.data?.DisplayName &&
+            (data?.status === "Active" || data?.status === "Sold")
         );
         setFilterData(filterAll);
       } else if (subMenu.toLowerCase() === "others") {
@@ -220,7 +222,7 @@ export default function BuysellSection() {
           (data) =>
             data.Category.toLowerCase() === subMenu.toLowerCase() &&
             data.Author0 === user?.data?.DisplayName &&
-            data?.status !== "draft"
+            (data?.status === "Active" || data?.status === "Sold")
         );
         setFilterData(filteredData);
       } else {
@@ -230,7 +232,7 @@ export default function BuysellSection() {
             data.SubCategory &&
             data.SubCategory.toLowerCase() === subMenu.toLowerCase() &&
             data.Author0 === user?.data?.DisplayName &&
-            data.status !== "draft"
+            (data?.status === "Active" || data?.status === "Sold")
         );
         setFilterData(filteredData);
       }
