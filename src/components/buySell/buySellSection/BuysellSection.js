@@ -243,7 +243,17 @@ export default function BuysellSection() {
     filterData && filterData?.length > 0
       ? filterData?.slice(startIndex, endIndex)
       : [];
-
+  console.log(
+    "soldCard-->",
+    cardsData?.filter(
+      (data) => data.status === "Sold" && data.Author0 === user.data.DisplayName
+    ),
+    "activeCard-->",
+    cardsData?.filter(
+      (data) =>
+        data.status === "Active" && data.Author0 === user.data.DisplayName
+    )
+  );
   return (
     <>
       <div className={`${styles.buysellsetion_section_bg}`}>
