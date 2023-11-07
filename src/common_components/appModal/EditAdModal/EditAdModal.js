@@ -203,13 +203,13 @@ export default function EditAdModal({
   //     }
   //   }, [isEditModal]);
 
-  useEffect(() => {
-    if (cardData.status === "Active") {
-      setIsSold(false);
-    } else {
-      setIsSold(true);
-    }
-  }, [isSold]);
+  // useEffect(() => {
+  //   if (cardData.status === "Active") {
+  //     setIsSold(false);
+  //   } else {
+  //     setIsSold(true);
+  //   }
+  // }, [isSold]);
 
   useEffect(() => {
     if (Category?.length > 0) {

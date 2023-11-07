@@ -6,197 +6,197 @@ import camera from "../../assets/update/camera.svg";
 import deleteicon from "../../assets/update/trash.svg";
 import $ from "jquery";
 
-// function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
-//   // Loop through the FileList and render image files as thumbnails.
-//   setLoaderTime(true);
-//   for (const file of evt.target.files) {
-//     //Attacfile code
-//     var getFileBuffer = function (file) {
-//       var deferred = $.Deferred();
-//       var reader = new FileReader();
-//       reader.onload = function (e) {
-//         deferred.resolve(e.target.result);
-//       };
-//       reader.onerror = function (e) {
-//         deferred.reject(e.target.error);
-//       };
-//       reader.readAsArrayBuffer(file);
-//       return deferred.promise();
-//     };
-
-//     const GetDigest = async () => {
-//       const requestOptions = {
-//         method: "POST",
-
-//         headers: {
-//           "Content-Type": "application/json",
-
-//           Accept: "application/json; odata=verbose",
-//         },
-//       };
-
-//       const response = await fetch(
-//         `/sites/ssc/_api/contextinfo`,
-//         requestOptions
-//       );
-
-//       const data = await response.json();
-//       $("#__REQUESTDIGEST").val(
-//         data.d.GetContextWebInformation.FormDigestValue
-//       );
-
-//       return data.d.GetContextWebInformation.FormDigestValue;
-//     };
-//     console.log("itemID2--->", itemId);
-//     getFileBuffer(file).then(function (buffer) {
-//       GetDigest().then((digest) => {
-//         console.log("digestVal-->", digest);
-//         $.ajax({
-//           url: `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
-//           type: "POST",
-//           cache: false,
-//           contentType: false,
-//           method: "POST",
-//           data: buffer,
-//           processData: false,
-//           headers: {
-//             Accept: "application/json; odata=verbose",
-//             "content-type": "application/json; odata=verbose",
-//             // "X-RequestDigest": $("#__REQUESTDIGEST").val(),
-//             "X-RequestDigest": digest,
-//           },
-//           success: function (data, textStatus, jqXHR) {
-//             setLoaderTime(false);
-//             console.log("Img uploaded successfully");
-//           },
-//           error: function (jqXHR, textStatus, errorThrown) {
-//             setLoaderTime(false);
-//             console.log("ERRORS: " + textStatus);
-//           },
-//         });
-//       });
-//     });
-//     // Render thumbnail.
-//     //const span = document.createElement('span')
-//     const src = URL.createObjectURL(file);
-
-//     document.getElementById(id).innerHTML = `<div><Image
-//             src=${deleteicon}
-//             alt="Img_Item"
-//             width=20
-//             height=20
-//             style=position:absolute top: 20px left:20px
-//         /><Image
-//             src=${src}
-//             alt="Img_Item"
-//             width=70
-//             height=70
-//         /></div>`;
-//     let temp = document.getElementById(id);
-//     console.log(temp.firstChild);
-//     temp.firstChild.addEventListener("click", function (event) {
-//       hideDiv(id, itemId, file.name, listName);
-//     });
-//   }
-// }
-
 function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
   // Loop through the FileList and render image files as thumbnails.
   setLoaderTime(true);
-
-  const uploadFile = async (file) => {
-    try {
-      const digest = await getFormDigest();
-      const buffer = await getFileBuffer(file);
-
-      await uploadAttachment(
-        digest,
-        file,
-        buffer,
-        id,
-        itemId,
-        listName,
-        setLoaderTime
-      );
-    } catch (error) {
-      console.error("Error uploading file:", error);
-      setLoaderTime(false);
-    }
-  };
-
   for (const file of evt.target.files) {
-    uploadFile(file);
-  }
-}
-
-async function getFormDigest() {
-  try {
-    const response = await fetch("/sites/ssc/_api/contextinfo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json; odata=verbose",
-      },
-    });
-
-    const data = await response.json();
-    const digest = data.d.GetContextWebInformation.FormDigestValue;
-    $("#__REQUESTDIGEST").val(digest); // Update the digest in your form
-    return digest;
-  } catch (error) {
-    throw new Error("Error fetching FormDigestValue: " + error);
-  }
-}
-
-async function getFileBuffer(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      resolve(e.target.result);
+    //Attacfile code
+    var getFileBuffer = function (file) {
+      var deferred = $.Deferred();
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        deferred.resolve(e.target.result);
+      };
+      reader.onerror = function (e) {
+        deferred.reject(e.target.error);
+      };
+      reader.readAsArrayBuffer(file);
+      return deferred.promise();
     };
 
-    reader.onerror = (e) => {
-      reject(e.target.error);
+    const GetDigest = async () => {
+      const requestOptions = {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+
+          Accept: "application/json; odata=verbose",
+        },
+      };
+
+      const response = await fetch(
+        `/sites/ssc/_api/contextinfo`,
+        requestOptions
+      );
+
+      const data = await response.json();
+      $("#__REQUESTDIGEST").val(
+        data.d.GetContextWebInformation.FormDigestValue
+      );
+
+      return data.d.GetContextWebInformation.FormDigestValue;
     };
-
-    reader.readAsArrayBuffer(file);
-  });
-}
-
-async function uploadAttachment(
-  digest,
-  file,
-  buffer,
-  id,
-  itemId,
-  listName,
-  setLoaderTime
-) {
-  const headers = {
-    Accept: "application/json; odata=verbose",
-    "X-RequestDigest": digest,
-  };
-
-  const endpoint = `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`;
-
-  try {
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers,
-      body: buffer,
+    console.log("itemID2--->", itemId);
+    getFileBuffer(file).then(function (buffer) {
+      GetDigest().then((digest) => {
+        console.log("digestVal-->", digest);
+        $.ajax({
+          url: `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
+          type: "POST",
+          cache: false,
+          contentType: false,
+          method: "POST",
+          data: buffer,
+          processData: false,
+          headers: {
+            Accept: "application/json; odata=verbose",
+            "content-type": "application/json; odata=verbose",
+            // "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+            "X-RequestDigest": digest,
+          },
+          success: function (data, textStatus, jqXHR) {
+            setLoaderTime(false);
+            console.log("Img uploaded successfully");
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            setLoaderTime(false);
+            console.log("ERRORS: " + textStatus);
+          },
+        });
+      });
     });
+    // Render thumbnail.
+    //const span = document.createElement('span')
+    const src = URL.createObjectURL(file);
 
-    if (response.ok) {
-      setLoaderTime(false);
-      console.log("File uploaded successfully.");
-    } else {
-      throw new Error(`Error uploading file: ${response.statusText}`);
-    }
-  } catch (error) {
-    throw new Error("Error uploading attachment: " + error);
+    document.getElementById(id).innerHTML = `<div><Image
+            src=${deleteicon}
+            alt="Img_Item"
+            width=20
+            height=20
+            style=position:absolute top: 20px left:20px
+        /><Image
+            src=${src}
+            alt="Img_Item"
+            width=70
+            height=70
+        /></div>`;
+    let temp = document.getElementById(id);
+    console.log(temp.firstChild);
+    temp.firstChild.addEventListener("click", function (event) {
+      hideDiv(id, itemId, file.name, listName);
+    });
   }
 }
+
+// function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
+//   // Loop through the FileList and render image files as thumbnails.
+//   setLoaderTime(true);
+
+//   const uploadFile = async (file) => {
+//     try {
+//       const digest = await getFormDigest();
+//       const buffer = await getFileBuffer(file);
+
+//       await uploadAttachment(
+//         digest,
+//         file,
+//         buffer,
+//         id,
+//         itemId,
+//         listName,
+//         setLoaderTime
+//       );
+//     } catch (error) {
+//       console.error("Error uploading file:", error);
+//       setLoaderTime(false);
+//     }
+//   };
+
+//   for (const file of evt.target.files) {
+//     uploadFile(file);
+//   }
+// }
+
+// async function getFormDigest() {
+//   try {
+//     const response = await fetch("/sites/ssc/_api/contextinfo", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json; odata=verbose",
+//       },
+//     });
+
+//     const data = await response.json();
+//     const digest = data.d.GetContextWebInformation.FormDigestValue;
+//     $("#__REQUESTDIGEST").val(digest); // Update the digest in your form
+//     return digest;
+//   } catch (error) {
+//     throw new Error("Error fetching FormDigestValue: " + error);
+//   }
+// }
+
+// async function getFileBuffer(file) {
+//   return new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+
+//     reader.onload = (e) => {
+//       resolve(e.target.result);
+//     };
+
+//     reader.onerror = (e) => {
+//       reject(e.target.error);
+//     };
+
+//     reader.readAsArrayBuffer(file);
+//   });
+// }
+
+// async function uploadAttachment(
+//   digest,
+//   file,
+//   buffer,
+//   id,
+//   itemId,
+//   listName,
+//   setLoaderTime
+// ) {
+//   const headers = {
+//     Accept: "application/json; odata=verbose",
+//     "X-RequestDigest": digest,
+//   };
+
+//   const endpoint = `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`;
+
+//   try {
+//     const response = await fetch(endpoint, {
+//       method: "POST",
+//       headers,
+//       body: buffer,
+//     });
+
+//     if (response.ok) {
+//       setLoaderTime(false);
+//       console.log("File uploaded successfully.");
+//     } else {
+//       throw new Error(`Error uploading file: ${response.statusText}`);
+//     }
+//   } catch (error) {
+//     throw new Error("Error uploading attachment: " + error);
+//   }
+// }
 
 function hideDiv(id, itemId, filename, listName) {
   //Function to hide the elements
