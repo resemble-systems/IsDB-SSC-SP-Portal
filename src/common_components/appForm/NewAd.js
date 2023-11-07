@@ -66,7 +66,7 @@ const UseForm = (
         Address: updatedValues.Address,
         Author0: updatedValues.Author0,
         //AuthorImage: user.data.UserProfileProperties[18].Value.replace(':443', ''),
-        status: updatedValues.Status,
+        status: updatedValues.status,
         AuthorImage: updatedValues.AuthorImage,
       });
       // $("#__REQUESTDIGEST").val()
