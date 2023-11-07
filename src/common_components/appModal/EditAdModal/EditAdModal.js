@@ -47,6 +47,10 @@ export default function EditAdModal({
   const { TextArea } = Input;
   const [loading, setLoaderTime] = useState(false);
   const [registerDone, setRegisterDone] = useState(false);
+  const [selection, setSelection] = useState(
+    cardData?.status === "Active" ? "Active" : "Sold"
+  );
+  // const [isSold, setIsSold] = useState(false);
   // Form Initial Objects
   const fromObject = {
     category: [],
@@ -68,7 +72,7 @@ export default function EditAdModal({
     address: null,
     subcategory: null,
   };
-  const [isSold, setIsSold] = useState(false);
+  // const [isSold, setIsSold] = useState(false);
   const [itemId, setItemId] = useState(null);
   const [subitems, setsubitems] = useState([]);
   const [subCategoryList, setSubCategoryList] = useState([]);
@@ -121,9 +125,8 @@ export default function EditAdModal({
     Address: Address,
     Author0: cardData.Author0,
     //AuthorImage: user.data.UserProfileProperties[18].Value.replace(':443', ''),
-    status: "published",
     AuthorImage: cardData.AuthorImage,
-    Status: isSold === false ? "Active" : "Sold",
+    status: selection,
   };
   const {
     handleSubmit,
@@ -315,6 +318,12 @@ export default function EditAdModal({
       );
     });
   }
+
+  const handleSelectionChange = (event) => {
+    console.log("value-->", event.target.value);
+    setSelection(event.target.value);
+  };
+
   console.log("Address-->", updatedValues.Address);
   return (
     <Modal
@@ -887,18 +896,30 @@ export default function EditAdModal({
             {/* For large screen */}
             <Col xs={0} sm={0} md={24} lg={24} xl={24}>
               <div className={`d-flex justify-content-end`}>
-                <div className={`d-flex justify-content-center p-2`}>
-                  {/* <button type="button" class="btn btn-primary btn-lg">
-                    {cardData?.Status === "Active" ? "Active" : "Sold"}
-                  </button> */}
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                      setIsSold(!isSold);
-                    }}
-                  >
-                    {isSold === false ? "Active" : "Sold"}
-                  </button>
+                <div className="d-flex align-items-center ">
+                  {/* <p>Selected option: {selection}</p> */}
+
+                  <label>
+                    <input
+                      type="radio"
+                      name="selection"
+                      value="Active"
+                      checked={selection === "Active"}
+                      onChange={handleSelectionChange}
+                    />
+                    Active
+                  </label>
+
+                  <label>
+                    <input
+                      type="radio"
+                      name="selection"
+                      value="Sold"
+                      checked={selection === "Sold"}
+                      onChange={handleSelectionChange}
+                    />
+                    Sold
+                  </label>
                 </div>
                 <div className={`mx-3`}>
                   <AppRoundedBtn
@@ -955,10 +976,7 @@ export default function EditAdModal({
             {/* For small screen */}
             <Col xs={24} sm={24} md={0} lg={0} xl={0}>
               <div className={`d-flex justify-content-center`}>
-                <div className={`d-flex justify-content-center p-2`}>
-                  {/* <button type="button" class="btn btn-primary btn-lg">
-                    {cardData?.Status === "Active" ? "Active" : "Sold"}
-                  </button> */}
+                {/* <div className={`d-flex justify-content-center p-2`}>
                   <button
                     className="btn btn-primary"
                     onClick={() => {
@@ -967,7 +985,8 @@ export default function EditAdModal({
                   >
                     {isSold === false ? "Active" : "Sold"}
                   </button>
-                </div>
+                </div> */}
+                <div>{"checkbox"}</div>
                 <div className={`mx-3`}>
                   <AppRoundedBtn
                     text={"Cancel"}
