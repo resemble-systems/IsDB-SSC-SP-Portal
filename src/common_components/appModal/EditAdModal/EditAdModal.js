@@ -203,7 +203,13 @@ export default function EditAdModal({
   //     }
   //   }, [isEditModal]);
 
-  console.log("errors", errors);
+  useEffect(() => {
+    if (cardData.status === "Active") {
+      setIsSold(false);
+    } else {
+      setIsSold(true);
+    }
+  }, [isSold]);
 
   useEffect(() => {
     if (Category?.length > 0) {
