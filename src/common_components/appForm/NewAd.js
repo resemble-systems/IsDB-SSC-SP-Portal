@@ -11,6 +11,7 @@ import {
   textAreaValidator,
   phoneNumberValidator,
 } from "../../services/validationService";
+import { VAR } from "../../env";
 
 function getMyPictureUrl(accountName, size) {
   return (
@@ -48,7 +49,8 @@ const UseForm = (
         CONST.BASE_URL + CONST.API.LIST("Advertisement") + `(${listId})`;
       const stringifyPostData = JSON.stringify({
         __metadata: {
-          type: "SP.Data.Advertisement1ListItem",
+          // type: "SP.Data.Advertisement1ListItem",
+          type: "SP.Data.AdvertisementListItem",
         },
         Title: updatedValues.Title,
         Description: updatedValues.Description,
@@ -71,36 +73,13 @@ const UseForm = (
       });
       // $("#__REQUESTDIGEST").val()
 
-      const GetDigest = async () => {
-        const requestOptions = {
-          method: "MERGE",
-
-          headers: {
-            "Content-Type": "application/json",
-
-            Accept: "application/json; odata=verbose",
-          },
-        };
-
-        const response = await fetch(
-          `/sites/ssc/_api/contextinfo`,
-          requestOptions
-        );
-
-        const data = await response.json();
-        $("#__REQUESTDIGEST").val(
-          data.d.GetContextWebInformation.FormDigestValue
-        );
-
-        return data.d.GetContextWebInformation.FormDigestValue;
-      };
-      GetDigest().then((digest) => {
+      getDigest().then((digest) => {
         const configAxios = {
           headers: {
             accept: "application/json;odata=verbose",
             "content-type": "application/json;odata=verbose",
             "X-RequestDigest": digest,
-            "X-HTTP-Method": "POST",
+            // "X-HTTP-Method": "POST",
             "IF-MATCH": "*",
             "X-HTTP-Method": "MERGE",
           },
@@ -141,7 +120,8 @@ const UseForm = (
           CONST.BASE_URL + CONST.API.LIST("Advertisement") + `(${eventId})`;
         const stringifyPostData = JSON.stringify({
           __metadata: {
-            type: "SP.Data.Advertisement1ListItem",
+            // type: "SP.Data.Advertisement1ListItem",
+            type: "SP.Data.AdvertisementListItem",
           },
           Title: inputs.adTitle,
           Description: inputs.description,
@@ -163,30 +143,8 @@ const UseForm = (
           status: "Active",
         });
         // $("#__REQUESTDIGEST").val()
-        const GetDigest = async () => {
-          const requestOptions = {
-            method: "POST",
 
-            headers: {
-              "Content-Type": "application/json",
-
-              Accept: "application/json; odata=verbose",
-            },
-          };
-
-          const response = await fetch(
-            `/sites/ssc/_api/contextinfo`,
-            requestOptions
-          );
-
-          const data = await response.json();
-          $("#__REQUESTDIGEST").val(
-            data.d.GetContextWebInformation.FormDigestValue
-          );
-
-          return data.d.GetContextWebInformation.FormDigestValue;
-        };
-        GetDigest().then((digest) => {
+        getDigest().then((digest) => {
           const configAxios = {
             headers: {
               accept: "application/json;odata=verbose",

@@ -5,6 +5,7 @@ import styles from "./form-element.module.sass";
 import camera from "../../assets/update/camera.svg";
 import deleteicon from "../../assets/update/trash.svg";
 import $ from "jquery";
+import getDigest from "../../services/GetDigest/GetDigest";
 
 function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
   // Loop through the FileList and render image files as thumbnails.
@@ -24,77 +25,13 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
       return deferred.promise();
     };
 
-    const GetDigest = async () => {
-      const requestOptions = {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json",
-
-          Accept: "application/json; odata=verbose",
-        },
-      };
-      console.log(
-        "process.env.REACT_APP_BUILD_URL-->",
-        process.env.REACT_APP_BUILD_URL
-      );
-      const response = await fetch(
-        `/sites/ssc/_api/contextinfo`,
-        requestOptions
-      );
-
-      const data = await response.json();
-      $("#__REQUESTDIGEST").val(
-        data.d.GetContextWebInformation.FormDigestValue
-      );
-
-      return data.d.GetContextWebInformation.FormDigestValue;
-    };
     console.log("itemID2--->", itemId);
-    // getFileBuffer(file).then(function (buffer) {
-    //   // GetDigest().then((digest) => {
-    //   // console.log("digestVal-->", digest);
-    //   $.ajax({
-    //     url: `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
-    //     type: "POST",
-    //     cache: false,
-    //     contentType: false,
-    //     method: "POST",
-    //     data: buffer,
-    //     processData: false,
-    //     headers: {
-    //       Accept: "application/json; odata=verbose",
-    //       "content-type": "application/json; odata=verbose",
-    //       "X-RequestDigest": $("#__REQUESTDIGEST").val(),
-    //       // "X-RequestDigest": digest,
-    //     },
-    //     success: function (data, textStatus, jqXHR) {
-    //       setLoaderTime(false);
-    //       console.log("Img uploaded successfully");
-    //     },
-    //     error: function (jqXHR, textStatus, errorThrown) {
-    //       setLoaderTime(false);
-    //       console.log("ERRORS: " + textStatus);
-    //     },
-    //   });
-    //   // });
-    // });
+
     getFileBuffer(file).then(function (buffer) {
-      GetDigest().then((digest) => {
+      getDigest().then((digest) => {
         // console.log("digestVal-->", digest);
         console.log("file-->", file);
         $.ajax({
-          // url: ,
-          // type: "POST",
-          // async: false,
-          // data: buffer,
-          // headers: {
-          //   accept: "application/json;odata=verbose",
-          //   "X-RequestDigest": digest,
-          //   "Content-Type": "application/json;odata=verbose",
-          //   "X-Http-Method": "MERGE",
-          //   "IF-MATCH": file.ListItemAllFields.__metadata.etag,
-          // },
           url: `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
           type: "POST",
           data: buffer,
@@ -105,7 +42,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
           headers: {
             accept: "application/json;odata=verbose",
             "X-RequestDigest": digest,
-            "X-HTTP-Method": "MERGE",
+            "X-HTTP-Method": "POST",
             "If-Match": "*",
             "Content-Type": "application/json;odata=verbose",
             credentials: "same-origin",

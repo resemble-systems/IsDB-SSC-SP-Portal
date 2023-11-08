@@ -16,6 +16,7 @@ import TextArea from "../../formElement/TextArea";
 // css
 import styles from "./new-ad.module.sass";
 import { VAR } from "../../../env";
+import getDigest from "../../../services/GetDigest/GetDigest";
 
 // onCancel Handler
 function onCancelHandler(
@@ -98,7 +99,8 @@ export default function NewAdModal({
       const url = CONST.BASE_URL + CONST.API.LIST("Advertisement");
       const stringifyPostData = JSON.stringify({
         __metadata: {
-          type: "SP.Data.Advertisement1ListItem",
+          // type: "SP.Data.Advertisement1ListItem",
+          type: "SP.Data.AdvertisementListItem",
         },
         Title: "Test Title",
         Description: "",
@@ -116,30 +118,7 @@ export default function NewAdModal({
         status: "draft",
       });
 
-      const GetDigest = async () => {
-        const requestOptions = {
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json",
-
-            Accept: "application/json; odata=verbose",
-          },
-        };
-
-        const response = await fetch(
-          `/sites/ssc/_api/contextinfo`,
-          requestOptions
-        );
-
-        const data = await response.json();
-        $("#__REQUESTDIGEST").val(
-          data.d.GetContextWebInformation.FormDigestValue
-        );
-
-        return data.d.GetContextWebInformation.FormDigestValue;
-      };
-      GetDigest().then((digest) => {
+      getDigest().then((digest) => {
         const configAxios = {
           headers: {
             accept: "application/json;odata=verbose",
