@@ -39,7 +39,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
         process.env.REACT_APP_BUILD_URL
       );
       const response = await fetch(
-        `${process.env.REACT_APP_BUILD_URL}/_api/contextinfo`,
+        `/sites/ssc/_api/contextinfo`,
         requestOptions
       );
 
@@ -84,16 +84,31 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
         // console.log("digestVal-->", digest);
         console.log("file-->", file);
         $.ajax({
+          // url: ,
+          // type: "POST",
+          // async: false,
+          // data: buffer,
+          // headers: {
+          //   accept: "application/json;odata=verbose",
+          //   "X-RequestDigest": digest,
+          //   "Content-Type": "application/json;odata=verbose",
+          //   "X-Http-Method": "MERGE",
+          //   "IF-MATCH": file.ListItemAllFields.__metadata.etag,
+          // },
           url: `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
           type: "POST",
-          async: false,
           data: buffer,
+          processData: false,
+          async: false,
+          contentType: "application/json;odata=verbose",
+
           headers: {
             accept: "application/json;odata=verbose",
             "X-RequestDigest": digest,
+            "X-HTTP-Method": "MERGE",
+            "If-Match": "*",
             "Content-Type": "application/json;odata=verbose",
-            "X-Http-Method": "MERGE",
-            "IF-MATCH": file.ListItemAllFields.__metadata.etag,
+            credentials: "same-origin",
           },
           success: function (data, textStatus, jqXHR) {
             setLoaderTime(false);
@@ -361,7 +376,7 @@ export default function TestUpload({
                 style={{ cursor: "pointer" }}
                 onClick={() => setCount(count + 1)}
               >
-                Add more1
+                Add more2
               </b>{" "}
             </Col>
           </Row>
@@ -427,7 +442,7 @@ export default function TestUpload({
               style={{ cursor: "pointer" }}
               onClick={() => setCount(count + 1)}
             >
-              Add more1
+              Add more2
             </b>{" "}
           </Col>
         </Row>
