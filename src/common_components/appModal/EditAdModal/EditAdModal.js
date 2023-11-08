@@ -895,31 +895,46 @@ export default function EditAdModal({
             </Col>
             {/* For large screen */}
             <Col xs={0} sm={0} md={24} lg={24} xl={24}>
-              <div className={`d-flex justify-content-end`}>
-                <div className="d-flex align-items-center ">
+              <div className={`d-flex justify-content-end `}>
+                <div
+                  className="d-flex align-items-center mt-2"
+                  style={{ fontWeight: "500" }}
+                >
                   {/* <p>Selected option: {selection}</p> */}
-
-                  <label>
-                    <input
-                      type="radio"
-                      name="selection"
-                      value="Active"
-                      checked={selection === "Active"}
-                      onChange={handleSelectionChange}
-                    />
-                    Active
-                  </label>
-
-                  <label>
-                    <input
-                      type="radio"
-                      name="selection"
-                      value="Sold"
-                      checked={selection === "Sold"}
-                      onChange={handleSelectionChange}
-                    />
-                    Sold
-                  </label>
+                  <div>
+                    <label
+                      className={`${
+                        selection === "Active" ? "text-primary" : ""
+                      }`}
+                    >
+                      <input
+                        className="mx-2"
+                        type="radio"
+                        name="selection"
+                        value="Active"
+                        checked={selection === "Active"}
+                        onChange={handleSelectionChange}
+                      />
+                      Active
+                    </label>
+                  </div>
+                  <div>
+                    <label
+                      className={`${
+                        selection === "Sold" ? "text-primary" : ""
+                      }`}
+                    >
+                      <input
+                        className="mx-2"
+                        type="radio"
+                        name="selection"
+                        value="Sold"
+                        checked={selection === "Sold"}
+                        onChange={handleSelectionChange}
+                      />
+                      Sold
+                    </label>
+                  </div>
                 </div>
                 <div className={`mx-3`}>
                   <AppRoundedBtn
