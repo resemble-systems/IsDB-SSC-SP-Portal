@@ -24,57 +24,87 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
       return deferred.promise();
     };
 
-    // const GetDigest = async () => {
-    //   const requestOptions = {
-    //     method: "POST",
-
-    //     headers: {
-    //       "Content-Type": "application/json",
-
-    //       Accept: "application/json; odata=verbose",
-    //     },
-    //   };
-
-    //   const response = await fetch(
-    //     `/sites/ssc/_api/contextinfo`,
-    //     requestOptions
-    //   );
-
-    //   const data = await response.json();
-    //   $("#__REQUESTDIGEST").val(
-    //     data.d.GetContextWebInformation.FormDigestValue
-    //   );
-
-    //   return data.d.GetContextWebInformation.FormDigestValue;
-    // };
-    console.log("itemID2--->", itemId);
-    getFileBuffer(file).then(function (buffer) {
-      // GetDigest().then((digest) => {
-      // console.log("digestVal-->", digest);
-      $.ajax({
-        url: `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
-        type: "POST",
-        cache: false,
-        contentType: false,
+    const GetDigest = async () => {
+      const requestOptions = {
         method: "POST",
-        data: buffer,
-        processData: false,
+
         headers: {
+          "Content-Type": "application/json",
+
           Accept: "application/json; odata=verbose",
-          "content-type": "application/json; odata=verbose",
-          "X-RequestDigest": $("#__REQUESTDIGEST").val(),
-          // "X-RequestDigest": digest,
         },
-        success: function (data, textStatus, jqXHR) {
-          setLoaderTime(false);
-          console.log("Img uploaded successfully");
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-          setLoaderTime(false);
-          console.log("ERRORS: " + textStatus);
-        },
+      };
+      console.log(
+        "process.env.REACT_APP_BUILD_URL-->",
+        process.env.REACT_APP_BUILD_URL
+      );
+      const response = await fetch(
+        `${process.env.REACT_APP_BUILD_URL}/_api/contextinfo`,
+        requestOptions
+      );
+
+      const data = await response.json();
+      $("#__REQUESTDIGEST").val(
+        data.d.GetContextWebInformation.FormDigestValue
+      );
+
+      return data.d.GetContextWebInformation.FormDigestValue;
+    };
+    console.log("itemID2--->", itemId);
+    // getFileBuffer(file).then(function (buffer) {
+    //   // GetDigest().then((digest) => {
+    //   // console.log("digestVal-->", digest);
+    //   $.ajax({
+    //     url: `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
+    //     type: "POST",
+    //     cache: false,
+    //     contentType: false,
+    //     method: "POST",
+    //     data: buffer,
+    //     processData: false,
+    //     headers: {
+    //       Accept: "application/json; odata=verbose",
+    //       "content-type": "application/json; odata=verbose",
+    //       "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+    //       // "X-RequestDigest": digest,
+    //     },
+    //     success: function (data, textStatus, jqXHR) {
+    //       setLoaderTime(false);
+    //       console.log("Img uploaded successfully");
+    //     },
+    //     error: function (jqXHR, textStatus, errorThrown) {
+    //       setLoaderTime(false);
+    //       console.log("ERRORS: " + textStatus);
+    //     },
+    //   });
+    //   // });
+    // });
+    getFileBuffer(file).then(function (buffer) {
+      GetDigest().then((digest) => {
+        // console.log("digestVal-->", digest);
+        console.log("file-->", file);
+        $.ajax({
+          url: `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
+          type: "POST",
+          async: false,
+          data: buffer,
+          headers: {
+            accept: "application/json;odata=verbose",
+            "X-RequestDigest": digest,
+            "Content-Type": "application/json;odata=verbose",
+            "X-Http-Method": "MERGE",
+            "IF-MATCH": file.ListItemAllFields.__metadata.etag,
+          },
+          success: function (data, textStatus, jqXHR) {
+            setLoaderTime(false);
+            console.log("Img uploaded successfully");
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            setLoaderTime(false);
+            console.log("ERRORS: " + textStatus);
+          },
+        });
       });
-      // });
     });
     // Render thumbnail.
     //const span = document.createElement('span')
@@ -331,7 +361,7 @@ export default function TestUpload({
                 style={{ cursor: "pointer" }}
                 onClick={() => setCount(count + 1)}
               >
-                Add more
+                Add more1
               </b>{" "}
             </Col>
           </Row>
@@ -397,7 +427,7 @@ export default function TestUpload({
               style={{ cursor: "pointer" }}
               onClick={() => setCount(count + 1)}
             >
-              Add more
+              Add more1
             </b>{" "}
           </Col>
         </Row>
