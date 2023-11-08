@@ -9,7 +9,7 @@ const getDigest = async () => {
     },
   };
   const response = await fetch(
-    `${VAR.REACT_APP_BUILD_URL}/_api/contextinfo`,
+    `${VAR?.REACT_APP_BUILD_URL}/_api/contextinfo`,
     requestOptions
   );
   const data = await response.json();
