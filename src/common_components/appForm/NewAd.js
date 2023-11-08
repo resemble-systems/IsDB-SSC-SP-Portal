@@ -49,8 +49,8 @@ const UseForm = (
         CONST.BASE_URL + CONST.API.LIST("Advertisement") + `(${listId})`;
       const stringifyPostData = JSON.stringify({
         __metadata: {
-          // type: "SP.Data.Advertisement1ListItem",
-          type: "SP.Data.AdvertisementListItem",
+          type: "SP.Data.Advertisement1ListItem",
+          // type: "SP.Data.AdvertisementListItem",
         },
         Title: updatedValues.Title,
         Description: updatedValues.Description,

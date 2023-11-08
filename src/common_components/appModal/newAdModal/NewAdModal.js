@@ -99,8 +99,8 @@ export default function NewAdModal({
       const url = CONST.BASE_URL + CONST.API.LIST("Advertisement");
       const stringifyPostData = JSON.stringify({
         __metadata: {
-          // type: "SP.Data.Advertisement1ListItem",
-          type: "SP.Data.AdvertisementListItem",
+          type: "SP.Data.Advertisement1ListItem",
+          // type: "SP.Data.AdvertisementListItem",
         },
         Title: "Test Title",
         Description: "",
