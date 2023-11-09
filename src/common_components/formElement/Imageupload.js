@@ -47,7 +47,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
       $("#__REQUESTDIGEST").val(
         data.d.GetContextWebInformation.FormDigestValue
       );
-
+      console.log("digestValue---->", data);
       return data.d.GetContextWebInformation.FormDigestValue;
     };
 
