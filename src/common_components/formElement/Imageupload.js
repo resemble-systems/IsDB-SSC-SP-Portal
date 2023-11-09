@@ -27,8 +27,32 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
 
     console.log("itemID2--->", itemId);
 
+    const GetDigest = async () => {
+      const requestOptions = {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+
+          Accept: "application/json; odata=verbose",
+        },
+      };
+
+      const response = await fetch(
+        `/sites/ssc/_api/contextinfo`,
+        requestOptions
+      );
+
+      const data = await response.json();
+      $("#__REQUESTDIGEST").val(
+        data.d.GetContextWebInformation.FormDigestValue
+      );
+
+      return data.d.GetContextWebInformation.FormDigestValue;
+    };
+
     getFileBuffer(file).then(function (buffer) {
-      getDigest().then((digest) => {
+      GetDigest().then((digest) => {
         // console.log("digestVal-->", digest);
         console.log("file-->", file);
         $.ajax({
