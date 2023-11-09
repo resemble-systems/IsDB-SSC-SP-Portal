@@ -210,24 +210,45 @@ function hideDiv(id, itemId, filename, listName) {
   myobj.remove();
   //alert(id)
 
-  //Deleteattacment fn
-  var Url = `/sites/ssc/_api/web/lists/GetByTitle('${listName}')/GetItemById(${itemId})/AttachmentFiles/getByFileName('${filename}') `;
-  $.ajax({
-    url: Url,
-    type: "POST",
-    contentType: "application/json;odata=verbose",
-    headers: {
-      "X-RequestDigest": $("#__REQUESTDIGEST").val(),
-      "X-HTTP-Method": "DELETE",
-      Accept: "application / json; odata = verbose",
-    },
+  const GetDigest1 = async () => {
+    const requestOptions = {
+      method: "POST",
 
-    success: function (data) {
-      console.log("Image Deleted");
-    },
-    error: function (error) {
-      console.log("Error deleteing file", JSON.stringify(error));
-    },
+      headers: {
+        "Content-Type": "application/json",
+
+        Accept: "application/json; odata=verbose",
+      },
+    };
+
+    const response = await fetch(`/sites/ssc/_api/contextinfo`, requestOptions);
+
+    const data = await response.json();
+    $("#__REQUESTDIGEST").val(data.d.GetContextWebInformation.FormDigestValue);
+    console.log("digestValue---->", data);
+    return data.d.GetContextWebInformation.FormDigestValue;
+  };
+  //Deleteattacment fn
+  GetDigest1().then((digest) => {
+    var Url = `/sites/ssc/_api/web/lists/GetByTitle('${listName}')/GetItemById(${itemId})/AttachmentFiles/getByFileName('${filename}') `;
+    $.ajax({
+      url: Url,
+      type: "POST",
+      contentType: "application/json;odata=verbose",
+      headers: {
+        // "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+        "X-RequestDigest": digest,
+        "X-HTTP-Method": "DELETE",
+        Accept: "application / json; odata = verbose",
+      },
+
+      success: function (data) {
+        console.log("Image Deleted");
+      },
+      error: function (error) {
+        console.log("Error deleteing file", JSON.stringify(error));
+      },
+    });
   });
 }
 

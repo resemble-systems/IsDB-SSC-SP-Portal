@@ -5,8 +5,8 @@ export const CONST = {
   BASE_URL: `${VAR.BASE_URL}`,
   API: {
     USER: "/_api/sp.userprofiles.peoplemanager/getmyproperties",
-    LIST: listName => `/_api/web/lists/GetByTitle('${listName}')/items`,
-    QUERY: cloumnName => `?$select=${cloumnName}`,
+    LIST: (listName) => `/_api/web/lists/GetByTitle('${listName}')/items`,
+    QUERY: (cloumnName) => `?$select=${cloumnName}`,
     ATTACHMENT: `&$expand=AttachmentFiles`,
     FILTER: (columnName, filterItem) =>
       `&$filter= ${columnName} eq '${filterItem}'`,

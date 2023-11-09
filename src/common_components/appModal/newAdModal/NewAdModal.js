@@ -102,7 +102,7 @@ export default function NewAdModal({
           type: "SP.Data.Advertisement1ListItem",
           // type: "SP.Data.AdvertisementListItem",
         },
-        Title: "Test Title",
+        Title: "",
         Description: "",
         Price: "",
         Brand: "",
