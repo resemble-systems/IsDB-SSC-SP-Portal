@@ -1,3 +1,4 @@
+import $ from "jquery";
 import { VAR } from "../../env";
 
 const getDigest = async () => {
@@ -13,6 +14,7 @@ const getDigest = async () => {
     requestOptions
   );
   const data = await response.json();
+  $("#__REQUESTDIGEST").val(data.d.GetContextWebInformation.FormDigestValue);
   return data.d.GetContextWebInformation.FormDigestValue;
 };
 
