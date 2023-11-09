@@ -28,7 +28,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
     console.log("itemID2--->", itemId);
 
     getFileBuffer(file).then(function (buffer) {
-      getDigest().then(async (digest) => {
+      getDigest().then((digest) => {
         // console.log("digestVal-->", digest);
         console.log("file-->", file);
         $.ajax({
@@ -41,7 +41,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
 
           headers: {
             accept: "application/json;odata=verbose",
-            "X-RequestDigest": await digest,
+            "X-RequestDigest": digest,
             "X-HTTP-Method": "POST",
             "If-Match": "*",
             "Content-Type": "application/json;odata=verbose",

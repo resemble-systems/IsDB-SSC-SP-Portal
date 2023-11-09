@@ -4,6 +4,7 @@ export const VAR = {
 
   // BASE_URL: "http://localhost:3456",
   // REACT_APP_BUILD_URL: "/sites/powerbi/IDBSocialClub",
+  // GET_DIGEST_VALUE: "/sites/powerbi/IDBSocialClub",
 
   BASE_URL: "https://isdb.sharepoint.com/sites/ssc",
   REACT_APP_BUILD_URL: "/quality/IDBSocialClub",
