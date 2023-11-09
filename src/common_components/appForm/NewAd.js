@@ -73,12 +73,12 @@ const UseForm = (
       });
       // $("#__REQUESTDIGEST").val()
 
-      getDigest().then((digest) => {
+      getDigest().then(async (digest) => {
         const configAxios = {
           headers: {
             accept: "application/json;odata=verbose",
             "content-type": "application/json;odata=verbose",
-            "X-RequestDigest": digest,
+            "X-RequestDigest": await digest,
             // "X-HTTP-Method": "POST",
             "IF-MATCH": "*",
             "X-HTTP-Method": "MERGE",
@@ -120,8 +120,8 @@ const UseForm = (
           CONST.BASE_URL + CONST.API.LIST("Advertisement") + `(${eventId})`;
         const stringifyPostData = JSON.stringify({
           __metadata: {
-            // type: "SP.Data.Advertisement1ListItem",
-            type: "SP.Data.AdvertisementListItem",
+            type: "SP.Data.Advertisement1ListItem",
+            // type: "SP.Data.AdvertisementListItem",
           },
           Title: inputs.adTitle,
           Description: inputs.description,
@@ -144,12 +144,12 @@ const UseForm = (
         });
         // $("#__REQUESTDIGEST").val()
 
-        getDigest().then((digest) => {
+        getDigest().then(async (digest) => {
           const configAxios = {
             headers: {
               accept: "application/json;odata=verbose",
               "content-type": "application/json;odata=verbose",
-              "X-RequestDigest": digest,
+              "X-RequestDigest": await digest,
               "X-HTTP-Method": "POST",
               "IF-MATCH": "*",
               "X-HTTP-Method": "MERGE",

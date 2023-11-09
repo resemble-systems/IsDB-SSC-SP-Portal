@@ -118,13 +118,13 @@ export default function NewAdModal({
         status: "draft",
       });
 
-      getDigest().then((digest) => {
+      getDigest().then(async (digest) => {
         const configAxios = {
           headers: {
             accept: "application/json;odata=verbose",
             "content-type": "application/json;odata=verbose",
             // "X-RequestDigest": $("#__REQUESTDIGEST").val(),
-            "X-RequestDigest": digest,
+            "X-RequestDigest": await digest,
             "X-HTTP-Method": "POST",
             "IF-MATCH": "*",
           },
