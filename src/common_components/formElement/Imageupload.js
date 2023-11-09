@@ -211,7 +211,7 @@ function hideDiv(id, itemId, filename, listName) {
   //alert(id)
 
   //Deleteattacment fn
-  var Url = `/_api/web/lists/GetByTitle('${listName}')/GetItemById(${itemId})/AttachmentFiles/getByFileName('${filename}') `;
+  var Url = `/sites/ssc/_api/web/lists/GetByTitle('${listName}')/GetItemById(${itemId})/AttachmentFiles/getByFileName('${filename}') `;
   $.ajax({
     url: Url,
     type: "POST",
