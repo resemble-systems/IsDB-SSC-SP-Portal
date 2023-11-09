@@ -7,6 +7,7 @@ export const VAR = {
 
   BASE_URL: "https://isdb.sharepoint.com/sites/ssc",
   REACT_APP_BUILD_URL: "/quality/IDBSocialClub",
+  GET_DIGEST_VALUE: "/sites/ssc",
   //====+==================================================
 
   //============== MAIN APIs PART ===========================
