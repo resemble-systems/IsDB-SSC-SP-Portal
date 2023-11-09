@@ -56,7 +56,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
         // console.log("digestVal-->", digest);
         console.log("file-->", file);
         $.ajax({
-          url: `/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
+          url: `/sites/ssc/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
           type: "POST",
           data: buffer,
           processData: false,
