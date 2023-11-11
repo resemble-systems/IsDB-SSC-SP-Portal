@@ -97,50 +97,49 @@ export default function ResponsiveView({ view, testimonialsData }) {
             </Row>
           </Col>
           <Col xs={0} sm={0} md={8} lg={7} xl={7}>
-            <div className={`${styles.image_container} w-100`}>
+            <div
+              className={`${styles.image_container} w-100 mx-5`}
+              // style={{ marginLeft: "20px" }}
+            >
               <div className={`${styles.testimonials_image_box}`}>
-                <div
+                {/* <div
                   className={`d-flex justify-content-center align-items-center overflow-hidden h-100`}
-                >
-                  {testimonialsData &&
-                  testimonialsData.AttachmentFiles &&
-                  testimonialsData.AttachmentFiles.length > 0 ? (
-                    <img
-                      src={
-                        testimonialsData.AttachmentFiles[0].ServerRelativeUrl
-                      }
-                      alt="card-img"
-                      width="100%"
-                      // height="200"
-                    ></img>
-                  ) : (
-                    <Skeleton.Image />
-                  )}
-                </div>
+                > */}
+                {testimonialsData &&
+                testimonialsData.AttachmentFiles &&
+                testimonialsData.AttachmentFiles.length > 0 ? (
+                  <img
+                    src={testimonialsData.AttachmentFiles[0].ServerRelativeUrl}
+                    alt="card-img"
+                    width={100}
+                    height={200}
+                  ></img>
+                ) : (
+                  <Skeleton.Image />
+                )}
+                {/* </div> */}
               </div>
             </div>
           </Col>
           <Col xs={24} sm={24} md={0} lg={0} xl={0}>
             <div className={`${styles.image_container} w-100`}>
               <div className={`${styles.testimonials_image_box}`}>
-                <div
+                {/* <div
                   className={`d-flex justify-content-center align-items-center overflow-hidden h-100`}
-                >
-                  {testimonialsData &&
-                  testimonialsData.AttachmentFiles &&
-                  testimonialsData.AttachmentFiles.length > 0 ? (
-                    <img
-                      src={
-                        testimonialsData.AttachmentFiles[0].ServerRelativeUrl
-                      }
-                      alt="card-img"
-                      width="200"
-                      height="200"
-                    ></img>
-                  ) : (
-                    <Skeleton.Image />
-                  )}
-                </div>
+                > */}
+                {testimonialsData &&
+                testimonialsData.AttachmentFiles &&
+                testimonialsData.AttachmentFiles.length > 0 ? (
+                  <img
+                    src={testimonialsData.AttachmentFiles[0].ServerRelativeUrl}
+                    alt="card-img"
+                    width={600}
+                    height={600}
+                  ></img>
+                ) : (
+                  <Skeleton.Image />
+                )}
+                {/* </div> */}
               </div>
             </div>
           </Col>

@@ -129,7 +129,7 @@ export default function AppDrawer({
   if (isAdmin[0]) {
     menuLists[0].links.push({
       name: "Admin Panel",
-      link: "/sites/ssc/Pages/Admin.aspx",
+      link: "/Pages/Admin.aspx",
     });
   }
   console.log("list-->", services);

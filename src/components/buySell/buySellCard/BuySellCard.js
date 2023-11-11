@@ -30,6 +30,7 @@ export default function BuySellCard({
       <div className={`${styles.buysell_card} my-2`}>
         <div
           className={`${styles.buysell_mainImgConatiner} d-flex justify-content-center align-items-center overflow-hidden`}
+          style={{ borderRadius: "10px 10px 0 0" }}
         >
           {cardData &&
           cardData.AttachmentFiles.length > 0 &&
