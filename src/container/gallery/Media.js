@@ -16,7 +16,7 @@ export default function Media({ routePath }) {
   const [titleData, setTitleData] = useState(null);
   useEffect(() => {
     // debugger;
-    if (routePath && routePath.id) {
+    if (routePath && routePath?.id) {
       axios
         .get(
           `${CONST.BASE_URL}${CONST.API.LIST("Gallery")}${CONST.API.QUERY(
@@ -59,11 +59,11 @@ export default function Media({ routePath }) {
             <InnerPageTitleSection title={"Media Gallery"} />
           </div>
           {eventData &&
-            eventData.length > 0 &&
+            eventData?.length > 0 &&
             titleData &&
-            titleData.length > 0 &&
+            titleData?.length > 0 &&
             routePath &&
-            routePath.id.length > 0 && (
+            routePath?.id?.length > 0 && (
               <GalleryInnerPageSection
                 eventData={eventData}
                 titleData={titleData}

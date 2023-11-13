@@ -34,7 +34,6 @@ export default function ServicesActivitiesCard({ data }) {
   // }, [data]);
 
   useEffect(() => {
-    console.log("Hello--->");
     if (
       data &&
       Object.keys(data)?.length > 0 &&
@@ -44,7 +43,7 @@ export default function ServicesActivitiesCard({ data }) {
       let logos = serviceLogoData?.find(
         (logo) => logo.Title === data.ID.toString()
       );
-      console.log("Hello--->inside", logos);
+
       setLogo(logos?.AttachmentFiles[0]?.ServerRelativeUrl);
     }
   }, [serviceLogoData]);

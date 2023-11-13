@@ -125,7 +125,7 @@ export default function NewsPublications() {
   };
 
   useEffect(() => {
-    console.log("activeindexnews", activeIndex, finalIndex);
+    // console.log("activeindexnews", activeIndex, finalIndex);
     if (activeIndex === 0) setPrevBtn("disable");
     else setPrevBtn("enable");
     if (activeIndex === finalIndex) setNextBtn("disable");

@@ -2,6 +2,7 @@ import { Row, Col, Skeleton } from "antd";
 import quote from "../../../assets/context/testimonialsDoubleQuote.svg";
 // css
 import styles from "./testimonials.module.sass";
+import Scrollbars from "react-custom-scrollbars";
 
 export default function ResponsiveView({ view, testimonialsData }) {
   return (
@@ -29,7 +30,11 @@ export default function ResponsiveView({ view, testimonialsData }) {
                 <p className={`${styles.testimonials_des} w-100`}>
                   {testimonialsData &&
                   testimonialsData.TestimonialsDescription ? (
-                    testimonialsData.TestimonialsDescription
+                    <p className={`${styles.event_details_des} pr-4`}>
+                      <Scrollbars style={{ height: "100%", width: "100p%" }}>
+                        {testimonialsData.TestimonialsDescription}
+                      </Scrollbars>
+                    </p>
                   ) : (
                     <Skeleton style={{ width: 500 }} />
                   )}

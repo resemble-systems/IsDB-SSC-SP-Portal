@@ -29,10 +29,10 @@ export default function NewsSection({ routePath }) {
 
   return (
     <div className={`${styles.news_bg}`}>
-      <div className={`${styles.news_container} pb-5`}>
+      <div className={`${styles.news_container}`}>
         <Row gutter={[16, 16]}>
           <Col span={24}>
-            <h3 className={`${styles.news_tilte} mb-5`}>News</h3>
+            <h3 className={`${styles.news_tilte} mb-3`}>News</h3>
           </Col>
           {newsData &&
             newsData?.length > 0 &&

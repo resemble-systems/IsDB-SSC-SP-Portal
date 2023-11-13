@@ -159,13 +159,13 @@ export default function BuysellSection() {
     // }
     adCategories.forEach((data) => {
       if (data.Title === selectedCategory) {
-        let selectedSubCategory = subCategoryList.filter(
-          (subCategory) => subCategory.CategoryId === data.ID.toString()
+        let selectedSubCategory = subCategoryList?.filter(
+          (subCategory) => subCategory?.CategoryId === data.ID.toString()
         );
-        selectedSubCategory = selectedSubCategory.map(
-          (subCategory) => subCategory.Title
+        selectedSubCategory = selectedSubCategory?.map(
+          (subCategory) => subCategory?.Title
         );
-        if (selectedSubCategory && selectedSubCategory.length > 0)
+        if (selectedSubCategory && selectedSubCategory?.length > 0)
           setsubitems(selectedSubCategory);
         else setsubitems([]);
       }
@@ -175,11 +175,11 @@ export default function BuysellSection() {
   useEffect(() => {
     if (yourAds === false) {
       if (subMenu.toLowerCase() === "all") {
-        setFilterData(cardsData?.filter((data) => data.status === "Active"));
+        setFilterData(cardsData?.filter((data) => data?.status === "Active"));
       } else if (subMenu.toLowerCase() === "others") {
         let filteredData = cardsData?.filter(
           (data) =>
-            data.Category.toLowerCase() === subMenu.toLowerCase() &&
+            data.Category?.toLowerCase() === subMenu?.toLowerCase() &&
             data.status === "Active"
         );
         setFilterData(filteredData);
@@ -187,7 +187,7 @@ export default function BuysellSection() {
         let filteredData = cardsData?.filter(
           (data) =>
             data.SubCategory &&
-            data.SubCategory.toLowerCase() === subMenu.toLowerCase() &&
+            data.SubCategory?.toLowerCase() === subMenu?.toLowerCase() &&
             data.status === "Active"
         );
         setFilterData(filteredData);
@@ -209,7 +209,7 @@ export default function BuysellSection() {
     // }
     console.log("yourAds-->", yourAds);
     if (yourAds === true /* && user && user?.length > 0 */) {
-      if (subMenu.toLowerCase() === "all") {
+      if (subMenu?.toLowerCase() === "all") {
         console.log("alllll", filterData);
         let filterAll = cardsData?.filter(
           (data) =>
@@ -217,10 +217,10 @@ export default function BuysellSection() {
             (data?.status === "Active" || data?.status === "Sold")
         );
         setFilterData(filterAll);
-      } else if (subMenu.toLowerCase() === "others") {
+      } else if (subMenu?.toLowerCase() === "others") {
         let filteredData = cardsData?.filter(
           (data) =>
-            data.Category.toLowerCase() === subMenu.toLowerCase() &&
+            data.Category?.toLowerCase() === subMenu?.toLowerCase() &&
             data.Author0 === user?.data?.DisplayName &&
             (data?.status === "Active" || data?.status === "Sold")
         );
@@ -230,7 +230,7 @@ export default function BuysellSection() {
         let filteredData = cardsData?.filter(
           (data) =>
             data.SubCategory &&
-            data.SubCategory.toLowerCase() === subMenu.toLowerCase() &&
+            data.SubCategory?.toLowerCase() === subMenu?.toLowerCase() &&
             data.Author0 === user?.data?.DisplayName &&
             (data?.status === "Active" || data?.status === "Sold")
         );

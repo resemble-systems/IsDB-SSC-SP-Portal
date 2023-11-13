@@ -17,9 +17,10 @@ export default function GalleryInnerPageSection({
   const [filteredcardData, setFilteredCardData] = useState([]);
   const [AllData, setAllData] = useState([]);
   // Conditional Rendering
+  console.log("eventData-->", eventData);
   useEffect(() => {
-    if (eventData && eventData.length > 0) {
-      let data = eventData.filter(
+    if (eventData && eventData?.length > 0) {
+      let data = eventData?.filter(
         (data) =>
           data.ContentType0.toLowerCase() === category.toLowerCase() &&
           data.Title === routePath.id
@@ -29,7 +30,7 @@ export default function GalleryInnerPageSection({
   }, [eventData, category, routePath]);
 
   useEffect(() => {
-    if (eventData && eventData.length > 0) {
+    if (eventData && eventData?.length > 0) {
       let data = eventData.filter((data) => data.Title === routePath.id);
       setAllData(data);
     }
@@ -47,8 +48,8 @@ export default function GalleryInnerPageSection({
           <GalleryTitle titleData={titleData} setCategory={setCategory} />
         )}
         {/*  */}
-        {(filteredcardData && filteredcardData.length > 0) ||
-        (eventData && eventData.length > 0) ? (
+        {(filteredcardData && filteredcardData?.length > 0) ||
+        (eventData && eventData?.length > 0) ? (
           <GalleryImageCard
             filteredcardData={filteredcardData}
             category={category}

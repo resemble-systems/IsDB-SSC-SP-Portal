@@ -124,6 +124,11 @@ function Header({
       </Menu.Item>
     </Menu>
   );
+  const buttonStyle = {
+    background: "none", // Set background to 'none' or any other value you prefer
+    borderColor: "transparent", // Set border color to 'transparent' to remove border
+    color: "#000", // Set text color to a desired value
+  };
 
   console.log("ddmenuHeader-->", ddmenu);
   return (
@@ -135,16 +140,21 @@ function Header({
             <Row>
               <Col xs={8} sm={8} md={6} lg={8} xl={8}>
                 <div className={`${styles.header_contain}`}>
+                  <div className="pr-3 ">
+                    <Button
+                      style={buttonStyle}
+                      className="w3-hover-light-grey"
+                      type="text"
+                      icon={
+                        <img src={menuIcon} alt="logo" width="33" height="26" />
+                      }
+                      onClick={() => setDrawerVisbility(true)}
+                    />
+                  </div>
                   <Button
+                    style={buttonStyle}
                     type="text"
-                    icon={
-                      <img src={menuIcon} alt="logo" width="33" height="26" />
-                    }
-                    onClick={() => setDrawerVisbility(true)}
-                  />
-                  <Button
-                    type="text"
-                    className={`${styles.menu_btn} px-4`}
+                    className={`${styles.menu_btn}`}
                     onClick={() => setDrawerVisbility(true)}
                   >
                     Menu

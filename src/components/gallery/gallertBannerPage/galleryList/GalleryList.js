@@ -20,7 +20,7 @@ export default function GalleryList({ listData, listSize, pageNumber }) {
     if (listData && listData.length > 0)
       setPaginatedListData(paginationService(listData, listSize, pageNumber));
   }, [listSize, pageNumber, listData]);
-
+  console.log("galery-->", paginatedListData);
   return (
     <Row>
       <Col xs={24} sm={24} md={24} lg={24} xl={24}>

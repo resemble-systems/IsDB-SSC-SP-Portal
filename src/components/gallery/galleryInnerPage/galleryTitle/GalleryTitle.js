@@ -14,7 +14,7 @@ export default function GalleryTitle({ titleData, setCategory }) {
     <>
       <Row>
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-          <h3 className={`mb-4 ${styles.gallery_inner_title}`}>
+          <h3 className={`mb-4 mt-5 ${styles.gallery_inner_title}`}>
             {titleData && titleData.length > 0 && titleData[0].Title}
           </h3>
         </Col>

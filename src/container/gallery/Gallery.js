@@ -19,7 +19,7 @@ export default function GalleryPage() {
     axios
       .get(
         `${CONST.BASE_URL}${CONST.API.LIST("Gallery")}${CONST.API.QUERY(
-          "Title,EventOccurDate,EventType,Id,Location"
+          "Title,EventOccurDate,EventType,Id,Location&$orderby=ID desc"
         )}`
       )
       .then((res) => {

@@ -33,8 +33,8 @@ export default function Testimonials() {
         setAutoPlay={() => {}}
         stopOnHover={true}
       >
-        {testimonialsData && testimonialsData.length > 0
-          ? testimonialsData.map((data, index) => (
+        {testimonialsData && testimonialsData?.length > 0
+          ? testimonialsData?.map((data, index) => (
               <Row key={index}>
                 <Col xs={0} sm={0} md={0} lg={24} xl={24}>
                   <ResponsiveView view={"desktop"} testimonialsData={data} />

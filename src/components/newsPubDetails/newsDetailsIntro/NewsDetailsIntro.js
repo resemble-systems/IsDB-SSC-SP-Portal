@@ -36,14 +36,6 @@ export default function EventDetailsIntro({ routePath }) {
   useEffect(() => {
     if (routePath && newsLib && newsLib?.length > 0) {
       const filterNews = newsLib.filter((data) => {
-        console.log(
-          "newsLib->",
-          news,
-          newsLib,
-
-          routePath.id,
-          data.ID.toString()
-        );
         return data.ID.toString() === routePath.id;
       });
       setNews(filterNews);
@@ -51,7 +43,7 @@ export default function EventDetailsIntro({ routePath }) {
   }, [routePath]);
 
   return (
-    <div className={`${styles.event_details_bg}`}>
+    <div className={`${styles.event_details_bg} mt-5`}>
       <div className={`${styles.event_details_container} py-5`}>
         <Row>
           {/* For Large screens */}

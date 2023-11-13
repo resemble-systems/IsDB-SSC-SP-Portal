@@ -285,11 +285,11 @@ export default function RegistrationForm({ eventId, setVisiblety }) {
                         </Col>
                         {/* For Large screen size */}
                         <Col xs={0} sm={0} md={0} lg={24} xl={24}>
-                          <div
-                            className={`d-flex justify-content-end mt-3`}
-                            onClick={() => history.push("/")}
-                          >
-                            <div className={`mx-3`}>
+                          <div className={`d-flex justify-content-end mt-3`}>
+                            <div
+                              className={`mx-3`}
+                              onClick={() => history.push("/")}
+                            >
                               <AppRoundedBtn
                                 text={"Cancel"}
                                 prefix={""}
@@ -300,14 +300,14 @@ export default function RegistrationForm({ eventId, setVisiblety }) {
                                 href={"none"}
                                 disabled={loading}
                                 btnStyle={{ width: "235px", height: "60px" }}
-                                // onClickHandler={() =>
-                                //   onCancel(
-                                //     setErrors,
-                                //     setInputs,
-                                //     fromObject,
-                                //     errorObj
-                                //   )
-                                // }
+                                onClickHandler={() =>
+                                  onCancel(
+                                    setErrors,
+                                    setInputs,
+                                    fromObject,
+                                    errorObj
+                                  )
+                                }
                               />
                             </div>
                             <div className={`mx-3`}>
@@ -333,7 +333,7 @@ export default function RegistrationForm({ eventId, setVisiblety }) {
                         <Col xs={24} sm={24} md={12} lg={0} xl={0}>
                           <div
                             className={`d-flex justify-content-center mt-3`}
-                            onClick={() => history.push("/")}
+                            // onClick={() => history.push("/")}
                           >
                             <div className={`mx-3`}>
                               <AppRoundedBtn

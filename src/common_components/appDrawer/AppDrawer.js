@@ -86,7 +86,7 @@ export default function AppDrawer({
           link: "/events",
         },
         {
-          name: "Publications",
+          name: "News & Publications",
           link: "/news-publications",
         },
         {
@@ -132,7 +132,7 @@ export default function AppDrawer({
       link: "/Pages/Admin.aspx",
     });
   }
-  console.log("list-->", services);
+  // console.log("list-->", services);
   return (
     <>
       <Drawer
