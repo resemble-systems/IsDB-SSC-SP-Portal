@@ -46,7 +46,7 @@ const SearchEvents = () => {
       );
       setFilteredEvents(filterSearch);
     }
-    if (searchVal && type === "activities" && news?.length > 0) {
+    if (searchVal && type === "activities" && services?.length > 0) {
       filterSearch = services?.filter(
         (data, index) =>
           data.Description.toLowerCase().includes(searchVal.toLowerCase()) ||
