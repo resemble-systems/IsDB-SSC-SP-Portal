@@ -180,7 +180,7 @@ function Header({
                           className={`${styles.sign_up_btn}`}
                           onClick={() => history.push("/registration")}
                         >
-                          {`Sign up`}
+                          {`Register`}
                         </Button>
                         <Button
                           type="text"

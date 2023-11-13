@@ -12,6 +12,7 @@ import img2 from "../../assets/registration/IsDB _ EN _ logo _ primary _ colour.
 
 //css
 import styles from "./registration.module.sass";
+import { useHistory } from "react-router-dom";
 
 function onCancel(setErrors, setInputs, fromObject, errorObj) {
   setErrors(errorObj);
@@ -69,7 +70,7 @@ export default function RegistrationForm({ eventId, setVisiblety }) {
     setErrors,
     setInputs,
   } = UseRegForm(fromObject, errorObj, setLoaderTime, setRegisterDone, eventId);
-
+  const history = useHistory();
   return (
     <div
       className={`${styles.bg}`}
@@ -226,12 +227,7 @@ export default function RegistrationForm({ eventId, setVisiblety }) {
                             label={`Gender`}
                             mandatory={false}
                             placeholder={`Select`}
-                            options={[
-                              "Male",
-                              "Female",
-                              "Transgender",
-                              "Others",
-                            ]}
+                            options={["Male", "Female"]}
                             onChange={handleGender}
                             name="gender"
                             disabled={loading}
@@ -289,7 +285,10 @@ export default function RegistrationForm({ eventId, setVisiblety }) {
                         </Col>
                         {/* For Large screen size */}
                         <Col xs={0} sm={0} md={0} lg={24} xl={24}>
-                          <div className={`d-flex justify-content-end mt-3`}>
+                          <div
+                            className={`d-flex justify-content-end mt-3`}
+                            onClick={() => history.push("/")}
+                          >
                             <div className={`mx-3`}>
                               <AppRoundedBtn
                                 text={"Cancel"}
@@ -301,14 +300,14 @@ export default function RegistrationForm({ eventId, setVisiblety }) {
                                 href={"none"}
                                 disabled={loading}
                                 btnStyle={{ width: "235px", height: "60px" }}
-                                onClickHandler={() =>
-                                  onCancel(
-                                    setErrors,
-                                    setInputs,
-                                    fromObject,
-                                    errorObj
-                                  )
-                                }
+                                // onClickHandler={() =>
+                                //   onCancel(
+                                //     setErrors,
+                                //     setInputs,
+                                //     fromObject,
+                                //     errorObj
+                                //   )
+                                // }
                               />
                             </div>
                             <div className={`mx-3`}>
@@ -332,7 +331,10 @@ export default function RegistrationForm({ eventId, setVisiblety }) {
 
                         {/* For small screens */}
                         <Col xs={24} sm={24} md={12} lg={0} xl={0}>
-                          <div className={`d-flex justify-content-center mt-3`}>
+                          <div
+                            className={`d-flex justify-content-center mt-3`}
+                            onClick={() => history.push("/")}
+                          >
                             <div className={`mx-3`}>
                               <AppRoundedBtn
                                 text={"Cancel"}
@@ -344,14 +346,14 @@ export default function RegistrationForm({ eventId, setVisiblety }) {
                                 href={"none"}
                                 disabled={loading}
                                 btnStyle={{ width: "235px", height: "60px" }}
-                                onClickHandler={() =>
-                                  onCancel(
-                                    setErrors,
-                                    setInputs,
-                                    fromObject,
-                                    errorObj
-                                  )
-                                }
+                                // onClickHandler={() =>
+                                //   onCancel(
+                                //     setErrors,
+                                //     setInputs,
+                                //     fromObject,
+                                //     errorObj
+                                //   )
+                                // }
                               />
                             </div>
                           </div>

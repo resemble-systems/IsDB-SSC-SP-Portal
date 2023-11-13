@@ -58,7 +58,7 @@ const UseRegForm = (
       const url = CONST.BASE_URL + CONST.API.LIST("UserRegistration");
       const stringifyPostData = JSON.stringify({
         __metadata: {
-          type: "SP.Data.UserRegistrationListItem",
+          type: "SP.Data.UserRegistration1ListItem",
         },
         Title: inputs.firstName,
         LastName: inputs.lastName,
