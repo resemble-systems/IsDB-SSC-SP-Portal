@@ -30,7 +30,7 @@ export default function Landing() {
     axios
       .get(
         `${CONST.BASE_URL}${CONST.API.LIST("Gallery")}${CONST.API.QUERY(
-          "Title,EventOccurDate,EventType,Id,Location"
+          "Title,EventOccurDate,EventType/Title,Id,Location&$expand=EventType"
         )}`
       )
       .then((res) => {

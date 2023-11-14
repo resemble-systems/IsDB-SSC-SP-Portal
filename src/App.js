@@ -45,7 +45,7 @@ function App() {
     "Title,Author0,Id,CreatedDate,ServiceType,Color,IsEvent,Description,AttachmentFiles"
   )} ${CONST.API.ATTACHMENT}`;
   let eventsApi = `${CONST.BASE_URL}${CONST.API.LIST("Event")}${CONST.API.QUERY(
-    "Title,Author0,CreatedDate,StartDate,EndDate,Id,RegistrationLink,Speaker,Location,EventType,Description,AttachmentFiles"
+    "Title,Author0,CreatedDate,StartDate,EndDate,Id,RegistrationLink,Speaker,Location,EventType/Title,Description,AttachmentFiles&$expand=EventType"
   )} ${CONST.API.ATTACHMENT}`;
   let servicesLogoApi = `${CONST.BASE_URL}${CONST.API.LIST(
     "ServicesLogo"
