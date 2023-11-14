@@ -45,7 +45,8 @@ export default function RelatedEvents({ title, eventsData, services, path }) {
     (eventData) =>
       services &&
       services.length > 0 &&
-      eventData.EventType.toString() === mapRoutePathToType(path, services)
+      eventData.EventType.Title.toString() ===
+        mapRoutePathToType(path, services)
   );
 
   let filteredEventsData = relatedEvents.filter(
