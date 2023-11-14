@@ -46,6 +46,7 @@ export default class AppCalendar extends Component {
     const { eventsData } = this.props;
     // console.log("CALENDAR EVENT", eventsData);
     let displayEvent = [];
+    console.log("args-->", eventsData);
     eventsData.forEach((eventData) => {
       args["date"] = args.value;
       if (this.isMarkCalendarDates(eventData, args)) {

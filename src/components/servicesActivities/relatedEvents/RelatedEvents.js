@@ -40,6 +40,7 @@ function ResponsiveView({ eventsData, services, span, gutter }) {
 }
 
 export default function RelatedEvents({ title, eventsData, services, path }) {
+  console.log("args2---->", eventsData);
   let relatedEvents = eventsData.filter(
     (eventData) =>
       services &&

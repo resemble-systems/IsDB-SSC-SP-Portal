@@ -104,7 +104,7 @@ function App() {
     servicesLogoApi, */
     ]
   );
-
+  console.log("eventApi--->", events);
   return (
     <AppContext.Provider
       value={{
