@@ -152,7 +152,11 @@ export default class AppCalendar extends Component {
     if (window.screen.width < 500) value = 90;
     window.google.charts.load("current", { packages: ["corechart"] });
     window.google.charts.setOnLoadCallback(drawChart);
-    let slices = [...setCalendarMarks(chartData, this.props.servicesData)];
+    console.log("propsData-->", this.props);
+    let slices;
+    if (this.props.servicesData?.length > 0) {
+      slices = [...setCalendarMarks(chartData, this.props.servicesData)];
+    }
     function drawChart() {
       var data = window.google.visualization.arrayToDataTable(chartData);
       var options = {

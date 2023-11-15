@@ -23,8 +23,8 @@ export default function EventViewer({ displayEvent, selectedDay }) {
         <p className={`my-4 mx-auto ${styles.day}`}>{selectedDay}</p>
         <Scrollbars style={{ width: "100%", height: "700px" }}>
           <div className={`d-flex flex-column`}>
-            {displayEvent && displayEvent.length > 0 ? (
-              displayEvent.map(event => {
+            {displayEvent && displayEvent?.length > 0 ? (
+              displayEvent?.map((event) => {
                 return (
                   <Tag
                     className={`mx-auto my-4 ${styles.tag}`}
