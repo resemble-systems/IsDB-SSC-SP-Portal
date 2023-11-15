@@ -33,7 +33,7 @@ export default function NewsPublicationsCard({ data }) {
     },
     // More useful options...
   });
-
+  console.log("newsServerRelativeUrl--->", data?.AttachmentFiles[0]);
   return (
     <div ref={observe} className={inView ? css(animationStyles.fadeIn) : ""}>
       <div className={`${styles.whats_new_card} p-4`}>
@@ -41,9 +41,9 @@ export default function NewsPublicationsCard({ data }) {
           className={`${styles.whats_new_card_image} d-flex justify-content-center align-items-center overflow-hidden position-relative mb-3`}
         >
           {data &&
-          data.AttachmentFiles &&
-          data.AttachmentFiles.length > 0 &&
-          data.AttachmentFiles[0].ServerRelativeUrl ? (
+          data?.AttachmentFiles &&
+          data?.AttachmentFiles?.length > 0 &&
+          data?.AttachmentFiles[0]?.ServerRelativeUrl ? (
             <img
               src={data?.AttachmentFiles[0]?.ServerRelativeUrl}
               alt="card-img"
@@ -57,13 +57,13 @@ export default function NewsPublicationsCard({ data }) {
         <div className={`${styles.whats_new_card_text}`}>
           <h3>{data && data.Title ? data.Title : <Skeleton.Input />}</h3>
           <div className={`${styles.news_des}`}>
-            {data.Description ? data.Description : <Skeleton />}
+            {data?.Description ? data?.Description : <Skeleton />}
           </div>
         </div>
-        {data && data.Title ? (
+        {data && data?.Title ? (
           <Button
             className={`${styles.whats_new_card_btn}`}
-            onClick={() => history.push(`/news-publications/${data.Id}`)}
+            onClick={() => history.push(`/news-publications/${data?.Id}`)}
           >
             <h6 className={`m-0`}>READ MORE</h6>
           </Button>

@@ -20,7 +20,7 @@ export default function Media({ routePath }) {
       axios
         .get(
           `${CONST.BASE_URL}${CONST.API.LIST("Gallery")}${CONST.API.QUERY(
-            "Title,EventOccurDate,EventType/Title,Id,Location&$expand=EventType"
+            "Title,EventOccurDate,EventType,Id,Location"
           )} ${CONST.API.FILTER("Id", routePath.id)}`
         )
         .then((res) => {
