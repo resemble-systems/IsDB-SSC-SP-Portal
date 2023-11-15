@@ -35,7 +35,10 @@ export default function Banner() {
   }, []);
 
   //expire date banner should be filtered out
-
+  console.log(
+    "videoUrl",
+    bannerData?.map((t) => t.BannerType.toLowerCase())
+  );
   return (
     <>
       <AppSlider
@@ -46,7 +49,7 @@ export default function Banner() {
         stopOnHover={true}
       >
         {bannerData && bannerData?.length > 0 ? (
-          bannerData.map((banner, index) => (
+          bannerData?.map((banner, index) => (
             <div className={`${styles.banner_container}`} key={index}>
               {banner.BannerType.toLowerCase() === "image" ? (
                 <>
@@ -74,7 +77,7 @@ export default function Banner() {
                   <div
                     className={`${styles.video_play_btn}`}
                     onClick={() => {
-                      setVideoUrl(banner.VideoLink);
+                      setVideoUrl(banner?.VideoLink);
                       setPlay(true);
                       setModalVisibility(true);
                       setAutoPlay(false);
@@ -88,7 +91,7 @@ export default function Banner() {
 
                   <img
                     className={`${styles.image}`}
-                    alt={`Banner`}
+                    alt={`BannerVideo`}
                     src={
                       banner.AttachmentFiles[0].ServerRelativeUrl
                         ? banner.AttachmentFiles[0].ServerRelativeUrl

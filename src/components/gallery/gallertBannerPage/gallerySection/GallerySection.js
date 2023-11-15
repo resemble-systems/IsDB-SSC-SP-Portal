@@ -70,13 +70,14 @@ export default function GallerySection({ galleryData }) {
         if (list.length > 0) {
           list = list.filter(
             (listItem) =>
-              listItem.EventType.toLowerCase() === category.toLowerCase()
+              listItem.EventType.Title.toLowerCase() === category.toLowerCase()
           );
         } else {
           if (!fromDate && !toDate)
             list = listData.filter(
               (listItem) =>
-                listItem.EventType.toLowerCase() === category.toLowerCase()
+                listItem.EventType.Title.toLowerCase() ===
+                category.toLowerCase()
             );
         }
       }

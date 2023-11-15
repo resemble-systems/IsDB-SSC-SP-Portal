@@ -68,9 +68,9 @@ export default function Landing() {
         );
       }
 
-      if (galleryArray && galleryArray?.length > 0) {
-        galleryArray = galleryArray?.slice(0, 3);
-      }
+      // if (galleryArray && galleryArray?.length > 0) {
+      //   galleryArray = galleryArray?.slice(0, 10);
+      // }
       if (galleryDetails && galleryDetails?.length > 0) {
         let temp = galleryDetails?.filter((data) =>
           galleryArray.find((event) => event.Id.toString() === data.Title)

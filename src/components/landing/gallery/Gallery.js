@@ -1314,7 +1314,6 @@ export default function Gallery({ galleryContent }) {
     setAutoPlay,
     history
   );
-  console.log("galleryContent-->", galleryContent);
   return (
     <>
       <div

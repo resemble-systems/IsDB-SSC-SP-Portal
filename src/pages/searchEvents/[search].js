@@ -32,7 +32,9 @@ const SearchEvents = () => {
         (data, index) =>
           data.Author0.toLowerCase().includes(searchVal.toLowerCase()) ||
           data.Description.toLowerCase().includes(searchVal.toLowerCase()) ||
-          data.EventType.toLowerCase().includes(searchVal.toLowerCase()) ||
+          data.EventType.Title.toLowerCase().includes(
+            searchVal.toLowerCase()
+          ) ||
           //   data.Speaker.toLowerCase().includes(searchVal.toLowerCase()) ||
           data.Title?.toLowerCase().includes(searchVal.toLowerCase())
       );

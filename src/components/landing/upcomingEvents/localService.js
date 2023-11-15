@@ -7,7 +7,7 @@ export const setBackground = (item) => {
   ];
   let bg, boxShadow;
   let bgImage = arrayBgImage[Math.floor(Math.random() * arrayBgImage.length)];
-  switch (item.EventType) {
+  switch (item.EventType.Title) {
     case "Educational":
       bg = "#24B3B7";
       boxShadow = "0px 3px 18px #24B3B740";
