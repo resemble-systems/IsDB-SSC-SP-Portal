@@ -33,7 +33,7 @@ export default function NewsPublicationsCard({ data }) {
     },
     // More useful options...
   });
-  console.log("newsServerRelativeUrl3--->", data);
+  console.log("newsServerRelativeUrl4--->", data);
   return (
     <div ref={observe} className={inView ? css(animationStyles.fadeIn) : ""}>
       <div className={`${styles.whats_new_card} p-4`}>
@@ -43,7 +43,7 @@ export default function NewsPublicationsCard({ data }) {
           {data &&
           data?.AttachmentFiles &&
           data?.AttachmentFiles?.length > 0 &&
-          data?.AttachmentFiles[0]?.ServerRelativeUrl?.length > 0 ? (
+          data?.AttachmentFiles[0]?.ServerRelativeUrl !== undefined ? (
             <img
               src={data?.AttachmentFiles[0]?.ServerRelativeUrl}
               alt="card-img"
