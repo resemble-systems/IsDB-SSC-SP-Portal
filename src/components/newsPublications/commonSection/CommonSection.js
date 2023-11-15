@@ -11,6 +11,10 @@ export default function CommonSection({
   imageWidth,
   imageHeight,
 }) {
+  console.log(
+    "newsServerRelativeUrl8--->",
+    news?.AttachmentFiles[0]?.ServerRelativeUrl
+  );
   return (
     <Row>
       {section === "intro" && (
@@ -18,10 +22,11 @@ export default function CommonSection({
           <h3 className={`${styles.intro_title} mb-5`}>Most Viewed</h3>
         </Col>
       )}
-      {section === "intro" ? (
+      {section === "intro" &&
+      news?.AttachmentFiles[0]?.ServerRelativeUrl !== undefined ? (
         <Col xs={24} sm={24} md={12} lg={10} xl={10}>
           <img
-            src={news.AttachmentFiles[0].ServerRelativeUrl}
+            src={news?.AttachmentFiles[0]?.ServerRelativeUrl}
             alt={"publications"}
             width={imageWidth}
             height={imageHeight}
@@ -31,7 +36,7 @@ export default function CommonSection({
       ) : (
         <Col xs={12} sm={12} md={12} lg={10} xl={10}>
           <img
-            src={news.AttachmentFiles[0].ServerRelativeUrl}
+            src={news?.AttachmentFiles[0]?.ServerRelativeUrl}
             alt={"publications"}
             width={imageWidth}
             height={imageHeight}

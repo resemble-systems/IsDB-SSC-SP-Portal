@@ -33,7 +33,7 @@ export default function NewsPublicationsCard({ data }) {
     },
     // More useful options...
   });
-  console.log("newsServerRelativeUrl4--->", data);
+
   return (
     <div ref={observe} className={inView ? css(animationStyles.fadeIn) : ""}>
       <div className={`${styles.whats_new_card} p-4`}>

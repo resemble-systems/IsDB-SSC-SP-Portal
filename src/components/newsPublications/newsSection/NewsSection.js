@@ -50,8 +50,7 @@ export default function NewsSection() {
             dispalyData?.length > 0 &&
             dispalyData?.map((newsObject, index) => (
               <Col xs={24} sm={24} md={8} lg={8} xl={8} key={index}>
-                {newsObject?.AttachmentFiles[0]?.ServerRelativeUrl !==
-                  undefined && <NewsPublicationsCard data={newsObject} />}
+                <NewsPublicationsCard data={newsObject} />
               </Col>
             ))}
           <div className={`d-flex w-100 justify-content-end`}>
