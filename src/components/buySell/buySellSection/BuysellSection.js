@@ -13,6 +13,7 @@ import { CONST } from "../../../constant/index";
 import styles from "./buysell-section.module.sass";
 import filterimg from "../../../assets/eventsActivities/filter.svg";
 import { AppContext } from "../../../App";
+import GalleryFooter from "../../gallery/gallertBannerPage/galleryLayout/galleryFooter/GalleryFooter";
 
 const { SubMenu } = Menu;
 const { Option } = Select;
@@ -346,7 +347,7 @@ export default function BuysellSection() {
               </Col>
             )}
           </Row>
-          <div className={`d-flex justify-content-between`}>
+          {/* <div className={`d-flex justify-content-between`}>
             <div
               className={`${styles.list_size_container} d-flex align-items-center`}
             >
@@ -359,13 +360,13 @@ export default function BuysellSection() {
                   bordered={false}
                   defaultValue={10}
                   onChange={(value) =>
-                    onSizeChange(value /* setListSize */ /* setPageNumber */)
+                    onSizeChange(value)
                   }
                 >
-                  <Option value="5">9</Option>
-                  <Option value="10">18</Option>
-                  <Option value="15">27</Option>
-                  <Option value="20">36</Option>
+                  <Option value="5">5</Option>
+                  <Option value="10">10</Option>
+                  <Option value="15">15</Option>
+                  <Option value="20">20</Option>
                 </Select>
               </div>{" "}
               of {total} Entries
@@ -373,14 +374,27 @@ export default function BuysellSection() {
             <div>
               <Pagination
                 className={`${styles.pagination}`}
-                onChange={(pageNumber) => setPageNumber(pageNumber)}
+                onChange={(pageNumber) => {
+                  console.log("page", pageNumber);
+                  setPageNumber(pageNumber);
+                }}
                 total={total}
                 hideOnSinglePage={true}
                 pageSize={listSize}
                 current={pageNumber}
               />
             </div>
-          </div>
+          </div> */}
+
+          <GalleryFooter
+            listData={filterData}
+            listSize={listSize}
+            pageNumber={pageNumber}
+            setListSize={setListSize}
+            setPageNumber={setPageNumber}
+            entryOptions={[9, 18, 27, 36]}
+            defaultValue={9}
+          />
 
           <div className="text-danger" style={{ fontWeight: "800" }}>
             {

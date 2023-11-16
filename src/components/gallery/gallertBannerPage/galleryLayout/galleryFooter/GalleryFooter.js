@@ -16,12 +16,13 @@ export default function GalleryFooter({
   pageNumber,
   setListSize,
   setPageNumber,
+  entryOptions,
+  defaultValue,
 }) {
-  const [total, setTotal] = useState(listData.length);
+  const [total, setTotal] = useState(listData?.length);
 
   useEffect(() => {
-    if (listData && listData.length > 0)
-      setTotal(listData.length);
+    if (listData && listData?.length > 0) setTotal(listData?.length);
   }, [total, listData]);
   return (
     <div className={`${styles.footer_container} d-flex align-items-center`}>
@@ -38,15 +39,14 @@ export default function GalleryFooter({
                 <Select
                   style={{ width: "60px" }}
                   bordered={false}
-                  defaultValue={10}
+                  defaultValue={defaultValue}
                   onChange={(value) =>
                     onSizeChange(value, setListSize, setPageNumber)
                   }
                 >
-                  <Option value="5">5</Option>
-                  <Option value="10">10</Option>
-                  <Option value="15">15</Option>
-                  <Option value="20">20</Option>
+                  {entryOptions?.map((count) => (
+                    <Option value={count.toString()}>{count}</Option>
+                  ))}
                 </Select>
               </div>{" "}
               of {total} Entries

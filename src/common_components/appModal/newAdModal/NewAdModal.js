@@ -78,6 +78,7 @@ export default function NewAdModal({
     phone: null,
     address: null,
     subcategory: null,
+    price: null,
   };
   const [itemId, setItemId] = useState(null);
 
@@ -144,7 +145,7 @@ export default function NewAdModal({
   }, [visible]);
   console.log("errors", errors.price);
 
-  console.log("AdvertisementId", error);
+  console.log("AdvertisementId", errors);
 
   return (
     <Modal

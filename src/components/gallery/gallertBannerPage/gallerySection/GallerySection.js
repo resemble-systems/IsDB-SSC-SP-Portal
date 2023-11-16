@@ -113,6 +113,8 @@ export default function GallerySection({ galleryData }) {
               pageNumber={pageNumber}
               setListSize={setListSize}
               setPageNumber={setPageNumber}
+              entryOptions={[5, 10, 15, 20]}
+              defaultValue={10}
             />
           </>
         ) : (
