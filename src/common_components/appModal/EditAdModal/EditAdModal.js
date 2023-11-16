@@ -249,17 +249,17 @@ export default function EditAdModal({
       }
       case "adTitle": {
         setTitle("");
-        setTitle(value.target.value);
+        setTitle(value.target.value.trim());
         break;
       }
       case "brand": {
         setBrand("");
-        setBrand(value.target.value);
+        setBrand(value.target.value.trim());
         break;
       }
       case "price": {
         setPrice("");
-        setPrice(value.target.value);
+        setPrice(value.target.value.trim());
         break;
       }
       // case "country": {
@@ -284,12 +284,12 @@ export default function EditAdModal({
       }
       case "address": {
         setAddress("");
-        setAddress(value.target.value);
+        setAddress(value.target.value.trim());
         break;
       }
       case "description": {
         setDescription("");
-        setDescription(value.target.value);
+        setDescription(value.target.value.trim());
         break;
       }
       default:
@@ -621,8 +621,8 @@ export default function EditAdModal({
               <Row>
                 <Col span={24}>
                   <label className={`${styles.label}`}>
-                    {"Expected Price"}
-                    {/* {<span className={`text-danger mx-2`}>*</span>} */}
+                    {"Expected Price (SAR)"}
+                    {<span className={`text-danger mx-2`}>*</span>}
                   </label>
                 </Col>
                 <Col span={24}>
@@ -640,6 +640,12 @@ export default function EditAdModal({
                       className={`${styles.input}`}
                     />
                   </div>
+                  {Price.length === 0 ||
+                    (!/^[0-9]+(\.[0-9]{1,2})?$/.test(Price) && (
+                      <p className={`text-danger mt-2 mb-0 pl-4`}>
+                        {"Enter the Expected Price"}
+                      </p>
+                    ))}
                 </Col>
               </Row>
             </Col>
@@ -978,7 +984,9 @@ export default function EditAdModal({
                         ) &&
                         Category?.length > 0 &&
                         SubCategory?.length > 0 &&
-                        Title?.length > 0
+                        Title?.length > 0 &&
+                        Price?.length > 0 &&
+                        /^[0-9]+(\.[0-9]{1,2})?$/.test(Price)
                       ) {
                         setIsEditModal(true);
                         handleSubmit();
@@ -1048,7 +1056,9 @@ export default function EditAdModal({
                         ) &&
                         Category?.length > 0 &&
                         SubCategory?.length > 0 &&
-                        Title?.length > 0
+                        Title?.length > 0 &&
+                        Price?.length > 0 &&
+                        /^[0-9]+(\.[0-9]{1,2})?$/.test(Price)
                       ) {
                         setIsEditModal(true);
                         handleSubmit();

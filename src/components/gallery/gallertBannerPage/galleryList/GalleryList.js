@@ -105,7 +105,7 @@ export default function GalleryList({ listData, listSize, pageNumber }) {
                             <p
                               className={`${styles.list_text} d-flex justify-content-center align-items-center m-0`}
                             >
-                              {listData.Location}
+                              {listData?.Location ? listData?.Location : "N/A"}
                             </p>
                           </>
                         ) : (

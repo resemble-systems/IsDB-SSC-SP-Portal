@@ -10,6 +10,7 @@ import {
   dropDownValidator,
   textAreaValidator,
   phoneNumberValidator,
+  priceValidator,
 } from "../../services/validationService";
 import { VAR } from "../../env";
 
@@ -185,11 +186,13 @@ const UseForm = (
       case "subcategory":
         return dropDownValidator(value);
       case "adTitle":
-        return textAreaValidator(value);
+        return textAreaValidator(value.trim());
       case "phone":
-        return phoneNumberValidator(value);
+        return phoneNumberValidator(value.trim());
       case "address":
-        return textAreaValidator(value);
+        return textAreaValidator(value.trim());
+      case "price":
+        return priceValidator(value.trim());
       default: // do nothing;
         break;
     }

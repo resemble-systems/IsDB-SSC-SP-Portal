@@ -53,7 +53,6 @@ export default function GalleryHeader({
           value={fromDate}
           onChange={(e) => {
             setFromDate(e);
-            setToDate(e);
           }}
         />
       </Col>

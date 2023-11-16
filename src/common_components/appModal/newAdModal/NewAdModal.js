@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Modal, Row, Col } from "antd";
-import $ from "jquery";
+import $, { error } from "jquery";
 import axios from "axios";
 import { CheckCircleOutlined } from "@ant-design/icons";
 import { CONST } from "../../../constant/index";
@@ -142,9 +142,9 @@ export default function NewAdModal({
       });
     }
   }, [visible]);
-  console.log("errors", errors);
+  console.log("errors", errors.price);
 
-  console.log("AdvertisementId", itemId);
+  console.log("AdvertisementId", error);
 
   return (
     <Modal
@@ -302,15 +302,21 @@ export default function NewAdModal({
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <InputElement
-                label={`Expected Price`}
-                mandatory={false}
+                label={`Expected Price (SAR)`}
+                mandatory={true}
                 placeholder={`Enter Price`}
                 name="price"
                 disabled={loading}
                 onChange={handleInputChange}
                 value={inputs.price}
-                error={null}
+                error={errors.price}
               />
+
+              {errors.price !== null && !errors.price && (
+                <p className={`text-danger mt-2 mb-0 pl-4`}>
+                  {"Please enter the expected price."}
+                </p>
+              )}
             </Col>
             {/* <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <InputElement

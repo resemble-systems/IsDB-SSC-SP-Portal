@@ -13,6 +13,7 @@ import location from "../../../assets/buySell/map-pin.svg";
 import mail from "../../../assets/buySell/mail.svg";
 import phone from "../../../assets/buySell/phone.svg";
 import noimg from "../../../assets/buySell/No_Image_Available.jpg";
+import Scrollbars from "react-custom-scrollbars";
 
 function getDisplayImage(image) {
   let result = [];
@@ -92,9 +93,14 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
       </Row>
       <Row>
         <Col xs={0} sm={0} md={0} lg={24} xl={24}>
-          <div className={`${styles.buysell_text} pt-2 pb-3`}>
+          {/* <div className={`${styles.buysell_text} pt-2 pb-3`}>
             {cardData.Description}
-          </div>
+          </div> */}
+          <Scrollbars style={{ height: "100px" }}>
+            <div className={`${styles.buysell_text}`}>
+              {cardData.Description}
+            </div>
+          </Scrollbars>
         </Col>
       </Row>
 

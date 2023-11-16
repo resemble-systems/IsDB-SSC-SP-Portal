@@ -115,7 +115,7 @@ export default function Banner() {
                       "MMMM DD"
                     )} - ${moment(banner.Expiration).format("MMMM DD")}`}
                   </p>
-                  {banner.RegistrationLink && (
+                  {banner.RegistrationLink !== "Not Applicable" && (
                     <Button
                       shape="round"
                       size={"large"}

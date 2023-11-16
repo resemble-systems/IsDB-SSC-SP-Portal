@@ -7,8 +7,11 @@ import deleteicon from "../../assets/update/trash.svg";
 import $ from "jquery";
 import getDigest from "../../services/GetDigest/GetDigest";
 
+var tempId;
+
 function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
   // Loop through the FileList and render image files as thumbnails.
+  console.log("colId-->", id);
   setLoaderTime(true);
   for (const file of evt.target.files) {
     //Attacfile code
@@ -91,7 +94,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
             alt="Img_Item"
             width=20
             height=20
-            style=position:absolute top: 20px left:20px
+            style="position: absolute; top: 20px; left: 20px;"
         /><Image
             src=${src}
             alt="Img_Item"
@@ -101,7 +104,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
     let temp = document.getElementById(id);
     console.log(temp.firstChild);
     temp.firstChild.addEventListener("click", function (event) {
-      hideDiv(id, itemId, file.name, listName);
+      hideDiv(tempId, itemId, file.name, listName);
     });
   }
 }
@@ -207,7 +210,8 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
 function hideDiv(id, itemId, filename, listName) {
   //Function to hide the elements
   var myobj = document.getElementById(id);
-  myobj.remove();
+  console.log("myobj", myobj, id, itemId, filename, listName);
+  myobj?.remove();
   //alert(id)
 
   const GetDigest1 = async () => {
@@ -263,8 +267,8 @@ export default function TestUpload({
   var elements = [];
   for (var i = 0; i < count; i++) {
     let p = uuidv4();
-
     let colid = "H" + p;
+    tempId = colid;
     let fid = "files" + p;
     // push the component to elements!
     elements.push(
@@ -358,7 +362,7 @@ export default function TestUpload({
                 style={{ cursor: "pointer" }}
                 onClick={() => setCount(count + 1)}
               >
-                Add more2
+                Add more
               </b>{" "}
             </Col>
           </Row>
@@ -424,7 +428,7 @@ export default function TestUpload({
               style={{ cursor: "pointer" }}
               onClick={() => setCount(count + 1)}
             >
-              Add more2
+              Add more
             </b>{" "}
           </Col>
         </Row>

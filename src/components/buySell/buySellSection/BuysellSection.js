@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Row, Col, Menu, Empty, Pagination } from "antd";
+import { Row, Col, Menu, Empty, Pagination, Select } from "antd";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { PlusSquareOutlined } from "@ant-design/icons";
@@ -15,6 +15,7 @@ import filterimg from "../../../assets/eventsActivities/filter.svg";
 import { AppContext } from "../../../App";
 
 const { SubMenu } = Menu;
+const { Option } = Select;
 
 let ddmenu;
 function setDDMenu(setSubMenu, adCategories, subCategoryList) {
@@ -72,6 +73,7 @@ function setDDMenu(setSubMenu, adCategories, subCategoryList) {
 
 export default function BuysellSection() {
   const { user } = useContext(AppContext);
+  const [paginatedListData, setPaginatedListData] = useState([]);
   const [subMenu, setSubMenu] = useState("All");
   const [newAdModal, setNewAdModal] = useState(false);
   const [filterData, setFilterData] = useState([]);
@@ -86,29 +88,28 @@ export default function BuysellSection() {
   const [callApi, setCallApi] = useState(null);
   const [yourAds, setYourAds] = useState(false);
   const [changeColor, setChangeColor] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const [pageNumber, setPageNumber] = useState(1);
+  const [total, setTotal] = useState(filterData?.length);
+  const [listSize, setListSize] = useState(9);
+
+  useEffect(() => {
+    if (filterData && filterData?.length > 0) {
+      setTotal(filterData?.length);
+    }
+  }, [total, filterData]);
 
   useEffect(() => {
     //advertisement api call
+
     axios
       .get(
         `${CONST.BASE_URL}${CONST.API.LIST("Advertisement")}${CONST.API.QUERY(
           "Title,Description,Address,Author0,Created,AuthorImage,Price,Brand,Email,Category,SubCategory,Phone,AttachmentFiles,Modified,status"
         )} ${CONST.API.ATTACHMENT} `
       )
-      // .get(
-      //   `${CONST.BASE_URL}${CONST.API.LIST("Advertisement")}${CONST.API.QUERY(
-      //     "Title,Description,Address,Author0,Created,AuthorImage,Price,Brand,Email,Category,SubCategory,Phone,AttachmentFiles,Modified"
-      //   )} ${CONST.API.ATTACHMENT} ${CONST.API.FILTER("status", "Active")} `
-      // )
+
       .then((res) => {
-        console.log("responseId", res);
-        setcardsData(
-          res.data.value /* ?.filter(
-            (data) => data.status === "Active" || data.status === "Sold"
-          ) */
-        );
+        setcardsData(res.data.value);
       })
       .catch((err) => console.log(err));
 
@@ -141,22 +142,6 @@ export default function BuysellSection() {
   }, [callApi]);
 
   useEffect(() => {
-    // switch (selectedCategory) {
-    //   case "Electronic":
-    //     setsubitems(["Home Appliance", "Gadgets", "Electronic"]);
-    //     break;
-    //   case "Vehicles":
-    //     setsubitems(["Car", "Bike"]);
-    //     break;
-    //   case "Health and Beauty":
-    //     setsubitems(["Health care", " Beauty care"]);
-    //     break;
-    //   case "House Holds":
-    //     setsubitems(["Furniture", "Decorative", "Clocks", "Cleaning"]);
-    //     break;
-    //   default:
-    //     setsubitems([]);
-    // }
     adCategories.forEach((data) => {
       if (data.Title === selectedCategory) {
         let selectedSubCategory = subCategoryList?.filter(
@@ -197,16 +182,6 @@ export default function BuysellSection() {
   }, [subMenu, cardsData, adCategories, subCategoryList, yourAds]);
 
   useEffect(() => {
-    // if (yourAds === true) {
-    //   console.log("filteredData", filterData);
-    //   let filterByUser = filterData.filter(
-    //     (data) => data.Author0 === user.data.DisplayName
-    //   );
-    //   setFilterData(filterByUser);
-    // }
-    // if (yourAds === false) {
-    //   setSubMenu("all");
-    // }
     console.log("yourAds-->", yourAds);
     if (yourAds === true /* && user && user?.length > 0 */) {
       if (subMenu?.toLowerCase() === "all") {
@@ -226,7 +201,6 @@ export default function BuysellSection() {
         );
         setFilterData(filteredData);
       } else {
-        console.log("else");
         let filteredData = cardsData?.filter(
           (data) =>
             data.SubCategory &&
@@ -240,29 +214,24 @@ export default function BuysellSection() {
     }
   }, [yourAds, subMenu, user]);
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  useEffect(() => {
+    if (filterData && filterData?.length > 0)
+      setPaginatedListData(paginationService(filterData, listSize, pageNumber));
+  }, [listSize, pageNumber, filterData]);
 
-  const displayedData =
-    filterData && filterData?.length > 0
-      ? filterData?.slice(startIndex, endIndex)
-      : [];
-  console.log(
-    "soldCard-->",
-    cardsData?.filter(
-      (data) =>
-        data?.status === "Sold" && data?.Author0 === user?.data?.DisplayName
-    )
-  );
-  console.log("user--->", user, user?.data?.DisplayName);
-  console.log("filterData--->", filterData);
-  console.log(
-    "activeCard-->",
-    cardsData?.filter(
-      (data) =>
-        data?.status === "Active" && data?.Author0 === user?.data?.DisplayName
-    )
-  );
+  function onSizeChange(value /* setListSize */ /* setPageNumber */) {
+    setPageNumber(1);
+    setListSize(parseInt(value));
+  }
+
+  function paginationService(filterData, listSize, pageNumber) {
+    console.log("paginationService-->", filterData, listSize, pageNumber);
+    return filterData?.slice(
+      (pageNumber - 1) * listSize,
+      listSize * pageNumber
+    );
+  }
+  console.log("alldata-->", filterData);
   return (
     <>
       <div className={`${styles.buysellsetion_section_bg}`}>
@@ -341,8 +310,8 @@ export default function BuysellSection() {
             </Col>
           </Row>
           <Row gutter={[16, 16]}>
-            {displayedData && displayedData?.length > 0 ? (
-              displayedData?.map((data, index) => {
+            {paginatedListData && paginatedListData?.length > 0 ? (
+              paginatedListData?.map((data, index) => {
                 return (
                   <Col
                     xs={24}
@@ -377,14 +346,42 @@ export default function BuysellSection() {
               </Col>
             )}
           </Row>
-          <div className="d-flex align-items-center justify-content-center mb-4">
-            <Pagination
-              current={currentPage}
-              pageSize={itemsPerPage}
-              total={filterData?.length}
-              onChange={(page) => setCurrentPage(page)}
-            />
+          <div className={`d-flex justify-content-between`}>
+            <div
+              className={`${styles.list_size_container} d-flex align-items-center`}
+            >
+              Showing{" "}
+              <div
+                className={`${styles.list_size} d-flex align-items-center mx-2`}
+              >
+                <Select
+                  style={{ width: "60px" }}
+                  bordered={false}
+                  defaultValue={10}
+                  onChange={(value) =>
+                    onSizeChange(value /* setListSize */ /* setPageNumber */)
+                  }
+                >
+                  <Option value="5">9</Option>
+                  <Option value="10">18</Option>
+                  <Option value="15">27</Option>
+                  <Option value="20">36</Option>
+                </Select>
+              </div>{" "}
+              of {total} Entries
+            </div>
+            <div>
+              <Pagination
+                className={`${styles.pagination}`}
+                onChange={(pageNumber) => setPageNumber(pageNumber)}
+                total={total}
+                hideOnSinglePage={true}
+                pageSize={listSize}
+                current={pageNumber}
+              />
+            </div>
           </div>
+
           <div className="text-danger" style={{ fontWeight: "800" }}>
             {
               "IsDB Group and SSC assume no responsibility or liability whatsoever for any negotiation(s), dealing(s) and/or transaction(s) between the Staff members initiated through this Buy & Sell App, for further informaion please contact us: SSC@isdb.org"
