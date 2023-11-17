@@ -59,7 +59,7 @@ export default function ServicesActivities() {
             }}
           ></div>
           <div className="d-flex container">
-            <InnerPageTitleSection title={"Activities Test"} />
+            <InnerPageTitleSection title={"Services & Activities"} />
             <div className="mt-5 mx-2">
               <Popconfirm title={title} okText="" cancelText="">
                 <Button

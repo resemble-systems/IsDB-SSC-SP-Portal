@@ -1333,18 +1333,20 @@ export default function Gallery({ galleryContent }) {
               onClickNext={slideNext}
             />
           </div>
-          <AppMultiSlider
-            responsive={responsive}
-            items={sliderItems}
-            activeIndex={activeIndex}
-            onSlideChanged={onSlideChanged}
-            paddingLeft={50}
-            paddingRight={50}
-            animationType={"slide"}
-            disableDotsControls={true}
-            infinite={true}
-            refVariable={galleryref}
-          />
+          <div className="container">
+            <AppMultiSlider
+              responsive={responsive}
+              items={sliderItems}
+              activeIndex={activeIndex}
+              onSlideChanged={onSlideChanged}
+              paddingLeft={50}
+              paddingRight={50}
+              animationType={"slide"}
+              disableDotsControls={true}
+              infinite={true}
+              refVariable={galleryref}
+            />
+          </div>
         </Row>
       </div>
       {/* {isOpen && photoUrl && (

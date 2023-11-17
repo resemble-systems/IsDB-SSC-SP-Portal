@@ -106,6 +106,11 @@ export default function BuySellCard({
               {moment(cardData.Modified).format("D MMM YYYY")}
             </Col>
           </Row>
+          <Row className={"pr-2 pl-2 "}>
+            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+              <div className={`${styles.buysell_PriceText}`}>{"Posted By"}</div>
+            </Col>
+          </Row>
           {/* <Row className={"pr-2 pl-2 p-1"}>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <div className={`${styles.buysell_PriceText}`}>

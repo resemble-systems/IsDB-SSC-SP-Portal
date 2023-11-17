@@ -115,7 +115,7 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
               {displayImage.map((data, index) => (
                 <Row gutter={[16, 16]} key={index}>
                   <Col xs={0} sm={0} md={12} lg={12} xl={12}>
-                    <div className={`${styles.buysell_mainImgConatiner}`}>
+                    <div className={`${styles.buysell_mainImgConatiner} pt-2`}>
                       <img
                         src={data.img1}
                         alt="card-img"
@@ -126,7 +126,7 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
                     </div>
                   </Col>
                   <Col xs={0} sm={0} md={12} lg={12} xl={12}>
-                    <div className={`${styles.buysell_mainImgConatiner}`}>
+                    <div className={`${styles.buysell_mainImgConatiner} pt-2`}>
                       {data.img2 && (
                         <img
                           src={data.img2}

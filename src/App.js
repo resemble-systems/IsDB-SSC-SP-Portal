@@ -37,7 +37,7 @@ function App() {
 
   let userApi = `${CONST.BASE_URL}${CONST.API.USER}`;
   let newsApi = `${CONST.BASE_URL}${CONST.API.LIST("News")}${CONST.API.QUERY(
-    "Title,Description,Id,AttachmentFiles"
+    "Title,Description,Id,CreatedDate,AttachmentFiles"
   )} ${CONST.API.ATTACHMENT}`;
   let serviceApi = `${CONST.BASE_URL}${CONST.API.LIST(
     "Service"

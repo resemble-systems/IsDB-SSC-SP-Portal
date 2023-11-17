@@ -38,7 +38,7 @@ export default function NewsSection({ routePath }) {
             newsData?.length > 0 &&
             newsData.map((newsObject, index) => (
               <Col xs={24} sm={24} md={8} lg={8} xl={8} key={index}>
-                <NewsPublicationsCard data={newsObject} />
+                <NewsPublicationsCard data={newsObject} page={"dynamic"} />
               </Col>
             ))}
           <div className={`d-flex w-100 justify-content-end`}>

@@ -6,6 +6,7 @@ import { fadeIn } from "react-animations";
 import { StyleSheet, css } from "aphrodite";
 //css
 import styles from "./news-publications-card.module.sass";
+import moment from "moment";
 
 const animationStyles = StyleSheet.create({
   fadeIn: {
@@ -14,7 +15,7 @@ const animationStyles = StyleSheet.create({
   },
 });
 
-export default function NewsPublicationsCard({ data }) {
+export default function NewsPublicationsCard({ data, page }) {
   const history = useHistory();
 
   const { observe, inView } = useInView({
@@ -33,6 +34,7 @@ export default function NewsPublicationsCard({ data }) {
     },
     // More useful options...
   });
+  let date = moment(data?.CreatedDate);
 
   return (
     <div ref={observe} className={inView ? css(animationStyles.fadeIn) : ""}>
@@ -60,9 +62,20 @@ export default function NewsPublicationsCard({ data }) {
             {data?.Description ? data?.Description : <Skeleton />}
           </div>
         </div>
+
+        {page === "dynamic" && (
+          <div className={`${styles.createdDate}`}>
+            {data?.CreatedDate ? (
+              date.format("DD MMM YYYY").toUpperCase()
+            ) : (
+              <Skeleton />
+            )}
+          </div>
+        )}
+
         {data && data?.Title ? (
           <Button
-            className={`${styles.whats_new_card_btn}`}
+            className={`${styles.whats_new_card_btn} pb-2`}
             onClick={() => history.push(`/news-publications/${data?.Id}`)}
           >
             <h6 className={`m-0`}>READ MORE</h6>

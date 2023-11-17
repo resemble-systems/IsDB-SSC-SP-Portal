@@ -88,7 +88,7 @@ export default function OurObjectiveSection() {
           {/* For large screen */}
           <Col xs={0} sm={0} md={16} lg={16} xl={16}>
             <div className={inView ? css(animationStyles.slideInLeft) : ""}>
-              <div className={`${styles.mission_list} px-4 ml-5 mb-4`}>
+              <div className={`${styles.mission_list} px-4 mb-4`}>
                 {
                   "Promote cooperation and knowledge sharing among all IsDB Group staff members (IsDB HQ and Regional Hubs)"
                 }
@@ -96,37 +96,37 @@ export default function OurObjectiveSection() {
             </div>
             <div className={inView ? css(animationStyles.slideInLeft) : ""}>
               <div
-                className={`${styles.mission_list} px-4 ml-5 mb-4`}
+                className={`${styles.mission_list} px-4 mb-4`}
               >{`Help IsDB Group staff members balance their work and family social life`}</div>
             </div>
             <div className={inView ? css(animationStyles.slideInLeft) : ""}>
               <div
-                className={`${styles.mission_list} px-4 ml-5 mb-4`}
+                className={`${styles.mission_list} px-4 mb-4`}
               >{`Encourage social interaction among IsDB Group staff members and their families`}</div>
             </div>
             <div className={inView ? css(animationStyles.slideInLeft) : ""}>
               <div
-                className={`${styles.mission_list} px-4 ml-5 mb-4`}
+                className={`${styles.mission_list} px-4 mb-4`}
               >{`Facilitate communication between the staff members and the Senior Management of the IsDBG in an informal context`}</div>
             </div>
             <div className={inView ? css(animationStyles.slideInLeft) : ""}>
               <div
-                className={`${styles.mission_list} px-4 ml-5 mb-4`}
+                className={`${styles.mission_list} px-4 mb-4`}
               >{`To establish a “Voluntary Staff Donation Fund” in order to help the emergencies situation for staff members`}</div>
             </div>
             <div className={inView ? css(animationStyles.slideInLeft) : ""}>
               <div
-                className={`${styles.mission_list} px-4 ml-5 mb-4`}
+                className={`${styles.mission_list} px-4 mb-4`}
               >{`Welcoming new staff and encourage them to volunteer for SSC activities`}</div>
             </div>
             <div className={inView ? css(animationStyles.slideInLeft) : ""}>
               <div
-                className={`${styles.mission_list} px-4 ml-5 mb-4`}
+                className={`${styles.mission_list} px-4 mb-4`}
               >{`Announcing any happiness or sorrow about for all staff member`}</div>
             </div>
             <div className={inView ? css(animationStyles.slideInLeft) : ""}>
               <div
-                className={`${styles.mission_list} px-4 ml-5 mb-4`}
+                className={`${styles.mission_list} px-4 mb-4`}
               >{`The SSC Executive Team will organize social, spiritual events, farewell events, UN Days and ...etc.`}</div>
             </div>
           </Col>

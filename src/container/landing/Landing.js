@@ -93,6 +93,9 @@ export default function Landing() {
         className={`${styles.new_testimonial_bg}`}
         style={{
           backgroundImage: `url(${TestiBg})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPositionY: "-250px",
         }}
       >
         <NewsPublications />

@@ -13,12 +13,12 @@ export default function ResponsiveView({ view, testimonialsData }) {
         }`}
       >
         <Row>
-          <Col xs={0} sm={0} md={16} lg={17} xl={17}>
-            <Row className={`w-100`}>
+          <Col xs={0} sm={0} md={16} lg={16} xl={16}>
+            <Row /* className={`w-100`} */ gutter={[0, 20]}>
               <Col span={24}>
                 <h3 className={`${styles.testimonials_title}`}>Testimonials</h3>
               </Col>
-              <Col xs={2} sm={2} md={3} lg={3} xl={3}>
+              <Col span={3}>
                 <div
                   className={`${styles.before_des_img}`}
                   style={{
@@ -26,21 +26,21 @@ export default function ResponsiveView({ view, testimonialsData }) {
                   }}
                 ></div>
               </Col>
-              <Col xs={20} sm={20} md={18} lg={18} xl={18}>
-                <p className={`${styles.testimonials_des} w-100`}>
+              <Col span={18} style={{ width: "700px" }}>
+                <div className={`${styles.testimonials_des} `}>
                   {testimonialsData &&
                   testimonialsData.TestimonialsDescription ? (
-                    <p className={`${styles.event_details_des} pr-4`}>
+                    <div className={`${styles.event_details_des} `}>
                       <Scrollbars style={{ height: "100%", width: "100p%" }}>
                         {testimonialsData.TestimonialsDescription}
                       </Scrollbars>
-                    </p>
+                    </div>
                   ) : (
                     <Skeleton style={{ width: 500 }} />
                   )}
-                </p>
+                </div>
               </Col>
-              <Col xs={2} sm={2} md={3} lg={3} xl={3}>
+              <Col span={3}>
                 <div
                   className={`${styles.after_des_img}`}
                   style={{
@@ -101,9 +101,9 @@ export default function ResponsiveView({ view, testimonialsData }) {
               </Col>
             </Row>
           </Col>
-          <Col xs={0} sm={0} md={8} lg={7} xl={7}>
+          <Col xs={0} sm={0} md={8} lg={8} xl={8}>
             <div
-              className={`${styles.image_container} w-100 mx-5`}
+              className={`${styles.image_container} d-flex`}
               // style={{ marginLeft: "20px" }}
             >
               <div className={`${styles.testimonials_image_box}`}>

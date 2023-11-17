@@ -114,10 +114,10 @@ export default function ContactUsSection() {
               <div className={`${styles.contact_us_subcontainer} pt-5`}>
                 <h3 className={`${styles.contact_us_text} mb-4`}>Contact us</h3>
                 <p className={`${styles.contact_us_para} mb-2`}>
-                  We’d love to discuss how we can help your queries.
+                  {"We’d love to discuss how we can help your queries."}
                 </p>
                 <p className={`${styles.contact_us_para}`}>
-                  Contact us for any issues.
+                  {"Email us or Raise Service Request for any issues."}
                 </p>
                 <Row>
                   <Col xs={12} sm={12} md={12} lg={10} xl={10}>
@@ -134,10 +134,10 @@ export default function ContactUsSection() {
                       className={`d-flex justify-content-center flex-column h-100 pl-3`}
                     >
                       <p className={`m-0 ${styles.contact_us_subtext_title}`}>
-                        SSC@isdb.org
+                        {"SSC@isdb.org"}
                       </p>
                       <p className={`m-0 ${styles.contact_us_subtext_des}`}>
-                        Monday - Friday, 9am
+                        {"Monday - Friday, 9am"}
                       </p>
                     </div>
                   </Col>
@@ -152,7 +152,7 @@ export default function ContactUsSection() {
                 backgroundImage: `url(${bgImg2})`,
               }}
             >
-              <h3 className={`${styles.group_img_title}`}>IsDB GROUP</h3>
+              <h3 className={`${styles.group_img_title}`}>ISDB GROUP</h3>
 
               <div
                 className={`${styles.group_img_container}`} /* ref={observe} */

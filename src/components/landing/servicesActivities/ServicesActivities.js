@@ -9,11 +9,19 @@ import styles from "./services-activities.module.sass";
 export default function ServicesActivities() {
   return (
     <div
-      style={{ backgroundImage: `url(${ServiceBg})` }}
+      style={{
+        backgroundImage: `url(${ServiceBg})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPositionY: "-250px",
+      }}
       className={`${styles.service_bg}`}
     >
       <div className={`${styles.service_container} py-5`}>
-        <CommonSectionHeader title={"Activities"} sliderSection={false} />
+        <CommonSectionHeader
+          title={"Services & Activities"}
+          sliderSection={false}
+        />
         <ServicesActivitiesCardSection />
       </div>
     </div>

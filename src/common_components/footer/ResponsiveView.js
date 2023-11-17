@@ -1,43 +1,50 @@
 import { Link } from "react-router-dom";
 import { Row, Col } from "antd";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 //css
 import styles from "./footer.module.sass";
 import { AppContext } from "../../App";
+import axios from "axios";
+import { CONST } from "../../constant";
+import facebookIcon from "../../assets/socialMediaImg/facebook.svg";
+import twitterIcon from "../../assets/socialMediaImg/twitter.svg";
+import youTubeIcon from "../../assets/socialMediaImg/youtube.svg";
+import linkedInIcon from "../../assets/socialMediaImg/linkedin.svg";
 
 export default function ResponsiveView({ view, logo }) {
   const { otherResourcesData } = useContext(AppContext);
 
-  // const [sMedia, setSocialMedia] = useState(null);
-  // useEffect(() => {
-  //   // API Call Other resources
-  //   axios
-  //     .get(
-  //       CONST.BASE_URL +
-  //         CONST.API.LIST("FooterLink") +
-  //         CONST.API.QUERY("Link, Title")
-  //     )
-  //     .then((res) => {
-  //       setFooterLink(res.data.value);
-  //     })
-  //     .catch((err) => console.log(err));
+  const [sMedia, setSocialMedia] = useState(null);
 
-  //   // API Call Other resources
+  useEffect(() => {
+    // API Call Other resources
+    // axios
+    //   .get(
+    //     CONST.BASE_URL +
+    //       CONST.API.LIST("FooterLink") +
+    //       CONST.API.QUERY("Link, Title")
+    //   )
+    //   .then((res) => {
+    //     setFooterLink(res.data.value);
+    //   })
+    //   .catch((err) => console.log(err));
 
-  //   axios
-  //     .get(
-  //       `${CONST.BASE_URL}${CONST.API.LIST("SocialMedia")}${CONST.API.QUERY(
-  //         "Title,Link,AttachmentFiles",
-  //       )} ${CONST.API.ATTACHMENT}`,
-  //     )
-  //     .then(res => {
-  //       setSocialMedia(res.data.value);
-  //     })
-  //     .catch(err => console.log(err));
+    // API Call Other resources
 
-  //   // API Call Other resources
-  // }, []);
+    axios
+      .get(
+        `${CONST.BASE_URL}${CONST.API.LIST("SocialMedia")}${CONST.API.QUERY(
+          "Title,Link,AttachmentFiles"
+        )} ${CONST.API.ATTACHMENT}`
+      )
+      .then((res) => {
+        setSocialMedia(res.data.value);
+      })
+      .catch((err) => console.log(err));
+
+    // API Call Other resources
+  }, []);
 
   // useEffect(() => {
   //   axios
@@ -53,6 +60,7 @@ export default function ResponsiveView({ view, logo }) {
   // }, []);
 
   // socialMediaIcon = socialMediaIcon.slice(0, 4);
+  console.log("sMedia-->", sMedia);
   return (
     <div className={`${styles.navigation_container_bg} pt-5`}>
       <div
@@ -74,14 +82,14 @@ export default function ResponsiveView({ view, logo }) {
             >
               {/* <Image src={logo} alt="logo" width="200" height="116" /> */}
               <img src={logo} alt="Logo" width="200px" height="116px"></img>
-              {/* <div
+              <div
                 className={`mt-4 d-flex justify-content-center w-100 flex-wrap px-2`}
               >
-                {sMedia && sMedia.length > 0
-                  ? sMedia.map(data => (
+                {sMedia && sMedia?.length > 0
+                  ? sMedia?.map((data, index) => (
                       <span
                         className={`mx-2 ${styles.footer_list_cursor_pointer} `}
-                        key={data.id}
+                        key={index}
                         onClick={() => {
                           window.open(data.Link);
                         }}
@@ -92,6 +100,15 @@ export default function ResponsiveView({ view, logo }) {
                               ? data.AttachmentFiles[0].ServerRelativeUrl
                               : ""
                           }
+                          // src={
+                          //   data.Title.toLowerCase() === "facebook"
+                          //     ? facebookIcon
+                          //     : data.Title.toLowerCase() === "twitter"
+                          //     ? twitterIcon
+                          //     : data.Title.toLowerCase() === "linkedin"
+                          //     ? linkedInIcon
+                          //     : ""
+                          // }
                           alt="Media Icons"
                           width="22px"
                           height="18px"
@@ -99,14 +116,14 @@ export default function ResponsiveView({ view, logo }) {
                       </span>
                     ))
                   : ""}
-              </div> */}
+              </div>
             </Col>
             <Col xs={24} sm={24} md={6} lg={7} xl={7}>
               <ul className={`${styles.footer_list} `}>
                 <li
                   className={`${styles.footer_list_header} ${styles.footer_list_cursor_auto} `}
                 >
-                  IsDB Group
+                  {"Contact"}
                 </li>
                 <li
                   className={`${styles.footer_list_address} ${styles.footer_list_cursor_auto} `}
