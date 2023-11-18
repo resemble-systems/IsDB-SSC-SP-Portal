@@ -35,10 +35,7 @@ export default function Banner() {
   }, []);
 
   //expire date banner should be filtered out
-  console.log(
-    "videoUrl",
-    bannerData?.map((t) => t.BannerType.toLowerCase())
-  );
+
   return (
     <>
       <AppSlider

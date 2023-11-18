@@ -25,7 +25,7 @@ export default function Testimonials() {
   }, []);
   let skeletonData = [{}];
   return (
-    <div className={`${styles.testimonial_bg}`}>
+    <div className={`${styles.testimonial_bg} d-flex align-items-center`}>
       <AppSlider
         btnIcon={icon}
         showIndicators={false}

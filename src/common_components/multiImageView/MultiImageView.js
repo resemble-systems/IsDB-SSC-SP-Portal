@@ -31,7 +31,10 @@ function ResponsiveView({ finalData, span, page }) {
 
   return (
     <>
-      <Row gutter={[16, 16]} className={`d-flex justify-content-center w-100`}>
+      <Row
+        gutter={[16, 16]}
+        className={`d-flex justify-content-center w-100 mt-2`}
+      >
         {page === "ssc" &&
           finalData.map((data, index) => (
             <Col

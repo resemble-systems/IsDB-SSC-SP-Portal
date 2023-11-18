@@ -63,15 +63,13 @@ export default function NewsPublicationsCard({ data, page }) {
           </div>
         </div>
 
-        {page === "dynamic" && (
-          <div className={`${styles.createdDate}`}>
-            {data?.CreatedDate ? (
-              date.format("DD MMM YYYY").toUpperCase()
-            ) : (
-              <Skeleton />
-            )}
-          </div>
-        )}
+        <div className={`${styles.createdDate}`}>
+          {data?.CreatedDate ? (
+            date.format("DD MMM YYYY").toUpperCase()
+          ) : (
+            <Skeleton />
+          )}
+        </div>
 
         {data && data?.Title ? (
           <Button
