@@ -6,8 +6,7 @@ import camera from "../../assets/update/camera.svg";
 import deleteicon from "../../assets/update/trash.svg";
 import $ from "jquery";
 import getDigest from "../../services/GetDigest/GetDigest";
-
-var tempId;
+import moment from "moment";
 
 function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
   // Loop through the FileList and render image files as thumbnails.
@@ -29,7 +28,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
     };
 
     console.log("itemID2--->", itemId);
-
+    let tempFileName = moment().format("YYYYMMDDHHmmss") + file.name;
     const GetDigest = async () => {
       const requestOptions = {
         method: "POST",
@@ -59,7 +58,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
         // console.log("digestVal-->", digest);
         console.log("file-->", file);
         $.ajax({
-          url: `/sites/ssc/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${file.name}')`,
+          url: `/sites/ssc/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${tempFileName}')`,
           type: "POST",
           data: buffer,
           processData: false,
@@ -76,6 +75,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
           },
           success: function (data, textStatus, jqXHR) {
             setLoaderTime(false);
+
             console.log("Img uploaded successfully");
           },
           error: function (jqXHR, textStatus, errorThrown) {
@@ -88,7 +88,6 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
     // Render thumbnail.
     //const span = document.createElement('span')
     const src = URL.createObjectURL(file);
-
     document.getElementById(id).innerHTML = `<div><Image
             src=${deleteicon}
             alt="Img_Item"
@@ -102,9 +101,11 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
             height=70
         /></div>`;
     let temp = document.getElementById(id);
+
     console.log(temp.firstChild);
+
     temp.firstChild.addEventListener("click", function (event) {
-      hideDiv(tempId, itemId, file.name, listName);
+      hideDiv(id, itemId, tempFileName, listName);
     });
   }
 }
@@ -264,11 +265,12 @@ export default function TestUpload({
 }) {
   const [count, setCount] = useState(0);
 
+  let existingImageLength = uploadedPic.length;
   var elements = [];
   for (var i = 0; i < count; i++) {
-    let p = uuidv4();
+    let actualCount = i + existingImageLength + 1;
+    let p = itemId + "F" + actualCount;
     let colid = "H" + p;
-    tempId = colid;
     let fid = "files" + p;
     // push the component to elements!
     elements.push(
@@ -301,7 +303,10 @@ export default function TestUpload({
             <Col>
               <Row>
                 {uploadedPic?.map((data, index) => (
-                  <Col id={"H" + (index + 1)} className={`${styles.imageDiv}`}>
+                  <Col
+                    id={"H" + itemId + "F" + (index + 1)}
+                    className={`${styles.imageDiv}`}
+                  >
                     {/* <label for="files" className={`${styles.labelStyle}`}>
                       <img src={camera} alt="Img_Item" width={20} height={20} />
                       <input
@@ -324,7 +329,7 @@ export default function TestUpload({
                     <div
                       onClick={() =>
                         hideDiv(
-                          "H" + (index + 1),
+                          "H" + itemId + "F" + (index + 1),
                           itemId,
                           data.FileName,
                           listName

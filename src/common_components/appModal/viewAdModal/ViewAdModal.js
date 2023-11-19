@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Row, Col } from "antd";
 
 import { CloseOutlined } from "@ant-design/icons";
@@ -14,6 +14,7 @@ import mail from "../../../assets/buySell/mail.svg";
 import phone from "../../../assets/buySell/phone.svg";
 import noimg from "../../../assets/buySell/No_Image_Available.jpg";
 import Scrollbars from "react-custom-scrollbars";
+import btnimg from "../../../assets/context/slider_btn_icon_light.svg";
 
 function getDisplayImage(image) {
   let result = [];
@@ -50,6 +51,7 @@ function getDisplayImage(image) {
 
 export default function ViewAdModal({ cardData, visible, setVisiblety }) {
   let displayImage = getDisplayImage(cardData.AttachmentFiles);
+  const [autoPlay, setAutoPlay] = useState(true);
   return (
     <Modal
       // title={`Event Registration`}
@@ -108,9 +110,10 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
         <Col span={24}>
           {displayImage.length > 0 ? (
             <AppSlider
-              showIndicators={false}
-              stopOnHover={false}
-              autoPlay={true}
+              btnIcon={btnimg}
+              autoPlay={autoPlay}
+              setAutoPlay={setAutoPlay}
+              stopOnHover={true}
             >
               {displayImage.map((data, index) => (
                 <Row gutter={[16, 16]} key={index}>
