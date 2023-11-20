@@ -28,7 +28,9 @@ export default function AppDrawer({
 }) {
   const history = useHistory();
   const { user, services } = useContext(AppContext);
-  const [isAdmin, setIsAdmin] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [menuList, setMenuList] = useState([]);
+
   // const [otResource, setOtResource] = useState(null);
 
   let adminMembersApi = `${CONST.BASE_URL}${CONST.API.LIST(
@@ -50,7 +52,68 @@ export default function AppDrawer({
   // }, []);
 
   useEffect(() => {
+    // let menuLists;
     // const adminMembers = axios.get(adminMembersApi);
+    setMenuList([
+      {
+        header: "Discover",
+        links: [
+          {
+            name: "Home",
+            link: "/",
+          },
+          {
+            name: "Gallery",
+            link: "/gallery",
+          },
+          {
+            name: "About Us",
+            link: "/about-us",
+          },
+          {
+            name: "Events",
+            link: "/events",
+          },
+          {
+            name: "News & Publications",
+            link: "/news-publications",
+          },
+          {
+            name: "Activities",
+            link: "/activities",
+          },
+          {
+            name: "Offers",
+            link: "/offers",
+          },
+        ],
+      },
+      //Service and Activities Route
+      services &&
+        services.length > 0 && {
+          header: "Services",
+          links:
+            services &&
+            services.length > 0 &&
+            services.map((data) => {
+              return {
+                name: data.Title,
+                link: `/activities/${mapTypeToRoutePath(data)}`,
+              };
+            }),
+        },
+      //Other Resources Route
+      // otResource &&
+      //   otResource.length > 0 && {
+      //     header: "Other Resources",
+      //     links:
+      //       otResource &&
+      //       otResource.length > 0 &&
+      //       otResource.map(data => {
+      //         return { name: data.Title, link: data.Link };
+      //       }),
+      //   },
+    ]);
     if (user) {
       axios.get(adminMembersApi).then((res) => {
         console.log("adminMenbers-->", res.data.value, user);
@@ -58,81 +121,25 @@ export default function AppDrawer({
         const filterAdmin = membersArray?.map((data) => {
           return user?.data.Email.includes(data.Title);
         });
-        setIsAdmin(filterAdmin);
+        console.log("admin--->", filterAdmin);
+        filterAdmin?.includes(true) ? setIsAdmin(true) : setIsAdmin(false);
       });
     }
-  }, [user]);
+  }, [user, services]);
 
-  console.log("adminCheck-->", isAdmin, user, isAdmin[0]);
+  console.log("adminCheck-->", isAdmin);
 
-  let menuLists = [
-    {
-      header: "Discover",
-      links: [
-        {
-          name: "Home",
-          link: "/",
-        },
-        {
-          name: "Gallery",
-          link: "/gallery",
-        },
-        {
-          name: "About Us",
-          link: "/about-us",
-        },
-        {
-          name: "Events",
-          link: "/events",
-        },
-        {
-          name: "News & Publications",
-          link: "/news-publications",
-        },
-        {
-          name: "Activities",
-          link: "/activities",
-        },
-        {
-          name: "Offers",
-          link: "/offers",
-        },
-      ],
-    },
-    //Service and Activities Route
-    services &&
-      services.length > 0 && {
-        header: "Services",
-        links:
-          services &&
-          services.length > 0 &&
-          services.map((data) => {
-            return {
-              name: data.Title,
-              link: `/activities/${mapTypeToRoutePath(data)}`,
-            };
-          }),
-      },
-    //Other Resources Route
-    // otResource &&
-    //   otResource.length > 0 && {
-    //     header: "Other Resources",
-    //     links:
-    //       otResource &&
-    //       otResource.length > 0 &&
-    //       otResource.map(data => {
-    //         return { name: data.Title, link: data.Link };
-    //       }),
-    //   },
-  ];
+  useEffect(() => {
+    if (isAdmin === true) {
+      console.log("success");
+      menuList[0].links.push({
+        name: "Admin Panel",
+        link: "/Pages/Admin.aspx",
+      });
+    }
+  }, [isAdmin]);
 
-  if (isAdmin[0]) {
-    menuLists[0].links.push({
-      name: "Admin Panel",
-      link: "/Pages/Admin.aspx",
-    });
-  }
-  // console.log("list-->", services);
+  console.log("list-->", menuList);
   return (
     <>
       <Drawer
@@ -216,9 +223,9 @@ export default function AppDrawer({
               className={`${styles.search_btn} mb-2`}
             /> */}
           </Col>
-          {menuLists &&
-            menuLists.length > 0 &&
-            menuLists.map((listItem, index) => (
+          {menuList &&
+            menuList.length > 0 &&
+            menuList.map((listItem, index) => (
               <Col
                 xs={0}
                 sm={0}
