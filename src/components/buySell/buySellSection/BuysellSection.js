@@ -105,7 +105,7 @@ export default function BuysellSection() {
     axios
       .get(
         `${CONST.BASE_URL}${CONST.API.LIST("Advertisement")}${CONST.API.QUERY(
-          "Title,Description,Address,Author0,Created,AuthorImage,Price,Brand,Email,Category,SubCategory,Phone,AttachmentFiles,Modified,status"
+          "Title,Description,Address,Author0,Created,AuthorImage,Price,Brand,Email,Category,SubCategory,Phone,AttachmentFiles,Modified,status&$orderby=ID desc"
         )} ${CONST.API.ATTACHMENT} `
       )
 

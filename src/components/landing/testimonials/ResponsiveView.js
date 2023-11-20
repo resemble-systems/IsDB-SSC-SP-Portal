@@ -67,9 +67,7 @@ export default function ResponsiveView({ view, testimonialsData }) {
           </Col>
 
           <Col xs={0} sm={0} md={8} lg={7} xl={7}>
-            <div
-              className={`${styles.image_container} d-flex justify-content-end`}
-            >
+            <div className={`${styles.image_container}`}>
               <div className={`${styles.testimonials_image_box}`}>
                 {testimonialsData &&
                 testimonialsData.AttachmentFiles &&

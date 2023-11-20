@@ -60,7 +60,7 @@ export default function ResponsiveView({ view, logo }) {
   // }, []);
 
   // socialMediaIcon = socialMediaIcon.slice(0, 4);
-  console.log("sMedia-->", sMedia);
+
   return (
     <div className={`${styles.navigation_container_bg} pt-5`}>
       <div

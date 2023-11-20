@@ -118,7 +118,9 @@ export default function AppDrawer({
       axios.get(adminMembersApi).then((res) => {
         const membersArray = res.data.value;
         const filterAdmin = membersArray?.map((data) => {
-          return user?.data.Email.includes(data.Title);
+          return user?.data.Email.toLowerCase().includes(
+            data.Title.toLowerCase()
+          );
         });
 
         filterAdmin?.includes(true) ? setIsAdmin(true) : setIsAdmin(false);
