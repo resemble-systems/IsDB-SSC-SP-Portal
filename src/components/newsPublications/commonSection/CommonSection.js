@@ -4,6 +4,7 @@ import moment from "moment";
 import AppRoundedBtn from "../../../common_components/appRoundedBtn/AppRoundedBtn";
 //css
 import styles from "./common-section.module.sass";
+import Scrollbars from "react-custom-scrollbars";
 
 export default function CommonSection({
   news,
@@ -65,8 +66,13 @@ export default function CommonSection({
               {moment(news.Created).format("D MMMM YYYY")}
             </p>
             {section === "intro" && (
-              <p className={`${styles.intro_news_description} mb-5`}>
-                {news && news.TextArea && news.TextArea.length && news.TextArea}
+              <p className={`${styles.intro_news_description}`}>
+                <Scrollbars style={{ height: "260px" }}>
+                  {news &&
+                    news.TextArea &&
+                    news.TextArea.length &&
+                    news.TextArea}
+                </Scrollbars>
               </p>
             )}
             <div

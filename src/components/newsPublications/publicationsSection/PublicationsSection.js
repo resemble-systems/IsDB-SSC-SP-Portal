@@ -43,16 +43,20 @@ export default function PublicationsSection({ news }) {
                 />
               </Col>
             ))}
-          <div className={`d-flex w-100 justify-content-end`}>
-            <AppBtn
-              text={seeAll ? `See Less` : `See All`}
-              prefix={""}
-              suffix={<ArrowRightOutlined className={`ml-2 pt-1`} />}
-              mode={"dark"}
-              // href={"/news-publications"}
-              onClick={seeAll ? () => setSeeAll(false) : () => setSeeAll(true)}
-            />
-          </div>
+          {publicationData?.length > 6 && (
+            <div className={`d-flex w-100 justify-content-end`}>
+              <AppBtn
+                text={seeAll ? `See Less` : `See All`}
+                prefix={""}
+                suffix={<ArrowRightOutlined className={`ml-2 pt-1`} />}
+                mode={"dark"}
+                // href={"/news-publications"}
+                onClick={
+                  seeAll ? () => setSeeAll(false) : () => setSeeAll(true)
+                }
+              />
+            </div>
+          )}
         </Row>
       </div>
     </div>

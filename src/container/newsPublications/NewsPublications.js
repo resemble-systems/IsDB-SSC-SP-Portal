@@ -43,7 +43,7 @@ export default function NewsPublications({
     axios
       .get(
         `${CONST.BASE_URL}${CONST.API.LIST("Publication")}${CONST.API.QUERY(
-          "Title,AuthorName,Link,Created,Id,TextArea,Expirydate,AttachmentFiles"
+          "Title,AuthorName,Link,Created,Id,TextArea,Expirydate,AttachmentFiles&$orderby=ID desc"
         )} ${CONST.API.ATTACHMENT}`
       )
       .then((res) => {
