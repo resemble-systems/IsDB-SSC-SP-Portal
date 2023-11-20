@@ -265,7 +265,8 @@ export default function TestUpload({
 }) {
   const [count, setCount] = useState(0);
 
-  let existingImageLength = uploadedPic.length;
+  let existingImageLength = uploadedPic?.length ? uploadedPic?.length : 3;
+
   var elements = [];
   for (var i = 0; i < count; i++) {
     let actualCount = i + existingImageLength + 1;
