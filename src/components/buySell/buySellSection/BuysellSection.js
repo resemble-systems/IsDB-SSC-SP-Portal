@@ -183,10 +183,8 @@ export default function BuysellSection() {
   }, [subMenu, cardsData, adCategories, subCategoryList, yourAds]);
 
   useEffect(() => {
-    console.log("yourAds-->", yourAds);
     if (yourAds === true /* && user && user?.length > 0 */) {
       if (subMenu?.toLowerCase() === "all") {
-        console.log("alllll", filterData);
         let filterAll = cardsData?.filter(
           (data) =>
             data.Author0 === user?.data?.DisplayName &&
@@ -226,13 +224,12 @@ export default function BuysellSection() {
   }
 
   function paginationService(filterData, listSize, pageNumber) {
-    console.log("paginationService-->", filterData, listSize, pageNumber);
     return filterData?.slice(
       (pageNumber - 1) * listSize,
       listSize * pageNumber
     );
   }
-  console.log("alldata-->", filterData);
+
   return (
     <>
       <div className={`${styles.buysellsetion_section_bg}`}>

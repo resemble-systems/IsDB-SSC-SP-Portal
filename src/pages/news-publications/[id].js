@@ -19,7 +19,6 @@ export default function NewsTypes({ routePath }) {
     let itemId = data[data.length - 1];
     setItemId(itemId);
   }, [location.pathname, itemId]);
-  console.log("activitesID", itemId);
 
   return (
     <>

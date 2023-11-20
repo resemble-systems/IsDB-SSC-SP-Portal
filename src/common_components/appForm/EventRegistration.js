@@ -71,7 +71,7 @@ const UseForm = (
         .post(url, stringifyPostData, configAxios)
         .then((r) => {
           setLoaderTime(false);
-          console.log("Success");
+
           // alert(`Success ${response.Email}`);
           setRegisterDone(true);
           setInputs(initialValues);

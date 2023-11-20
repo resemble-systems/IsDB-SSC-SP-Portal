@@ -50,7 +50,6 @@ function Header({
   useEffect(() => {
     let urlSplit = window.location.href.split("/").pop();
     setSearchFor(urlSplit);
-    console.log("test-->", urlSplit);
   }, [location.pathname]);
 
   const onSearch = (value) => {
@@ -130,7 +129,6 @@ function Header({
     color: "#000", // Set text color to a desired value
   };
 
-  console.log("ddmenuHeader-->", ddmenu);
   return (
     <header className={styles.header_container}>
       <Row>

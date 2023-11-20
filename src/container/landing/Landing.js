@@ -83,7 +83,7 @@ export default function Landing() {
   }, [gallery, galleryDetails]);
 
   let skeletonData = [{}];
-  console.log("rerender Check", galleryContent, galleryDetails, gallery);
+
   return (
     <Layout>
       <Banner />

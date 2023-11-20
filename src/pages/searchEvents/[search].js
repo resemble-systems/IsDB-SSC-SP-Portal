@@ -19,10 +19,9 @@ const SearchEvents = () => {
     let urlSplit = window.location.href.split("?").pop();
     let whatType = urlSplit.split("&")[0].split("=").pop();
     let searchValue = urlSplit.split("&").pop();
-    console.log("searchVal", urlSplit.split("&")[0].split("=").pop());
+
     setSearchVal(decodeURIComponent(searchValue));
     setType(whatType);
-    console.log("test-->", searchValue);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -57,7 +56,7 @@ const SearchEvents = () => {
       setFilteredEvents(filterSearch);
     }
   }, [searchVal, events]);
-  console.log("searchVal", searchVal);
+
   return (
     <Layout>
       <div className={`${styles.buysellsetion_section_bg}`}>

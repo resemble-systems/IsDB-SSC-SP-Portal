@@ -11,10 +11,6 @@ export default function CommonSection({
   imageWidth,
   imageHeight,
 }) {
-  console.log(
-    "newsServerRelativeUrl8--->",
-    news?.AttachmentFiles[0]?.ServerRelativeUrl
-  );
   return (
     <Row>
       {section === "intro" && (

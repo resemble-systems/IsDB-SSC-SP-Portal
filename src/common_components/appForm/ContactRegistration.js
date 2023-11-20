@@ -33,7 +33,6 @@ export default function UseContactForm(
         [input]: error,
       }));
     });
-    console.log("errorObject-------->", errorObject);
 
     if (
       Object.values(errorObject).filter((err) => err === false).length === 0
@@ -69,7 +68,7 @@ export default function UseContactForm(
           .post(url, stringifyPostData, configAxios)
           .then((r) => {
             setLoaderTime(false);
-            console.log("Success");
+
             setRegisterDone(true);
             setInputs(fromObject);
             setErrors(errorObj);

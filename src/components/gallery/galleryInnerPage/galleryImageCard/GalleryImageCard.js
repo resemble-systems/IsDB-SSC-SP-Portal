@@ -16,7 +16,6 @@ export default function GalleryImageCard({
 }) {
   // console.log("filteredcardData", filteredcardData);
   // console.log("category", category);
-  console.log("EVENTDATA", AllData);
 
   const [autoPlay, setAutoPlay] = useState(true);
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -59,7 +58,7 @@ export default function GalleryImageCard({
     let mappedDataDoc = AllData.filter(
       (data) => data.ContentType0.toLowerCase() === "document"
     );
-    console.log("mappedDataImage", mappedDataImage);
+
     // console.log("mappedDataVideo", mappedDataVideo);
     // console.log("mappedDataDoc", mappedDataDoc);
 
@@ -78,7 +77,6 @@ export default function GalleryImageCard({
     setIsopen(true);
     setPhotoUrl(index);
   }
-  console.log(cardData);
 
   return (
     <>

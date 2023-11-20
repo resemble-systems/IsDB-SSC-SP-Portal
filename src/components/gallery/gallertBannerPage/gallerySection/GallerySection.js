@@ -58,7 +58,7 @@ export default function GallerySection({ galleryData }) {
           );
       }
     }
-    console.log("listItem-->", list);
+
     if (category) {
       if (category === "all") {
         if (list.length > 0) {

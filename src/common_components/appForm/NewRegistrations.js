@@ -37,7 +37,7 @@ const UseRegForm = (
         [input]: error,
       }));
     });
-    console.log("errorObject-------->", errorObject);
+
     if (
       Object.values(errorObject).filter((err) => err === false).length === 0
     ) {
@@ -78,12 +78,12 @@ const UseRegForm = (
           "IF-MATCH": "*",
         },
       };
-      console.log("testData-->", url, stringifyPostData, configAxios);
+
       axios
         .post(url, stringifyPostData, configAxios)
         .then((r) => {
           setLoaderTime(false);
-          console.log("Success");
+
           // alert(`Success ${response.Email}`);
           setRegisterDone(true);
           setInputs(fromObject);

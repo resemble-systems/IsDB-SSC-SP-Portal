@@ -30,10 +30,6 @@ function App() {
   const [events, setEventsData] = useState(null);
   const [serviceLogoData, setSeviceLogoData] = useState(null);
   const [otherResourcesData, setOtherResourcesData] = useState(null);
-  console.log("USER", user);
-  console.log("NEWS", newsLib);
-  console.log("SERVICES", services);
-  console.log("EVENTS", events);
 
   let userApi = `${CONST.BASE_URL}${CONST.API.USER}`;
   let newsApi = `${CONST.BASE_URL}${CONST.API.LIST("News")}${CONST.API.QUERY(
@@ -56,55 +52,44 @@ function App() {
     CONST.API.LIST("OtherResources") +
     CONST.API.QUERY("Link, Title");
 
-  useEffect(
-    () => {
-      const requestUser = axios.get(userApi);
-      const requestNews = axios.get(newsApi);
-      const requestService = axios.get(serviceApi);
-      const requestEvent = axios.get(eventsApi);
-      const requestServiceLogo = axios.get(servicesLogoApi);
-      const requestOtherResources = axios.get(otherResourcesApi);
-      axios
-        .all([
-          requestUser,
-          requestNews,
-          requestService,
-          requestEvent,
-          requestServiceLogo,
-          requestOtherResources,
-        ])
-        .then(
-          axios.spread((...responses) => {
-            console.log("responses[4]", responses[4]);
-            const responseUser = responses[0];
-            const responseNews = responses[1].data.value;
-            const responseService = responses[2].data.value;
-            const responseEvent = responses[3].data.value;
-            const responseServiceLogo = responses[4].data.value;
-            const responseOtherResources = responses[5].data.value;
-            console.log("resServices-->", responseService);
-            setUser(responseUser);
-            setNewsData(responseNews);
-            setServicesData(responseService);
-            setEventsData(responseEvent);
-            setSeviceLogoData(responseServiceLogo);
-            setOtherResourcesData(responseOtherResources);
-          })
-        )
-        .catch((errors) => {
-          console.log("=====================>", errors);
-        });
-    },
-    [
-      /*  userApi,
-    newsApi,
-    serviceApi,
-    eventsApi,
-    otherResourcesApi,
-    servicesLogoApi, */
-    ]
-  );
-  console.log("eventApi--->", events);
+  useEffect(() => {
+    const requestUser = axios.get(userApi);
+    const requestNews = axios.get(newsApi);
+    const requestService = axios.get(serviceApi);
+    const requestEvent = axios.get(eventsApi);
+    const requestServiceLogo = axios.get(servicesLogoApi);
+    const requestOtherResources = axios.get(otherResourcesApi);
+    axios
+      .all([
+        requestUser,
+        requestNews,
+        requestService,
+        requestEvent,
+        requestServiceLogo,
+        requestOtherResources,
+      ])
+      .then(
+        axios.spread((...responses) => {
+          const responseUser = responses[0];
+          const responseNews = responses[1].data.value;
+          const responseService = responses[2].data.value;
+          const responseEvent = responses[3].data.value;
+          const responseServiceLogo = responses[4].data.value;
+          const responseOtherResources = responses[5].data.value;
+
+          setUser(responseUser);
+          setNewsData(responseNews);
+          setServicesData(responseService);
+          setEventsData(responseEvent);
+          setSeviceLogoData(responseServiceLogo);
+          setOtherResourcesData(responseOtherResources);
+        })
+      )
+      .catch((errors) => {
+        console.log("=====================>", errors);
+      });
+  }, []);
+
   return (
     <AppContext.Provider
       value={{

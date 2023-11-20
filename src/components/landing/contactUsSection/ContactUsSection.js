@@ -99,7 +99,7 @@ export default function ContactUsSection() {
   //   },
   //   // More useful options...
   // });
-  console.log("logData", logoMainData);
+
   return (
     <div className={`${styles.contact_us_section}`}>
       <div className={`${styles.second_layer}`}>

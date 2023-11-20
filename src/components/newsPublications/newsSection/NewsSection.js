@@ -31,7 +31,7 @@ export default function NewsSection() {
       }
     }
   }, [seeAll]);
-  console.log("displayData-->", dispalyData);
+
   return (
     <div className={`${styles.news_bg}`}>
       <div className={`${styles.news_container} pb-5`}>

@@ -46,7 +46,7 @@ export default class AppCalendar extends Component {
     const { eventsData } = this.props;
     // console.log("CALENDAR EVENT", eventsData);
     let displayEvent = [];
-    console.log("args-->", eventsData);
+
     eventsData.forEach((eventData) => {
       args["date"] = args.value;
       if (this.isMarkCalendarDates(eventData, args)) {
@@ -152,7 +152,7 @@ export default class AppCalendar extends Component {
     if (window.screen.width < 500) value = 90;
     window.google.charts.load("current", { packages: ["corechart"] });
     window.google.charts.setOnLoadCallback(drawChart);
-    console.log("propsData-->", this.props);
+
     let slices;
     if (this.props.servicesData?.length > 0) {
       slices = [...setCalendarMarks(chartData, this.props.servicesData)];

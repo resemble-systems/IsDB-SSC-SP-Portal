@@ -76,7 +76,7 @@ export default function UpcomingEvents() {
 
       finalIndex = Math.floor(parseInt(events.length) / 3);
       setTitle(title);
-      console.log("displayData-->", displayEventsData);
+
       setItem(displayEventsData, services);
       setEventsData(displayEventsData);
     }

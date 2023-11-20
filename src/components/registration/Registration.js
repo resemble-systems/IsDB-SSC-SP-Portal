@@ -27,7 +27,6 @@ function onCancelHandler(
   fromObject,
   errorObj
 ) {
-  console.log("==Set1", setRegisterDone);
   setErrors(errorObj);
   setInputs(fromObject);
   setRegisterDone(false);

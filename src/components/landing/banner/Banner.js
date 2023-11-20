@@ -74,7 +74,6 @@ export default function Banner() {
                   <div
                     className={`${styles.video_play_btn}`}
                     onClick={() => {
-                      console.log("testVideo");
                       setVideoUrl(banner?.VideoLink);
                       setPlay(true);
                       setModalVisibility(true);

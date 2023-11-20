@@ -23,7 +23,6 @@ export default function ServicesActivities() {
   useEffect(() => {
     let urlSplit = window.location.href.split("/").pop();
     setSearchFor(urlSplit);
-    console.log("test-->", urlSplit);
   }, [location.pathname]);
 
   const title = () => {

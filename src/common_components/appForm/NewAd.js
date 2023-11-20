@@ -41,9 +41,7 @@ const UseForm = (
   const { user } = useContext(AppContext);
   // Submit Handling
   const handleSubmit = async () => {
-    console.log("inputs-->", updatedValues);
     if (mode === "update") {
-      console.log("update-->", mode, listId, inputs);
       setLoaderTime(true);
       // let resp = await getDigest();
       const url =
@@ -88,7 +86,6 @@ const UseForm = (
         axios
           .post(url, stringifyPostData, configAxios)
           .then((r) => {
-            console.log("getDigest-->", r);
             setLoaderTime(false);
             setRegisterDone(true);
             setInputs(initialValues);
@@ -110,7 +107,7 @@ const UseForm = (
           [input]: error,
         }));
       });
-      console.log("inputVal-->", inputs);
+
       console.log("errorObject-------->", errorObject);
       if (
         Object.values(errorObject).filter((err) => err === false).length === 0
@@ -156,11 +153,10 @@ const UseForm = (
               "X-HTTP-Method": "MERGE",
             },
           };
-          console.log("testData-->", url, stringifyPostData, configAxios);
+
           axios
             .post(url, stringifyPostData, configAxios)
             .then((r) => {
-              console.log("getDigest-->", r);
               setLoaderTime(false);
               setRegisterDone(true);
               setInputs(initialValues);
@@ -226,7 +222,6 @@ const UseForm = (
   };
   // category Handling
   const handleCategory = (e) => {
-    console.log("category-->", e);
     let error = validator("category", e);
     setErrors({
       ...errors,

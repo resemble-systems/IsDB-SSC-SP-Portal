@@ -225,7 +225,7 @@ export default function EditAdModal({
           selectedSubCategory = selectedSubCategory.map(
             (subCategory) => subCategory.Title
           );
-          console.log("subitems2-->", selectedSubCategory);
+
           if (selectedSubCategory && selectedSubCategory.length > 0)
             setsubitems(selectedSubCategory);
           else setsubitems([]);
@@ -320,11 +320,9 @@ export default function EditAdModal({
   }
 
   const handleSelectionChange = (event) => {
-    console.log("value-->", event.target.value);
     setSelection(event.target.value);
   };
 
-  console.log("Address-->", updatedValues.Address);
   return (
     <Modal
       centered

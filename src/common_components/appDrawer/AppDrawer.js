@@ -116,30 +116,16 @@ export default function AppDrawer({
     ]);
     if (user) {
       axios.get(adminMembersApi).then((res) => {
-        console.log("adminMenbers-->", res.data.value, user);
         const membersArray = res.data.value;
         const filterAdmin = membersArray?.map((data) => {
           return user?.data.Email.includes(data.Title);
         });
-        console.log("admin--->", filterAdmin);
+
         filterAdmin?.includes(true) ? setIsAdmin(true) : setIsAdmin(false);
       });
     }
   }, [user, services]);
 
-  console.log("adminCheck-->", isAdmin);
-
-  useEffect(() => {
-    if (isAdmin === true) {
-      console.log("success");
-      menuList[0].links.push({
-        name: "Admin Panel",
-        link: "/Pages/Admin.aspx",
-      });
-    }
-  }, [isAdmin]);
-
-  console.log("list-->", menuList);
   return (
     <>
       <Drawer
@@ -250,11 +236,12 @@ export default function AppDrawer({
                           <a
                             onClick={() => {
                               setVisbility(false);
+
                               history.push(list.link);
                             }}
-                            target={
-                              list.name === "Admin Panel" ? "_blank" : undefined
-                            }
+                            // target={
+                            //   list.name === "Admin Panel" ? "_blank" : undefined
+                            // }
                           >
                             {list.name}
                           </a>
@@ -265,6 +252,32 @@ export default function AppDrawer({
                 </div>
               </Col>
             ))}
+          {isAdmin && (
+            <Col
+              xs={0}
+              sm={0}
+              md={24}
+              lg={24}
+              xl={24}
+              className={`d-flex justify-content-center`}
+              key={"admin"}
+            >
+              <div className={`${styles.list_header}`}>
+                {"Admin"}
+                <ul className={`${styles.list_items} mt-4 pl-4`}>
+                  <li className={`mb-4`} key={"adminPanel"}>
+                    <a
+                      href="https://isdb.sharepoint.com/sites/ssc/Pages/Admin.aspx"
+                      rel="noreferrer"
+                      target={"_blank"}
+                    >
+                      {"Admin Panel"}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </Col>
+          )}
           <Col xs={24} sm={24} md={0} lg={0} xl={0}>
             {/* {!userLogedIn ? (
               <>

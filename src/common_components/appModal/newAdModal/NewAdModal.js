@@ -43,17 +43,6 @@ export default function NewAdModal({
   setCallApi,
   callApi,
 }) {
-  console.log(
-    "newAdModal",
-    visible,
-    setVisiblety,
-    citems,
-    setSelectedCategory,
-    subitems,
-    selectedCategory,
-    setCallApi,
-    callApi
-  );
   const [loading, setLoaderTime] = useState(false);
   const [registerDone, setRegisterDone] = useState(false);
   // Form Initial Objects
@@ -134,7 +123,6 @@ export default function NewAdModal({
         axios
           .post(url, stringifyPostData, configAxios)
           .then((r) => {
-            console.log("Id===>", r, r.data.d.Id);
             setItemId(r.data.d.Id);
           })
           .catch((err) => {
@@ -143,9 +131,6 @@ export default function NewAdModal({
       });
     }
   }, [visible]);
-  console.log("errors", errors.price);
-
-  console.log("AdvertisementId", errors);
 
   return (
     <Modal

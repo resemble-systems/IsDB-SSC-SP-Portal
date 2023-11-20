@@ -8,7 +8,7 @@ export default function SearchCard({ cardData, type }) {
   const history = useHistory();
   //process.env.BASE_URL +
   //const [eventId, setEventId] = useState("");
-  console.log("cardData", cardData);
+
   return (
     <>
       <div className={`${styles.buysell_card} my-2`}>

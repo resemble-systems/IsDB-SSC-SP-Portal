@@ -10,7 +10,7 @@ import moment from "moment";
 
 function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
   // Loop through the FileList and render image files as thumbnails.
-  console.log("colId-->", id);
+
   setLoaderTime(true);
   for (const file of evt.target.files) {
     //Attacfile code
@@ -27,7 +27,6 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
       return deferred.promise();
     };
 
-    console.log("itemID2--->", itemId);
     let tempFileName = moment().format("YYYYMMDDHHmmss") + file.name;
     const GetDigest = async () => {
       const requestOptions = {
@@ -49,14 +48,12 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
       $("#__REQUESTDIGEST").val(
         data.d.GetContextWebInformation.FormDigestValue
       );
-      console.log("digestValue---->", data);
+
       return data.d.GetContextWebInformation.FormDigestValue;
     };
 
     getFileBuffer(file).then(function (buffer) {
       GetDigest().then((digest) => {
-        // console.log("digestVal-->", digest);
-        console.log("file-->", file);
         $.ajax({
           url: `/sites/ssc/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${tempFileName}')`,
           type: "POST",
@@ -101,8 +98,6 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
             height=70
         /></div>`;
     let temp = document.getElementById(id);
-
-    console.log(temp.firstChild);
 
     temp.firstChild.addEventListener("click", function (event) {
       hideDiv(id, itemId, tempFileName, listName);
@@ -211,7 +206,7 @@ function handleFileSelect(evt, id, itemId, listName, setLoaderTime) {
 function hideDiv(id, itemId, filename, listName) {
   //Function to hide the elements
   var myobj = document.getElementById(id);
-  console.log("myobj", myobj, id, itemId, filename, listName);
+
   myobj?.remove();
   //alert(id)
 
@@ -230,7 +225,7 @@ function hideDiv(id, itemId, filename, listName) {
 
     const data = await response.json();
     $("#__REQUESTDIGEST").val(data.d.GetContextWebInformation.FormDigestValue);
-    console.log("digestValue---->", data);
+
     return data.d.GetContextWebInformation.FormDigestValue;
   };
   //Deleteattacment fn
@@ -292,7 +287,7 @@ export default function TestUpload({
       </Col>
     );
   }
-  console.log("attachment-->", itemId, uploadedPic);
+
   return (
     <>
       {uploadedPic?.length > 0 ? (

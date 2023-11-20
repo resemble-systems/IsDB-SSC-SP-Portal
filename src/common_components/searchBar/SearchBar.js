@@ -6,8 +6,6 @@ const SearchBar = ({ styleApply, search }) => {
   const { Search } = Input;
   const history = useHistory();
 
-  console.log("searchBar");
-
   const onSearch = (value) => {
     const trimmedValue = value.trim();
 

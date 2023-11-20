@@ -24,7 +24,6 @@ export default function OfferComp() {
       })
       .catch((err) => console.log(err));
   }, []);
-  console.log("OFFER", OffersData);
 
   return (
     <>

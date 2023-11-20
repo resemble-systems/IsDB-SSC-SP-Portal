@@ -17,7 +17,7 @@ export default function GalleryInnerPageSection({
   const [filteredcardData, setFilteredCardData] = useState([]);
   const [AllData, setAllData] = useState([]);
   // Conditional Rendering
-  console.log("eventData-->", eventData);
+
   useEffect(() => {
     if (eventData && eventData?.length > 0) {
       let data = eventData?.filter(

@@ -49,13 +49,6 @@ export default function EventsDetails({ routePath }) {
   useEffect(() => {
     if (routePath && events && events?.length > 0) {
       const filterNews = events.filter((data) => {
-        console.log(
-          "newsLib->",
-          events,
-
-          routePath.id,
-          data.ID.toString()
-        );
         return data.ID.toString() === routePath.id;
       });
       setEventsData(filterNews);
@@ -63,7 +56,6 @@ export default function EventsDetails({ routePath }) {
     }
   }, [routePath]);
 
-  console.log("EventsData-->", routePath);
   return (
     <>
       {
