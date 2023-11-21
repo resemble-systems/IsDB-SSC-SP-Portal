@@ -36,7 +36,7 @@ export default function StaffSocialClub() {
         <Col xs={24} sm={24} md={0} lg={0} xl={0}>
           <Col xs={24} sm={24} md={0} lg={0} xl={0}>
             <div className={`d-flex justify-content-center align-items-center`}>
-              <h3 className={`${styles.mission_title} pl-4 mt - 4 mb - 5`}>
+              <h3 className={`${styles.mission_title} pl-4 mt-4 mb-5`}>
                 Meet Our Staff Social Club (SSC) Executive Team
               </h3>
             </div>

@@ -52,9 +52,10 @@
   width: $full_width
   height: $full_width
   background-repeat: $no_repeat
-
-.before_des_img
-  background-position: $zero $zero
+  background-position: $zero $fifty_percen
+  
+.after_des_img
+  transform: scale(-1, 1)
 
 .after_des_img
   background-position: $full_width $ten_percen
@@ -82,7 +83,21 @@
   background: #e4e4e4
   box-shadow: 30px 30px #FDCF3C
 
-@media (min-width: 1441px) and (max-width: 2560px)
+@media (min-width: 1441px) and (max-width: 1920px)
+  .testimonial_bg
+      height: 458px
+      width: $full_width
+      position: $position_relative
+      &::before
+        content: '\A'
+        position: $position_absolute
+        background: $testimonial_background_color
+        top: $zero
+        bottom: $zero
+        left: $zero
+        width: 70%
+
+@media (min-width: 1921px) and (max-width: 2560px)
   .testimonial_bg
     height: 458px
     width: $full_width

@@ -42,13 +42,14 @@ const UseForm = (
       let resp = await getDigest();
       setLoaderTime(true);
       const url = CONST.BASE_URL + CONST.API.LIST("EventRegistration");
+      console.log("inputs--->", inputs);
       const stringifyPostData = JSON.stringify({
         __metadata: {
           type: "SP.Data.EventRegistrationListItem",
         },
         Title: inputs.firstName,
         LastName: inputs.lastName,
-        Gender: inputs.gender,
+        Gender: inputs.gender.length === 0 ? "" : inputs.gender,
         UserType: inputs.user,
         EmployeeID: inputs.employeeId,
         Location: inputs.location,
@@ -57,6 +58,7 @@ const UseForm = (
         Phone: inputs.phoneNumber,
         EventId: eventId.toString(),
       });
+
       const configAxios = {
         headers: {
           accept: "application/json;odata=verbose",

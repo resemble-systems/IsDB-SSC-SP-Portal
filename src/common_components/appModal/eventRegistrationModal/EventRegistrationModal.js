@@ -214,7 +214,7 @@ export default function EventRegistrationModal({
                 label={`Gender`}
                 mandatory={false}
                 placeholder={`Select`}
-                options={["Male", "Female", "Transgender", "Others"]}
+                options={["Male", "Female"]}
                 onChange={handleGender}
                 name="gender"
                 disabled={loading}
