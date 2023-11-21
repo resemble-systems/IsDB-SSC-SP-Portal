@@ -26,6 +26,8 @@ export default function EventDetailsIntro({ eventData }) {
       : null
   );
 
+  const formattedText = eventData[0]?.Description?.replace(/\n/g, "<br>");
+
   return (
     <div className={`${styles.event_details_bg}`}>
       <div className={`${styles.event_details_container} py-5`}>
@@ -103,7 +105,7 @@ export default function EventDetailsIntro({ eventData }) {
               {eventData && (
                 <p className={`${styles.event_details_des} pr-4`}>
                   <Scrollbars style={{ height: "100%", width: "100p%" }}>
-                    {eventData[0].Description}
+                    <div dangerouslySetInnerHTML={{ __html: formattedText }} />
                   </Scrollbars>
                 </p>
               )}

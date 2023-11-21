@@ -5,6 +5,10 @@ import styles from "./testimonials.module.sass";
 import Scrollbars from "react-custom-scrollbars";
 
 export default function ResponsiveView({ view, testimonialsData }) {
+  const formattedText = testimonialsData?.TestimonialsDescription?.replace(
+    /\n/g,
+    "<br>"
+  );
   return (
     <div
       /* className={`${styles.testimonials_container} my-2`} */ className="container"
@@ -35,7 +39,9 @@ export default function ResponsiveView({ view, testimonialsData }) {
                     testimonialsData.TestimonialsDescription ? (
                       <p className={`${styles.event_details_des} `}>
                         <Scrollbars style={{ height: "100%", width: "100%" }}>
-                          {testimonialsData.TestimonialsDescription}
+                          <div
+                            dangerouslySetInnerHTML={{ __html: formattedText }}
+                          />
                         </Scrollbars>
                       </p>
                     ) : (

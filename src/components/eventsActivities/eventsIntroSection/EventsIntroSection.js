@@ -18,6 +18,7 @@ export default function EventsIntroSection({
 }) {
   const [eventRegistrationModal, setEventRegistrationModal] = useState(false);
   const history = useHistory();
+  const formattedText = event?.Description?.replace(/\n/g, "<br>");
 
   return (
     <div className={`${styles.events_bg}`}>
@@ -43,7 +44,7 @@ export default function EventsIntroSection({
               <p className={`${styles.event_author}`}>{event.Author0}</p>
               <p className={`${styles.event_description} mb-3`}>
                 <Scrollbars style={{ height: "136px" }}>
-                  {event.Description}
+                  <div dangerouslySetInnerHTML={{ __html: formattedText }} />
                 </Scrollbars>
               </p>
               <div className={`mt-1`}>

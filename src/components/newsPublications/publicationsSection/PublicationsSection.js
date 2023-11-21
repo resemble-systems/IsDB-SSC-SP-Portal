@@ -20,6 +20,8 @@ export default function PublicationsSection({ news }) {
       setPublicationData(news.slice(0, 6));
     }
   }, [seeAll, news]);
+
+  // console.log("dataPub-->", publicationData);
   return (
     <div
       className={`${styles.news_bg}`}

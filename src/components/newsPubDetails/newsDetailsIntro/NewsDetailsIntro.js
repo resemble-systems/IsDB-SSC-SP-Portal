@@ -41,7 +41,7 @@ export default function EventDetailsIntro({ routePath }) {
       setNews(filterNews);
     }
   }, [routePath]);
-
+  const formattedText = news && news[0]?.Description?.replace(/\n/g, "<br>");
   return (
     <div className={`${styles.event_details_bg} mt-5`}>
       <div className={`${styles.event_details_container} py-5`}>
@@ -70,7 +70,7 @@ export default function EventDetailsIntro({ routePath }) {
               {news && (
                 <p className={`${styles.event_details_des}`}>
                   <Scrollbars style={{ height: "360px" }}>
-                    {news[0]?.Description}
+                    <div dangerouslySetInnerHTML={{ __html: formattedText }} />
                   </Scrollbars>
                 </p>
               )}

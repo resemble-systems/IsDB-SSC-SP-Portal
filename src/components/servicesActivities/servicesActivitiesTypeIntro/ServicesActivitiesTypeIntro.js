@@ -7,6 +7,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import styles from "./services-activities-type-intro.module.sass";
 
 export default function ServicesActivitiesTypeIntro({ serviceActivity }) {
+  const formattedText = serviceActivity?.Description?.replace(/\n/g, "<br>");
   return (
     <div className={`${styles.service_type_bg}`}>
       <div className={`${styles.service_type_container} py-5`}>
@@ -18,7 +19,7 @@ export default function ServicesActivitiesTypeIntro({ serviceActivity }) {
               </h3>
               <p className={`${styles.service_type_des} pr-4`}>
                 <Scrollbars style={{ height: "400px" }}>
-                  {serviceActivity.Description}
+                  <div dangerouslySetInnerHTML={{ __html: formattedText }} />
                 </Scrollbars>
               </p>
             </div>
