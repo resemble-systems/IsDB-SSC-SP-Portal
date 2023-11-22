@@ -35,7 +35,7 @@ export default function GalleryInnerPageSection({
       setAllData(data);
     }
   }, [eventData, category, routePath]);
-
+  console.log("filteredcardData", filteredcardData);
   return (
     <div
       className={`${styles.gallery_inner_section_bg}`}

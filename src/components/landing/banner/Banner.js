@@ -36,6 +36,11 @@ export default function Banner() {
 
   //expire date banner should be filtered out
 
+  console.log(
+    "link-->",
+    bannerData?.map((data) => data.RegistrationLink)
+  );
+
   return (
     <>
       <AppSlider
@@ -114,7 +119,7 @@ export default function Banner() {
                       "MMMM DD"
                     )} - ${moment(banner.Expiration).format("MMMM DD")}`}
                   </p>
-                  {banner.RegistrationLink !== "Not Applicable" && (
+                  {banner?.RegistrationLink?.length > 0 && (
                     <Button
                       shape="round"
                       size={"large"}

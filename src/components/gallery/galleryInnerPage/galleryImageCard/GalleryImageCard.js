@@ -31,7 +31,7 @@ export default function GalleryImageCard({
   const [filteredVideoData, setFilteredVideoData] = useState([]);
   const [filteredDocData, setFilteredDocData] = useState([]);
   const [imgCardData, setImgCardData] = useState(filteredImgData.slice(0, 9));
-
+  console.log("document-->", AllData);
   useEffect(() => {
     if (seeAll) {
       setCardData(filteredcardData);
@@ -59,7 +59,7 @@ export default function GalleryImageCard({
       (data) => data.ContentType0.toLowerCase() === "document"
     );
 
-    // console.log("mappedDataVideo", mappedDataVideo);
+    console.log("mappedDataVideo", mappedDataVideo);
     // console.log("mappedDataDoc", mappedDataDoc);
 
     if (mappedDataImage) {
@@ -119,12 +119,12 @@ export default function GalleryImageCard({
                       <div
                         className={`${styles.gallery_image_card}`}
                         onClick={() =>
-                          viewImage(data.AttachmentFiles[0].ServerRelativeUrl)
+                          viewImage(data?.AttachmentFiles[0]?.ServerRelativeUrl)
                         }
                       >
                         <img
                           alt="Media Data"
-                          src={data.AttachmentFiles[0].ServerRelativeUrl}
+                          src={data?.AttachmentFiles[0]?.ServerRelativeUrl}
                           height="100%"
                           width="100%"
                         />
@@ -135,8 +135,8 @@ export default function GalleryImageCard({
               ))}
             {category.toLowerCase() === "all" &&
               filteredImgData &&
-              filteredImgData.length > 0 &&
-              filteredImgData.length > 9 && (
+              filteredImgData?.length > 0 &&
+              filteredImgData?.length > 9 && (
                 <Row
                   className={`d-flex justify-content-center align-items-center w-100`}
                 >
@@ -177,7 +177,7 @@ export default function GalleryImageCard({
                 className={`px-2 mt-3`}
               >
                 <h3 className={`${styles.media_subtitle}`}>
-                  {filteredVideoData && filteredVideoData.length > 0
+                  {filteredVideoData && filteredVideoData?.length > 0
                     ? `Video`
                     : ``}
                 </h3>
@@ -185,8 +185,8 @@ export default function GalleryImageCard({
             )}
             {category.toLowerCase() === "all" &&
               filteredVideoData &&
-              filteredVideoData.length > 0 &&
-              filteredVideoData.map((data) => (
+              filteredVideoData?.length > 0 &&
+              filteredVideoData?.map((data) => (
                 <>
                   <Col
                     xs={24}
@@ -204,7 +204,7 @@ export default function GalleryImageCard({
                           className={`${styles.video_play_btn}`}
                           onClick={() => {
                             setVideoUrl(
-                              `${data.AttachmentFiles[0].ServerRelativeUrl}`
+                              `${data?.AttachmentFiles[0]?.ServerRelativeUrl}`
                             );
                             setPlay(true);
                             setModalVisibility(true);
@@ -284,17 +284,17 @@ export default function GalleryImageCard({
                           />
                           <h3 className={`mt-3`}>
                             <a
-                              href={data.AttachmentFiles[0].ServerRelativeUrl}
+                              href={data?.AttachmentFiles[0]?.ServerRelativeUrl}
                               target="_blank"
                               className={`${styles.document_text}`}
                               download
                               rel="noreferrer"
                             >
-                              {data.AttachmentFiles[0].FileName}
+                              {data?.AttachmentFiles[0]?.FileName}
                             </a>
                           </h3>
                           <a
-                            href={data.AttachmentFiles[0].ServerRelativeUrl}
+                            href={data?.AttachmentFiles[0]?.ServerRelativeUrl}
                             target="_blank"
                             download
                             rel="noreferrer"
@@ -334,12 +334,14 @@ export default function GalleryImageCard({
                         <div
                           className={`${styles.gallery_image_card}`}
                           onClick={() =>
-                            viewImage(data.AttachmentFiles[0].ServerRelativeUrl)
+                            viewImage(
+                              data?.AttachmentFiles[0]?.ServerRelativeUrl
+                            )
                           }
                         >
                           <img
                             alt="Media Data"
-                            src={data.AttachmentFiles[0].ServerRelativeUrl}
+                            src={data?.AttachmentFiles[0]?.ServerRelativeUrl}
                             height="100%"
                             width="100%"
                           />
@@ -380,7 +382,7 @@ export default function GalleryImageCard({
                             className={`${styles.video_play_btn}`}
                             onClick={() => {
                               setVideoUrl(
-                                `${data.AttachmentFiles[0].ServerRelativeUrl}`
+                                `${data?.AttachmentFiles[0]?.ServerRelativeUrl}`
                               );
                               setPlay(true);
                               setModalVisibility(true);
@@ -419,9 +421,9 @@ export default function GalleryImageCard({
             {cardData &&
               cardData.length > 0 &&
               category.toLowerCase() === "Document".toLowerCase() &&
-              cardData.map((data) => (
+              cardData?.map((data) => (
                 <>
-                  {data && data.ContentType0.toLowerCase() === "document" && (
+                  {data && data?.ContentType0?.toLowerCase() === "document" && (
                     <Col
                       xs={24}
                       sm={24}
@@ -444,17 +446,19 @@ export default function GalleryImageCard({
                             />
                             <h3 className={`mt-3`}>
                               <a
-                                href={data.AttachmentFiles[0].ServerRelativeUrl}
+                                href={
+                                  data?.AttachmentFiles[0].ServerRelativeUrl
+                                }
                                 target="_blank"
                                 className={`${styles.document_text}`}
                                 download
                                 rel="noreferrer"
                               >
-                                {data.AttachmentFiles[0].FileName}
+                                {data?.AttachmentFiles[0]?.FileName}
                               </a>
                             </h3>
                             <a
-                              href={data.AttachmentFiles[0].ServerRelativeUrl}
+                              href={data?.AttachmentFiles[0]?.ServerRelativeUrl}
                               target="_blank"
                               download
                               rel="noreferrer"
