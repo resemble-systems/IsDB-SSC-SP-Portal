@@ -70,7 +70,9 @@ export default function Banner() {
                   </div>
                 </>
               ) : (
-                <div className={`${styles.video_thumbnail_container}`}>
+                <div
+                  className={`${styles.video_thumbnail_container} d-flex justify-content-center align-items-center`}
+                >
                   <div
                     className={`${styles.video_play_btn}`}
                     onClick={() => {

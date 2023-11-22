@@ -95,7 +95,9 @@
         top: $zero
         bottom: $zero
         left: $zero
-        width: 70%
+        width: 74% 
+
+
 
 @media (min-width: 1921px) and (max-width: 2560px)
   .testimonial_bg
@@ -109,9 +111,9 @@
       top: $zero
       bottom: $zero
       left: $zero
-      width: 65%
+      width: 68%
 
-@media (min-width: 1240px) and (max-width: 1440px)
+@media (min-width: 1367px) and (max-width: 1440px)
   .testimonial_bg
     height: 458px
     width: $full_width
@@ -123,55 +125,32 @@
       top: $zero
       bottom: $zero
       left: $zero
-      width: 75%
+      width: 82%
 
+@media (min-width: 770px) and (max-width: 1366px)
+  .testimonial_bg
+      height: 458px
+      width: $full_width
+      position: $position_relative
+      &::before
+        content: '\A'
+        position: $position_absolute
+        background: $testimonial_background_color
+        top: $zero
+        bottom: $zero
+        left: $zero
+        width: 84% 
 
-@media only screen and (max-width: 2560px ) 
- .image_container
-  justify-content: center
-  padding: 0 50px 0 0
-
-@media only screen and (max-width: $beakpoint_laptop_s)
-  .testimonials_container
-    width: 894px
-
-@media only screen and (max-width: $beakpoint_tablet_l)
-  .testimonials_container
-    width: 759px
-
-  .testimonial_bg,
-  .testimonials_container
-    height: 600px
-
-  .testimonials_subcontainer
-    height: $auto
-
-@media only screen and (max-width: $beakpoint_mobile_l)
-  .testimonial_bg,
-  .testimonials_container
-    width: 100%
-    height: $auto
-
-  .testimonials_subcontainer
-    height: $auto
-
-  .testimonials_des
-    font-size: 14px $important
-
-  .testimonials_author
-    font-size: 18px $important
-
-@media only screen and (max-width: $beakpoint_mobile_s)
-  .testimonial_bg,
-  .testimonials_container
-    width: 100%
-    height: $auto
-
-  .testimonials_subcontainer
-    height: $auto
-
-  .testimonials_des
-    font-size: 14px $important
-
-  .testimonials_author
-    font-size: 18px $important
+@media (min-width: 769px) and (max-width: 1024px)
+  .testimonial_bg
+    height: 458px
+    width: $full_width
+    position: $position_relative
+    &::before
+      content: '\A'
+      position: $position_absolute
+      background: $testimonial_background_color
+      top: $zero
+      bottom: $zero
+      left: $zero
+      width: 92%

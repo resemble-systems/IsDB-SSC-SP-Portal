@@ -9,6 +9,10 @@ import AppMultiSlider from "../../../common_components/appMultiSlider/AppMultiSl
 import GalleryBg from "../../../assets/background/gallery.svg";
 //css
 import styles from "./gallery.module.sass";
+import { VAR } from "../../../env";
+import VideoPlayerModal from "../../../common_components/appModal/videoPlayerModal/VideoPlayerModal";
+import Lightbox from "react-image-lightbox";
+import isImage from "is-image";
 
 let sliderItems = [];
 
@@ -37,26 +41,26 @@ function getSliderItems(
                 <div className={` p-2 ${styles.slider_container_single}`}>
                   <div
                     className={`my-2 ${styles.gallery_card_container}`}
-                    onClick={
-                      () => history.push(`/gallery`)
-                      // isImage(
-                      //   galleryContent[index - 2].AttachmentFiles[0]
-                      //     .ServerRelativeUrl,
-                      // )
-                      //   ? viewImage(
-                      //       galleryContent[index - 2].AttachmentFiles[0]
-                      //         .ServerRelativeUrl,
-                      //       setIsopen,
-                      //       setPhotoUrl,
-                      //     )
-                      //   : viewVideo(
-                      //       galleryContent[index - 2].AttachmentFiles[0]
-                      //         .ServerRelativeUrl,
-                      //       setPlay,
-                      //       setVideoUrl,
-                      //       setModalVisibility,
-                      //       setAutoPlay,
-                      //     )
+                    onClick={() =>
+                      /* history.push(`/gallery`) */
+                      isImage(
+                        galleryContent[index - 2].AttachmentFiles[0]
+                          .ServerRelativeUrl
+                      )
+                        ? viewImage(
+                            galleryContent[index - 2].AttachmentFiles[0]
+                              .ServerRelativeUrl,
+                            setIsopen,
+                            setPhotoUrl
+                          )
+                        : viewVideo(
+                            galleryContent[index - 2].AttachmentFiles[0]
+                              .ServerRelativeUrl,
+                            setPlay,
+                            setVideoUrl,
+                            setModalVisibility,
+                            setAutoPlay
+                          )
                     }
                   >
                     {galleryContent[index - 2].ContentType0.toLowerCase() ===
@@ -107,26 +111,25 @@ function getSliderItems(
 
                   <div
                     className={`my-2 ${styles.gallery_card_container}`}
-                    onClick={
-                      () => {}
-                      // isImage(
-                      //   galleryContent[index - 1].AttachmentFiles[0]
-                      //     .ServerRelativeUrl,
-                      // )
-                      //   ? viewImage(
-                      //     galleryContent[index - 1].AttachmentFiles[0]
-                      //       .ServerRelativeUrl,
-                      //     setIsopen,
-                      //     setPhotoUrl,
-                      //   )
-                      //   : viewVideo(
-                      //     galleryContent[index - 1].AttachmentFiles[0]
-                      //       .ServerRelativeUrl,
-                      //     setPlay,
-                      //     setVideoUrl,
-                      //     setModalVisibility,
-                      //     setAutoPlay,
-                      //   )
+                    onClick={() =>
+                      isImage(
+                        galleryContent[index - 1].AttachmentFiles[0]
+                          .ServerRelativeUrl
+                      )
+                        ? viewImage(
+                            galleryContent[index - 1].AttachmentFiles[0]
+                              .ServerRelativeUrl,
+                            setIsopen,
+                            setPhotoUrl
+                          )
+                        : viewVideo(
+                            galleryContent[index - 1].AttachmentFiles[0]
+                              .ServerRelativeUrl,
+                            setPlay,
+                            setVideoUrl,
+                            setModalVisibility,
+                            setAutoPlay
+                          )
                     }
                   >
                     {galleryContent[index - 1].ContentType0.toLowerCase() ===
@@ -176,26 +179,25 @@ function getSliderItems(
                 <div className={` p-2 ${styles.slider_container_single}`}>
                   <div
                     className={`my-2 ${styles.gallery_card_container}`}
-                    onClick={
-                      () => {}
-                      // isImage(
-                      //   galleryContent[index].AttachmentFiles[0]
-                      //     .ServerRelativeUrl,
-                      // )
-                      //   ? viewImage(
-                      //     galleryContent[index].AttachmentFiles[0]
-                      //       .ServerRelativeUrl,
-                      //     setIsopen,
-                      //     setPhotoUrl,
-                      //   )
-                      //   : viewVideo(
-                      //     galleryContent[index].AttachmentFiles[0]
-                      //       .ServerRelativeUrl,
-                      //   ),
-                      // setPlay,
-                      // setVideoUrl,
-                      // setModalVisibility,
-                      // setAutoPlay)
+                    onClick={() =>
+                      isImage(
+                        galleryContent[index].AttachmentFiles[0]
+                          .ServerRelativeUrl
+                      )
+                        ? viewImage(
+                            galleryContent[index].AttachmentFiles[0]
+                              .ServerRelativeUrl,
+                            setIsopen,
+                            setPhotoUrl
+                          )
+                        : viewVideo(
+                            galleryContent[index].AttachmentFiles[0]
+                              .ServerRelativeUrl,
+                            setPlay,
+                            setVideoUrl,
+                            setModalVisibility,
+                            setAutoPlay
+                          )
                     }
                   >
                     {galleryContent[index].ContentType0.toLowerCase() ===
@@ -252,26 +254,25 @@ function getSliderItems(
               <div className={` p-2 ${styles.slider_container_single}`}>
                 <div
                   className={`my-2 ${styles.gallery_card_container}`}
-                  onClick={
-                    () => history.push(`/gallery`)
-                    // isImage(
-                    //   galleryContent[0].AttachmentFiles[0]
-                    //     .ServerRelativeUrl,
-                    // )
-                    //   ? viewImage(
-                    //       galleryContent[0].AttachmentFiles[0]
-                    //         .ServerRelativeUrl,
-                    //       setIsopen,
-                    //       setPhotoUrl,
-                    //     )
-                    //   : viewVideo(
-                    //       galleryContent[0].AttachmentFiles[0]
-                    //         .ServerRelativeUrl,
-                    //       setPlay,
-                    //       setVideoUrl,
-                    //       setModalVisibility,
-                    //       setAutoPlay,
-                    //     )
+                  onClick={() =>
+                    /* history.push(`/gallery`) */
+                    isImage(
+                      galleryContent[0].AttachmentFiles[0].ServerRelativeUrl
+                    )
+                      ? viewImage(
+                          galleryContent[0].AttachmentFiles[0]
+                            .ServerRelativeUrl,
+                          setIsopen,
+                          setPhotoUrl
+                        )
+                      : viewVideo(
+                          galleryContent[0].AttachmentFiles[0]
+                            .ServerRelativeUrl,
+                          setPlay,
+                          setVideoUrl,
+                          setModalVisibility,
+                          setAutoPlay
+                        )
                   }
                 >
                   {galleryContent[0].ContentType0.toLowerCase() === "image" ? (
@@ -461,25 +462,24 @@ function getSliderItems(
                 <div
                   className={`my-2 ${styles.gallery_card_container}`}
                   onClick={
-                    () => history.push(`/gallery`)
-                    // isImage(
-                    //   galleryContent[1].AttachmentFiles[0]
-                    //     .ServerRelativeUrl,
-                    // )
-                    //   ? viewImage(
-                    //       galleryContent[1].AttachmentFiles[0]
-                    //         .ServerRelativeUrl,
-                    //       setIsopen,
-                    //       setPhotoUrl,
-                    //     )
-                    //   : viewVideo(
-                    //       galleryContent[1].AttachmentFiles[0]
-                    //         .ServerRelativeUrl,
-                    //       setPlay,
-                    //       setVideoUrl,
-                    //       setModalVisibility,
-                    //       setAutoPlay,
-                    //     )
+                    // () => history.push(`/gallery`)
+                    isImage(
+                      galleryContent[1].AttachmentFiles[0].ServerRelativeUrl
+                    )
+                      ? viewImage(
+                          galleryContent[1].AttachmentFiles[0]
+                            .ServerRelativeUrl,
+                          setIsopen,
+                          setPhotoUrl
+                        )
+                      : viewVideo(
+                          galleryContent[1].AttachmentFiles[0]
+                            .ServerRelativeUrl,
+                          setPlay,
+                          setVideoUrl,
+                          setModalVisibility,
+                          setAutoPlay
+                        )
                   }
                 >
                   {galleryContent[1].ContentType0.toLowerCase() === "image" ? (
@@ -525,26 +525,24 @@ function getSliderItems(
 
                 <div
                   className={`my-2 ${styles.gallery_card_container}`}
-                  onClick={
-                    () => {}
-                    // isImage(
-                    //   galleryContent[0].AttachmentFiles[0]
-                    //     .ServerRelativeUrl,
-                    // )
-                    //   ? viewImage(
-                    //     galleryContent[0].AttachmentFiles[0]
-                    //       .ServerRelativeUrl,
-                    //     setIsopen,
-                    //     setPhotoUrl,
-                    //   )
-                    //   : viewVideo(
-                    //     galleryContent[0].AttachmentFiles[0]
-                    //       .ServerRelativeUrl,
-                    //     setPlay,
-                    //     setVideoUrl,
-                    //     setModalVisibility,
-                    //     setAutoPlay,
-                    //   )
+                  onClick={() =>
+                    isImage(
+                      galleryContent[0].AttachmentFiles[0].ServerRelativeUrl
+                    )
+                      ? viewImage(
+                          galleryContent[0].AttachmentFiles[0]
+                            .ServerRelativeUrl,
+                          setIsopen,
+                          setPhotoUrl
+                        )
+                      : viewVideo(
+                          galleryContent[0].AttachmentFiles[0]
+                            .ServerRelativeUrl,
+                          setPlay,
+                          setVideoUrl,
+                          setModalVisibility,
+                          setAutoPlay
+                        )
                   }
                 >
                   {galleryContent[0].ContentType0.toLowerCase() === "image" ? (
@@ -672,26 +670,26 @@ function getSliderItems(
                   <div className={` p-2 ${styles.slider_container_single}`}>
                     <div
                       className={`my-2 ${styles.gallery_card_container}`}
-                      onClick={
-                        () => history.push(`/gallery`)
-                        // isImage(
-                        //   galleryContent[index - 2].AttachmentFiles[0]
-                        //     .ServerRelativeUrl,
-                        // )
-                        //   ? viewImage(
-                        //       galleryContent[index - 2].AttachmentFiles[0]
-                        //         .ServerRelativeUrl,
-                        //       setIsopen,
-                        //       setPhotoUrl,
-                        //     )
-                        //   : viewVideo(
-                        //       galleryContent[index - 2].AttachmentFiles[0]
-                        //         .ServerRelativeUrl,
-                        //       setPlay,
-                        //       setVideoUrl,
-                        //       setModalVisibility,
-                        //       setAutoPlay,
-                        //     )
+                      onClick={() =>
+                        /* history.push(`/gallery`) */
+                        isImage(
+                          galleryContent[index - 2].AttachmentFiles[0]
+                            .ServerRelativeUrl
+                        )
+                          ? viewImage(
+                              galleryContent[index - 2].AttachmentFiles[0]
+                                .ServerRelativeUrl,
+                              setIsopen,
+                              setPhotoUrl
+                            )
+                          : viewVideo(
+                              galleryContent[index - 2].AttachmentFiles[0]
+                                .ServerRelativeUrl,
+                              setPlay,
+                              setVideoUrl,
+                              setModalVisibility,
+                              setAutoPlay
+                            )
                       }
                     >
                       {galleryContent[index - 2].ContentType0.toLowerCase() ===
@@ -742,26 +740,25 @@ function getSliderItems(
 
                     <div
                       className={`my-2 ${styles.gallery_card_container}`}
-                      onClick={
-                        () => {}
-                        // isImage(
-                        //   galleryContent[index - 1].AttachmentFiles[0]
-                        //     .ServerRelativeUrl,
-                        // )
-                        //   ? viewImage(
-                        //     galleryContent[index - 1].AttachmentFiles[0]
-                        //       .ServerRelativeUrl,
-                        //     setIsopen,
-                        //     setPhotoUrl,
-                        //   )
-                        //   : viewVideo(
-                        //     galleryContent[index - 1].AttachmentFiles[0]
-                        //       .ServerRelativeUrl,
-                        //     setPlay,
-                        //     setVideoUrl,
-                        //     setModalVisibility,
-                        //     setAutoPlay,
-                        //   )
+                      onClick={() =>
+                        isImage(
+                          galleryContent[index - 1].AttachmentFiles[0]
+                            .ServerRelativeUrl
+                        )
+                          ? viewImage(
+                              galleryContent[index - 1].AttachmentFiles[0]
+                                .ServerRelativeUrl,
+                              setIsopen,
+                              setPhotoUrl
+                            )
+                          : viewVideo(
+                              galleryContent[index - 1].AttachmentFiles[0]
+                                .ServerRelativeUrl,
+                              setPlay,
+                              setVideoUrl,
+                              setModalVisibility,
+                              setAutoPlay
+                            )
                       }
                     >
                       {galleryContent[index - 1].ContentType0.toLowerCase() ===
@@ -811,26 +808,25 @@ function getSliderItems(
                   <div className={` p-2 ${styles.slider_container_single}`}>
                     <div
                       className={`my-2 ${styles.gallery_card_container}`}
-                      onClick={
-                        () => {}
-                        // isImage(
-                        //   galleryContent[index].AttachmentFiles[0]
-                        //     .ServerRelativeUrl,
-                        // )
-                        //   ? viewImage(
-                        //     galleryContent[index].AttachmentFiles[0]
-                        //       .ServerRelativeUrl,
-                        //     setIsopen,
-                        //     setPhotoUrl,
-                        //   )
-                        //   : viewVideo(
-                        //     galleryContent[index].AttachmentFiles[0]
-                        //       .ServerRelativeUrl,
-                        //   ),
-                        // setPlay,
-                        // setVideoUrl,
-                        // setModalVisibility,
-                        // setAutoPlay)
+                      onClick={() =>
+                        isImage(
+                          galleryContent[index].AttachmentFiles[0]
+                            .ServerRelativeUrl
+                        )
+                          ? viewImage(
+                              galleryContent[index].AttachmentFiles[0]
+                                .ServerRelativeUrl,
+                              setIsopen,
+                              setPhotoUrl
+                            )
+                          : viewVideo(
+                              galleryContent[index].AttachmentFiles[0]
+                                .ServerRelativeUrl,
+                              setPlay,
+                              setVideoUrl,
+                              setModalVisibility,
+                              setAutoPlay
+                            )
                       }
                     >
                       {galleryContent[index].ContentType0.toLowerCase() ===
@@ -890,26 +886,25 @@ function getSliderItems(
                   <>
                     <div
                       className={`my-2 ${styles.gallery_card_container}`}
-                      onClick={
-                        () => history.push(`/gallery`)
-                        // isImage(
-                        //   galleryContent[galleryContent.length - 1].AttachmentFiles[0]
-                        //     .ServerRelativeUrl,
-                        // )
-                        //   ? viewImage(
-                        //       galleryContent[galleryContent.length - 1].AttachmentFiles[0]
-                        //         .ServerRelativeUrl,
-                        //       setIsopen,
-                        //       setPhotoUrl,
-                        //     )
-                        //   : viewVideo(
-                        //       galleryContent[galleryContent.length - 1].AttachmentFiles[0]
-                        //         .ServerRelativeUrl,
-                        //       setPlay,
-                        //       setVideoUrl,
-                        //       setModalVisibility,
-                        //       setAutoPlay,
-                        //     )
+                      onClick={() =>
+                        isImage(
+                          galleryContent[galleryContent.length - 1]
+                            .AttachmentFiles[0].ServerRelativeUrl
+                        )
+                          ? viewImage(
+                              galleryContent[galleryContent.length - 1]
+                                .AttachmentFiles[0].ServerRelativeUrl,
+                              setIsopen,
+                              setPhotoUrl
+                            )
+                          : viewVideo(
+                              galleryContent[galleryContent.length - 1]
+                                .AttachmentFiles[0].ServerRelativeUrl,
+                              setPlay,
+                              setVideoUrl,
+                              setModalVisibility,
+                              setAutoPlay
+                            )
                       }
                     >
                       {galleryContent[
@@ -964,26 +959,25 @@ function getSliderItems(
 
                     <div
                       className={`my-2 ${styles.gallery_card_container}`}
-                      onClick={
-                        () => {}
-                        // isImage(
-                        //   galleryContent[galleryContent.length - 2].AttachmentFiles[0]
-                        //     .ServerRelativeUrl,
-                        // )
-                        //   ? viewImage(
-                        //     galleryContent[galleryContent.length - 2].AttachmentFiles[0]
-                        //       .ServerRelativeUrl,
-                        //     setIsopen,
-                        //     setPhotoUrl,
-                        //   )
-                        //   : viewVideo(
-                        //     galleryContent[galleryContent.length - 2].AttachmentFiles[0]
-                        //       .ServerRelativeUrl,
-                        //     setPlay,
-                        //     setVideoUrl,
-                        //     setModalVisibility,
-                        //     setAutoPlay,
-                        //   )
+                      onClick={() =>
+                        isImage(
+                          galleryContent[galleryContent.length - 2]
+                            .AttachmentFiles[0].ServerRelativeUrl
+                        )
+                          ? viewImage(
+                              galleryContent[galleryContent.length - 2]
+                                .AttachmentFiles[0].ServerRelativeUrl,
+                              setIsopen,
+                              setPhotoUrl
+                            )
+                          : viewVideo(
+                              galleryContent[galleryContent.length - 2]
+                                .AttachmentFiles[0].ServerRelativeUrl,
+                              setPlay,
+                              setVideoUrl,
+                              setModalVisibility,
+                              setAutoPlay
+                            )
                       }
                     >
                       {galleryContent[
@@ -1038,26 +1032,26 @@ function getSliderItems(
                   <>
                     <div
                       className={`my-2 ${styles.gallery_card_container}`}
-                      onClick={
-                        () => history.push(`/gallery`)
-                        // isImage(
-                        //   galleryContent[galleryContent.length - 1].AttachmentFiles[0]
-                        //     .ServerRelativeUrl,
-                        // )
-                        //   ? viewImage(
-                        //       galleryContent[galleryContent.length - 1].AttachmentFiles[0]
-                        //         .ServerRelativeUrl,
-                        //       setIsopen,
-                        //       setPhotoUrl,
-                        //     )
-                        //   : viewVideo(
-                        //       galleryContent[galleryContent.length - 1].AttachmentFiles[0]
-                        //         .ServerRelativeUrl,
-                        //       setPlay,
-                        //       setVideoUrl,
-                        //       setModalVisibility,
-                        //       setAutoPlay,
-                        //     )
+                      onClick={() =>
+                        /* history.push(`/gallery`) */
+                        isImage(
+                          galleryContent[galleryContent.length - 1]
+                            .AttachmentFiles[0].ServerRelativeUrl
+                        )
+                          ? viewImage(
+                              galleryContent[galleryContent.length - 1]
+                                .AttachmentFiles[0].ServerRelativeUrl,
+                              setIsopen,
+                              setPhotoUrl
+                            )
+                          : viewVideo(
+                              galleryContent[galleryContent.length - 1]
+                                .AttachmentFiles[0].ServerRelativeUrl,
+                              setPlay,
+                              setVideoUrl,
+                              setModalVisibility,
+                              setAutoPlay
+                            )
                       }
                     >
                       {galleryContent[
@@ -1266,22 +1260,23 @@ const responsive = {
   1440: { items: 9 },
 };
 
-// function viewImage(index, setIsopen, setPhotoUrl) {
-//   setIsopen(true);
-//   setPhotoUrl(index);
-// }
-// function viewVideo(
-//   index,
-//   setPlay,
-//   setVideoUrl,
-//   setModalVisibility,
-//   setAutoPlay
-// ) {
-//   setPlay(true);
-//   setVideoUrl(index);
-//   setModalVisibility(true);
-//   setAutoPlay(false);
-// }
+function viewImage(index, setIsopen, setPhotoUrl) {
+  setIsopen(true);
+  setPhotoUrl(index);
+}
+
+function viewVideo(
+  index,
+  setPlay,
+  setVideoUrl,
+  setModalVisibility,
+  setAutoPlay
+) {
+  setPlay(true);
+  setVideoUrl(index);
+  setModalVisibility(true);
+  setAutoPlay(false);
+}
 
 export default function Gallery({ galleryContent }) {
   const history = useHistory();
@@ -1349,22 +1344,23 @@ export default function Gallery({ galleryContent }) {
           </div>
         </Row>
       </div>
-      {/* {isOpen && photoUrl && (
+      {isOpen && photoUrl && (
         <Lightbox
+          //${process.env.BASE_URL} before mainSrc
           mainSrc={`${photoUrl}`}
           onCloseRequest={() => setIsopen(false)}
         />
       )}
       {play && videoUrl && (
         <VideoPlayerModal
-          url={videoUrl}
+          url={VAR.BASE_URL + videoUrl}
           setVisiblety={setModalVisibility}
           visible={modalVisibility}
           play={play}
           setPlay={setPlay}
           setAutoPlay={setAutoPlay}
         />
-      )} */}
+      )}
     </>
   );
 }
