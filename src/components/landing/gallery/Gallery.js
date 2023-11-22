@@ -1353,7 +1353,7 @@ export default function Gallery({ galleryContent }) {
       )}
       {play && videoUrl && (
         <VideoPlayerModal
-          url={VAR.BASE_URL + videoUrl}
+          url={VAR.VIDEO_URL + videoUrl}
           setVisiblety={setModalVisibility}
           visible={modalVisibility}
           play={play}

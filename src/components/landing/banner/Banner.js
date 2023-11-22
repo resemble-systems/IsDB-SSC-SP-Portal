@@ -36,10 +36,10 @@ export default function Banner() {
 
   //expire date banner should be filtered out
 
-  console.log(
-    "link-->",
-    bannerData?.map((data) => data.RegistrationLink)
-  );
+  // console.log(
+  //   "link-->",
+  //   bannerData?.map((data) => data.RegistrationLink)
+  // );
 
   return (
     <>
@@ -90,6 +90,7 @@ export default function Banner() {
                     <i
                       className={`fa fa-play ${styles.play_icon}`}
                       aria-hidden="true"
+                      style={{ zIndex: "10000" }}
                     ></i>
                   </div>
 

@@ -8,10 +8,12 @@ export const VAR = {
   // GET_DIGEST_VALUE: "/sites/powerbi/IDBSocialClub",
 
   // BASE_URL: "http://localhost:3456",
+  // VIDEO_URL: "http://localhost:3456",
   // REACT_APP_BUILD_URL: "/quality/IDBSocialClub",
   // GET_DIGEST_VALUE: "/sites/ssc",
 
   BASE_URL: "https://isdb.sharepoint.com/sites/ssc",
+  VIDEO_URL: "https://isdb.sharepoint.com/",
   REACT_APP_BUILD_URL: "/quality/IDBSocialClub",
   GET_DIGEST_VALUE: "/sites/ssc",
   //====+==================================================
