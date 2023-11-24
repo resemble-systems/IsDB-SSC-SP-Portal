@@ -72,7 +72,7 @@ function getSliderItems(
                             .ServerRelativeUrl
                         }
                         alt={"ISDB"}
-                        // height="100%"
+                        height="100%"
                         width="100%"
                         // layout="fill"
                       />
@@ -461,8 +461,8 @@ function getSliderItems(
               <div className={` p-2 ${styles.slider_container_single}`}>
                 <div
                   className={`my-2 ${styles.gallery_card_container}`}
-                  onClick={
-                    // () => history.push(`/gallery`)
+                  onClick={() =>
+                    /* history.push(`/gallery`) */
                     isImage(
                       galleryContent[1].AttachmentFiles[0].ServerRelativeUrl
                     )
@@ -1309,6 +1309,7 @@ export default function Gallery({ galleryContent }) {
     setAutoPlay,
     history
   );
+  console.log("sliderItems-->", galleryContent);
   return (
     <>
       <div
@@ -1319,14 +1320,16 @@ export default function Gallery({ galleryContent }) {
       >
         <Row>
           <div className={`${styles.gallery_container}`}>
-            <CommonSectionHeader
-              title={"Gallery"}
-              sliderSection={true}
-              // prevBtn={}
-              // nextBtn={}
-              onClickPrev={slidePrev}
-              onClickNext={slideNext}
-            />
+            {galleryContent?.length > 6 && (
+              <CommonSectionHeader
+                title={"Gallery"}
+                sliderSection={true}
+                // prevBtn={}
+                // nextBtn={}
+                onClickPrev={slidePrev}
+                onClickNext={slideNext}
+              />
+            )}
           </div>
           <div className="container">
             <AppMultiSlider
@@ -1338,7 +1341,8 @@ export default function Gallery({ galleryContent }) {
               paddingRight={50}
               animationType={"slide"}
               disableDotsControls={true}
-              infinite={true}
+              // infinite={sliderItems?.length > 5 ? true : false}
+              infinite={galleryContent?.length > 6 ? true : false}
               refVariable={galleryref}
             />
           </div>
