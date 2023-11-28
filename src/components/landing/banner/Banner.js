@@ -25,9 +25,11 @@ export default function Banner() {
         )} ${CONST.API.ATTACHMENT}`
       )
       .then((res) => {
+        let currentDate = new Date();
         let filteredBannerData = res.data.value.filter(
           (banner) =>
-            new Date(banner.Expiration).getTime() > new Date().getTime()
+            new Date(banner.Expiration) >=
+            new Date(currentDate.getTime() - 24 * 60 * 60 * 1000)
         );
         setBannerData(filteredBannerData);
       })
@@ -120,9 +122,15 @@ export default function Banner() {
                       : banner.Description}
                   </p>
                   <p className={`${styles.text_time}`}>
-                    {`${moment(banner.CreatedDate).format(
+                    {moment(banner.CreatedDate).format("MMMM DD") ===
+                    moment(banner.Expiration).format("MMMM DD")
+                      ? moment(banner.Expiration).format("MMMM DD")
+                      : `${moment(banner.CreatedDate).format(
+                          "MMMM DD"
+                        )} - ${moment(banner.Expiration).format("MMMM DD")}`}
+                    {/* {`${moment(banner.CreatedDate).format(
                       "MMMM DD"
-                    )} - ${moment(banner.Expiration).format("MMMM DD")}`}
+                    )} - ${moment(banner.Expiration).format("MMMM DD")}`} */}
                   </p>
                   {banner?.RegistrationLink?.length > 0 && (
                     <Button
