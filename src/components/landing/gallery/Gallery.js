@@ -1309,7 +1309,7 @@ export default function Gallery({ galleryContent }) {
     setAutoPlay,
     history
   );
-  console.log("sliderItems-->", galleryContent);
+
   return (
     <>
       <div

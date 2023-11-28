@@ -57,7 +57,8 @@ export default function Banner() {
                 <>
                   <div className={`${styles.banner_shade}`}></div>
                   <div
-                    className={`d-flex justify-content-center align-items-center w-100 h-100`}
+                    className={`overflow-hidden d-flex justify-content-center align-items-center`}
+                    style={{ /* width: "400px", */ height: "646px" }}
                   >
                     <div
                       className={`${styles.banner_container_shade} d-block w-100 h-100`}
@@ -70,13 +71,15 @@ export default function Banner() {
                             ? banner.AttachmentFiles[0].ServerRelativeUrl
                             : ""
                         }
+                        style={{ /* width: "400px", */ height: "646px" }}
                       ></img>
                     </div>
                   </div>
                 </>
               ) : (
                 <div
-                  className={`${styles.video_thumbnail_container} d-flex justify-content-center align-items-center`}
+                  className={`${styles.video_thumbnail_container} d-flex justify-content-center align-items-center overflow-hidden`}
+                  style={{ /* width: "400px", */ height: "646px" }}
                 >
                   <div
                     className={`${styles.video_play_btn}`}
@@ -102,6 +105,7 @@ export default function Banner() {
                         ? banner.AttachmentFiles[0].ServerRelativeUrl
                         : ""
                     }
+                    style={{ /* width: "400px", */ height: "646px" }}
                   ></img>
                 </div>
               )}
