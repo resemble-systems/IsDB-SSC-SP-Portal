@@ -9,6 +9,9 @@ import { StyleSheet, css } from "aphrodite";
 import styles from "./exe-team-structure.module.sass";
 //Bg
 import Exe from "../../../assets/aboutUs/exeBg.svg";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { CONST } from "../../../constant";
 
 const animationStyles = StyleSheet.create({
   slideInLeft: {
@@ -18,6 +21,20 @@ const animationStyles = StyleSheet.create({
 });
 
 export default function ExeTeamStructure() {
+  const [structureDetails, setStructureDetails] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(
+        `${CONST.BASE_URL}${CONST.API.LIST(
+          "AboutUsTeamStructure"
+        )}${CONST.API.QUERY("TeamDetails")}`
+      )
+      .then((res) => {
+        setStructureDetails(res.data.value);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   const structureData = [
     {
       para: "The SSC Executive Team shall comprise of a Chairperson Deputy Chairperson, Treasurer and Members. It will be supported by a full-time coordinator",
@@ -81,7 +98,29 @@ export default function ExeTeamStructure() {
               // fade={true}
               swipeable={false}
             >
-              {structureData &&
+              {structureDetails &&
+                structureDetails?.map((data, index) => (
+                  <div className={`${styles.hex_container_r}`} key={index}>
+                    {/* <div className={`${styles.hex_border} ${data?.Color}`}> */}
+                    <div className={`${styles.hex_border} `}>
+                      <div
+                        className={`${styles.hex_white_space}`}
+                        style={{ backgroundColor: `${data.Color}` }}
+                      >
+                        <div
+                          // className={`${styles.hex} ${data?.Color}`}
+                          className={`${styles.hex} `}
+                          style={{ backgroundColor: `${data.Color}` }}
+                        >
+                          <p className={`${styles.hex_text} px-5 m-0`}>
+                            {data.TeamDetails}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              {/* {structureData &&
                 structureData?.map((data, index) => (
                   <div className={`${styles.hex_container_r}`} key={index}>
                     <div className={`${styles.hex_border} ${data?.color}`}>
@@ -94,7 +133,7 @@ export default function ExeTeamStructure() {
                       </div>
                     </div>
                   </div>
-                ))}
+                ))} */}
             </AppSlider>
           </Col>
         </Row>
@@ -113,9 +152,7 @@ export default function ExeTeamStructure() {
                   <div className={`${styles.hex_white_space}`}>
                     <div className={`${styles.hex} ${styles.orange}`}>
                       <p className={`${styles.hex_text} px-5 m-0`}>
-                        The SSC Executive Team shall comprise of a Chairperson,
-                        Deputy Chairperson, Treasurer and Members. It will be
-                        supported by a full-time coordinator
+                        {structureDetails[0]?.TeamDetails}
                       </p>
                     </div>
                   </div>
@@ -128,9 +165,7 @@ export default function ExeTeamStructure() {
                   <div className={`${styles.hex_white_space}`}>
                     <div className={`${styles.hex} ${styles.blue}`}>
                       <p className={`${styles.hex_text} px-5 m-0`}>
-                        The SSC Executive Team shall carryout its functions as
-                        per the IsDBG applicable systems, procedures and
-                        policies
+                        {structureDetails[1]?.TeamDetails}
                       </p>
                     </div>
                   </div>
@@ -152,9 +187,7 @@ export default function ExeTeamStructure() {
                   <div className={`${styles.hex_white_space}`}>
                     <div className={`${styles.hex} ${styles.yellow}`}>
                       <p className={`${styles.hex_text} px-5 m-0`}>
-                        The SSC Executive Team shall be the executive body of
-                        the SSC and shall act on its behalf both within the IsDB
-                        Group and externally
+                        {structureDetails[2]?.TeamDetails}
                       </p>
                     </div>
                   </div>
@@ -169,8 +202,7 @@ export default function ExeTeamStructure() {
                   <div className={`${styles.hex_white_space}`}>
                     <div className={`${styles.hex} ${styles.purple}`}>
                       <p className={`${styles.hex_text} px-5 m-0`}>
-                        The SSC Team member nominees from IsDBG Entities Members
-                        (IsDB, IRIT, ICIEC, ICD, ITFC, ISFD)
+                        {structureDetails[3]?.TeamDetails}
                       </p>
                     </div>
                   </div>
@@ -183,9 +215,7 @@ export default function ExeTeamStructure() {
                   <div className={`${styles.hex_white_space}`}>
                     <div className={`${styles.hex} ${styles.green}`}>
                       <p className={`${styles.hex_text} px-5 m-0`}>
-                        One staff member may be elected from each regional hub
-                        to carry out social events and activities in close
-                        coordination with SSC
+                        {structureDetails[4]?.TeamDetails}
                       </p>
                     </div>
                   </div>

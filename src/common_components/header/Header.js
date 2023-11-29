@@ -130,48 +130,59 @@ function Header({
   };
 
   return (
-    <header className={styles.header_container}>
-      <Row>
-        {/* desktop view */}
-        <Col xs={0} sm={0} md={0} lg={24} xl={24}>
-          <div className={styles.header}>
-            <Row>
-              <Col xs={8} sm={8} md={6} lg={8} xl={8}>
-                <div className={`${styles.header_contain}`}>
-                  <div className="pr-3 ">
+    <div className="sticky-top">
+      <header
+        className={`${styles.header_container}`}
+        style={{ zIndex: "10000" }}
+      >
+        <Row>
+          {/* desktop view */}
+          <Col xs={0} sm={0} md={0} lg={24} xl={24}>
+            <div className={styles.header}>
+              <Row>
+                <Col xs={8} sm={8} md={6} lg={8} xl={8}>
+                  <div className={`${styles.header_contain}`}>
+                    <div className="pr-3 ">
+                      <Button
+                        style={buttonStyle}
+                        className="w3-hover-light-grey"
+                        type="text"
+                        icon={
+                          <img
+                            src={menuIcon}
+                            alt="logo"
+                            width="33"
+                            height="26"
+                          />
+                        }
+                        onClick={() => setDrawerVisbility(true)}
+                      />
+                    </div>
                     <Button
                       style={buttonStyle}
-                      className="w3-hover-light-grey"
                       type="text"
-                      icon={
-                        <img src={menuIcon} alt="logo" width="33" height="26" />
-                      }
+                      className={`${styles.menu_btn}`}
                       onClick={() => setDrawerVisbility(true)}
-                    />
+                    >
+                      Menu
+                    </Button>
                   </div>
-                  <Button
-                    style={buttonStyle}
-                    type="text"
-                    className={`${styles.menu_btn}`}
-                    onClick={() => setDrawerVisbility(true)}
+                </Col>
+                <Col xs={8} sm={8} md={11} lg={8} xl={8}>
+                  <div
+                    className={`${styles.header_contain} ${styles.logo}`}
+                    onClick={() => history.push("/")}
                   >
-                    Menu
-                  </Button>
-                </div>
-              </Col>
-              <Col xs={8} sm={8} md={11} lg={8} xl={8}>
-                <div
-                  className={`${styles.header_contain} ${styles.logo}`}
-                  onClick={() => history.push("/")}
-                >
-                  <img src={logo[0]} alt="logo" width="180" height="100" />
-                  <span className={`${styles.vertical_hr}`} />
-                  <img src={logo[1]} alt="logo" width="180" height="100" />
-                </div>
-              </Col>
-              <Col xs={8} sm={8} md={7} lg={8} xl={8}>
-                <div className={`${styles.header_contain} justify-content-end`}>
-                  {/* <Popconfirm title={title} okText="" cancelText={""}>
+                    <img src={logo[0]} alt="logo" width="180" height="100" />
+                    <span className={`${styles.vertical_hr}`} />
+                    <img src={logo[1]} alt="logo" width="180" height="100" />
+                  </div>
+                </Col>
+                <Col xs={8} sm={8} md={7} lg={8} xl={8}>
+                  <div
+                    className={`${styles.header_contain} justify-content-end`}
+                  >
+                    {/* <Popconfirm title={title} okText="" cancelText={""}>
                     {
                       <Button
                         type="text"
@@ -180,158 +191,162 @@ function Header({
                       />
                     }
                   </Popconfirm> */}
-                  <div>
-                    {!user ? (
-                      <>
-                        <Button
-                          type="text"
-                          className={`${styles.sign_up_btn}`}
-                          onClick={() => history.push("/registration")}
-                        >
-                          {`Register`}
-                        </Button>
-                        <Button
-                          type="text"
-                          className={`${styles.sign_in_btn}`}
-                          onClick={() => {}}
-                        >{`Sign in`}</Button>
-                      </>
-                    ) : (
-                      <Dropdown overlay={ddmenu}>
-                        <Avatar
-                          size={72}
-                          src={
-                            user?.data?.UserProfileProperties[18].Value ? (
-                              <img
-                                src={getMyPictureUrl(user?.data?.Email, "M")}
-                                alt="user"
-                                width="150"
-                                height="150"
-                              ></img>
-                            ) : (
-                              <UserOutlined
-                                className={`${styles.avatar_img}`}
-                              />
-                            )
-                          }
-                          className={`ml-5`}
-                        ></Avatar>
-                      </Dropdown>
-                    )}
+                    <div>
+                      {!user ? (
+                        <>
+                          <Button
+                            type="text"
+                            className={`${styles.sign_up_btn}`}
+                            onClick={() => history.push("/registration")}
+                          >
+                            {`Register`}
+                          </Button>
+                          <Button
+                            type="text"
+                            className={`${styles.sign_in_btn}`}
+                            onClick={() => {}}
+                          >{`Sign in`}</Button>
+                        </>
+                      ) : (
+                        <Dropdown overlay={ddmenu}>
+                          <Avatar
+                            size={72}
+                            src={
+                              user?.data?.UserProfileProperties[18].Value ? (
+                                <img
+                                  src={getMyPictureUrl(user?.data?.Email, "M")}
+                                  alt="user"
+                                  width="150"
+                                  height="150"
+                                ></img>
+                              ) : (
+                                <UserOutlined
+                                  className={`${styles.avatar_img}`}
+                                />
+                              )
+                            }
+                            className={`ml-5`}
+                          ></Avatar>
+                        </Dropdown>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </Col>
-        <Col xs={0} sm={0} md={24} lg={0} xl={0}>
-          <div className={styles.header}>
-            <Row>
-              <Col xs={8} sm={8} md={6} lg={8} xl={8}>
-                <div className={`${styles.header_contain}`}>
-                  <Button
-                    type="text"
-                    icon={
-                      <img src={menuIcon} alt="logo" width="33" height="26" />
-                    }
-                    onClick={() => setDrawerVisbility(true)}
-                  />
-                </div>
-              </Col>
-              <Col xs={8} sm={8} md={11} lg={8} xl={8}>
-                <div
-                  className={`${styles.header_contain} ${styles.logo}`}
-                  onClick={() => history.push("/")}
-                >
-                  <img src={logo[0]} alt="logo" width="180" height="100" />
-                  <span className={`${styles.vertical_hr}`} />
-                  <img src={logo[1]} alt="logo" width="180" height="100" />
-                </div>
-              </Col>
-              <Col xs={8} sm={8} md={7} lg={8} xl={8}>
-                <div className={`${styles.header_contain} justify-content-end`}>
-                  {/* <Popconfirm title={title} okText="" cancelText="">
+                </Col>
+              </Row>
+            </div>
+          </Col>
+          <Col xs={0} sm={0} md={24} lg={0} xl={0}>
+            <div className={styles.header}>
+              <Row>
+                <Col xs={8} sm={8} md={6} lg={8} xl={8}>
+                  <div className={`${styles.header_contain}`}>
+                    <Button
+                      type="text"
+                      icon={
+                        <img src={menuIcon} alt="logo" width="33" height="26" />
+                      }
+                      onClick={() => setDrawerVisbility(true)}
+                    />
+                  </div>
+                </Col>
+                <Col xs={8} sm={8} md={11} lg={8} xl={8}>
+                  <div
+                    className={`${styles.header_contain} ${styles.logo}`}
+                    onClick={() => history.push("/")}
+                  >
+                    <img src={logo[0]} alt="logo" width="180" height="100" />
+                    <span className={`${styles.vertical_hr}`} />
+                    <img src={logo[1]} alt="logo" width="180" height="100" />
+                  </div>
+                </Col>
+                <Col xs={8} sm={8} md={7} lg={8} xl={8}>
+                  <div
+                    className={`${styles.header_contain} justify-content-end`}
+                  >
+                    {/* <Popconfirm title={title} okText="" cancelText="">
                     <Button
                       type="text"
                       icon={<SearchOutlined className={styles.search_icon} />}
                       className={`${styles.search_btn} mb-2`}
                     />
                   </Popconfirm> */}
-                  {/* <Button
+                    {/* <Button
                     type="text"
                     icon={<SearchOutlined className={styles.search_icon} />}
                     className={`${styles.search_btn} mb-2`}
                   /> */}
-                  <div>
-                    {!user ? (
-                      <>
-                        <Button
-                          type="text"
-                          className={`${styles.sign_up_btn}`}
-                          onClick={() => router.push("/registration")}
-                        >
-                          {`Sign up`}
-                        </Button>
-                        <Button
-                          type="text"
-                          className={`${styles.sign_in_btn}`}
-                          onClick={() => setUserLogedIn(true)}
-                        >{`Sign in`}</Button>
-                      </>
-                    ) : (
-                      <Dropdown overlay={ddmenu}>
-                        <Avatar
-                          size={72}
-                          src={
-                            user.data.UserProfileProperties[18].Value ? (
-                              <img
-                                src={user.data.UserProfileProperties[18].Value}
-                                alt="user"
-                                width="150"
-                                height="150"
-                              ></img>
-                            ) : (
-                              <UserOutlined
-                                className={`${styles.avatar_img}`}
-                              />
-                            )
-                          }
-                          className={`ml-4`}
-                        ></Avatar>
-                      </Dropdown>
-                    )}
+                    <div>
+                      {!user ? (
+                        <>
+                          <Button
+                            type="text"
+                            className={`${styles.sign_up_btn}`}
+                            onClick={() => router.push("/registration")}
+                          >
+                            {`Sign up`}
+                          </Button>
+                          <Button
+                            type="text"
+                            className={`${styles.sign_in_btn}`}
+                            onClick={() => setUserLogedIn(true)}
+                          >{`Sign in`}</Button>
+                        </>
+                      ) : (
+                        <Dropdown overlay={ddmenu}>
+                          <Avatar
+                            size={72}
+                            src={
+                              user.data.UserProfileProperties[18].Value ? (
+                                <img
+                                  src={
+                                    user.data.UserProfileProperties[18].Value
+                                  }
+                                  alt="user"
+                                  width="150"
+                                  height="150"
+                                ></img>
+                              ) : (
+                                <UserOutlined
+                                  className={`${styles.avatar_img}`}
+                                />
+                              )
+                            }
+                            className={`ml-4`}
+                          ></Avatar>
+                        </Dropdown>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </Col>
-        {/* mobile view */}
-        <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-          <div className={styles.header}>
-            <Row>
-              <Col xs={4} sm={4} md={4} lg={4} xl={4}>
-                <div className={`${styles.header_contain}`}>
-                  <Button
-                    type="text"
-                    icon={
-                      <img src={menuIcon} alt="logo" width="33" height="26" />
-                    }
-                    onClick={() => setDrawerVisbility(true)}
-                  />
-                </div>
-              </Col>
-              <Col xs={16} sm={16} md={16} lg={16} xl={16}>
-                <div
-                  className={`${styles.header_contain} ${styles.logo}`}
-                  onClick={() => history.push("/")}
-                >
-                  <img src={logo[0]} alt="logo" width="80" height="60" />
-                  <span className={`${styles.vertical_hr}`} />
-                  <img src={logo[1]} alt="logo" width="80" height="60" />
-                </div>
-              </Col>
-              {/* <Col xs={4} sm={4} md={4} lg={4} xl={4}>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+          {/* mobile view */}
+          <Col xs={24} sm={24} md={0} lg={0} xl={0}>
+            <div className={styles.header}>
+              <Row>
+                <Col xs={4} sm={4} md={4} lg={4} xl={4}>
+                  <div className={`${styles.header_contain}`}>
+                    <Button
+                      type="text"
+                      icon={
+                        <img src={menuIcon} alt="logo" width="33" height="26" />
+                      }
+                      onClick={() => setDrawerVisbility(true)}
+                    />
+                  </div>
+                </Col>
+                <Col xs={16} sm={16} md={16} lg={16} xl={16}>
+                  <div
+                    className={`${styles.header_contain} ${styles.logo}`}
+                    onClick={() => history.push("/")}
+                  >
+                    <img src={logo[0]} alt="logo" width="80" height="60" />
+                    <span className={`${styles.vertical_hr}`} />
+                    <img src={logo[1]} alt="logo" width="80" height="60" />
+                  </div>
+                </Col>
+                {/* <Col xs={4} sm={4} md={4} lg={4} xl={4}>
                 <div className={`${styles.header_contain} justify-content-end`}>
                   <div>
                     <Popconfirm
@@ -349,11 +364,12 @@ function Header({
                   </div>
                 </div>
               </Col> */}
-            </Row>
-          </div>
-        </Col>
-      </Row>
-    </header>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+      </header>
+    </div>
   );
 }
 

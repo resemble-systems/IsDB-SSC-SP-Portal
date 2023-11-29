@@ -20,6 +20,7 @@ export default function Calendar(eventsData) {
       setEvents(events);
     }
   }, [events]);
+  console.log("eventType-->", events);
   return (
     <div
       className={`${styles.calender_bg}`}

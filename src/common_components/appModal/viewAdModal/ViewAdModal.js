@@ -114,6 +114,7 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
               autoPlay={autoPlay}
               setAutoPlay={setAutoPlay}
               stopOnHover={true}
+              btnColor={"#D3D3D3 !important"}
             >
               {displayImage.map((data, index) => (
                 <Row gutter={[16, 16]} key={index}>

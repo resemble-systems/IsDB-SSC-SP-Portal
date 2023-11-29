@@ -5,13 +5,16 @@ import img3 from "../../assets/upcomingEvent/Activities_Icons_Set4.svg";
 import img4 from "../../assets/upcomingEvent/Activities_Icons_Set5.svg";
 
 export const setBackground = (item, services) => {
-  let eventTypeColor = item?.EventType?.Title || item?.EventType;
+  let eventTypeColor = item?.EventType?.Title
+    ? item?.EventType?.Title
+    : item?.EventType;
   let arrayBgImage = [img1, img2, img3, img4];
   let bg, boxShadow;
   let bgImage = arrayBgImage[Math.floor(Math.random() * arrayBgImage?.length)];
-  let service = services?.find(
-    (service) => service?.ServiceType === eventTypeColor
-  );
+  let service = services?.find((service) => {
+    console.log("color-->", service?.ServiceType === eventTypeColor);
+    return service?.Title.toLowerCase() === eventTypeColor.toLowerCase();
+  });
 
   bg = service?.Color;
   boxShadow = `0px 3px 18px ${service?.Color}40`;

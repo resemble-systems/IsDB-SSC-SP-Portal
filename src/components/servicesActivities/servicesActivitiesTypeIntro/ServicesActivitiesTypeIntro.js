@@ -40,9 +40,11 @@ export default function ServicesActivitiesTypeIntro({ serviceActivity }) {
             md={24}
             lg={14}
             xl={12}
-            className="d-flex justify-content-center align-items-center"
+            className="d-flex flex-column justify-content-center align-items-center"
           >
-            <div className={`${styles.service_type_image_box} mb-5`}>
+            <div
+              className={`${styles.service_type_image_box} d-flex justify-content-center align-items-center overflow-hidden mb-5`}
+            >
               {isImage(
                 serviceActivity?.AttachmentFiles[
                   serviceActivity?.AttachmentFiles?.length - 1

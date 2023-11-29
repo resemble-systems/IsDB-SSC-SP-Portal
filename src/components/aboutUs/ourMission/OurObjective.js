@@ -9,6 +9,9 @@ import Ssc from "../../../assets/aboutUs/sscbg2.svg";
 import Mission from "../../../assets/aboutUs/missionBg.svg";
 //css
 import styles from "./our-objective.module.sass";
+import { useEffect, useState } from "react";
+import { CONST } from "../../../constant";
+import axios from "axios";
 
 const animationStyles = StyleSheet.create({
   slideInLeft: {
@@ -18,6 +21,20 @@ const animationStyles = StyleSheet.create({
 });
 
 export default function OurObjectiveSection() {
+  const [objDetails, setObjDetails] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(
+        `${CONST.BASE_URL}${CONST.API.LIST(
+          "AboutUsObjective"
+        )}${CONST.API.QUERY("Objective")}`
+      )
+      .then((res) => {
+        setObjDetails(res.data.value);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   const { observe, inView } = useInView({
     threshold: 0.25, // Default is 0
     onChange: ({ inView, scrollDirection, entry, observe, unobserve }) => {
@@ -51,84 +68,23 @@ export default function OurObjectiveSection() {
           </Col>
           {/* For small screen */}
           <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-            <div className={`${styles.mission_list} px-4 ml-5 mb-4`}>
-              {
-                "Promote cooperation and knowledge sharing among all IsDB Group staff members (IsDB HQ and Regional Hubs)"
-              }
-            </div>
-
-            <div
-              className={`${styles.mission_list} px-4 ml-5 mb-4`}
-            >{`Help IsDB Group staff members balance their work and family social life`}</div>
-
-            <div
-              className={`${styles.mission_list} px-4 ml-5 mb-4`}
-            >{`Encourage social interaction among IsDB Group staff members and their families`}</div>
-
-            <div
-              className={`${styles.mission_list} px-4 ml-5 mb-4`}
-            >{`Facilitate communication between the staff members and the Senior Management of the IsDBG in an informal context`}</div>
-
-            <div
-              className={`${styles.mission_list} px-4 ml-5 mb-4`}
-            >{`To establish a “Voluntary Staff Donation Fund” in order to help the emergencies situation for staff members`}</div>
-
-            <div
-              className={`${styles.mission_list} px-4 ml-5 mb-4`}
-            >{`Welcoming new staff and encourage them to volunteer for SSC activities`}</div>
-
-            <div
-              className={`${styles.mission_list} px-4 ml-5 mb-4`}
-            >{`Announcing any happiness or sorrow about for all staff member`}</div>
-
-            <div
-              className={`${styles.mission_list} px-4 ml-5 mb-4`}
-            >{`The SSC Executive Team will organize social, spiritual events, farewell events, UN Days and ...etc.`}</div>
+            {objDetails?.length > 0 &&
+              objDetails.map((data) => (
+                <div className={`${styles.mission_list} px-4 ml-5 mb-4`}>
+                  {data.Objective}
+                </div>
+              ))}
           </Col>
           {/* For large screen */}
           <Col xs={0} sm={0} md={16} lg={16} xl={16}>
-            <div className={inView ? css(animationStyles.slideInLeft) : ""}>
-              <div className={`${styles.mission_list} px-4 mb-4`}>
-                {
-                  "Promote cooperation and knowledge sharing among all IsDB Group staff members (IsDB HQ and Regional Hubs)"
-                }
-              </div>
-            </div>
-            <div className={inView ? css(animationStyles.slideInLeft) : ""}>
-              <div
-                className={`${styles.mission_list} px-4 mb-4`}
-              >{`Help IsDB Group staff members balance their work and family social life`}</div>
-            </div>
-            <div className={inView ? css(animationStyles.slideInLeft) : ""}>
-              <div
-                className={`${styles.mission_list} px-4 mb-4`}
-              >{`Encourage social interaction among IsDB Group staff members and their families`}</div>
-            </div>
-            <div className={inView ? css(animationStyles.slideInLeft) : ""}>
-              <div
-                className={`${styles.mission_list} px-4 mb-4`}
-              >{`Facilitate communication between the staff members and the Senior Management of the IsDBG in an informal context`}</div>
-            </div>
-            <div className={inView ? css(animationStyles.slideInLeft) : ""}>
-              <div
-                className={`${styles.mission_list} px-4 mb-4`}
-              >{`To establish a “Voluntary Staff Donation Fund” in order to help the emergencies situation for staff members`}</div>
-            </div>
-            <div className={inView ? css(animationStyles.slideInLeft) : ""}>
-              <div
-                className={`${styles.mission_list} px-4 mb-4`}
-              >{`Welcoming new staff and encourage them to volunteer for SSC activities`}</div>
-            </div>
-            <div className={inView ? css(animationStyles.slideInLeft) : ""}>
-              <div
-                className={`${styles.mission_list} px-4 mb-4`}
-              >{`Announcing any happiness or sorrow about for all staff member`}</div>
-            </div>
-            <div className={inView ? css(animationStyles.slideInLeft) : ""}>
-              <div
-                className={`${styles.mission_list} px-4 mb-4`}
-              >{`The SSC Executive Team will organize social, spiritual events, farewell events, UN Days and ...etc.`}</div>
-            </div>
+            {objDetails?.length > 0 &&
+              objDetails.map((data) => (
+                <div className={inView ? css(animationStyles.slideInLeft) : ""}>
+                  <div className={`${styles.mission_list} px-4 mb-4`}>
+                    {data.Objective}
+                  </div>
+                </div>
+              ))}
           </Col>
         </Row>
       </div>

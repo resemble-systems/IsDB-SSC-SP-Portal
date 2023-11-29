@@ -14,6 +14,7 @@ export default function AppSlider({
   setAutoPlay,
   stopOnHover,
   dynamicHeight = false,
+  btnColor,
 }) {
   return (
     <Carousel
@@ -36,7 +37,12 @@ export default function AppSlider({
             }}
             type="button"
             aria-label="next slide / item"
-            style={{ backgroundImage: `url(${btnIcon})` }}
+            style={{
+              backgroundImage: `url(${btnIcon})`,
+              backgroundColor: `${
+                btnColor ? "#D3D3D3" : "transparent !important"
+              }`,
+            }}
             className={`${styles.slide_btn} control-arrow control-prev`}
           ></button>
         )
@@ -50,7 +56,12 @@ export default function AppSlider({
             }}
             type="button"
             aria-label="next slide / item"
-            style={{ backgroundImage: `url(${btnIcon})` }}
+            style={{
+              backgroundImage: `url(${btnIcon})`,
+              backgroundColor: `${
+                btnColor ? "#D3D3D3" : "transparent !important"
+              }`,
+            }}
             className={`${styles.slide_btn} ${styles.image_position} control-arrow control-next`}
           ></button>
         )

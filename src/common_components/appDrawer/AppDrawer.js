@@ -140,6 +140,7 @@ export default function AppDrawer({
         key={"top"}
         // className={`${styles.drawer_bg}`}
         bodyStyle={{ background: "#000000FA", color: "#fff" }}
+        style={{ zIndex: "1200" }}
       >
         <Row>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
