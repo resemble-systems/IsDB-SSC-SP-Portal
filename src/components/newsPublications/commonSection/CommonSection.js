@@ -12,15 +12,15 @@ export default function CommonSection({
   imageHeight,
 }) {
   const formattedText = news?.TextArea?.replace(/\n/g, "<br>");
-  console.log("dataPub-->", formattedText);
+
   return (
     <div>
       <Row>
-        {section === "intro" && (
+        {/* {section === "intro" && (
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <h3 className={`${styles.intro_title} mb-5`}>Most Viewed</h3>
           </Col>
-        )}
+        )} */}
         {section === "intro" &&
         news?.AttachmentFiles[0]?.ServerRelativeUrl !== undefined ? (
           <Col xs={24} sm={24} md={12} lg={10} xl={10}>

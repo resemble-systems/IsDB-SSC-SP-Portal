@@ -138,7 +138,7 @@ export default function AllEventsActivities({ eventsData, serviceData }) {
 
   const onColorIndicatorClick = (serviceType) => {
     let filteredData = eventsData.filter(
-      (data) => data.EventType.Title === serviceType
+      (data) => data.EventType.ServiceType === serviceType
     );
     setFilteredEventsData(filteredData);
   };

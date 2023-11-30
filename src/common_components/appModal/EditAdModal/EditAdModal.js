@@ -867,11 +867,7 @@ export default function EditAdModal({
                   <label className={`${styles.label}`}>{"Description"}</label>
                 </Col>
                 <Col span={24}>
-                  <div
-                    className={`${styles.text_container} ${
-                      Description?.length === 0 ? "border border-danger" : ""
-                    }`}
-                  >
+                  <div className={`${styles.text_container}`}>
                     <TextArea
                       placeholder={"Enter Description"}
                       bordered={false}
@@ -981,7 +977,9 @@ export default function EditAdModal({
                           /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                         ) &&
                         Category?.length > 0 &&
-                        SubCategory?.length > 0 &&
+                        ((SubCategory?.length > 0 && Category !== "Others") ||
+                          (SubCategory.length === 0 &&
+                            Category === "Others")) &&
                         Title?.length > 0 &&
                         Price?.length > 0 &&
                         /^[0-9]+(\.[0-9]{1,2})?$/.test(Price)

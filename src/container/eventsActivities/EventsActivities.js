@@ -20,15 +20,19 @@ import { Button, Popconfirm } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
 const items = [];
+var HeaderTitle = "";
 
 function setSliderData(eventsData, serviceData) {
   let title = "Upcoming Events";
+  HeaderTitle = "Upcoming Events";
   let filteredEventsData = eventsData.filter(
     (eventData) =>
       new Date(eventData.StartDate).getTime() > new Date().getTime()
   );
   if (filteredEventsData && filteredEventsData.length === 0) {
     title = "Recent Events";
+    HeaderTitle = "Recent Events";
+
     filteredEventsData = eventsData.filter(
       (eventData) =>
         new Date(eventData.StartDate).getTime() <= new Date().getTime() &&
@@ -37,6 +41,7 @@ function setSliderData(eventsData, serviceData) {
   }
   if (filteredEventsData && filteredEventsData.length === 0) {
     title = "Past Events";
+    HeaderTitle = "Past Events";
     filteredEventsData = eventsData.filter(
       (eventData) =>
         new Date(eventData.EndDate).getTime() < new Date().getTime()
@@ -75,7 +80,7 @@ export default function EventsActivities() {
   const title = () => {
     return <SearchBar search={"events"} styleApply={true} />;
   };
-
+  console.log("items-->", HeaderTitle);
   return (
     <>
       {eventsData &&
@@ -104,6 +109,12 @@ export default function EventsActivities() {
                 </div>
               </div>
               {/* <SearchBar search={"events"} styleApply={true} /> */}
+              <div
+                style={{ position: "relative", top: "380px" }}
+                className={`container ${styles.intro_title}`}
+              >
+                <h3 style={{ fontSize: "35px" }}>{HeaderTitle}</h3>
+              </div>
               <Slider items={items} eventsData={eventsData} />
             </div>
             <Calendar />

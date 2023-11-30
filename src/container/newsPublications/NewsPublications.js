@@ -68,6 +68,12 @@ export default function NewsPublications({
             <div className="container">
               <InnerPageTitleSection title={"News & Publications"} />
             </div>
+            <div
+              className={`container ${styles.intro_title}`}
+              style={{ position: "relative", top: "337px" }}
+            >
+              <h3 style={{ fontSize: "35px" }}>Most Viewed</h3>
+            </div>
             <Slider items={items} news={newsData} />
           </div>
           <PublicationsSection news={newsData} />

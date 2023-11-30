@@ -122,8 +122,9 @@ export default function Banner() {
                       : banner.Description}
                   </p>
                   <p className={`${styles.text_time}`}>
-                    {moment(banner.CreatedDate).format("MMMM DD") ===
-                    moment(banner.Expiration).format("MMMM DD")
+                    {banner?.RegistrationLink?.length > 0 &&
+                    moment(banner.CreatedDate).format("MMMM DD") ===
+                      moment(banner.Expiration).format("MMMM DD")
                       ? moment(banner.Expiration).format("MMMM DD")
                       : `${moment(banner.CreatedDate).format(
                           "MMMM DD"

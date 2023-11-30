@@ -29,7 +29,7 @@ export default function EventDetailsIntro({ eventData }) {
   const formattedText = eventData[0]?.Description?.replace(/\n/g, "<br>");
 
   return (
-    <div className={`${styles.event_details_bg}`}>
+    <div className={`${styles.event_details_bg} mt-5`}>
       <div className={`${styles.event_details_container} py-5`}>
         <Row>
           {/* For large screen size */}

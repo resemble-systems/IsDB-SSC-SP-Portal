@@ -24,9 +24,9 @@ export default function EventsIntroSection({
     <div className={`${styles.events_bg}`}>
       <div className={`${styles.events_container} py-5`}>
         <Row>
-          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+          {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <h3 className={`${styles.upcoming_events_title} mb-5`}>{title}</h3>
-          </Col>
+          </Col> */}
           <Col xs={24} sm={24} md={10} lg={8} xl={8}>
             <EventsCard
               bg={bg}

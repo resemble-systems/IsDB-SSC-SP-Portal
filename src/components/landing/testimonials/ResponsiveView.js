@@ -87,7 +87,6 @@ export default function ResponsiveView({ view, testimonialsData }) {
                 ) : (
                   <Skeleton.Image />
                 )}
-                {/* </div> */}
               </div>
             </div>
           </Col>

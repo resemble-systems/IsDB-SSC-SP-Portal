@@ -132,6 +132,12 @@ export default function NewAdModal({
     }
   }, [visible]);
 
+  useEffect(() => {
+    console.log("inputs.category", inputs.subcategory);
+  }, [inputs.category]);
+
+  console.log("error-->", errors);
+
   return (
     <Modal
       centered
@@ -250,11 +256,13 @@ export default function NewAdModal({
                 value={inputs.subcategory}
                 error={errors.subcategory}
               />
-              {errors.subcategory !== null && !errors.subcategory && (
-                <p className={`text-danger mt-2 mb-0 pl-4`}>
-                  {"Please enter Subcategory."}
-                </p>
-              )}
+              {inputs.category !== "Others" &&
+                errors.subcategory !== null &&
+                !errors.subcategory && (
+                  <p className={`text-danger mt-2 mb-0 pl-4`}>
+                    {"Please enter Subcategory."}
+                  </p>
+                )}
             </Col>
 
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>

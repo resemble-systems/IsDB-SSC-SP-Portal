@@ -101,9 +101,16 @@ const UseForm = (
       let errorObject = {};
       Object.keys(inputs).forEach((input) => {
         let error = validator(input, inputs[input]);
-        if (error !== undefined) errorObject[input] = error;
+        if (error !== undefined) {
+          errorObject = {
+            ...errorObject,
+            ["subcategory"]: inputs.category === "Others" ? true : error,
+          };
+          errorObject[input] = error;
+        }
         setErrors((err) => ({
           ...err,
+          ["subcategory"]: inputs.category === "Others" ? true : error,
           [input]: error,
         }));
       });
@@ -226,10 +233,12 @@ const UseForm = (
     setErrors({
       ...errors,
       ["category"]: error,
+      ["subcategory"]: null,
     });
     setInputs((inputs) => ({
       ...inputs,
       ["category"]: e,
+      ["subcategory"]: "",
     }));
   };
 
