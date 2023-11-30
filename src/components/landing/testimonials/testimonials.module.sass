@@ -2,7 +2,6 @@
 
 .testimonial_bg
   height: 458px
-  width: $full_width
   position: $position_relative
   &::before
     content: '\A'
@@ -14,15 +13,13 @@
     width: $seventyFive_percen
 
 .event_details_des
-    @extend %font_size_16
-    @extend %font_family_lato
-    height: 100px
-    font-weight: 800
-
+  @extend %font_size_16
+  @extend %font_family_lato
+  height: 100px
+  font-weight: 800
 
 .testimonials_container
   display: $flex
-  justify-content: $center
   align-items: $center
   margin: $zero $auto
   height: 458px
@@ -45,7 +42,7 @@
   text-align: $left
   @extend %font_size_24
   @extend %font_family_roboto
-  width:100% !important
+  width: 100% !important
 
 .before_des_img,
 .after_des_img
@@ -53,7 +50,7 @@
   height: $full_width
   background-repeat: $no_repeat
   background-position: $zero $fifty_percen
-  
+
 .after_des_img
   transform: scale(-1, 1)
 
@@ -83,74 +80,42 @@
   background: #e4e4e4
   box-shadow: 30px 30px #FDCF3C
 
-@media (min-width: 1441px) and (max-width: 1920px)
+@media (min-width: 1640px) and (max-width: 1920px)
   .testimonial_bg
-      height: 458px
-      width: $full_width
-      position: $position_relative
-      &::before
-        content: '\A'
-        position: $position_absolute
-        background: $testimonial_background_color
-        top: $zero
-        bottom: $zero
-        left: $zero
-        width: 74% 
-
-
-
-@media (min-width: 1921px) and (max-width: 2560px)
-  .testimonial_bg
-    height: 458px
-    width: $full_width
-    position: $position_relative
     &::before
-      content: '\A'
-      position: $position_absolute
-      background: $testimonial_background_color
-      top: $zero
-      bottom: $zero
-      left: $zero
-      width: 68%
+      width: 80%
 
-@media (min-width: 1367px) and (max-width: 1440px)
+@media (min-width: 1921px) and (max-width: 2060px)
   .testimonial_bg
-    height: 458px
-    width: $full_width
-    position: $position_relative
     &::before
-      content: '\A'
-      position: $position_absolute
-      background: $testimonial_background_color
-      top: $zero
-      bottom: $zero
-      left: $zero
-      width: 82%
+      width: 78%
 
-@media (min-width: 770px) and (max-width: 1366px)
+@media (min-width: 2061px) and (max-width: 2300px)
   .testimonial_bg
-      height: 458px
-      width: $full_width
-      position: $position_relative
-      &::before
-        content: '\A'
-        position: $position_absolute
-        background: $testimonial_background_color
-        top: $zero
-        bottom: $zero
-        left: $zero
-        width: 84% 
-
-@media (min-width: 769px) and (max-width: 1024px)
-  .testimonial_bg
-    height: 458px
-    width: $full_width
-    position: $position_relative
     &::before
-      content: '\A'
-      position: $position_absolute
-      background: $testimonial_background_color
-      top: $zero
-      bottom: $zero
-      left: $zero
-      width: 103%
+      width: 75%
+
+@media (min-width: 2301px) and (max-width: 2600px)
+  .testimonial_bg
+    &::before
+      width: 72%
+
+@media (min-width: 1561px) and (max-width: 1639px)
+  .testimonial_bg
+    &::before
+      width: 84%
+
+@media (min-width: 770px) and (max-width: 1199px)
+  .testimonial_bg
+    &::before
+      width: 85%
+
+@media (min-width: 1200px) and (max-width: 1368px)
+  .testimonial_bg
+    &::before
+      width: 88%
+
+@media (min-width: 1369px) and (max-width: 1560px)
+  .testimonial_bg
+    &::before
+      width: 87%

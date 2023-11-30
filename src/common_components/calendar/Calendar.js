@@ -28,7 +28,8 @@ export default function Calendar(eventsData) {
         backgroundImage: `url(${CalendarBg})`,
       }}
     >
-      <div className={`${styles.calender_container} pt-5`}>
+      {/* <div className={`${styles.calender_container} pt-5`}> */}
+      <div className={`container pt-5`}>
         <CommonSectionHeader title={"Events Calendar"} sliderSection={false} />
         <div className={`${styles.calender_subcontainer}`}>
           <Row>

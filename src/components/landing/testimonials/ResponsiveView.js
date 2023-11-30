@@ -1,5 +1,7 @@
 import { Row, Col, Skeleton } from "antd";
 import quote from "../../../assets/context/testimonialsDoubleQuote.svg";
+import quoteRight from "../../../assets/context/QuoteRight.svg";
+import quoteLeft from "../../../assets/context/QuoteLeft.svg";
 // css
 import styles from "./testimonials.module.sass";
 import Scrollbars from "react-custom-scrollbars";
@@ -11,151 +13,59 @@ export default function ResponsiveView({ view, testimonialsData }) {
   );
   return (
     <div
-      /* className={`${styles.testimonials_container} my-2`} */ className="container"
+      className="w-100 container d-flex gap-5 align-items-center"
+      style={{ height: "458px" }}
     >
-      <div
-      // className={`${styles.testimonials_subcontainer} ${
-      //   view === "desktop" ? "px-3" : "px-1"
-      // }`}
-      >
-        <Row>
-          <Col xs={0} sm={0} md={16} lg={17} xl={17}>
-            <Row /* className={`w-100`} */ gutter={[0, 20]}>
-              <Col span={24}>
-                <h3 className={`${styles.testimonials_title}`}>Testimonials</h3>
-              </Col>
-              <Col xs={2} sm={2} md={3} lg={3} xl={3}>
-                <div
-                  className={`${styles.before_des_img}`}
-                  style={{
-                    backgroundImage: `url(${quote})`,
-                  }}
-                ></div>
-              </Col>
-              <Col xs={20} sm={20} md={18} lg={18} xl={18}>
-                <div className="w-100">
-                  <div className={`${styles.testimonials_des} `}>
-                    {testimonialsData &&
-                    testimonialsData.TestimonialsDescription ? (
-                      <p className={`${styles.event_details_des} `}>
-                        <Scrollbars style={{ height: "100%", width: "100%" }}>
-                          <div
-                            dangerouslySetInnerHTML={{ __html: formattedText }}
-                          />
-                        </Scrollbars>
-                      </p>
-                    ) : (
-                      <Skeleton style={{ width: 500 }} />
-                    )}
-                  </div>
-                </div>
-              </Col>
-              <Col xs={2} sm={2} md={3} lg={3} xl={3}>
-                <div className="w-100 h-100">
-                  <div
-                    className={`${styles.after_des_img}`}
-                    style={{
-                      backgroundImage: `url(${quote})`,
-                    }}
-                  ></div>
-                </div>
-              </Col>
-              <Col span={24}>
-                <h5 className={`${styles.testimonials_author}`}>
-                  {testimonialsData && testimonialsData.Title ? (
-                    testimonialsData.Title
-                  ) : (
-                    <Skeleton.Input style={{ width: 500 }} />
-                  )}
-                </h5>
-              </Col>
-            </Row>
-          </Col>
-
-          <Col xs={0} sm={0} md={8} lg={7} xl={7}>
-            <div className={`${styles.image_container}`}>
-              <div className={`${styles.testimonials_image_box}`}>
-                {testimonialsData &&
-                testimonialsData.AttachmentFiles &&
-                testimonialsData.AttachmentFiles.length > 0 ? (
-                  <img
-                    src={testimonialsData.AttachmentFiles[0].ServerRelativeUrl}
-                    alt="card-img"
-                    width={100}
-                    height={200}
-                  ></img>
-                ) : (
-                  <Skeleton.Image />
-                )}
-              </div>
-            </div>
-          </Col>
-          <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-            <Row className={`w-100`}>
-              <Col span={24}>
-                <h3 className={`${styles.testimonials_title}`}>Testimonials</h3>
-              </Col>
-              <Col xs={3} sm={3} md={3} lg={3} xl={3}>
-                <div
-                  className={`${styles.before_des_img}`}
-                  style={{
-                    backgroundImage: `url(${quote})`,
-                  }}
-                ></div>
-              </Col>
-              <Col xs={18} sm={18} md={18} lg={18} xl={18}>
-                <p className={`${styles.testimonials_des} w-100`}>
-                  {testimonialsData &&
-                  testimonialsData.TestimonialsDescription ? (
-                    testimonialsData.TestimonialsDescription
-                  ) : (
-                    <Skeleton style={{ width: 500 }} />
-                  )}
+      <div className="flex-fill">
+        <h3 className={`${styles.testimonials_title}`}>Testimonials</h3>
+        <div className="d-flex gap-3">
+          <div>
+            <img src={quoteLeft} width={"64px"} height={"64px"} />
+          </div>
+          <div className="w-100 flex-fill">
+            <div className={`${styles.testimonials_des}`}>
+              {testimonialsData && testimonialsData.TestimonialsDescription ? (
+                <p className={`${styles.event_details_des}`}>
+                  <Scrollbars style={{ height: "100%", width: "100%" }}>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: formattedText,
+                      }}
+                    />
+                  </Scrollbars>
                 </p>
-              </Col>
-              <Col xs={3} sm={3} md={3} lg={3} xl={3}>
-                <div
-                  className={`${styles.after_des_img}`}
-                  style={{
-                    backgroundImage: `url(${quote})`,
-                  }}
-                ></div>
-              </Col>
-              <Col span={24}>
-                <h5 className={`${styles.testimonials_author}`}>
-                  {testimonialsData && testimonialsData.Title ? (
-                    testimonialsData.Title
-                  ) : (
-                    <Skeleton.Input style={{ width: 500 }} />
-                  )}
-                </h5>
-              </Col>
-            </Row>
-          </Col>
-
-          <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-            <div className={`${styles.image_container} w-100`}>
-              <div className={`${styles.testimonials_image_box}`}>
-                {/* <div
-                  className={`d-flex justify-content-center align-items-center overflow-hidden h-100`}
-                > */}
-                {testimonialsData &&
-                testimonialsData.AttachmentFiles &&
-                testimonialsData.AttachmentFiles.length > 0 ? (
-                  <img
-                    src={testimonialsData.AttachmentFiles[0].ServerRelativeUrl}
-                    alt="card-img"
-                    width={600}
-                    height={600}
-                  ></img>
-                ) : (
-                  <Skeleton.Image />
-                )}
-                {/* </div> */}
-              </div>
+              ) : (
+                <Skeleton style={{ width: 500 }} />
+              )}
             </div>
-          </Col>
-        </Row>
+          </div>
+          <div className="d-flex align-items-end">
+            <img src={quoteRight} width={"64px"} height={"64px"} />
+          </div>
+        </div>
+        <h5 className={`${styles.testimonials_author} pt-3`}>
+          {testimonialsData && testimonialsData.Title ? (
+            testimonialsData.Title
+          ) : (
+            <Skeleton.Input style={{ width: 500 }} />
+          )}
+        </h5>
+      </div>
+      <div className={`${styles.image_container}`}>
+        <div className={`${styles.testimonials_image_box}`}>
+          {testimonialsData &&
+          testimonialsData.AttachmentFiles &&
+          testimonialsData.AttachmentFiles.length > 0 ? (
+            <img
+              src={testimonialsData.AttachmentFiles[0].ServerRelativeUrl}
+              alt="card-img"
+              width={100}
+              height={200}
+            ></img>
+          ) : (
+            <Skeleton.Image />
+          )}
+        </div>
       </div>
     </div>
   );

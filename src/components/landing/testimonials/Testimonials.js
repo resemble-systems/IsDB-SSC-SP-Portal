@@ -25,7 +25,7 @@ export default function Testimonials() {
   }, []);
   let skeletonData = [{}];
   return (
-    <div className={`${styles.testimonial_bg} d-flex align-items-center`}>
+    <div className={`${styles.testimonial_bg}`}>
       <AppSlider
         btnIcon={icon}
         showIndicators={false}
@@ -36,15 +36,15 @@ export default function Testimonials() {
         {testimonialsData && testimonialsData?.length > 0
           ? testimonialsData?.map((data, index) => (
               <Row key={index}>
-                <Col xs={0} sm={0} md={0} lg={24} xl={24}>
+                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                   <ResponsiveView view={"desktop"} testimonialsData={data} />
                 </Col>
-                <Col xs={0} sm={0} md={24} lg={0} xl={0}>
+                {/*  <Col xs={0} sm={0} md={24} lg={0} xl={0}>
                   <ResponsiveView view={"tablet"} testimonialsData={data} />
                 </Col>
                 <Col xs={24} sm={24} md={0} lg={0} xl={0}>
                   <ResponsiveView view={"mobile"} testimonialsData={data} />
-                </Col>
+                </Col> */}
               </Row>
             ))
           : skeletonData.map((data, index) => (
