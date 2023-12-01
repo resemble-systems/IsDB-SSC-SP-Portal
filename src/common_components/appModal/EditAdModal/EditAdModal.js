@@ -336,7 +336,7 @@ export default function EditAdModal({
       closable={false}
       footer={null}
       width={800}
-      bodyStyle={{ padding: "50px" }}
+      bodyStyle={{ padding: "50px", marginTop: "170px" }}
       wrapClassName={`${styles.event_reg_modal}`}
     >
       <Row gutter={[16, 16]}>
@@ -396,7 +396,7 @@ export default function EditAdModal({
         {!registerDone && (
           <>
             <Col span={24}>
-              <h3 className={`${styles.modal_title}`}>Post Your Ad</h3>
+              <h3 className={`${styles.modal_title}`}>Update Your Ad</h3>
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               {/* <DropdownElement

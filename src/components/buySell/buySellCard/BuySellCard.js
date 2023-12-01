@@ -27,7 +27,7 @@ export default function BuySellCard({
 
   return (
     <>
-      <div className={`${styles.buysell_card} my-2`}>
+      <div className={`${styles.buysell_card} my-2 mt-5`}>
         <div
           className={`${styles.buysell_mainImgConatiner} d-flex justify-content-center align-items-center overflow-hidden`}
           style={{ borderRadius: "10px 10px 0 0" }}
