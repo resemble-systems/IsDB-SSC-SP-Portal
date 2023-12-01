@@ -31,7 +31,7 @@ export default function GalleryImageCard({
   const [filteredVideoData, setFilteredVideoData] = useState([]);
   const [filteredDocData, setFilteredDocData] = useState([]);
   const [imgCardData, setImgCardData] = useState(filteredImgData.slice(0, 9));
-  console.log("document-->", AllData);
+
   useEffect(() => {
     if (seeAll) {
       setCardData(filteredcardData);

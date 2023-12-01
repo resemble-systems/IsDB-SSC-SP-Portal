@@ -64,11 +64,7 @@ export default function NewsPublicationsCard({ data, page }) {
         </div>
 
         <div className={`${styles.createdDate}`}>
-          {data?.CreatedDate ? (
-            date.format("DD MMM YYYY").toUpperCase()
-          ) : (
-            <Skeleton />
-          )}
+          {data?.CreatedDate && date.format("DD MMM YYYY").toUpperCase()}
         </div>
 
         {data && data?.Title ? (

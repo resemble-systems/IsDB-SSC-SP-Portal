@@ -42,7 +42,7 @@ const UseForm = (
       let resp = await getDigest();
       setLoaderTime(true);
       const url = CONST.BASE_URL + CONST.API.LIST("EventRegistration");
-      console.log("inputs--->", inputs);
+
       const stringifyPostData = JSON.stringify({
         __metadata: {
           type: "SP.Data.EventRegistrationListItem",

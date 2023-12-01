@@ -9,6 +9,7 @@ import { CONST } from "../../../constant/index";
 //css
 import styles from "./banner.module.sass";
 import btnimg from "../../../assets/context/slider_btn_icon_light.svg";
+import { VAR } from "../../../env";
 
 export default function Banner() {
   const [autoPlay, setAutoPlay] = useState(true);
@@ -42,10 +43,8 @@ export default function Banner() {
   //   "link-->",
   //   bannerData?.map((data) => data.RegistrationLink)
   // );
-  console.log(
-    "testData-->",
-    bannerData?.map((banner, index) => banner.RegistrationLink)
-  );
+  console.log("testData-->", videoUrl);
+
   return (
     <>
       <AppSlider
@@ -89,7 +88,14 @@ export default function Banner() {
                   <div
                     className={`${styles.video_play_btn}`}
                     onClick={() => {
-                      setVideoUrl(banner?.VideoLink);
+                      let testvideourl1 = banner?.VideoLink?.split(".")[0];
+                      let testvideourl2 =
+                        banner?.VideoLink?.split(".")[1]?.toLowerCase();
+
+                      setVideoUrl(
+                        VAR?.BANNER_VIDEO + testvideourl1 + "." + testvideourl2
+                      );
+                      // setVideoUrl(banner?.VideoLink);
                       setPlay(true);
                       setModalVisibility(true);
                       setAutoPlay(false);

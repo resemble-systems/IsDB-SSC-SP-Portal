@@ -11,7 +11,6 @@ export const setBackground = (item, services) => {
   let bg, boxShadow;
   let bgImage = arrayBgImage[Math.floor(Math.random() * arrayBgImage?.length)];
   let service = services?.find((service) => {
-    console.log("color-->", item, eventTypeColor);
     return service?.ServiceType.toLowerCase() === eventTypeColor.toLowerCase();
   });
 

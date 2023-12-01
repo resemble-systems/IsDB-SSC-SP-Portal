@@ -132,12 +132,6 @@ export default function NewAdModal({
     }
   }, [visible]);
 
-  useEffect(() => {
-    console.log("inputs.category", inputs.subcategory);
-  }, [inputs.category]);
-
-  console.log("error-->", errors);
-
   return (
     <Modal
       centered
