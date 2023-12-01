@@ -61,7 +61,7 @@ export default function ViewAdModal({ cardData, visible, setVisiblety }) {
       closable={false}
       footer={null}
       width={800}
-      bodyStyle={{ padding: "50px" }}
+      bodyStyle={{ padding: "50px", marginTop: "170px" }}
       wrapClassName={`${styles.event_reg_modal}`}
     >
       <Row>

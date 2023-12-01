@@ -42,8 +42,7 @@ export default function Banner() {
   // console.log(
   //   "link-->",
   //   bannerData?.map((data) => data.RegistrationLink)
-  // );
-  console.log("testData-->", videoUrl);
+  // )
 
   return (
     <>

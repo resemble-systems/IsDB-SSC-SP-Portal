@@ -65,7 +65,7 @@ function ResponsiveView({ finalData, span, page }) {
           finalData.map((data, index) => (
             <Col
               span={span}
-              className={`d-flex align-items-center flex-column px-0`}
+              className={`d-flex align-items-center flex-column px-0 mt-5`}
               key={index}
             >
               <div
@@ -121,8 +121,10 @@ function ResponsiveView({ finalData, span, page }) {
 export default function MultiImageView({ title, subTitle, finalData, page }) {
   return (
     <div className={`${styles.container} `}>
-      <h3 className={`${styles.miv_title}`}>{title}</h3>
-      <p className={`${styles.miv_subtitle} mb-5`}>{subTitle}</p>
+      <h3 className={`${styles.miv_title} `}>{title}</h3>
+      {subTitle?.length > 0 && (
+        <p className={`${styles.miv_subtitle} mb-5`}>{subTitle}</p>
+      )}
       <Row>
         <Col xs={0} sm={0} md={0} lg={24} xl={24}>
           {finalData && finalData.length > 0 && (

@@ -22,7 +22,7 @@ export default function ConpceptGallery({ galleryTitle, finalData }) {
               className={`${styles.miv_title}`}
             >{`${galleryTitle} Concept Gallery`}</h3>
           </Col>
-          <div className={`mt-05`}>
+          <div className={`mt-5`}>
             <AppSlider
               showIndicators={false}
               autoPlay={true}

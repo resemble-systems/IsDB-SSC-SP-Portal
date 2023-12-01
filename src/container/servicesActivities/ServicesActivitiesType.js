@@ -34,6 +34,7 @@ export default function ServicesActivitiesType({ routePath }) {
       services?.length > 0
     ) {
       let temp = mapRoutePathToType(routePath.type, services);
+      console.log("activitiespage", temp);
       axios
         .get(
           `${CONST.BASE_URL}${CONST.API.LIST("Service")}${CONST.API.QUERY(
@@ -47,7 +48,7 @@ export default function ServicesActivitiesType({ routePath }) {
     }
 
     setEventData(events);
-  }, [routePath, events, services]);
+  }, [routePath, /*  events, services, */ cardsData]);
 
   return (
     <>

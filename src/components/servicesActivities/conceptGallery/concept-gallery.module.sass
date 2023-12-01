@@ -17,6 +17,31 @@
     width: 200px
     box-shadow: 20px 20px $secondary
 
+
+@media (min-width: 1919px) and (max-width: 2560px)
+    .gallery_bg
+        background-repeat: $no_repeat
+        background-position: 0 0
+        width: $full_width
+        background-size: cover
+
+
+@media (min-width: 1024px) and (max-width: 1100px)
+    .gallery_bg
+        background-repeat: $no_repeat
+        background-position: 0 23px
+        width: $full_width
+        background-size: contain
+        padding-top: 40px
+
+@media (min-width: 1024px) and (max-width: 1440px)
+    .gallery_bg
+        background-repeat: $no_repeat
+        background-position: 0 -48px
+        width: $full_width
+        background-size: contain
+
+
 // @media only screen and (max-width: $beakpoint_desktop_m)
 //     .gallery_bg
 //         background-size: $full_width 52%

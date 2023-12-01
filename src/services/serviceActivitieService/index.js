@@ -5,5 +5,5 @@ export const mapTypeToRoutePath = (serviceData) => {
 export const mapRoutePathToType = (path, serviceData) => {
   return serviceData.find(
     (service) => service.Title.toLowerCase() === path.split("-").join(" ")
-  )?.ServiceType;
+  ).ServiceType;
 };

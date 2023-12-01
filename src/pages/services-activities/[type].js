@@ -14,7 +14,7 @@ export default function ServiceTypes() {
     let data = location.pathname.split("/");
     let itemId = data[data.length - 1];
     setItemId(itemId);
-  }, [location.pathname]);
+  }, [location.pathname, itemId]);
 
   return (
     <>
