@@ -6,6 +6,10 @@
     height: 1130px
     background-color: #F5F9F9
 
+
+.section_title
+    top: 337px
+
 .intro_title
     font-size: 35px
     @extend %font_family_oswald
@@ -20,16 +24,28 @@
     .bg_pattern
         height: 1500px
         background-position: $full_width -23%,114% 61%
+    
+    .section_title
+        top: 347px
+        padding-top: 15px
+        padding-bottom: 10px
 
-@media only screen and (max-width: $beakpoint_desktop_m)
+@media (min-width: 1369px) and (max-width: 1560px)
     .bg_pattern
         height: 1200px
         background-position: $full_width -23%,112% 93%
+    
+    .section_title
+        top: 217px 
 
-@media only screen and (max-width: $beakpoint_desktop)
+@media (min-width: 1200px) and (max-width: 1368px)
     .bg_pattern
         height: 1200px
         background-position: $full_width -20%,112% 93%
+    
+    .section_title
+        top: 197px
+
 
 @media only screen and (max-width: $beakpoint_laptop_l)
     .bg_pattern

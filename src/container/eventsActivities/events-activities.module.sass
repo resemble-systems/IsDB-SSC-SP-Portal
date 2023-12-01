@@ -6,8 +6,11 @@
 .bg_color
     position: $position_absolute
     width: $full_width
-    height: 1155px
+    height: 1175px
     background-color: #F5F9F9
+
+.section_title
+    top: 337px
     
 .intro_title
     font-size: 35px
@@ -29,18 +32,30 @@
 
 @media only screen and (max-width: $beakpoint_desktop_l)
     .bg_pattern
-        height: 1400px
-        background-position: $full_width -26%,112% 69%
+        height: 1500px
+        background-position: $full_width -23%,114% 61%
+    
+    .section_title
+        top: 410px
+        padding-top: 15px
+        padding-bottom: 10px
 
-@media only screen and (max-width: $beakpoint_desktop_m)
+@media (min-width: 1369px) and (max-width: 1560px)
     .bg_pattern
         height: 1200px
-        background-position: $full_width -26%,112% 93%
+        background-position: $full_width -23%,112% 93%
+    
+    .section_title
+        top: 217px 
 
-@media only screen and (max-width: $beakpoint_desktop)
+@media (min-width: 1200px) and (max-width: 1368px)
     .bg_pattern
         height: 1200px
         background-position: $full_width -20%,112% 93%
+    
+    .section_title
+        top: 197px
+
 
 @media only screen and (max-width: $beakpoint_laptop_l)
     .bg_pattern
@@ -59,25 +74,25 @@
         height: 905px
     .bg_pattern
         height: 993px
-        background-position: $full_width -11%,112% 91.9%
+        background-position: $full_width -13%,112% 91.9%
 
 @media only screen and (max-width: $beakpoint_tablet_l)
     .bg_color
         height: 905px
     .bg_pattern
         height: 993px
-        background-position: $full_width -9%,112% 91.9%
+        background-position: $full_width -11%,112% 91.9%
 
 @media only screen and (max-width: $beakpoint_tablet_s)
     .bg_color
         height: 910px
     .bg_pattern
         height: 936px
-        background-position: $full_width 0%,112% 100%
+        background-position: $full_width -4%,112% 100%
 
 @media only screen and (max-width: $beakpoint_mobile_l)
     .bg_color
-        height: 905px
+        height: 910px
     .bg_pattern
-        height: 920px
-        background-position: $full_width 0%,105% 100%
+        height: 936px
+        background-position: $full_width 0%,112% 98.4%

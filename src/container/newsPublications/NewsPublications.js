@@ -69,8 +69,8 @@ export default function NewsPublications({
               <InnerPageTitleSection title={"News & Publications"} />
             </div>
             <div
-              className={`container ${styles.intro_title}`}
-              style={{ position: "relative", top: "337px" }}
+              className={`container ${styles.intro_title} ${styles.section_title}`}
+              style={{ position: "relative" }}
             >
               <h3 style={{ fontSize: "35px" }}>Most Viewed</h3>
             </div>

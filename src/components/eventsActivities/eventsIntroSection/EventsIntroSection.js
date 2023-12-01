@@ -42,8 +42,11 @@ export default function EventsIntroSection({
             >
               <h3 className={`${styles.event_title}`}>{event.Title}</h3>
               <p className={`${styles.event_author}`}>{event.Author0}</p>
-              <p className={`${styles.event_description} mb-3`}>
-                <Scrollbars style={{ height: "136px" }}>
+              <p
+                className={`${styles.event_description} mb-3`}
+                style={{ height: "252px" }}
+              >
+                <Scrollbars className="h-100">
                   <div dangerouslySetInnerHTML={{ __html: formattedText }} />
                 </Scrollbars>
               </p>

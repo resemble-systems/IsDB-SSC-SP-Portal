@@ -34,7 +34,8 @@ export default function NewsSection() {
 
   return (
     <div className={`${styles.news_bg}`}>
-      <div className={`${styles.news_container} pb-5`}>
+      {/* <div className={`${styles.news_container} pb-5`}> */}
+      <div className={`container pb-5`}>
         <Row gutter={[16, 16]}>
           <Col span={24}>
             <div className="d-flex justify-content-between mb-5">

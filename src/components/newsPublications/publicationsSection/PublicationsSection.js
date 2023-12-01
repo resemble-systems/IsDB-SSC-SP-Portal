@@ -29,7 +29,8 @@ export default function PublicationsSection({ news }) {
         backgroundImage: `url(${PublicBg})`,
       }}
     >
-      <div className={`${styles.news_container} pb-5 mt-5`}>
+      {/* <div className={`${styles.news_container} pb-5 mt-5`}> */}
+      <div className={"container pb-5 mt-5"}>
         <h3 className={`${styles.publication_title} mb-5`}>Publications</h3>
         <Row gutter={[16, 16]}>
           {publicationData &&

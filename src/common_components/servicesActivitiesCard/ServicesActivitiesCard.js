@@ -8,6 +8,7 @@ import { mapTypeToRoutePath } from "../../services/serviceActivitieService";
 //css
 import styles from "./services-activities-card.module.sass";
 import { AppContext } from "../../App";
+import Scrollbars from "react-custom-scrollbars";
 
 export default function ServicesActivitiesCard({ data }) {
   const { serviceLogoData } = useContext(AppContext);

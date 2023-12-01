@@ -80,7 +80,7 @@ export default function EventsActivities() {
   const title = () => {
     return <SearchBar search={"events"} styleApply={true} />;
   };
-  console.log("items-->", HeaderTitle);
+
   return (
     <>
       {eventsData &&
@@ -110,8 +110,8 @@ export default function EventsActivities() {
               </div>
               {/* <SearchBar search={"events"} styleApply={true} /> */}
               <div
-                style={{ position: "relative", top: "380px" }}
-                className={`container ${styles.intro_title}`}
+                style={{ position: "relative" }}
+                className={`container ${styles.intro_title} ${styles.section_title}`}
               >
                 <h3 style={{ fontSize: "35px" }}>{HeaderTitle}</h3>
               </div>
