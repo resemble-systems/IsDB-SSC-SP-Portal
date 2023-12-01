@@ -12,6 +12,7 @@ import {
   phoneNumberValidator,
 } from "../../services/validationService";
 import getDigest from "../../services/GetDigest/GetDigest";
+import { useHistory } from "react-router-dom";
 
 const UseRegForm = (
   fromObject,
@@ -23,6 +24,7 @@ const UseRegForm = (
   //State Setting
   const [inputs, setInputs] = useState(fromObject);
   const [errors, setErrors] = useState(errorObj);
+  const history = useHistory();
 
   //   console.log("-----", inputs);
 
@@ -88,6 +90,7 @@ const UseRegForm = (
           setRegisterDone(true);
           setInputs(fromObject);
           setErrors(errorObj);
+          history.push("/");
         })
         .catch((err) => {
           setLoaderTime(false);

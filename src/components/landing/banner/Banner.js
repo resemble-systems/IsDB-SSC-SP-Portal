@@ -42,7 +42,10 @@ export default function Banner() {
   //   "link-->",
   //   bannerData?.map((data) => data.RegistrationLink)
   // );
-
+  console.log(
+    "testData-->",
+    bannerData?.map((banner, index) => banner.RegistrationLink)
+  );
   return (
     <>
       <AppSlider
@@ -122,13 +125,14 @@ export default function Banner() {
                       : banner.Description}
                   </p>
                   <p className={`${styles.text_time}`}>
-                    {banner?.RegistrationLink?.length > 0 &&
-                    moment(banner.CreatedDate).format("MMMM DD") ===
-                      moment(banner.Expiration).format("MMMM DD")
-                      ? moment(banner.Expiration).format("MMMM DD")
-                      : `${moment(banner.CreatedDate).format(
-                          "MMMM DD"
-                        )} - ${moment(banner.Expiration).format("MMMM DD")}`}
+                    {banner?.RegistrationLink?.length > 0
+                      ? moment(banner.CreatedDate).format("MMMM DD") ===
+                        moment(banner.Expiration).format("MMMM DD")
+                        ? moment(banner.Expiration).format("MMMM DD")
+                        : `${moment(banner.CreatedDate).format(
+                            "MMMM DD"
+                          )} - ${moment(banner.Expiration).format("MMMM DD")}`
+                      : ""}
                     {/* {`${moment(banner.CreatedDate).format(
                       "MMMM DD"
                     )} - ${moment(banner.Expiration).format("MMMM DD")}`} */}
