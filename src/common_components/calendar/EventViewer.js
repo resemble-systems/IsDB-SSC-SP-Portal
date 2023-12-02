@@ -8,7 +8,7 @@ import { Row, Col, Tag } from "antd";
 import { Scrollbars } from "react-custom-scrollbars";
 
 //service
-import { setBackground } from "../../services/eventService";
+import { setBackground, setEventBackground } from "../../services/eventService";
 //css
 import styles from "./calendar.module.sass";
 
@@ -25,10 +25,12 @@ export default function EventViewer({ displayEvent, selectedDay }) {
           <div className={`d-flex flex-column`}>
             {displayEvent && displayEvent?.length > 0 ? (
               displayEvent?.map((event) => {
+                console.log("colorDrop->", event);
+                let Type = { Type: event.EventType };
                 return (
                   <Tag
                     className={`mx-auto my-4 ${styles.tag}`}
-                    color={`${setBackground(event, services)[0]}`}
+                    color={`${setEventBackground(Type, services)[0]}`}
                   >
                     <p
                       onClick={() => history.push(`/events/${event.id}`)}

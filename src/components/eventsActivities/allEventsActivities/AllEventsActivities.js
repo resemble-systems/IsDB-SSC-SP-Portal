@@ -8,7 +8,10 @@ import filterImg from "../../../assets/eventsActivities/filter.svg";
 //css
 import styles from "./all-events-activities.module.sass";
 //service
-import { setBackground } from "../../../services/eventService";
+import {
+  setBackground,
+  setEventBackground,
+} from "../../../services/eventService";
 //BG
 import EventBg from "../../../assets/eventsActivities/allEventsSectionBg.svg";
 
@@ -17,7 +20,8 @@ function ResponsiveView({ eventsData, serviceData, span, gutter }) {
     <Row gutter={gutter}>
       {eventsData && eventsData.length > 0 ? (
         eventsData.map((event, index) => {
-          let [bg, bgImage, boxShadow] = setBackground(event, serviceData);
+          let Type = { Type: event.EventType.ServiceType };
+          let [bg, bgImage, boxShadow] = setEventBackground(Type, serviceData);
           return (
             <Col
               span={span}

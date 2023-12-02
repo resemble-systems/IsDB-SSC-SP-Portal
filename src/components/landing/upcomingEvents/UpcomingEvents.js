@@ -7,7 +7,10 @@ import CommonSectionHeader from "../commonSectionHeader/CommonSectionHeader";
 import AppMultiSlider from "../../../common_components/appMultiSlider/AppMultiSlider";
 import EventsCard from "../../../common_components/eventsCard/EventsCard";
 //service
-import { setBackground } from "../../../services/eventService";
+import {
+  setBackground,
+  setEventBackground,
+} from "../../../services/eventService";
 //css
 import styles from "./upcoming-events.module.sass";
 
@@ -24,7 +27,9 @@ let items = [];
 function setItem(data, services) {
   items = [];
   data.forEach((item, i) => {
-    let [bg, bgImage, boxShadow] = setBackground(item, services);
+    console.log("test1-->", item);
+    let Type = { Type: item.EventType.ServiceType };
+    let [bg, bgImage, boxShadow] = setEventBackground(Type, services);
     return items.push(
       <div
         className={`item my-4 ${styles.event_card_container}`}

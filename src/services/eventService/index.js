@@ -5,7 +5,25 @@ import img3 from "../../assets/upcomingEvent/Activities_Icons_Set4.svg";
 import img4 from "../../assets/upcomingEvent/Activities_Icons_Set5.svg";
 
 export const setBackground = (item, services) => {
-  let eventTypeColor = item?.EventType?.ServiceType || item?.EventType;
+  console.log("testItem", item);
+  let eventTypeColor = item?.EventType;
+  // ? item?.EventType?.Title
+  let arrayBgImage = [img1, img2, img3, img4];
+  let bg, boxShadow;
+  let bgImage = arrayBgImage[Math.floor(Math.random() * arrayBgImage?.length)];
+  let service = services?.find((service) => {
+    return service?.ServiceType.toLowerCase() === eventTypeColor;
+  });
+
+  bg = service?.Color;
+  boxShadow = `0px 3px 18px ${service?.Color}40`;
+
+  return [bg, bgImage, boxShadow];
+};
+
+export const setEventBackground = (item, services) => {
+  console.log("color-->", item);
+  let eventTypeColor = item?.Type;
   // ? item?.EventType?.Title
   let arrayBgImage = [img1, img2, img3, img4];
   let bg, boxShadow;

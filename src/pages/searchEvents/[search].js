@@ -8,7 +8,7 @@ import styles from "../../components/search/search.module.sass";
 import SearchCard from "../../components/search/SearchCard";
 
 const SearchEvents = () => {
-  const { events, services, news } = useContext(AppContext);
+  const { events, services, newsLib } = useContext(AppContext);
   const history = useHistory();
   const location = useLocation();
   const [searchVal, setSearchVal] = useState(null);
@@ -39,8 +39,9 @@ const SearchEvents = () => {
       );
       setFilteredEvents(filterSearch);
     }
-    if (searchVal && type === "news" && news?.length > 0) {
-      filterSearch = news?.filter(
+    console.log("news", newsLib, type, searchVal);
+    if (searchVal && type === "news" && newsLib?.length > 0) {
+      filterSearch = newsLib?.filter(
         (data, index) =>
           data.Description.toLowerCase().includes(searchVal.toLowerCase()) ||
           data.Title?.toLowerCase().includes(searchVal.toLowerCase())
@@ -55,7 +56,7 @@ const SearchEvents = () => {
       );
       setFilteredEvents(filterSearch);
     }
-  }, [searchVal, events]);
+  }, [searchVal, events, newsLib]);
 
   return (
     <Layout>

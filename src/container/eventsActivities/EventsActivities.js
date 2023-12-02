@@ -9,7 +9,7 @@ import Calendar from "../../common_components/calendar/Calendar";
 
 import { AppContext } from "../../App";
 //services
-import { setBackground } from "../../services/eventService";
+import { setBackground, setEventBackground } from "../../services/eventService";
 //css
 import styles from "./events-activities.module.sass";
 //Bg
@@ -49,7 +49,10 @@ function setSliderData(eventsData, serviceData) {
   }
 
   filteredEventsData.forEach((event, i) => {
-    let [bg, bgImage, boxShadow] = setBackground(event, serviceData);
+    console.log("test2-->", event);
+    let Type = { Type: event.EventType.ServiceType };
+    // let [bg, bgImage, boxShadow] = setBackground(Type, serviceData);
+    let [bg, bgImage, boxShadow] = setEventBackground(Type, serviceData);
     items.push(
       <div data-value={i.toString()}>
         <EventsIntroSection

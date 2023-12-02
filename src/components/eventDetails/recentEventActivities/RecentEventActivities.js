@@ -6,7 +6,10 @@ import AppBtn from "../../../common_components/appBtn/AppBtn";
 //css
 import styles from "./recent-event-activities.module.sass";
 //service
-import { setBackground } from "../../../services/eventService";
+import {
+  setBackground,
+  setEventBackground,
+} from "../../../services/eventService";
 //Bg
 import EventBg from "../../../assets/eventsActivities/allEventsSectionBg.svg";
 
@@ -14,7 +17,8 @@ function ResponsiveView({ eventsData, services, span, gutter }) {
   return (
     <Row gutter={gutter}>
       {eventsData.slice(0, 3).map((event, index) => {
-        let [bg, bgImage, boxShadow] = setBackground(event, services);
+        let Type = { Type: event.EventType.ServiceType };
+        let [bg, bgImage, boxShadow] = setEventBackground(Type, services);
         return (
           <Col
             span={span}
