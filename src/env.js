@@ -17,6 +17,7 @@ export const VAR = {
   VIDEO_URL: "https://isdb.sharepoint.com/",
   REACT_APP_BUILD_URL: "/quality/IDBSocialClub",
   GET_DIGEST_VALUE: "/sites/ssc",
+  BANNER_VIDEO: "/PublishingImages/",
   // //====+==================================================
 
   //============== MAIN APIs PART ===========================
