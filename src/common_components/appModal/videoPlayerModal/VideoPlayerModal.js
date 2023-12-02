@@ -23,7 +23,7 @@ export default function VideoPlayerModal({
       closable={false}
       footer={null}
       width={1200}
-      bodyStyle={{ padding: "0", height: "80vh" }}
+      bodyStyle={{ padding: "0", height: "80vh", marginTop: "75px" }}
       wrapClassName={`${styles.video_modal}`}
     >
       <Row>

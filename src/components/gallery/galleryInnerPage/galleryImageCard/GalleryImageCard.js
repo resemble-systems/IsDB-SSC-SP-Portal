@@ -249,7 +249,7 @@ export default function GalleryImageCard({
               >
                 <h3 className={`${styles.media_subtitle}`}>
                   {filteredDocData && filteredDocData.length > 0
-                    ? `Document`
+                    ? `Documents`
                     : ``}
                 </h3>
               </Col>
