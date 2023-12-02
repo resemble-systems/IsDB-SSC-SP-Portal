@@ -39,10 +39,7 @@ export default function Banner() {
 
   //expire date banner should be filtered out
 
-  // console.log(
-  //   "link-->",
-  //   bannerData?.map((data) => data.RegistrationLink)
-  // )
+  console.log("link-->", VAR?.BANNER_VIDEO);
 
   return (
     <>
