@@ -17,7 +17,7 @@ export default function ResponsiveView({ view, testimonialsData }) {
       style={{ height: "458px" }}
     >
       <div className="flex-fill">
-        <h3 className={`${styles.testimonials_title}`}>Testimonials</h3>
+        {/* <h3 className={`${styles.testimonials_title}`}>Testimonials</h3> */}
         <div className="d-flex gap-3">
           <div>
             <img src={quoteLeft} width={"64px"} height={"64px"} />

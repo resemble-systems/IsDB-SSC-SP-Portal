@@ -27,7 +27,6 @@ let items = [];
 function setItem(data, services) {
   items = [];
   data.forEach((item, i) => {
-    console.log("test1-->", item);
     let Type = { Type: item.EventType.ServiceType };
     let [bg, bgImage, boxShadow] = setEventBackground(Type, services);
     return items.push(

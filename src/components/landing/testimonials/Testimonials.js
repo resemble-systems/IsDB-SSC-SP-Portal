@@ -26,6 +26,13 @@ export default function Testimonials() {
   let skeletonData = [{}];
   return (
     <div className={`${styles.testimonial_bg}`}>
+      <div className={` container`}>
+        <h3
+          className={`${styles.testimonials_title} ${styles.testimonial_heading}`}
+        >
+          Testimonials
+        </h3>
+      </div>
       <AppSlider
         btnIcon={icon}
         showIndicators={false}

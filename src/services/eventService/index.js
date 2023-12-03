@@ -5,7 +5,6 @@ import img3 from "../../assets/upcomingEvent/Activities_Icons_Set4.svg";
 import img4 from "../../assets/upcomingEvent/Activities_Icons_Set5.svg";
 
 export const setBackground = (item, services) => {
-  console.log("testItem", item);
   let eventTypeColor = item?.EventType;
   // ? item?.EventType?.Title
   let arrayBgImage = [img1, img2, img3, img4];
@@ -22,7 +21,6 @@ export const setBackground = (item, services) => {
 };
 
 export const setEventBackground = (item, services) => {
-  console.log("color-->", item);
   let eventTypeColor = item?.Type;
   // ? item?.EventType?.Title
   let arrayBgImage = [img1, img2, img3, img4];

@@ -49,7 +49,6 @@ function setSliderData(eventsData, serviceData) {
   }
 
   filteredEventsData.forEach((event, i) => {
-    console.log("test2-->", event);
     let Type = { Type: event.EventType.ServiceType };
     // let [bg, bgImage, boxShadow] = setBackground(Type, serviceData);
     let [bg, bgImage, boxShadow] = setEventBackground(Type, serviceData);

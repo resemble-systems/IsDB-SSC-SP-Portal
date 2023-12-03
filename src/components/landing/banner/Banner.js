@@ -10,6 +10,7 @@ import { CONST } from "../../../constant/index";
 import styles from "./banner.module.sass";
 import btnimg from "../../../assets/context/slider_btn_icon_light.svg";
 import { VAR } from "../../../env";
+import ReactPlayer from "react-player";
 
 export default function Banner() {
   const [autoPlay, setAutoPlay] = useState(true);
@@ -38,7 +39,6 @@ export default function Banner() {
   }, []);
 
   //expire date banner should be filtered out
-
   return (
     <>
       <AppSlider
@@ -56,7 +56,7 @@ export default function Banner() {
                   <div className={`${styles.banner_shade}`}></div>
                   <div
                     className={`overflow-hidden d-flex justify-content-center align-items-center`}
-                    style={{ /* width: "400px", */ height: "646px" }}
+                    style={{ /* width: "400px", */ height: "641px" }}
                   >
                     <div
                       className={`${styles.banner_container_shade} d-block w-100 h-100`}
@@ -64,55 +64,79 @@ export default function Banner() {
                       <img
                         className={`${styles.image}`}
                         alt={`Banner`}
+                        height={"641px"}
                         src={
                           banner.AttachmentFiles[0].ServerRelativeUrl
                             ? banner.AttachmentFiles[0].ServerRelativeUrl
                             : ""
                         }
-                        style={{ /* width: "400px", */ height: "646px" }}
                       ></img>
                     </div>
                   </div>
                 </>
               ) : (
-                <div
-                  className={`${styles.video_thumbnail_container} d-flex justify-content-center align-items-center overflow-hidden`}
-                  style={{ /* width: "400px", */ height: "646px" }}
-                >
+                // <div
+                //   className={`${styles.video_thumbnail_container} d-flex justify-content-center align-items-center overflow-hidden`}
+                //   style={{ /* width: "400px", */ height: "646px" }}
+                // >
+
+                //   <div
+                //     className={`${styles.video_play_btn}`}
+                //     onClick={() => {
+                //       let testvideourl1 = banner?.VideoLink?.split(".")[0];
+                //       let testvideourl2 =
+                //         banner?.VideoLink?.split(".")[1]?.toLowerCase();
+
+                //       setVideoUrl(
+                //         VAR?.BANNER_VIDEO + testvideourl1 + "." + testvideourl2
+                //       );
+                //       // setVideoUrl(banner?.VideoLink);
+                //       setPlay(true);
+                //       setModalVisibility(true);
+                //       setAutoPlay(false);
+                //     }}
+                //   >
+                //     <i
+                //       className={`fa fa-play ${styles.play_icon}`}
+                //       aria-hidden="true"
+                //       style={{ zIndex: "10000" }}
+                //     ></i>
+                //   </div>
+
+                //   <img
+                //     className={`${styles.image}`}
+                //     alt={`BannerVideo`}
+                //     src={
+                //       banner.AttachmentFiles[0].ServerRelativeUrl
+                //         ? banner.AttachmentFiles[0].ServerRelativeUrl
+                //         : ""
+                //     }
+                //     style={{ /* width: "400px", */ height: "646px" }}
+                //   ></img>
+                // </div>
+                <>
                   <div
-                    className={`${styles.video_play_btn}`}
-                    onClick={() => {
-                      let testvideourl1 = banner?.VideoLink?.split(".")[0];
-                      let testvideourl2 =
-                        banner?.VideoLink?.split(".")[1]?.toLowerCase();
-
-                      setVideoUrl(
-                        VAR?.BANNER_VIDEO + testvideourl1 + "." + testvideourl2
-                      );
-                      // setVideoUrl(banner?.VideoLink);
-                      setPlay(true);
-                      setModalVisibility(true);
-                      setAutoPlay(false);
-                    }}
+                    className={`${styles.video_thumbnail_container} d-flex justify-content-center align-items-center overflow-hidden`}
+                    style={{ /* width: "400px", */ height: "641px" }}
                   >
-                    <i
-                      className={`fa fa-play ${styles.play_icon}`}
-                      aria-hidden="true"
-                      style={{ zIndex: "10000" }}
-                    ></i>
+                    <div
+                      className={`${styles.banner_container_shade} d-block w-100 ${styles.video_width}`}
+                    >
+                      <ReactPlayer
+                        url={
+                          VAR.VIDEO_URL +
+                          banner?.AttachmentFiles[0]?.ServerRelativeUrl
+                        }
+                        width={"100%"}
+                        height={`641px`}
+                        // volume={true ? 1 : 0}
+                        muted={true}
+                        controls={true}
+                        playing={true}
+                      />
+                    </div>
                   </div>
-
-                  <img
-                    className={`${styles.image}`}
-                    alt={`BannerVideo`}
-                    src={
-                      banner.AttachmentFiles[0].ServerRelativeUrl
-                        ? banner.AttachmentFiles[0].ServerRelativeUrl
-                        : ""
-                    }
-                    style={{ /* width: "400px", */ height: "646px" }}
-                  ></img>
-                </div>
+                </>
               )}
               <p className={`legend ${styles.text}`}>
                 <div className={`pl-4`}>

@@ -59,7 +59,6 @@ export default function GalleryImageCard({
       (data) => data.ContentType0.toLowerCase() === "document"
     );
 
-    console.log("mappedDataVideo", mappedDataVideo);
     // console.log("mappedDataDoc", mappedDataDoc);
 
     if (mappedDataImage) {
