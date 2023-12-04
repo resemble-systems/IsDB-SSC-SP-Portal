@@ -12,6 +12,16 @@
     background-repeat: $no_repeat,$no_repeat
     background-size: contain,25%
 
+@media (min-width: 1920px) and (max-width: 2560px)
+    .bg_pattern
+                height: 940px
+                background-position: $full_width -400%,112% 93%
+
+@media (min-width: 1440px) and (max-width: 1920px)
+    .bg_pattern
+            height: 945px
+            background-position: $full_width -36%,112% 93%
+
 @media only screen and (max-width: $beakpoint_desktop_m)
     .bg_pattern
         height: 935px
@@ -22,7 +32,7 @@
         height: 820px
     .bg_pattern
         height: 885px
-        background-position: $full_width -32%,112% 95%
+        background-position: $full_width -20%,112% 95%
 
 @media only screen and (max-width: $beakpoint_laptop_l)
     .bg_pattern
@@ -39,7 +49,7 @@
         height: 760px
     .bg_pattern
         height: 815px
-        background-position: $full_width -12%,112% 99%
+        background-position: $full_width -10%,112% 99%
 
 @media only screen and (max-width: $beakpoint_tablet_l)
     .bg_color

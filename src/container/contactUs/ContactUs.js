@@ -20,14 +20,13 @@ export default function ContactUs() {
           style={{
             backgroundImage: `url(${Hero}),url(${Dotted})`,
           }}
-        >
-          <Layout>
-            <div className="container">
-              <InnerPageTitleSection title={"Contact Us"} />
-            </div>
-            <ContactUsSection />
-          </Layout>
-        </div>
+        ></div>
+        <Layout>
+          <div className="container">
+            <InnerPageTitleSection title={"Contact Us"} />
+          </div>
+          <ContactUsSection />
+        </Layout>
       </div>
     </>
   );
