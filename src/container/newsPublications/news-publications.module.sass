@@ -8,7 +8,7 @@
 
 
 .section_title
-    top: 337px
+    top: 342px
 
 .intro_title
     font-size: 35px
@@ -20,13 +20,29 @@
     background-repeat: $no_repeat,$no_repeat
     background-size: contain,25%
 
-@media only screen and (max-width: $beakpoint_desktop_l)
+@media (min-width: 1921px) and (max-width: 2560px)
+    .bg_pattern
+                height: 910px
+                background-position: $full_width -629%,112% 93%
+    .section_title
+        top: 336px
+        padding-top: 15px
+        padding-bottom: 10px
+
+@media (min-width: 1440px) and (max-width: 1920px)
+    .bg_pattern
+                height: 920px
+                background-position: $full_width -85%,112% 93%
+
+
+
+@media (min-width: 1024px) and (max-width:1336px)
     .bg_pattern
         height: 1500px
         background-position: $full_width -23%,114% 61%
     
     .section_title
-        top: 347px
+        top: 110px
         padding-top: 15px
         padding-bottom: 10px
 

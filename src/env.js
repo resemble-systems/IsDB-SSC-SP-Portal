@@ -11,13 +11,12 @@ export const VAR = {
   // VIDEO_URL: "http://localhost:3456",
   // REACT_APP_BUILD_URL: "/quality/IDBSocialClub",
   // GET_DIGEST_VALUE: "/sites/ssc",
-  // BANNER_VIDEO: "/PublishingImages/",
 
   BASE_URL: "https://isdb.sharepoint.com/sites/ssc",
   VIDEO_URL: "https://isdb.sharepoint.com/",
   REACT_APP_BUILD_URL: "/quality/IDBSocialClub",
   GET_DIGEST_VALUE: "/sites/ssc",
-  BANNER_VIDEO: "/sites/ssc/PublishingImages/",
+  // BANNER_VIDEO: "/sites/ssc/PublishingImages/",
   // //====+==================================================
 
   //============== MAIN APIs PART ===========================
