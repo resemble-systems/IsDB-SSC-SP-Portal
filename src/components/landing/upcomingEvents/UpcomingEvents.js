@@ -46,7 +46,7 @@ function setItem(data, services) {
   });
 }
 
-export default function UpcomingEvents() {
+export default function UpcomingEvents({ page }) {
   const { events, services } = useContext(AppContext);
   const [activeIndex, setActiveIndex] = useState(0);
   const [sliderFinalIndex, setSliderFinalIndex] = useState(3);
@@ -58,10 +58,9 @@ export default function UpcomingEvents() {
   useEffect(() => {
     if (events && events?.length > 0 && services && services?.length > 0) {
       let title = "Upcoming Events";
-      let displayEventsData = events.filter(
-        (eventData) =>
-          new Date(eventData.StartDate).getTime() > new Date().getTime()
-      );
+      let displayEventsData = events?.filter((eventData) => {
+        return new Date(eventData.StartDate).getTime() > new Date().getTime();
+      });
       if (displayEventsData && displayEventsData.length === 0) {
         title = "Recent Events";
         displayEventsData = events.filter(

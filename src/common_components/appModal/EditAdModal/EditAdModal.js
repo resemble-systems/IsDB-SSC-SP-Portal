@@ -336,7 +336,7 @@ export default function EditAdModal({
       closable={false}
       footer={null}
       width={800}
-      bodyStyle={{ padding: "50px", marginTop: "170px" }}
+      bodyStyle={{ padding: "50px", marginTop: "170px", marginBottom: "10px" }}
       wrapClassName={`${styles.event_reg_modal}`}
     >
       <Row gutter={[16, 16]}>

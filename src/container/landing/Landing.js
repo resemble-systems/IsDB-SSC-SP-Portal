@@ -102,7 +102,7 @@ export default function Landing() {
         <Testimonials />
       </div>
       <Calendar />
-      <UpcomingEvents />
+      <UpcomingEvents page={"home"} />
       {galleryContent && galleryContent?.length > 0 ? (
         <Gallery galleryContent={galleryContent} />
       ) : (
