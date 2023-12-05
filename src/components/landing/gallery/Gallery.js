@@ -1319,7 +1319,8 @@ export default function Gallery({ galleryContent }) {
         }}
       >
         <Row>
-          <div className={`${styles.gallery_container}`}>
+          {/* <div className={`${styles.gallery_container}`}> */}
+          <div className={`container`}>
             {galleryContent?.length > 6 && (
               <CommonSectionHeader
                 title={"Gallery"}
@@ -1333,7 +1334,7 @@ export default function Gallery({ galleryContent }) {
           </div>
           <div className="container">
             <AppMultiSlider
-              responsive={responsive}
+              // responsive={responsive}
               items={sliderItems}
               activeIndex={activeIndex}
               onSlideChanged={onSlideChanged}

@@ -13,13 +13,14 @@ export default function AppMultiSlider({
   disableDotsControls,
   infinite,
   refVariable,
+  stopAnimation,
 }) {
   return (
     <AliceCarousel
       mouseTracking
       responsive={responsive}
       animationDuration={1000}
-      autoPlay={true}
+      autoPlay={stopAnimation ? false : true}
       autoPlayInterval={3500}
       autoPlayStrategy={"all"}
       disableDotsControls={disableDotsControls}
@@ -28,7 +29,7 @@ export default function AppMultiSlider({
       animationType={animationType}
       paddingLeft={paddingLeft}
       paddingRight={paddingRight}
-      autoWidth={true}
+      autoWidth={responsive ? false : true}
       autoHeight={true}
       items={items}
       activeIndex={activeIndex}

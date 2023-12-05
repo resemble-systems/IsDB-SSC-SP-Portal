@@ -177,9 +177,7 @@ export default function ContactForm() {
                           {errors.phoneNumber !== null &&
                             !errors.phoneNumber && (
                               <p className={`text-danger mt-2 mb-0 pl-4`}>
-                                {
-                                  "Enter a valid phone number or try adding your country code."
-                                }
+                                {"Enter a valid phone number."}
                               </p>
                             )}
                         </Col>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import img1 from "../../../assets/upcomingEvent/Activities_Icons_Set2.svg";
 import { Row, Col } from "antd";
 import { AppContext } from "../../../App";
@@ -15,11 +15,10 @@ import {
 import styles from "./upcoming-events.module.sass";
 
 const responsive = {
-  0: { items: 1 },
-  568: { items: 2.25 },
-  1000: { items: 3.25 },
-  1024: { items: 4.5 },
-  1440: { items: 9 },
+  0: { items: 1, itemsFit: "contain" },
+  768: { items: 2, itemsFit: "contain" },
+  1024: { items: 4, itemsFit: "contain" },
+  1440: { items: 5, itemsFit: "contain" },
 };
 
 let items = [];
@@ -48,13 +47,15 @@ function setItem(data, services) {
 
 export default function UpcomingEvents({ page }) {
   const { events, services } = useContext(AppContext);
+  const eventsRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [sliderFinalIndex, setSliderFinalIndex] = useState(3);
-  const [prevBtn, setPrevBtn] = useState("disable");
+  const [prevBtn, setPrevBtn] = useState("enable");
   const [nextBtn, setNextBtn] = useState("enable");
   const [eventsData, setEventsData] = useState(null);
   const [title, setTitle] = useState("");
-  let finalIndex;
+  const [finalIndex, setFinalIndex] = useState(0);
+
   useEffect(() => {
     if (events && events?.length > 0 && services && services?.length > 0) {
       let title = "Upcoming Events";
@@ -77,7 +78,7 @@ export default function UpcomingEvents({ page }) {
         );
       }
 
-      finalIndex = Math.floor(parseInt(events.length) / 3);
+      setFinalIndex(Math.floor(parseInt(displayEventsData?.length)));
       setTitle(title);
 
       setItem(displayEventsData, services);
@@ -87,29 +88,48 @@ export default function UpcomingEvents({ page }) {
   //upcomming events
 
   useEffect(() => {
+    if (window.innerWidth >= 1440) setSliderFinalIndex(5);
+
     if (window.innerWidth < 1440 && window.innerWidth > 1024)
-      setSliderFinalIndex(3);
+      setSliderFinalIndex(4);
 
     if (window.innerWidth <= 1024 && window.innerWidth >= 768)
       setSliderFinalIndex(2);
 
-    if (window.innerWidth < 768) setSliderFinalIndex(2);
+    if (window.innerWidth < 768) setSliderFinalIndex(1);
   }, []);
-
+  console.log("check-->", activeIndex, finalIndex);
+  // useEffect(() => {
+  //   if (activeIndex === 0) setPrevBtn("disable");
+  //   else setPrevBtn("enable");
+  //   if (activeIndex === finalIndex /* - sliderFinalIndex */)
+  //     setNextBtn("disable");
+  //   else setNextBtn("enable");
+  // }, [activeIndex, finalIndex]);
   useEffect(() => {
+    // console.log("activeindexnews", activeIndex, finalIndex);
     if (activeIndex === 0) setPrevBtn("disable");
     else setPrevBtn("enable");
     if (activeIndex === finalIndex - sliderFinalIndex) setNextBtn("disable");
     else setNextBtn("enable");
-  }, [activeIndex]);
+  }, [activeIndex, finalIndex]);
 
   const slidePrev = () => {
-    if (activeIndex > 0) setActiveIndex(activeIndex - 1);
+    // if (activeIndex > 0) setActiveIndex(activeIndex - 1);
+    eventsRef.current.slidePrev();
   };
 
   const slideNext = () => {
-    if (activeIndex < finalIndex - sliderFinalIndex)
-      setActiveIndex(activeIndex + 1);
+    // console.log(
+    //   "finalIndex-->",
+    //   activeIndex,
+    //   finalIndex,
+    //   sliderFinalIndex,
+    //   activeIndex < finalIndex - sliderFinalIndex
+    // );
+    // if (activeIndex < finalIndex /* - sliderFinalIndex */)
+    //   setActiveIndex(activeIndex + 1);
+    eventsRef.current.slideNext();
   };
 
   const onSlideChanged = ({ item }) => setActiveIndex(item);
@@ -125,7 +145,8 @@ export default function UpcomingEvents({ page }) {
   return eventsData && eventsData.length === 0 ? null : eventsData &&
     eventsData.length > 0 ? (
     <Row className={`pt-5`}>
-      <div className={`${styles.events_container}`}>
+      {/* <div className={`${styles.events_container}`}> */}
+      <div className={`container`}>
         <CommonSectionHeader
           title={`${title} & Activities`}
           sliderSection={true}
@@ -146,6 +167,8 @@ export default function UpcomingEvents({ page }) {
         animationType={"slide"}
         disableDotsControls={true}
         sliderFrom={"Events"}
+        refVariable={eventsRef}
+        stopAnimation={nextBtn === "disable"}
       />
     </Row>
   ) : (
