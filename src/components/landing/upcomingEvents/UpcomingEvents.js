@@ -50,7 +50,7 @@ export default function UpcomingEvents({ page }) {
   const eventsRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [sliderFinalIndex, setSliderFinalIndex] = useState(3);
-  const [prevBtn, setPrevBtn] = useState("enable");
+  const [prevBtn, setPrevBtn] = useState("disable");
   const [nextBtn, setNextBtn] = useState("enable");
   const [eventsData, setEventsData] = useState(null);
   const [title, setTitle] = useState("");
@@ -175,13 +175,15 @@ export default function UpcomingEvents({ page }) {
     <Row className={`pt-5`}>
       {skeletonData.map((sdata, index) => (
         <Col xs={24} sm={24} md={12} lg={6} xl={6} key={index}>
-          <EventsCard
-            data={sdata.data}
-            bg={sdata.bg}
-            bgImage={sdata.bgImage}
-            boxShadow={sdata.boxShadow}
-            btn={true}
-          />
+          <div className={`container`}>
+            <EventsCard
+              data={sdata.data}
+              bg={sdata.bg}
+              bgImage={sdata.bgImage}
+              boxShadow={sdata.boxShadow}
+              btn={true}
+            />
+          </div>
         </Col>
       ))}
     </Row>
