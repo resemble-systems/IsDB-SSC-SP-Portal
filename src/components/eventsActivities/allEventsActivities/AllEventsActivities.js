@@ -14,6 +14,7 @@ import {
 } from "../../../services/eventService";
 //BG
 import EventBg from "../../../assets/eventsActivities/allEventsSectionBg.svg";
+import Scrollbars from "react-custom-scrollbars";
 
 function ResponsiveView({ eventsData, serviceData, span, gutter }) {
   return (
@@ -48,6 +49,13 @@ function ResponsiveView({ eventsData, serviceData, span, gutter }) {
 }
 
 function setDDMenu(dropDownData, eventsData, setFilteredEventsData, setTitle) {
+  const handleMouseOver = (event) => {
+    event.target.style.color = "#2D763750";
+  };
+
+  const handleMouseOut = (event) => {
+    event.target.style.color = "";
+  };
   return (
     <Menu>
       {dropDownData && dropDownData.length > 0
@@ -58,6 +66,7 @@ function setDDMenu(dropDownData, eventsData, setFilteredEventsData, setTitle) {
                   className={`${styles.dropDownList} py-3`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  style={{ textDecoration: "none" }}
                   onClick={() =>
                     menuChangeHandler(
                       eventsData,
@@ -67,6 +76,8 @@ function setDDMenu(dropDownData, eventsData, setFilteredEventsData, setTitle) {
                       dropDownData
                     )
                   }
+                  onMouseOver={handleMouseOver}
+                  onMouseOut={handleMouseOut}
                 >
                   {data.serviceName}
                 </a>
@@ -154,7 +165,8 @@ export default function AllEventsActivities({ eventsData, serviceData }) {
         backgroundImage: `url(${EventBg})`,
       }}
     >
-      <div className={`${styles.container} pb-5`}>
+      {/* <div className={`${styles.container} pb-5`}> */}
+      <div className={`container pb-5`}>
         <Row>
           <Col xs={24} sm={24} md={18} lg={18} xl={18}>
             <h3
@@ -193,13 +205,28 @@ export default function AllEventsActivities({ eventsData, serviceData }) {
           </Col>
           <Col xs={0} sm={0} md={24} lg={24} xl={24}>
             <div className={`${styles.indicatores_container} pl-5 mb-5`}>
-              <Indicatores onColorIndicatorClick={onColorIndicatorClick} />
+              {serviceData?.length > 6 ? (
+                <Scrollbars style={{ height: "110px" }}>
+                  <Indicatores
+                    onColorIndicatorClick={onColorIndicatorClick}
+                    pointer={"pointer"}
+                  />
+                </Scrollbars>
+              ) : (
+                <Indicatores
+                  onColorIndicatorClick={onColorIndicatorClick}
+                  pointer={"pointer"}
+                />
+              )}
             </div>
           </Col>
           {/* For small screen size */}
           <Col xs={24} sm={24} md={0} lg={0} xl={0}>
             <div className={`${styles.indicatores_container} pl-5 mt-4 mb-5`}>
-              <Indicatores onColorIndicatorClick={onColorIndicatorClick} />
+              <Indicatores
+                onColorIndicatorClick={onColorIndicatorClick}
+                pointer={"pointer"}
+              />
             </div>
           </Col>
           <Col xs={0} sm={0} md={0} lg={24} xl={24}>

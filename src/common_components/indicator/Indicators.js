@@ -5,7 +5,7 @@ import { Row, Col } from "antd";
 //css
 import styles from "./indicator.module.sass";
 
-export default function Indicators({ onColorIndicatorClick }) {
+export default function Indicators({ onColorIndicatorClick, pointer }) {
   const { services } = useContext(AppContext);
   const [indicatorTexts, setIndicatorTexts] = useState(null);
 
@@ -42,7 +42,10 @@ export default function Indicators({ onColorIndicatorClick }) {
                 keys={index.toString()}
               >
                 <div
-                  style={{ backgroundColor: indicator?.color }}
+                  style={{
+                    backgroundColor: indicator?.color,
+                    cursor: `${pointer === "pointer" ? "pointer" : ""}`,
+                  }}
                   className={`${styles.indicator_box}`}
                   onClick={() => {
                     onColorIndicatorClick(indicator?.serviceType);
