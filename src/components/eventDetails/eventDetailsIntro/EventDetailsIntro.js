@@ -27,6 +27,7 @@ export default function EventDetailsIntro({ eventData }) {
   );
 
   const formattedText = eventData[0]?.Description?.replace(/\n/g, "<br>");
+  console.log("eventTitle", eventData[0].Title);
 
   return (
     <div className={`${styles.event_details_bg} mt-5`}>
@@ -139,7 +140,9 @@ export default function EventDetailsIntro({ eventData }) {
               )}
             </div>
             <EventRegistrationModal
-              eventId={eventData[0].Id}
+              eventId={eventData[0]?.Id}
+              event={eventData[0]?.Title}
+              // event={eventData[0]?.Title}
               title={`Event Registration`}
               setVisiblety={setEventRegistrationModal}
               visible={eventRegistrationModal}
@@ -335,6 +338,7 @@ export default function EventDetailsIntro({ eventData }) {
             </div>
             <EventRegistrationModal
               eventId={eventData[0].Id}
+              event={eventData[0]?.Title}
               title={`Event Registration`}
               setVisiblety={setEventRegistrationModal}
               visible={eventRegistrationModal}

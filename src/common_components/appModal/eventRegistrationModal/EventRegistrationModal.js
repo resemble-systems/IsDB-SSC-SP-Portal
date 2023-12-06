@@ -31,8 +31,8 @@ export default function EventRegistrationModal({
   title,
   visible,
   setVisiblety,
+  event,
 }) {
-  //console.log("eventId", eventId);
   const [loading, setLoaderTime] = useState(false);
   const [registerDone, setRegisterDone] = useState(false);
   // Form Initial Objects
@@ -66,8 +66,15 @@ export default function EventRegistrationModal({
     errors,
     setErrors,
     setInputs,
-  } = useForm(fromObject, errorObj, setLoaderTime, setRegisterDone, eventId);
-
+  } = useForm(
+    fromObject,
+    errorObj,
+    setLoaderTime,
+    setRegisterDone,
+    eventId,
+    event
+  );
+  console.log("eventId", eventId, event);
   return (
     <Modal
       // title={`Event Registration`}

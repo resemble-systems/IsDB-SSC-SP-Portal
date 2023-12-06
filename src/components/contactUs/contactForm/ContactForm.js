@@ -9,23 +9,14 @@ import TextArea from "../../../common_components/formElement/TextArea";
 import UseContactForm from "../../../common_components/appForm/ContactRegistration";
 // Css
 import styles from "./contact-form.module.sass";
+import { useHistory } from "react-router-dom";
 
 // Cancel Handler
-function onCancelHandler(
-  setErrors,
-  setInputs,
-  setRegisterDone,
-  fromObject,
-  errorObj
-) {
-  setInputs(fromObject);
-  setErrors(errorObj);
-  setRegisterDone(false);
-}
 
 export default function ContactForm() {
   const [loading, setLoaderTime] = useState(false);
   const [registerDone, setRegisterDone] = useState(false);
+  const history = useHistory();
   //Initial Object
   const fromObject = { firstName: "", lastName: "", email: "", textarea: "" };
   // Error Initial Object
@@ -35,6 +26,19 @@ export default function ContactForm() {
     textarea: null,
     phoneNumber: null,
   };
+
+  function onCancelHandler(
+    setErrors,
+    setInputs,
+    setRegisterDone,
+    fromObject,
+    errorObj
+  ) {
+    setInputs(fromObject);
+    setErrors(errorObj);
+    setRegisterDone(false);
+    history.push("/");
+  }
   // Custom Hook
   const {
     handleSubmit,

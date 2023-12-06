@@ -18,7 +18,8 @@ const UseForm = (
   errorObj,
   setLoaderTime,
   setRegisterDone,
-  eventId
+  eventId,
+  event
 ) => {
   //State Setting
   const [inputs, setInputs] = useState(initialValues);
@@ -57,6 +58,7 @@ const UseForm = (
         Email: inputs.email,
         Phone: inputs.phoneNumber,
         EventId: eventId.toString(),
+        Event: event.toString(),
       });
 
       const configAxios = {

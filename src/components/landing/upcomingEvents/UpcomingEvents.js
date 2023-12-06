@@ -14,13 +14,20 @@ import {
 //css
 import styles from "./upcoming-events.module.sass";
 
+// const responsive = {
+//   0: { items: 1, itemsFit: "contain" },
+//   768: { items: 2, itemsFit: "contain" },
+//   1024: { items: 3, itemsFit: "contain" },
+//   1440: { items: 5, itemsFit: "contain" },
+// };
+
 const responsive = {
   0: { items: 1, itemsFit: "contain" },
   768: { items: 2, itemsFit: "contain" },
-  1024: { items: 3, itemsFit: "contain" },
-  1440: { items: 5, itemsFit: "contain" },
+  1024: { items: 2, itemsFit: "contain" },
+  1440: { items: 4, itemsFit: "contain" },
+  2560: { items: 6, itemsFit: "contain" },
 };
-
 let items = [];
 
 function setItem(data, services) {
@@ -98,7 +105,6 @@ export default function UpcomingEvents({ page }) {
 
     if (window.innerWidth < 768) setSliderFinalIndex(1);
   }, []);
-  console.log("check-->", activeIndex, finalIndex);
   // useEffect(() => {
   //   if (activeIndex === 0) setPrevBtn("disable");
   //   else setPrevBtn("enable");

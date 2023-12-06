@@ -9,6 +9,7 @@ import CommonSectionHeader from "../../components/landing/commonSectionHeader/Co
 import CalendarBg from "../../assets/background/calender.svg";
 //css
 import styles from "./calendar.module.sass";
+import Scrollbars from "react-custom-scrollbars";
 
 export default function Calendar(eventsData) {
   const { events, services } = useContext(AppContext);
@@ -51,7 +52,13 @@ export default function Calendar(eventsData) {
                   </div>
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <Indicators onColorIndicatorClick={() => {}} />
+                  {services?.length > 6 ? (
+                    <Scrollbars style={{ height: "110px" }}>
+                      <Indicators onColorIndicatorClick={() => {}} />
+                    </Scrollbars>
+                  ) : (
+                    <Indicators onColorIndicatorClick={() => {}} />
+                  )}
                 </Col>
               </Row>
             </Col>
