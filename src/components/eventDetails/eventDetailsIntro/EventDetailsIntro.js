@@ -27,7 +27,6 @@ export default function EventDetailsIntro({ eventData }) {
   );
 
   const formattedText = eventData[0]?.Description?.replace(/\n/g, "<br>");
-  console.log("eventTitle", eventData[0].Title);
 
   return (
     <div className={`${styles.event_details_bg} mt-5`}>
@@ -81,9 +80,12 @@ export default function EventDetailsIntro({ eventData }) {
                       {`:`}
                     </Col>
                     <Col span={17} className={`${styles.event_details_value}`}>
-                      {moment(eventData[0].StartDate).format(
+                      {/* {moment(eventData[0].StartDate).format(
                         "h:mm a [onwards]"
-                      )}
+                      )} */}
+                      {moment
+                        .utc(eventData[0].StartDate)
+                        .format("ddd, D MMMM YYYY")}
                     </Col>
                   </Row>
                 )}
