@@ -58,7 +58,7 @@ export default function EventsCard({ data, bg, bgImage, boxShadow, btn }) {
         {data && data.StartDate ? (
           <p className={`${styles.event_time}`}>{`${moment(
             data.StartDate
-          ).format("MMMM D")} - ${moment(data.EndDate).format("MMMM D")}`}</p>
+          ).format("LT")} - ${moment(data.EndDate).format("LT")}`}</p>
         ) : (
           <Skeleton.Input active style={{ width: 180 }} className={"mb-5"} />
         )}

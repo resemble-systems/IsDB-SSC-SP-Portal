@@ -16,7 +16,7 @@ export default function Indicators({ onColorIndicatorClick, pointer }) {
       );
       let indicators = filteredService?.map((data) => {
         return {
-          text: data?.Title,
+          text: data?.ServiceType,
           serviceType: data?.ServiceType,
           color: data?.Color,
         };
