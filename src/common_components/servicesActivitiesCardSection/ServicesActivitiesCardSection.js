@@ -20,7 +20,7 @@ export default function ServicesActivitiesCardSection() {
   const [cardsData, setcardsData] = useState(null);
   useEffect(() => {
     if (services && services?.length > 0) {
-      setcardsData(services);
+      setcardsData(services.slice(0, 9));
     }
   }, [services]);
 

@@ -405,7 +405,7 @@ export default function GalleryImageCard({
                   )}
                 </>
               ))}
-            {play && (
+            {/* {play && (
               <VideoPlayerModal
                 url={videoUrl}
                 setVisiblety={setModalVisibility}
@@ -414,7 +414,7 @@ export default function GalleryImageCard({
                 setPlay={setPlay}
                 setAutoPlay={setAutoPlay}
               />
-            )}
+            )} */}
 
             {/* Document Data */}
             {cardData &&

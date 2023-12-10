@@ -159,6 +159,7 @@ export default function BuysellSection() {
   }, [selectedCategory]);
 
   useEffect(() => {
+    setPageNumber(1);
     if (yourAds === false) {
       if (subMenu.toLowerCase() === "all") {
         setFilterData(cardsData?.filter((data) => data?.status === "Active"));
@@ -183,6 +184,7 @@ export default function BuysellSection() {
   }, [subMenu, cardsData, adCategories, subCategoryList, yourAds]);
 
   useEffect(() => {
+    setPageNumber(1);
     if (yourAds === true /* && user && user?.length > 0 */) {
       if (subMenu?.toLowerCase() === "all") {
         let filterAll = cardsData?.filter(
