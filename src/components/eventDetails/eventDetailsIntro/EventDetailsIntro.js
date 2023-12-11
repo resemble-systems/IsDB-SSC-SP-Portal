@@ -76,7 +76,7 @@ export default function EventDetailsIntro({ eventData }) {
                 {eventData && eventData[0].StartDate && (
                   <Row>
                     <Col span={6} className={`${styles.event_details_heading}`}>
-                      {`Event Date`}
+                      {`Start Date`}
                     </Col>
                     <Col span={1} className={`${styles.event_details_heading}`}>
                       {`:`}
@@ -85,12 +85,33 @@ export default function EventDetailsIntro({ eventData }) {
                       {moment(eventData[0].StartDate).format(
                         "ddd, D MMMM YYYY"
                       )}
-                      {/* {dayAndDate} */}
+                      (
+                      {moment(eventData[0].StartDate).format(
+                        "h:mm a [onwards]"
+                      )}
+                      ){/* {dayAndDate} */}
                     </Col>
                   </Row>
                 )}
               </p>
               <p>
+                {eventData && eventData[0].StartDate && (
+                  <Row>
+                    <Col span={6} className={`${styles.event_details_heading}`}>
+                      {`End Date`}
+                    </Col>
+                    <Col span={1} className={`${styles.event_details_heading}`}>
+                      {`:`}
+                    </Col>
+                    <Col span={17} className={`${styles.event_details_value}`}>
+                      {moment(eventData[0].EndDate).format("ddd, D MMMM YYYY")}(
+                      {moment(eventData[0].EndDate).format("h:mm a")})
+                      {/* {dayAndDate} */}
+                    </Col>
+                  </Row>
+                )}
+              </p>
+              {/* <p>
                 {eventData && eventData[0].StartDate && (
                   <Row>
                     <Col span={6} className={`${styles.event_details_heading}`}>
@@ -103,12 +124,10 @@ export default function EventDetailsIntro({ eventData }) {
                       {moment(eventData[0].StartDate).format(
                         "h:mm a [onwards]"
                       )}
-
-                      {/* {time + " onwards"} */}
                     </Col>
                   </Row>
                 )}
-              </p>
+              </p> */}
               <p className={`mb-4`}>
                 {eventData && eventData[0].Location && (
                   <Row>

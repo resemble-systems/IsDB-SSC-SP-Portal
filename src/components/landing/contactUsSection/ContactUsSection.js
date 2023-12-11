@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Row, Col, notification } from "antd";
-import { WarningOutlined } from "@ant-design/icons";
+import { CheckCircleOutlined, WarningOutlined } from "@ant-design/icons";
 
 import { CONST } from "../../../constant/index";
 
@@ -21,6 +21,11 @@ import {
 //css
 import styles from "./contact-us-section.module.sass";
 
+notification.config({
+  placement: "bottomCenter",
+  duration: 3,
+});
+
 const openErrorNotification = ({ title, description }) => {
   notification.error({
     message: title,
@@ -31,11 +36,12 @@ const openErrorNotification = ({ title, description }) => {
 };
 
 const openSuccessNotification = ({ title, description }) => {
+  console.log("test-->", title, description);
   notification.success({
     message: title,
     description: description,
     onClose: () => {},
-    // icon: <WarningOutlined className={`text-danger`} />,
+    icon: <CheckCircleOutlined className={`text-success`} />,
   });
 };
 

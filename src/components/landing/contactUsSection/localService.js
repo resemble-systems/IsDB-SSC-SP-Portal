@@ -48,6 +48,7 @@ export const onClickSubscribeHandler = async (
     axios
       .post(url, stringifyPostData, configAxios)
       .then((r) => {
+        console.log("testTitle-->", r);
         openSuccessNotification({
           title: `Success ${r.data.d.Title}`,
           description: "We will update you at the latest",
