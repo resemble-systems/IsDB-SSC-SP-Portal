@@ -138,7 +138,7 @@ export default function EventDetailsIntro({ routePath }) {
             <div
               className={`${styles.event_details_image_box} d-flex justify-content-center align-items-center overflow-hidden mt-3 mb-5`}
             >
-              {news[0]?.AttachmentFiles?.length > 0 && (
+              {news && news[0]?.AttachmentFiles?.length > 0 && (
                 <AppSlider
                   showIndicators={false}
                   autoPlay={true}
