@@ -28,24 +28,24 @@ export default function EventDetailsIntro({ eventData }) {
 
   const formattedText = eventData[0]?.Description?.replace(/\n/g, "<br>");
 
-  const utcTime = eventData[0].StartDate;
+  // const utcTime = eventData[0].StartDate;
 
-  const riyadhOffsetHours = 3;
+  // const riyadhOffsetHours = 3;
 
-  // Convert to Riyadh Time
-  const riyadhTime = moment.utc(utcTime).add(riyadhOffsetHours, "hours");
+  // // Convert to Riyadh Time
+  // const riyadhTime = moment.utc(utcTime).add(riyadhOffsetHours, "hours");
 
-  // Format the Riyadh Time
-  const formattedRiyadhTime = riyadhTime.format(
-    "dddd, D MMMM YYYY [at] h:mm A [Riyadh Time]"
-  );
-  console.log("Formatted Riyadh Time:", formattedRiyadhTime);
-  const dayAndDate = riyadhTime.format("ddd, D MMMM YYYY");
-  console.log("Day and Date:", dayAndDate);
+  // // Format the Riyadh Time
+  // const formattedRiyadhTime = riyadhTime.format(
+  //   "dddd, D MMMM YYYY [at] h:mm A [Riyadh Time]"
+  // );
+  // console.log("Formatted Riyadh Time:", formattedRiyadhTime);
+  // const dayAndDate = riyadhTime.format("ddd, D MMMM YYYY");
+  // console.log("Day and Date:", dayAndDate);
 
-  // Extract time
-  const time = riyadhTime.format("h:mm a");
-  console.log("Time:", time);
+  // // Extract time
+  // const time = riyadhTime.format("h:mm a");
+  // console.log("Time:", time);
 
   return (
     <div className={`${styles.event_details_bg} mt-5`}>
@@ -82,10 +82,10 @@ export default function EventDetailsIntro({ eventData }) {
                       {`:`}
                     </Col>
                     <Col span={17} className={`${styles.event_details_value}`}>
-                      {/* {moment(eventData[0].StartDate).format(
+                      {moment(eventData[0].StartDate).format(
                         "ddd, D MMMM YYYY"
-                      )} */}
-                      {dayAndDate}
+                      )}
+                      {/* {dayAndDate} */}
                     </Col>
                   </Row>
                 )}
@@ -100,13 +100,11 @@ export default function EventDetailsIntro({ eventData }) {
                       {`:`}
                     </Col>
                     <Col span={17} className={`${styles.event_details_value}`}>
-                      {/* {moment(eventData[0].StartDate).format(
+                      {moment(eventData[0].StartDate).format(
                         "h:mm a [onwards]"
-                      )} */}
-                      {/* {moment
-                        .utc(eventData[0].StartDate)
-                        .format("ddd, D MMMM YYYY")} */}
-                      {time + " onwards"}
+                      )}
+
+                      {/* {time + " onwards"} */}
                     </Col>
                   </Row>
                 )}
