@@ -41,146 +41,153 @@ export default function Banner() {
   //expire date banner should be filtered out
   return (
     <>
-      <AppSlider
-        btnIcon={btnimg}
-        showIndicators={true}
-        autoPlay={autoPlay}
-        setAutoPlay={setAutoPlay}
-        stopOnHover={true}
-      >
-        {bannerData && bannerData?.length > 0 ? (
-          bannerData?.map((banner, index) => (
-            <div className={`${styles.banner_container}`} key={index}>
-              {banner.BannerType.toLowerCase() === "image" ? (
-                <>
-                  <div className={`${styles.banner_shade}`}></div>
-                  <div
-                    className={`overflow-hidden d-flex justify-content-center align-items-center`}
-                    style={{ /* width: "400px", */ height: "641px" }}
-                  >
+      {bannerData && bannerData?.length > 0 ? (
+        <AppSlider
+          btnIcon={btnimg}
+          showIndicators={true}
+          autoPlay={autoPlay}
+          setAutoPlay={setAutoPlay}
+          stopOnHover={true}
+        >
+          {bannerData && bannerData?.length > 0 ? (
+            bannerData?.map((banner, index) => (
+              <div className={`${styles.banner_container}`} key={index}>
+                {banner.BannerType.toLowerCase() === "image" ? (
+                  <>
+                    <div className={`${styles.banner_shade}`}></div>
                     <div
-                      className={`${styles.banner_container_shade} d-block w-100 h-100`}
+                      className={`overflow-hidden d-flex justify-content-center align-items-center`}
+                      style={{ /* width: "400px", */ height: "641px" }}
                     >
-                      <img
-                        className={`${styles.image}`}
-                        alt={`Banner`}
-                        height={"641px"}
-                        src={
-                          banner.AttachmentFiles[0].ServerRelativeUrl
-                            ? banner.AttachmentFiles[0].ServerRelativeUrl
-                            : ""
-                        }
-                      ></img>
+                      <div
+                        className={`${styles.banner_container_shade} d-block w-100 h-100`}
+                      >
+                        <img
+                          className={`${styles.image}`}
+                          alt={`Banner`}
+                          height={"641px"}
+                          src={
+                            banner.AttachmentFiles[0].ServerRelativeUrl
+                              ? banner.AttachmentFiles[0].ServerRelativeUrl
+                              : ""
+                          }
+                        ></img>
+                      </div>
                     </div>
-                  </div>
-                </>
-              ) : (
-                // <div
-                //   className={`${styles.video_thumbnail_container} d-flex justify-content-center align-items-center overflow-hidden`}
-                //   style={{ /* width: "400px", */ height: "646px" }}
-                // >
+                  </>
+                ) : (
+                  // <div
+                  //   className={`${styles.video_thumbnail_container} d-flex justify-content-center align-items-center overflow-hidden`}
+                  //   style={{ /* width: "400px", */ height: "646px" }}
+                  // >
 
-                //   <div
-                //     className={`${styles.video_play_btn}`}
-                //     onClick={() => {
-                //       let testvideourl1 = banner?.VideoLink?.split(".")[0];
-                //       let testvideourl2 =
-                //         banner?.VideoLink?.split(".")[1]?.toLowerCase();
+                  //   <div
+                  //     className={`${styles.video_play_btn}`}
+                  //     onClick={() => {
+                  //       let testvideourl1 = banner?.VideoLink?.split(".")[0];
+                  //       let testvideourl2 =
+                  //         banner?.VideoLink?.split(".")[1]?.toLowerCase();
 
-                //       setVideoUrl(
-                //         VAR?.BANNER_VIDEO + testvideourl1 + "." + testvideourl2
-                //       );
-                //       // setVideoUrl(banner?.VideoLink);
-                //       setPlay(true);
-                //       setModalVisibility(true);
-                //       setAutoPlay(false);
-                //     }}
-                //   >
-                //     <i
-                //       className={`fa fa-play ${styles.play_icon}`}
-                //       aria-hidden="true"
-                //       style={{ zIndex: "10000" }}
-                //     ></i>
-                //   </div>
+                  //       setVideoUrl(
+                  //         VAR?.BANNER_VIDEO + testvideourl1 + "." + testvideourl2
+                  //       );
+                  //       // setVideoUrl(banner?.VideoLink);
+                  //       setPlay(true);
+                  //       setModalVisibility(true);
+                  //       setAutoPlay(false);
+                  //     }}
+                  //   >
+                  //     <i
+                  //       className={`fa fa-play ${styles.play_icon}`}
+                  //       aria-hidden="true"
+                  //       style={{ zIndex: "10000" }}
+                  //     ></i>
+                  //   </div>
 
-                //   <img
-                //     className={`${styles.image}`}
-                //     alt={`BannerVideo`}
-                //     src={
-                //       banner.AttachmentFiles[0].ServerRelativeUrl
-                //         ? banner.AttachmentFiles[0].ServerRelativeUrl
-                //         : ""
-                //     }
-                //     style={{ /* width: "400px", */ height: "646px" }}
-                //   ></img>
-                // </div>
-                <>
-                  <div
-                    className={`${styles.video_thumbnail_container} d-flex justify-content-center align-items-center overflow-hidden`}
-                    style={{ /* width: "400px", */ height: "641px" }}
-                  >
+                  //   <img
+                  //     className={`${styles.image}`}
+                  //     alt={`BannerVideo`}
+                  //     src={
+                  //       banner.AttachmentFiles[0].ServerRelativeUrl
+                  //         ? banner.AttachmentFiles[0].ServerRelativeUrl
+                  //         : ""
+                  //     }
+                  //     style={{ /* width: "400px", */ height: "646px" }}
+                  //   ></img>
+                  // </div>
+                  <>
                     <div
-                      className={`${styles.banner_container_shade} d-block w-100 ${styles.video_width}`}
+                      className={`${styles.video_thumbnail_container} d-flex justify-content-center align-items-center overflow-hidden`}
+                      style={{ /* width: "400px", */ height: "641px" }}
                     >
-                      <ReactPlayer
-                        url={
-                          VAR.VIDEO_URL +
-                          banner?.AttachmentFiles[0]?.ServerRelativeUrl
-                        }
-                        width={"100%"}
-                        height={`641px`}
-                        // volume={true ? 1 : 0}
-                        muted={true}
-                        controls={true}
-                        playing={true}
-                      />
+                      <div
+                        className={`${styles.banner_container_shade} d-block w-100 ${styles.video_width}`}
+                      >
+                        <ReactPlayer
+                          url={
+                            VAR.VIDEO_URL +
+                            banner?.AttachmentFiles[0]?.ServerRelativeUrl
+                          }
+                          width={"100%"}
+                          height={`641px`}
+                          // volume={true ? 1 : 0}
+                          muted={true}
+                          controls={true}
+                          playing={true}
+                        />
+                      </div>
                     </div>
-                  </div>
-                </>
-              )}
-              <p className={`legend ${styles.text}`}>
-                <div className={`pl-4`}>
-                  <h1 className={`${styles.text_title} mb-4`}>
-                    {banner.Title && banner.Title}
-                  </h1>
-                  <p className={`${styles.text_des} mb-4`}>
-                    {banner.Description && banner.Description?.length > 100
-                      ? `${banner.Description.substring(0, 100)}...`
-                      : banner.Description}
-                  </p>
-                  <p className={`${styles.text_time}`}>
-                    {banner?.RegistrationLink?.length > 0
-                      ? moment(banner.CreatedDate).format("MMMM DD") ===
-                        moment(banner.Expiration).format("MMMM DD")
-                        ? moment(banner.Expiration).format("MMMM DD")
-                        : `${moment(banner.CreatedDate).format(
-                            "MMMM DD"
-                          )} - ${moment(banner.Expiration).format("MMMM DD")}`
-                      : ""}
-                    {/* {`${moment(banner.CreatedDate).format(
+                  </>
+                )}
+                <p className={`legend ${styles.text}`}>
+                  <div className={`pl-4`}>
+                    <h1 className={`${styles.text_title} mb-4`}>
+                      {banner.Title && banner.Title}
+                    </h1>
+                    <p className={`${styles.text_des} mb-4`}>
+                      {banner.Description && banner.Description?.length > 100
+                        ? `${banner.Description.substring(0, 100)}...`
+                        : banner.Description}
+                    </p>
+                    <p className={`${styles.text_time}`}>
+                      {banner?.RegistrationLink?.length > 0
+                        ? moment(banner.CreatedDate).format("MMMM DD") ===
+                          moment(banner.Expiration).format("MMMM DD")
+                          ? moment(banner.Expiration).format("MMMM DD")
+                          : `${moment(banner.CreatedDate).format(
+                              "MMMM DD"
+                            )} - ${moment(banner.Expiration).format("MMMM DD")}`
+                        : ""}
+                      {/* {`${moment(banner.CreatedDate).format(
                       "MMMM DD"
                     )} - ${moment(banner.Expiration).format("MMMM DD")}`} */}
-                  </p>
-                  {banner?.RegistrationLink?.length > 0 && (
-                    <Button
-                      shape="round"
-                      size={"large"}
-                      className={`${styles.text_button}`}
-                      onClick={() => window.open(banner.RegistrationLink)}
-                    >
-                      Register Now
-                    </Button>
-                  )}
-                </div>
-              </p>
+                    </p>
+                    {banner?.RegistrationLink?.length > 0 && (
+                      <Button
+                        shape="round"
+                        size={"large"}
+                        className={`${styles.text_button}`}
+                        onClick={() => window.open(banner.RegistrationLink)}
+                      >
+                        Register Now
+                      </Button>
+                    )}
+                  </div>
+                </p>
+              </div>
+            ))
+          ) : (
+            <div className={`${styles.banner_container}`}>
+              <Skeleton.Image className={`${styles.skeleton_image}`} active />
             </div>
-          ))
-        ) : (
-          <div className={`${styles.banner_container}`}>
-            <Skeleton.Image className={`${styles.skeleton_image}`} active />
-          </div>
-        )}
-      </AppSlider>
+          )}
+        </AppSlider>
+      ) : (
+        <div className={`${styles.banner_container}`}>
+          <Skeleton.Image className={`${styles.skeleton_image}`} active />
+        </div>
+      )}
+
       {play && (
         <VideoPlayerModal
           url={videoUrl}

@@ -25,7 +25,6 @@ export default function EventViewer({ displayEvent, selectedDay }) {
           <div className={`d-flex flex-column`}>
             {displayEvent && displayEvent?.length > 0 ? (
               displayEvent?.map((event) => {
-                console.log("colorDrop->", event);
                 let Type = { Type: event.EventType };
                 return (
                   <Tag

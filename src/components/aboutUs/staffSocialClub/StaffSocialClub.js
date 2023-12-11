@@ -41,29 +41,33 @@ export default function StaffSocialClub() {
               </h3>
             </div>
           </Col>
-          <AppSlider
-            showIndicators={false}
-            autoPlay={true}
-            setAutoPlay={() => {}}
-            stopOnHover={false}
-            swipeable={false}
-          >
-            {sscMemberData &&
-              sscMemberData.map((img, index) => (
-                <div className={`px-5 my-4`} key={index}>
-                  <img
-                    src={img.AttachmentFiles[0].ServerRelativeUrl}
-                    alt="Isdb"
-                    width="250px"
-                    height="250px"
-                  />
-                  <h5 className={`${styles.member_name} mt - 3`}>{img.Name}</h5>
-                  <p className={`${styles.member_degisnation}`}>
-                    {img.Designation}
-                  </p>
-                </div>
-              ))}
-          </AppSlider>
+          {sscMemberData?.length > 0 && (
+            <AppSlider
+              showIndicators={false}
+              autoPlay={true}
+              setAutoPlay={() => {}}
+              stopOnHover={false}
+              swipeable={false}
+            >
+              {sscMemberData &&
+                sscMemberData.map((img, index) => (
+                  <div className={`px-5 my-4`} key={index}>
+                    <img
+                      src={img.AttachmentFiles[0].ServerRelativeUrl}
+                      alt="Isdb"
+                      width="250px"
+                      height="250px"
+                    />
+                    <h5 className={`${styles.member_name} mt - 3`}>
+                      {img.Name}
+                    </h5>
+                    <p className={`${styles.member_degisnation}`}>
+                      {img.Designation}
+                    </p>
+                  </div>
+                ))}
+            </AppSlider>
+          )}
         </Col>
       </Row>
       {/* For large screen */}

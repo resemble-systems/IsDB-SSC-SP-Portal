@@ -38,49 +38,53 @@ export default function AboutUsIntroSection() {
         <Row>
           <Col xs={0} sm={0} md={0} lg={8} xl={8}>
             <div className={`${styles.image_container}`}>
-              <AppSlider
-                showIndicators={false}
-                autoPlay={true}
-                setAutoPlay={() => {}}
-                stopOnHover={false}
-                // fade={true}
-                swipeable={false}
-              >
-                {image &&
-                  image.map((img, index) => (
-                    <img
-                      src={img.url}
-                      alt="ISDB"
-                      width="342px"
-                      height="350px"
-                      key={index}
-                    />
-                  ))}
-              </AppSlider>
+              {image?.length > 0 && (
+                <AppSlider
+                  showIndicators={false}
+                  autoPlay={true}
+                  setAutoPlay={() => {}}
+                  stopOnHover={false}
+                  // fade={true}
+                  swipeable={false}
+                >
+                  {image &&
+                    image.map((img, index) => (
+                      <img
+                        src={img.url}
+                        alt="ISDB"
+                        width="342px"
+                        height="350px"
+                        key={index}
+                      />
+                    ))}
+                </AppSlider>
+              )}
             </div>
           </Col>
           {/* For small tab display view */}
           <Col xs={24} sm={24} md={24} lg={0} xl={0}>
             <div className={`${styles.image_container}`}>
-              <AppSlider
-                showIndicators={false}
-                autoPlay={true}
-                setAutoPlay={() => {}}
-                stopOnHover={false}
-                // fade={true}
-                swipeable={false}
-              >
-                {image &&
-                  image.map((img, index) => (
-                    <img
-                      src={img.url}
-                      alt="ISDB"
-                      width="300px"
-                      height="300px"
-                      key={index}
-                    />
-                  ))}
-              </AppSlider>
+              {image?.length > 0 && (
+                <AppSlider
+                  showIndicators={false}
+                  autoPlay={true}
+                  setAutoPlay={() => {}}
+                  stopOnHover={false}
+                  // fade={true}
+                  swipeable={false}
+                >
+                  {image &&
+                    image.map((img, index) => (
+                      <img
+                        src={img.url}
+                        alt="ISDB"
+                        width="300px"
+                        height="300px"
+                        key={index}
+                      />
+                    ))}
+                </AppSlider>
+              )}
             </div>
           </Col>
           <Col xs={24} sm={24} md={24} lg={16} xl={16}>

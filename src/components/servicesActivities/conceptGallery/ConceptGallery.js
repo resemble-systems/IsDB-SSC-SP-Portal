@@ -23,37 +23,39 @@ export default function ConpceptGallery({ galleryTitle, finalData }) {
             >{`${galleryTitle} Concept Gallery`}</h3>
           </Col>
           <div className={`mt-5`}>
-            <AppSlider
-              showIndicators={false}
-              autoPlay={true}
-              setAutoPlay={() => {}}
-              stopOnHover={false}
-              // fade={true}
-              swipeable={false}
-            >
-              {finalData &&
-                finalData.map((img, index) => (
-                  <>
-                    <Col
-                      className={`d-flex align-items-center flex-column mt-5`}
-                      key={index}
-                    >
-                      <div className={`${styles.miv_image_box} mb-5`}>
-                        <div
-                          className={`d-flex justify-content-center align-items-center overflow-hidden w-100 h-100`}
-                        >
-                          <img
-                            src={img.ServerRelativeUrl}
-                            alt={img.hash}
-                            // width="250"
-                            // height="250"
-                          />
+            {finalData?.length > 0 && (
+              <AppSlider
+                showIndicators={false}
+                autoPlay={true}
+                setAutoPlay={() => {}}
+                stopOnHover={false}
+                // fade={true}
+                swipeable={false}
+              >
+                {finalData &&
+                  finalData.map((img, index) => (
+                    <>
+                      <Col
+                        className={`d-flex align-items-center flex-column mt-5`}
+                        key={index}
+                      >
+                        <div className={`${styles.miv_image_box} mb-5`}>
+                          <div
+                            className={`d-flex justify-content-center align-items-center overflow-hidden w-100 h-100`}
+                          >
+                            <img
+                              src={img.ServerRelativeUrl}
+                              alt={img.hash}
+                              // width="250"
+                              // height="250"
+                            />
+                          </div>
                         </div>
-                      </div>
-                    </Col>
-                  </>
-                ))}
-            </AppSlider>
+                      </Col>
+                    </>
+                  ))}
+              </AppSlider>
+            )}
           </div>
         </Col>
         <Col xs={0} sm={0} md={24} lg={24} xl={24}>

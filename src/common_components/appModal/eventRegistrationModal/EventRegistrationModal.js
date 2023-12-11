@@ -74,7 +74,7 @@ export default function EventRegistrationModal({
     eventId,
     event
   );
-  console.log("eventId", eventId, event);
+
   return (
     <Modal
       // title={`Event Registration`}

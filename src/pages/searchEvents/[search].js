@@ -27,14 +27,10 @@ const SearchEvents = () => {
   useEffect(() => {
     let filterSearch;
     if (searchVal && type === "events" && events?.length > 0) {
-      console.log("events", type, searchVal);
       filterSearch = events?.filter(
         (data, index) =>
           data?.Author0?.toLowerCase()?.includes(searchVal?.toLowerCase()) ||
           data?.Description?.toLowerCase()?.includes(
-            searchVal?.toLowerCase()
-          ) ||
-          data?.EventType?.ServiceType?.toLowerCase()?.includes(
             searchVal?.toLowerCase()
           ) ||
           //   data.Speaker.toLowerCase().includes(searchVal.toLowerCase()) ||

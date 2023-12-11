@@ -90,37 +90,38 @@ export default function ExeTeamStructure() {
             </h3>
           </Col>
           <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-            <AppSlider
-              showIndicators={false}
-              autoPlay={true}
-              setAutoPlay={() => {}}
-              stopOnHover={false}
-              // fade={true}
-              swipeable={false}
-            >
-              {structureDetails &&
-                structureDetails?.map((data, index) => (
-                  <div className={`${styles.hex_container_r}`} key={index}>
-                    {/* <div className={`${styles.hex_border} ${data?.Color}`}> */}
-                    <div className={`${styles.hex_border} `}>
-                      <div
-                        className={`${styles.hex_white_space}`}
-                        style={{ backgroundColor: `${data.Color}` }}
-                      >
+            {structureDetails?.length > 0 && (
+              <AppSlider
+                showIndicators={false}
+                autoPlay={true}
+                setAutoPlay={() => {}}
+                stopOnHover={false}
+                // fade={true}
+                swipeable={false}
+              >
+                {structureDetails &&
+                  structureDetails?.map((data, index) => (
+                    <div className={`${styles.hex_container_r}`} key={index}>
+                      {/* <div className={`${styles.hex_border} ${data?.Color}`}> */}
+                      <div className={`${styles.hex_border} `}>
                         <div
-                          // className={`${styles.hex} ${data?.Color}`}
-                          className={`${styles.hex} `}
+                          className={`${styles.hex_white_space}`}
                           style={{ backgroundColor: `${data.Color}` }}
                         >
-                          <p className={`${styles.hex_text} px-5 m-0`}>
-                            {data.TeamDetails}
-                          </p>
+                          <div
+                            // className={`${styles.hex} ${data?.Color}`}
+                            className={`${styles.hex} `}
+                            style={{ backgroundColor: `${data.Color}` }}
+                          >
+                            <p className={`${styles.hex_text} px-5 m-0`}>
+                              {data.TeamDetails}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              {/* {structureData &&
+                  ))}
+                {/* {structureData &&
                 structureData?.map((data, index) => (
                   <div className={`${styles.hex_container_r}`} key={index}>
                     <div className={`${styles.hex_border} ${data?.color}`}>
@@ -134,7 +135,8 @@ export default function ExeTeamStructure() {
                     </div>
                   </div>
                 ))} */}
-            </AppSlider>
+              </AppSlider>
+            )}
           </Col>
         </Row>
       </div>

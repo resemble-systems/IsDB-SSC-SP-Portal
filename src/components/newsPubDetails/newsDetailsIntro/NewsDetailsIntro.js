@@ -138,32 +138,34 @@ export default function EventDetailsIntro({ routePath }) {
             <div
               className={`${styles.event_details_image_box} d-flex justify-content-center align-items-center overflow-hidden mt-3 mb-5`}
             >
-              <AppSlider
-                showIndicators={false}
-                autoPlay={true}
-                setAutoPlay={() => {}}
-                stopOnHover={false}
-                dynamicHeight={true}
-              >
-                {news &&
-                  news[0]?.AttachmentFiles?.map((image, index) =>
-                    image?.ServerRelativeUrl ? (
-                      <img
-                        src={`${image.ServerRelativeUrl}`}
-                        alt="ssc"
-                        className={`${styles.event_details_image}`}
-                        key={index}
-                      />
-                    ) : (
-                      <img
-                        src={`${image?.ServerRelativeUrl}`}
-                        alt="ssc"
-                        className={`${styles.event_details_image}`}
-                        key={index}
-                      />
-                    )
-                  )}
-              </AppSlider>
+              {news[0]?.AttachmentFiles?.length > 0 && (
+                <AppSlider
+                  showIndicators={false}
+                  autoPlay={true}
+                  setAutoPlay={() => {}}
+                  stopOnHover={false}
+                  dynamicHeight={true}
+                >
+                  {news &&
+                    news[0]?.AttachmentFiles?.map((image, index) =>
+                      image?.ServerRelativeUrl ? (
+                        <img
+                          src={`${image.ServerRelativeUrl}`}
+                          alt="ssc"
+                          className={`${styles.event_details_image}`}
+                          key={index}
+                        />
+                      ) : (
+                        <img
+                          src={`${image?.ServerRelativeUrl}`}
+                          alt="ssc"
+                          className={`${styles.event_details_image}`}
+                          key={index}
+                        />
+                      )
+                    )}
+                </AppSlider>
+              )}
             </div>
             <div className={`d-flex ${styles.thumbnail_container}`}>
               {news &&

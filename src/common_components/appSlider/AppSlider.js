@@ -25,7 +25,7 @@ export default function AppSlider({
       autoPlay={autoPlay}
       stopOnHover={stopOnHover}
       showIndicators={showIndicators}
-      dynamicHeight={dynamicHeight ? true : false}
+      // dynamicHeight={dynamicHeight ? true : false}
       // fade={fade}
       swipeable={swipeable}
       renderArrowPrev={(clickHandler, hasPrev, labelPrev) =>

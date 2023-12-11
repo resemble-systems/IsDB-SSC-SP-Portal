@@ -86,29 +86,37 @@ export default function ServicesActivitiesCardSection() {
       </Col>
       <Col xs={24} sm={24} md={0} lg={0} xl={0}>
         <div>
-          <AppSlider
-            btnIcon={`/context/slider_btn_icon_dark.svg`}
-            showIndicators={false}
-            autoPlay={true}
-            setAutoPlay={() => {}}
-          >
-            {cardsData && cardsData?.length > 0
-              ? cardsData.map((cardData, index) => (
-                  <Row gutter={[16, 16]} className={`w-100 pl-3`} key={index}>
-                    <Col
-                      span={24}
-                      className={`d-flex justify-content-center mb-2`}
-                    >
-                      <ServicesActivitiesCard data={cardData} />
+          {cardsData?.length > 0 ? (
+            <AppSlider
+              btnIcon={`/context/slider_btn_icon_dark.svg`}
+              showIndicators={false}
+              autoPlay={true}
+              setAutoPlay={() => {}}
+            >
+              {cardsData && cardsData?.length > 0
+                ? cardsData.map((cardData, index) => (
+                    <Row gutter={[16, 16]} className={`w-100 pl-3`} key={index}>
+                      <Col
+                        span={24}
+                        className={`d-flex justify-content-center mb-2`}
+                      >
+                        <ServicesActivitiesCard data={cardData} />
+                      </Col>
+                    </Row>
+                  ))
+                : scletonData.map((sData, index) => (
+                    <Col span={24} className={"p-2 "} key={index}>
+                      <ServicesActivitiesCard data={sData} />
                     </Col>
-                  </Row>
-                ))
-              : scletonData.map((sData, index) => (
-                  <Col span={24} className={"p-2 "} key={index}>
-                    <ServicesActivitiesCard data={sData} />
-                  </Col>
-                ))}
-          </AppSlider>
+                  ))}
+            </AppSlider>
+          ) : (
+            scletonData.map((sData, index) => (
+              <Col span={24} className={"p-2 "} key={index}>
+                <ServicesActivitiesCard data={sData} />
+              </Col>
+            ))
+          )}
         </div>
       </Col>
     </Row>
