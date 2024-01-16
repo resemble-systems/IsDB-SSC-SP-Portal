@@ -75,61 +75,65 @@ export default function VideoSection() {
   });
 
   return (
-    <div
-      className={`${styles.video}`}
-      // style={{ marginTop: "200px" }}
-      ref={videoRef}
-    >
-      <div className={`${styles.viewPort_container}`} ref={observe}>
-        {video && video.length > 0 ? (
-          backgroundVideo ? (
-            <div className={inView ? css(animationStyles.zoomIn) : ""}>
-              <div
-                className={`${styles.image_container} `}
-                onClick={() => setBackgroundVideo(false)}
-              >
+    video?.length > 0 && (
+      <div
+        className={`${styles.video}`}
+        // style={{ marginTop: "200px" }}
+        ref={videoRef}
+      >
+        <div className={`${styles.viewPort_container}`} ref={observe}>
+          {video && video.length > 0 ? (
+            backgroundVideo ? (
+              <div className={inView ? css(animationStyles.zoomIn) : ""}>
                 <div
-                  className={`position-absolute w-100 ${styles.video_title_container}`}
+                  className={`${styles.image_container} `}
+                  onClick={() => setBackgroundVideo(false)}
                 >
-                  <h3 className={`${styles.video_title}`}>{video[0].Title}</h3>
+                  <div
+                    className={`position-absolute w-100 ${styles.video_title_container}`}
+                  >
+                    <h3 className={`${styles.video_title}`}>
+                      {video[0].Title}
+                    </h3>
+                  </div>
+                  <div
+                    className={`w-100 h-100 position-absolute ${styles.vimage_container}`}
+                  >
+                    <img
+                      className={`${styles.image}`}
+                      src={videoImg}
+                      alt=""
+                    ></img>
+                  </div>
+                  <ReactPlayer
+                    url={video[0].VideoLink}
+                    width={"100%"}
+                    height={`100%`}
+                    volume={0}
+                    muted
+                    loop
+                    controls={false}
+                    playing={true}
+                    // controls={true}
+                  />
                 </div>
-                <div
-                  className={`w-100 h-100 position-absolute ${styles.vimage_container}`}
-                >
-                  <img
-                    className={`${styles.image}`}
-                    src={videoImg}
-                    alt=""
-                  ></img>
-                </div>
-                <ReactPlayer
-                  url={video[0].VideoLink}
-                  width={"100%"}
-                  height={`100%`}
-                  volume={0}
-                  muted
-                  loop
-                  controls={false}
-                  playing={true}
-                  // controls={true}
-                />
               </div>
-            </div>
-          ) : (
-            <ReactPlayer
-              url={video[0].VideoLink}
-              width={"100%"}
-              height={`100%`}
-              volume={100}
-              muted
-              loop
-              // controls={false}
-              playing={true}
-              controls={true}
-            />
-          )
-        ) : null}
+            ) : (
+              <ReactPlayer
+                url={video[0].VideoLink}
+                width={"100%"}
+                height={`100%`}
+                volume={100}
+                muted
+                loop
+                // controls={false}
+                playing={true}
+                controls={true}
+              />
+            )
+          ) : null}
+        </div>
       </div>
-    </div>
+    )
   );
 }

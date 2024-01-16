@@ -8,6 +8,8 @@ import { useEffect, useState, useContext } from "react";
 import AppSlider from "../appSlider/AppSlider";
 import ServicesActivitiesCard from "../servicesActivitiesCard/ServicesActivitiesCard";
 import { AppContext } from "../../App";
+import AppBtn from "../appBtn/AppBtn";
+import { ArrowRightOutlined } from "@ant-design/icons";
 const animationStyles = StyleSheet.create({
   slideInLeft: {
     animationName: slideInLeft,
@@ -20,7 +22,10 @@ export default function ServicesActivitiesCardSection() {
   const [cardsData, setcardsData] = useState(null);
   useEffect(() => {
     if (services && services?.length > 0) {
-      setcardsData(services.slice(0, 9));
+      console.log("url-->", window.location.href);
+      if (window.location.href.includes("activities")) {
+        setcardsData(services);
+      } else setcardsData(services.slice(0, 9));
     }
   }, [services]);
 
@@ -43,82 +48,101 @@ export default function ServicesActivitiesCardSection() {
   let scletonData = [{}, {}, {}, {}, {}, {}, {}, {}, {}];
 
   return (
-    <Row /* ref={observe} */ ref={(el) => el && observe(el)}>
-      <Col xs={0} sm={0} md={0} lg={24} xl={24}>
-        <Row gutter={[16, 16]}>
-          {cardsData && cardsData?.length > 0
-            ? cardsData.map((cardData, index) => (
-                <Col span={8} key={index}>
-                  <div
-                    className={inView ? css(animationStyles.slideInLeft) : ""}
-                  >
-                    <ServicesActivitiesCard data={cardData} />
-                  </div>
-                </Col>
-              ))
-            : scletonData.map((sData, index) => (
-                <Col span={8} key={index}>
-                  <ServicesActivitiesCard data={sData} />
-                </Col>
-              ))}
-        </Row>
-      </Col>
-      <Col xs={0} sm={0} md={24} lg={0} xl={0}>
-        <div className={inView ? css(animationStyles.slideInLeft) : ""}>
-          <Row gutter={[16, 16]} className={`w-100 pl-3`}>
+    <>
+      <Row /* ref={observe} */ ref={(el) => el && observe(el)}>
+        <Col xs={0} sm={0} md={0} lg={24} xl={24}>
+          <Row gutter={[16, 16]}>
             {cardsData && cardsData?.length > 0
-              ? cardsData?.map((cardData, index) => (
-                  <Col
-                    span={12}
-                    className={`d-flex justify-content-center`}
-                    key={index}
-                  >
-                    <ServicesActivitiesCard data={cardData} />
+              ? cardsData.map((cardData, index) => (
+                  <Col span={8} key={index}>
+                    <div
+                      className={inView ? css(animationStyles.slideInLeft) : ""}
+                    >
+                      <ServicesActivitiesCard data={cardData} />
+                    </div>
                   </Col>
                 ))
               : scletonData.map((sData, index) => (
-                  <Col span={12} key={index}>
+                  <Col span={8} key={index}>
                     <ServicesActivitiesCard data={sData} />
                   </Col>
                 ))}
           </Row>
-        </div>
-      </Col>
-      <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-        <div>
-          {cardsData?.length > 0 ? (
-            <AppSlider
-              btnIcon={`/context/slider_btn_icon_dark.svg`}
-              showIndicators={false}
-              autoPlay={true}
-              setAutoPlay={() => {}}
-            >
+        </Col>
+        <Col xs={0} sm={0} md={24} lg={0} xl={0}>
+          <div className={inView ? css(animationStyles.slideInLeft) : ""}>
+            <Row gutter={[16, 16]} className={`w-100 pl-3`}>
               {cardsData && cardsData?.length > 0
-                ? cardsData.map((cardData, index) => (
-                    <Row gutter={[16, 16]} className={`w-100 pl-3`} key={index}>
-                      <Col
-                        span={24}
-                        className={`d-flex justify-content-center mb-2`}
-                      >
-                        <ServicesActivitiesCard data={cardData} />
-                      </Col>
-                    </Row>
+                ? cardsData?.map((cardData, index) => (
+                    <Col
+                      span={12}
+                      className={`d-flex justify-content-center`}
+                      key={index}
+                    >
+                      <ServicesActivitiesCard data={cardData} />
+                    </Col>
                   ))
                 : scletonData.map((sData, index) => (
-                    <Col span={24} className={"p-2 "} key={index}>
+                    <Col span={12} key={index}>
                       <ServicesActivitiesCard data={sData} />
                     </Col>
                   ))}
-            </AppSlider>
-          ) : (
-            scletonData.map((sData, index) => (
-              <Col span={24} className={"p-2 "} key={index}>
-                <ServicesActivitiesCard data={sData} />
-              </Col>
-            ))
-          )}
+            </Row>
+          </div>
+        </Col>
+        <Col xs={24} sm={24} md={0} lg={0} xl={0}>
+          <div>
+            {cardsData?.length > 0 ? (
+              <AppSlider
+                btnIcon={`/context/slider_btn_icon_dark.svg`}
+                showIndicators={false}
+                autoPlay={true}
+                setAutoPlay={() => {}}
+              >
+                {cardsData && cardsData?.length > 0
+                  ? cardsData.map((cardData, index) => (
+                      <Row
+                        gutter={[16, 16]}
+                        className={`w-100 pl-3`}
+                        key={index}
+                      >
+                        <Col
+                          span={24}
+                          className={`d-flex justify-content-center mb-2`}
+                        >
+                          <ServicesActivitiesCard data={cardData} />
+                        </Col>
+                      </Row>
+                    ))
+                  : scletonData.map((sData, index) => (
+                      <Col span={24} className={"p-2 "} key={index}>
+                        <ServicesActivitiesCard data={sData} />
+                      </Col>
+                    ))}
+              </AppSlider>
+            ) : (
+              scletonData.map((sData, index) => (
+                <Col span={24} className={"p-2 "} key={index}>
+                  <ServicesActivitiesCard data={sData} />
+                </Col>
+              ))
+            )}
+          </div>
+        </Col>
+      </Row>
+      {window.location.href.includes("activities") ? (
+        ""
+      ) : (
+        <div className={`d-flex w-100 justify-content-end`}>
+          <AppBtn
+            text={`See All`}
+            prefix={""}
+            suffix={<ArrowRightOutlined className={`ml-2 pt-1`} />}
+            mode={"dark"}
+            href={"/activities"}
+          />
         </div>
-      </Col>
-    </Row>
+      )}
+    </>
   );
 }

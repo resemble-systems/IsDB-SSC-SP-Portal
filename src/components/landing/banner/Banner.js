@@ -183,7 +183,9 @@ export default function Banner() {
           )}
         </AppSlider>
       ) : (
-        <div className={`${styles.banner_container}`}>
+        <div
+          className={`${styles.banner_container} d-flex justify-content-center`}
+        >
           <Skeleton.Image className={`${styles.skeleton_image}`} active />
         </div>
       )}
