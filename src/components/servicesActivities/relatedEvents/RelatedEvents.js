@@ -44,7 +44,7 @@ export default function RelatedEvents({ title, eventsData, services, path }) {
     (eventData) =>
       services &&
       services.length > 0 &&
-      eventData.EventType.ServiceType.toString() ===
+      eventData?.EventType?.ServiceType?.toString() ===
         mapRoutePathToType(path, services)
   );
 

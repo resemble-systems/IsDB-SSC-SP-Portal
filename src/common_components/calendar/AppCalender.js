@@ -51,7 +51,7 @@ export default class AppCalendar extends Component {
       args["date"] = args.value;
       if (this.isMarkCalendarDates(eventData, args)) {
         displayEvent.push({
-          EventType: eventData.EventType.ServiceType.toString(),
+          EventType: eventData?.EventType?.ServiceType?.toString(),
           Title: eventData.Title,
           id: eventData.Id,
         });
@@ -91,7 +91,7 @@ export default class AppCalendar extends Component {
     let result = [];
     eventsData.forEach((eventData) => {
       if (this.isMarkCalendarDates(eventData, args)) {
-        result.push([eventData.EventType.ServiceType.toString(), 1]);
+        result.push([eventData?.EventType?.ServiceType?.toString(), 1]);
       }
     });
     //remove duplicate

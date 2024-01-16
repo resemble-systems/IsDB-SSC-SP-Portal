@@ -27,7 +27,9 @@ export const setEventBackground = (item, services) => {
   let bg, boxShadow;
   let bgImage = arrayBgImage[Math.floor(Math.random() * arrayBgImage?.length)];
   let service = services?.find((service) => {
-    return service?.ServiceType.toLowerCase() === eventTypeColor.toLowerCase();
+    return (
+      service?.ServiceType?.toLowerCase() === eventTypeColor?.toLowerCase()
+    );
   });
 
   bg = service?.Color;
