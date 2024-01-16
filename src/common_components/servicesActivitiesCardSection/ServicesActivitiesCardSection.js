@@ -130,19 +130,19 @@ export default function ServicesActivitiesCardSection() {
           </div>
         </Col>
       </Row>
-      {window.location.href.includes("activities") ? (
-        ""
-      ) : (
-        <div className={`d-flex w-100 justify-content-end`}>
-          <AppBtn
-            text={`See All`}
-            prefix={""}
-            suffix={<ArrowRightOutlined className={`ml-2 pt-1`} />}
-            mode={"dark"}
-            href={"/activities"}
-          />
-        </div>
-      )}
+      {window.location.href.includes("activities")
+        ? ""
+        : services?.length > 9 && (
+            <div className={`d-flex w-100 justify-content-end`}>
+              <AppBtn
+                text={`See All`}
+                prefix={""}
+                suffix={<ArrowRightOutlined className={`ml-2 pt-1`} />}
+                mode={"dark"}
+                href={"/activities"}
+              />
+            </div>
+          )}
     </>
   );
 }
