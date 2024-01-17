@@ -44,7 +44,7 @@ export default function EventDetailsIntro({ routePath }) {
   const formattedText = news && news[0]?.Description?.replace(/\n/g, "<br>");
   return (
     <div className={`${styles.event_details_bg} mt-5`}>
-      <div className={`${styles.event_details_container} py-5`}>
+      <div className={`container py-5`}>
         <Row>
           {/* For Large screens */}
           <Col xs={0} sm={0} md={0} lg={12} xl={12}>

@@ -46,7 +46,6 @@ export default function EventDetailsIntro({ eventData }) {
   // // Extract time
   // const time = riyadhTime.format("h:mm a");
   // console.log("Time:", time);
-
   return (
     <div className={`${styles.event_details_bg} mt-5`}>
       <div className={`${styles.event_details_container} py-5`}>
@@ -156,7 +155,9 @@ export default function EventDetailsIntro({ eventData }) {
                 new Date().getTime() && (
                 <AppRoundedBtn
                   text={
-                    eventData[0].RegistrationLink ? `Join Now` : `Register Now`
+                    eventData[0].RegistrationLink
+                      ? eventData[0].ButtonName
+                      : `Register Now`
                   }
                   prefix={""}
                   suffix={""}
@@ -353,7 +354,9 @@ export default function EventDetailsIntro({ eventData }) {
                 new Date().getTime() && (
                 <AppRoundedBtn
                   text={
-                    eventData[0].RegistrationLink ? `Join Now` : `Register Now`
+                    eventData[0].RegistrationLink
+                      ? eventData[0].ButtonName
+                      : `Register Now`
                   }
                   prefix={""}
                   suffix={""}

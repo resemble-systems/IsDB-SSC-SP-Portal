@@ -23,7 +23,7 @@ export default function Banner() {
     axios
       .get(
         `${CONST.BASE_URL}${CONST.API.LIST("Banner")}${CONST.API.QUERY(
-          "Title,Author0,CreatedDate,Description,VideoLink,RegistrationLink,BannerType,Expiration,AttachmentFiles"
+          "Title,Author0,CreatedDate,Description,VideoLink,RegistrationLink,BannerType,Expiration,AttachmentFiles,ButtonName"
         )} ${CONST.API.ATTACHMENT}`
       )
       .then((res) => {
@@ -169,7 +169,7 @@ export default function Banner() {
                         className={`${styles.text_button}`}
                         onClick={() => window.open(banner.RegistrationLink)}
                       >
-                        Register Now
+                        {banner.ButtonName}
                       </Button>
                     )}
                   </div>

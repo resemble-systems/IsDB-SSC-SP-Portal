@@ -43,11 +43,13 @@ export default function NewsPublications({
     axios
       .get(
         `${CONST.BASE_URL}${CONST.API.LIST("Publication")}${CONST.API.QUERY(
-          "Title,AuthorName,Link,Created,Id,TextArea,Expirydate,AttachmentFiles&$orderby=ID desc"
+          "Title,AuthorName,Link,Created,Id,TextArea,Expirydate,ViewInBanner,AttachmentFiles&$orderby=ID desc"
         )} ${CONST.API.ATTACHMENT}`
       )
       .then((res) => {
-        setSliderData(res.data.value);
+        setSliderData(
+          res.data.value.filter((data) => data.ViewInBanner === "Yes")
+        );
         setNewsData(res.data.value);
       })
       .catch((err) => console.log(err));
@@ -68,12 +70,12 @@ export default function NewsPublications({
             <div className="container">
               <InnerPageTitleSection title={"News & Publications"} />
             </div>
-            <div
+            {/* <div
               className={`container ${styles.intro_title} ${styles.section_title}`}
               style={{ position: "relative" }}
             >
               <h3 style={{ fontSize: "35px" }}>Most Viewed</h3>
-            </div>
+            </div> */}
             <Slider items={items} news={newsData} />
           </div>
           <PublicationsSection news={newsData} />

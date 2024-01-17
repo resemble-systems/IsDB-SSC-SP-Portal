@@ -7,7 +7,7 @@ function Offers() {
   return (
     <>
       <Helmet>
-        <title>Offers</title>
+        <title>Discounts & Offers</title>
         <meta property="og:title" content="IsDB - Offers" />
         <meta property="og:image" content={Logo} />
       </Helmet>

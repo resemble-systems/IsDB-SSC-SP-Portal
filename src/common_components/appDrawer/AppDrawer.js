@@ -79,29 +79,29 @@ export default function AppDrawer({
             link: "/news-publications",
           },
           {
-            name: "Activities",
+            name: "Services & Activities",
             link: "/activities",
           },
           {
-            name: "Offers",
+            name: "Discounts & Offers",
             link: "/offers",
           },
         ],
       },
       //Service and Activities Route
-      services &&
-        services.length > 0 && {
-          header: "Services",
-          links:
-            services &&
-            services.length > 0 &&
-            services.map((data) => {
-              return {
-                name: data.Title,
-                link: `/activities/${mapTypeToRoutePath(data)}`,
-              };
-            }),
-        },
+      // services &&
+      //   services.length > 0 && {
+      //     header: "Services",
+      //     links:
+      //       services &&
+      //       services.length > 0 &&
+      //       services.map((data) => {
+      //         return {
+      //           name: data.Title,
+      //           link: `/activities/${mapTypeToRoutePath(data)}`,
+      //         };
+      //       }),
+      //   },
       //Other Resources Route
       // otResource &&
       //   otResource.length > 0 && {

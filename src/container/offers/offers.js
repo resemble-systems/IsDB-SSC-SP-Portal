@@ -20,7 +20,7 @@ export default function OfferContainer() {
             }}
           ></div>
           <div className="container">
-            <InnerPageTitleSection title={"Reward Application"} />
+            <InnerPageTitleSection title={"Discounts & Offers"} />
           </div>
           <OfferComp />
         </div>

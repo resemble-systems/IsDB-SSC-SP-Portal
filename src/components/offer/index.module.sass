@@ -1,8 +1,7 @@
 @import '../../variable'
 
 .offers_container
-    margin: $zero $auto
-    @extend %container_width
+    margin-top: 450px
 
 .image
     width: 650px
@@ -31,3 +30,38 @@
     .image
         width: 300px
         height: 200px
+
+.event_details_des
+    @extend %font_size_16
+    @extend %font_family_lato
+    height: 120px
+
+.event_details_title
+    font-weight: $bold
+    font-size: 28px
+    @extend %font_family_oswald
+
+.text_button
+  width: 16vw
+  height: 3.5vw $important
+  background-color: $yellow_color
+  font-size: 1.5vw $important
+  border: $zero
+  font-weight: $six_hundred
+  @extend %font_family_roboto
+  &:hover,
+  &:focus
+    background-color: $yellow_color
+    color: $black_color
+
+@media (min-width: 768px) and (max-width: 1024px)
+    .offers_container
+        margin-top: 230px
+
+@media (min-width: 1024px) and (max-width: 1119px)
+    .offers_container
+        margin-top: 130px
+
+@media (min-width: 1120px) and (max-width: 1441px)
+    .offers_container
+        margin-top: 150px

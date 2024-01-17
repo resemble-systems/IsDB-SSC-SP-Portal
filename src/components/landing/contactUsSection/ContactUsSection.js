@@ -158,7 +158,7 @@ export default function ContactUsSection() {
                 backgroundImage: `url(${bgImg2})`,
               }}
             >
-              <h3 className={`${styles.group_img_title}`}>ISDB GROUP</h3>
+              <h3 className={`${styles.group_img_title}`}>IsDB GROUP</h3>
 
               <div
                 className={`${styles.group_img_container}`} /* ref={observe} */

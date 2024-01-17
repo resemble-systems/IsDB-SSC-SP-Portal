@@ -13,6 +13,8 @@ import { VAR } from "../../../env";
 import VideoPlayerModal from "../../../common_components/appModal/videoPlayerModal/VideoPlayerModal";
 import Lightbox from "react-image-lightbox";
 import isImage from "is-image";
+import AppBtn from "../../../common_components/appBtn/AppBtn";
+import { ArrowRightOutlined } from "@ant-design/icons";
 
 let sliderItems = [];
 
@@ -1348,6 +1350,15 @@ export default function Gallery({ galleryContent }) {
             />
           </div>
         </Row>
+      </div>
+      <div className={`d-flex w-100 justify-content-end container`}>
+        <AppBtn
+          text={`See All`}
+          prefix={""}
+          suffix={<ArrowRightOutlined className={`ml-2 pt-1`} />}
+          mode={"dark"}
+          href={"/gallery"}
+        />
       </div>
       {isOpen && photoUrl && (
         <Lightbox
