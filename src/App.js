@@ -20,6 +20,7 @@ import NewsDetails from "./pages/news-publications/[id]";
 import Offers from "./pages/offers";
 import { CONST } from "./constant/index";
 import SearchEvents from "./pages/searchEvents/[search]";
+import OtherInitiatives from "./pages/otherInitiatives";
 export const AppContext = createContext();
 
 function App() {
@@ -150,6 +151,9 @@ function App() {
           </Route> */}
           <Route exact path="/offers">
             <Offers />
+          </Route>
+          <Route exact path="/OtherInitiatives">
+            <OtherInitiatives />
           </Route>
           <Route path="/">
             <Home />

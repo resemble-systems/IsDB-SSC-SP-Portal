@@ -1,0 +1,67 @@
+@import '../../variable'
+
+.offers_container
+    margin-top: 450px
+
+.image
+    width: 650px
+    height: 400px
+
+@media only screen and (max-width: $beakpoint_laptop_s)
+    .offers_container
+        width: 100% $important
+@media only screen and (max-width: $beakpoint_tablet_s)
+    .image
+        width: 580px
+        height: 360px
+@media only screen and (max-width: $beakpoint_mobile_l)
+    .image
+        width: 400px
+        height: 315px
+@media only screen and (max-width: $beakpoint_mobile_s)
+    .image
+        width: 365px
+        height: 290px
+// @media only screen and (max-width: 375px)
+//     .image
+//         width: 350px
+//         height: 240px
+@media only screen and (max-width: 320px)
+    .image
+        width: 300px
+        height: 200px
+
+.event_details_des
+    @extend %font_size_16
+    @extend %font_family_lato
+    height: 120px
+
+.event_details_title
+    font-weight: $bold
+    font-size: 28px
+    @extend %font_family_oswald
+
+.text_button
+  width: 16vw
+  height: 3.5vw $important
+  background-color: $yellow_color
+  font-size: 1.5vw $important
+  border: $zero
+  font-weight: $six_hundred
+  @extend %font_family_roboto
+  &:hover,
+  &:focus
+    background-color: $yellow_color
+    color: $black_color
+
+@media (min-width: 768px) and (max-width: 1024px)
+    .offers_container
+        margin-top: 230px
+
+@media (min-width: 1024px) and (max-width: 1119px)
+    .offers_container
+        margin-top: 130px
+
+@media (min-width: 1120px) and (max-width: 1441px)
+    .offers_container
+        margin-top: 150px

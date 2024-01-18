@@ -86,6 +86,10 @@ export default function AppDrawer({
             name: "Discounts & Offers",
             link: "/offers",
           },
+          {
+            name: "Other Initiatives",
+            link: "/OtherInitiatives",
+          },
         ],
       },
       //Service and Activities Route
