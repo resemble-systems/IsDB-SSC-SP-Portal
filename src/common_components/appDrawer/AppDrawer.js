@@ -83,6 +83,10 @@ export default function AppDrawer({
             link: "/activities",
           },
           {
+            name: "Executive Members",
+            link: "/executiveMembers",
+          },
+          {
             name: "Discounts & Offers",
             link: "/offers",
           },

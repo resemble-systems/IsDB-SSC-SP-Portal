@@ -10,19 +10,34 @@ import styles from "./staff-social-club.module.sass";
 //BG
 import Ssc from "../../../assets/aboutUs/sscbg.svg";
 
-export default function StaffSocialClub() {
+export default function StaffSocialClub({ page }) {
   const [sscMemberData, setSscMemberData] = useState(null);
   useEffect(() => {
-    axios
-      .get(
-        `${CONST.BASE_URL}${CONST.API.LIST("Member")}${CONST.API.QUERY(
-          "Title,Designation,AttachmentFiles"
-        )} ${CONST.API.ATTACHMENT}`
-      )
-      .then((res) => {
-        setSscMemberData(res.data.value);
-      })
-      .catch((err) => console.log(err));
+    if (page === "ExeMembers") {
+      axios
+        .get(
+          `${CONST.BASE_URL}${CONST.API.LIST(
+            "ExecutiveMembers"
+          )}${CONST.API.QUERY("Title,Designation,AttachmentFiles")} ${
+            CONST.API.ATTACHMENT
+          }`
+        )
+        .then((res) => {
+          setSscMemberData(res.data.value);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .get(
+          `${CONST.BASE_URL}${CONST.API.LIST("Member")}${CONST.API.QUERY(
+            "Title,Designation,AttachmentFiles"
+          )} ${CONST.API.ATTACHMENT}`
+        )
+        .then((res) => {
+          setSscMemberData(res.data.value);
+        })
+        .catch((err) => console.log(err));
+    }
   }, []);
   return (
     <div

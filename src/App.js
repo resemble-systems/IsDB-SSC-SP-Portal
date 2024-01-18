@@ -21,6 +21,7 @@ import Offers from "./pages/offers";
 import { CONST } from "./constant/index";
 import SearchEvents from "./pages/searchEvents/[search]";
 import OtherInitiatives from "./pages/otherInitiatives";
+import ExecutiveMembers from "./pages/ExeMembers";
 export const AppContext = createContext();
 
 function App() {
@@ -154,6 +155,9 @@ function App() {
           </Route>
           <Route exact path="/OtherInitiatives">
             <OtherInitiatives />
+          </Route>
+          <Route exact path="/executiveMembers">
+            <ExecutiveMembers />
           </Route>
           <Route path="/">
             <Home />
