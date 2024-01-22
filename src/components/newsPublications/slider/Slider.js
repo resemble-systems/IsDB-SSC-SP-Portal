@@ -18,7 +18,7 @@ export default function Slider({ items, news }) {
   const [prevBtn, setPrevBtn] = useState("disable");
   const [nextBtn, setNextBtn] = useState("enable");
   let finalIndex = parseInt(news.length);
-  console.log("pagination-->", items, news);
+
   useEffect(() => {
     if (activeIndex === 0) setPrevBtn("disable");
     else setPrevBtn("enable");

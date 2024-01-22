@@ -127,7 +127,7 @@ function App() {
             <GalleryMain />
           </Route>
           <Route exact path="/gallery/:id">
-            <GalleryInner />;
+            <GalleryInner />
           </Route>
           <Route exact path="/activities/buy-and-sell">
             <BuySell />

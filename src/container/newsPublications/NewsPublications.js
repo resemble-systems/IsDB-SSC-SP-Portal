@@ -50,6 +50,7 @@ export default function NewsPublications({
         setSliderData(
           res.data.value.filter((data) => data.ViewInBanner === "Yes")
         );
+
         setNewsData(res.data.value);
       })
       .catch((err) => console.log(err));
@@ -76,9 +77,18 @@ export default function NewsPublications({
             >
               <h3 style={{ fontSize: "35px" }}>Most Viewed</h3>
             </div> */}
+
             <Slider items={items} news={newsData} />
           </div>
-          <PublicationsSection news={newsData} />
+          `
+          <div
+          // className={`${
+          //   sliderPublicationData?.length === 0 ? styles.pubTop : ""
+          // }`}
+          >
+            <PublicationsSection news={newsData} />
+          </div>
+          `
           <NewsSection />
         </Layout>
       )}

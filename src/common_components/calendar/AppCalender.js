@@ -139,7 +139,7 @@ export default class AppCalendar extends Component {
   }
 
   specialDate(args, name, chartData) {
-    args.element.firstElementChild.setAttribute("title", name);
+    // args.element.firstElementChild.setAttribute("title", name);
     addClass([args.element], ["e-day", "special", name.toLowerCase(), "flex"]);
     args.element.setAttribute("data-val", name);
     args.element.setAttribute("title", name);
