@@ -442,7 +442,7 @@ export default function GalleryImageCard({
                             <h3 className={`mt-3`}>
                               <a
                                 href={
-                                  data?.AttachmentFiles[0].ServerRelativeUrl
+                                  data?.AttachmentFiles[0]?.ServerRelativeUrl
                                 }
                                 target="_blank"
                                 className={`${styles.document_text}`}

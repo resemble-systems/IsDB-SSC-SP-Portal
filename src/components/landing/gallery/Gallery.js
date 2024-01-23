@@ -46,17 +46,17 @@ function getSliderItems(
                     onClick={() =>
                       /* history.push(`/gallery`) */
                       isImage(
-                        galleryContent[index - 2].AttachmentFiles[0]
-                          .ServerRelativeUrl
+                        galleryContent[index - 2]?.AttachmentFiles[0]
+                          ?.ServerRelativeUrl
                       )
                         ? viewImage(
-                            galleryContent[index - 2].AttachmentFiles[0]
-                              .ServerRelativeUrl,
+                            galleryContent[index - 2]?.AttachmentFiles[0]
+                              ?.ServerRelativeUrl,
                             setIsopen,
                             setPhotoUrl
                           )
                         : viewVideo(
-                            galleryContent[index - 2].VideoLink,
+                            galleryContent[index - 2]?.VideoLink,
                             setPlay,
                             setVideoUrl,
                             setModalVisibility,
@@ -69,8 +69,8 @@ function getSliderItems(
                       <img
                         className={`${styles.gallery_card}`}
                         src={
-                          galleryContent[index - 2].AttachmentFiles[0]
-                            .ServerRelativeUrl
+                          galleryContent[index - 2]?.AttachmentFiles[0]
+                            ?.ServerRelativeUrl
                         }
                         alt={"ISDB"}
                         height="100%"
@@ -84,7 +84,7 @@ function getSliderItems(
                           className={`${styles.video_play_btn}`}
                           onClick={() => {
                             setVideoUrl(
-                              `${galleryContent[index - 2].VideoLink}`
+                              `${galleryContent[index - 2]?.VideoLink}`
                             );
                             setPlay(true);
                             setModalVisibility(true);
@@ -98,7 +98,7 @@ function getSliderItems(
                         </div>
                         <img
                           alt={`ISDB`}
-                          src={galleryContent[index - 2].VideoImage}
+                          src={galleryContent[index - 2]?.VideoImage}
                           height="100%"
                           width="100%"
                         />
@@ -111,17 +111,17 @@ function getSliderItems(
                     className={`my-2 ${styles.gallery_card_container}`}
                     onClick={() =>
                       isImage(
-                        galleryContent[index - 1].AttachmentFiles[0]
-                          .ServerRelativeUrl
+                        galleryContent[index - 1]?.AttachmentFiles[0]
+                          ?.ServerRelativeUrl
                       )
                         ? viewImage(
-                            galleryContent[index - 1].AttachmentFiles[0]
-                              .ServerRelativeUrl,
+                            galleryContent[index - 1]?.AttachmentFiles[0]
+                              ?.ServerRelativeUrl,
                             setIsopen,
                             setPhotoUrl
                           )
                         : viewVideo(
-                            galleryContent[index - 1].VideoLink,
+                            galleryContent[index - 2]?.VideoImage,
                             setPlay,
                             setVideoUrl,
                             setModalVisibility,
@@ -134,8 +134,8 @@ function getSliderItems(
                       <img
                         className={`${styles.gallery_card}`}
                         src={
-                          galleryContent[index - 1].AttachmentFiles[0]
-                            .ServerRelativeUrl
+                          galleryContent[index - 1]?.AttachmentFiles[0]
+                            ?.ServerRelativeUrl
                         }
                         alt={"ISDB"}
                         height="100%"
@@ -147,7 +147,7 @@ function getSliderItems(
                           className={`${styles.video_play_btn}`}
                           onClick={() => {
                             setVideoUrl(
-                              `${galleryContent[index - 1].VideoLink}`
+                              `${galleryContent[index - 2]?.VideoImage}`
                             );
                             setPlay(true);
                             setModalVisibility(true);
@@ -161,7 +161,7 @@ function getSliderItems(
                         </div>
                         <img
                           alt={`ISDB`}
-                          src={galleryContent[index - 1].VideoImage}
+                          src={galleryContent[index - 1]?.VideoImage}
                           height="100%"
                           width="100%"
                         />
@@ -175,17 +175,17 @@ function getSliderItems(
                     className={`my-2 ${styles.gallery_card_container}`}
                     onClick={() =>
                       isImage(
-                        galleryContent[index].AttachmentFiles[0]
-                          .ServerRelativeUrl
+                        galleryContent[index]?.AttachmentFiles[0]
+                          ?.ServerRelativeUrl
                       )
                         ? viewImage(
-                            galleryContent[index].AttachmentFiles[0]
-                              .ServerRelativeUrl,
+                            galleryContent[index]?.AttachmentFiles[0]
+                              ?.ServerRelativeUrl,
                             setIsopen,
                             setPhotoUrl
                           )
                         : viewVideo(
-                            galleryContent[index].VideoLink,
+                            galleryContent[index]?.VideoLink,
                             setPlay,
                             setVideoUrl,
                             setModalVisibility,
@@ -198,8 +198,8 @@ function getSliderItems(
                       <img
                         className={`${styles.gallery_card}`}
                         src={
-                          galleryContent[index].AttachmentFiles[0]
-                            .ServerRelativeUrl
+                          galleryContent[index]?.AttachmentFiles[0]
+                            ?.ServerRelativeUrl
                         }
                         alt={"ISDB"}
                         height="100%"
@@ -210,7 +210,7 @@ function getSliderItems(
                         <div
                           className={`${styles.video_play_btn}`}
                           onClick={() => {
-                            setVideoUrl(`${galleryContent[index].VideoLink}`);
+                            setVideoUrl(`${galleryContent[index]?.VideoLink}`);
                             setPlay(true);
                             setModalVisibility(true);
                             setAutoPlay(false);
@@ -223,7 +223,7 @@ function getSliderItems(
                         </div>
                         <img
                           alt={`ISDB`}
-                          src={galleryContent[index].VideoImage}
+                          src={galleryContent[index]?.VideoImage}
                           layout={`fill`}
                           height="100%"
                           width="100%"
@@ -247,14 +247,14 @@ function getSliderItems(
                   className={`my-2 ${styles.gallery_card_container}`}
                   onClick={() =>
                     /* history.push(`/gallery`) */
-                    isImage(galleryContent[0].VideoLink)
+                    isImage(galleryContent[0]?.VideoLink)
                       ? viewImage(
-                          galleryContent[0].VideoLink,
+                          galleryContent[0]?.VideoLink,
                           setIsopen,
                           setPhotoUrl
                         )
                       : viewVideo(
-                          galleryContent[0].VideoLink,
+                          galleryContent[0]?.VideoLink,
                           setPlay,
                           setVideoUrl,
                           setModalVisibility,
@@ -266,7 +266,7 @@ function getSliderItems(
                     <img
                       className={`${styles.gallery_card}`}
                       src={
-                        galleryContent[0].AttachmentFiles[0].ServerRelativeUrl
+                        galleryContent[0]?.AttachmentFiles[0]?.ServerRelativeUrl
                       }
                       alt={"ISDB"}
                       height="100%"
@@ -279,7 +279,7 @@ function getSliderItems(
                       <div
                         className={`${styles.video_play_btn}`}
                         onClick={() => {
-                          setVideoUrl(`${galleryContent[0].VideoLink}`);
+                          setVideoUrl(`${galleryContent[0]?.VideoLink}`);
                           setPlay(true);
                           setModalVisibility(true);
                           setAutoPlay(false);
@@ -292,7 +292,7 @@ function getSliderItems(
                       </div>
                       <img
                         alt={`ISDB`}
-                        src={galleryContent[0].VideoImage}
+                        src={galleryContent[0]?.VideoImage}
                         height="100%"
                         width="100%"
                       />
@@ -412,7 +412,7 @@ function getSliderItems(
                         className={`${styles.video_play_btn}`}
                         onClick={() => {
                           setVideoUrl(
-                            `${galleryContent[index].AttachmentFiles[0].ServerRelativeUrl}`
+                            `${galleryContent[index]?.AttachmentFiles[0]?.ServerRelativeUrl}`
                           );
                           setPlay(true);
                           setModalVisibility(true);
@@ -449,16 +449,16 @@ function getSliderItems(
                   onClick={() =>
                     /* history.push(`/gallery`) */
                     isImage(
-                      galleryContent[1].AttachmentFiles[0].ServerRelativeUrl
+                      galleryContent[1]?.AttachmentFiles[0]?.ServerRelativeUrl
                     )
                       ? viewImage(
-                          galleryContent[1].AttachmentFiles[0]
-                            .ServerRelativeUrl,
+                          galleryContent[1]?.AttachmentFiles[0]
+                            ?.ServerRelativeUrl,
                           setIsopen,
                           setPhotoUrl
                         )
                       : viewVideo(
-                          galleryContent[1].VideoLink,
+                          galleryContent[1]?.VideoLink,
                           setPlay,
                           setVideoUrl,
                           setModalVisibility,
@@ -470,7 +470,7 @@ function getSliderItems(
                     <img
                       className={`${styles.gallery_card}`}
                       src={
-                        galleryContent[1].AttachmentFiles[0].ServerRelativeUrl
+                        galleryContent[1]?.AttachmentFiles[0]?.ServerRelativeUrl
                       }
                       alt={"ISDB"}
                       height="100%"
@@ -483,7 +483,7 @@ function getSliderItems(
                       <div
                         className={`${styles.video_play_btn}`}
                         onClick={() => {
-                          setVideoUrl(`${galleryContent[1].VideoLink}`);
+                          setVideoUrl(`${galleryContent[1]?.VideoLink}`);
                           setPlay(true);
                           setModalVisibility(true);
                           setAutoPlay(false);
@@ -496,7 +496,7 @@ function getSliderItems(
                       </div>
                       <img
                         alt={`ISDB`}
-                        src={galleryContent[1].VideoImage}
+                        src={galleryContent[1]?.VideoImage}
                         height="100%"
                         width="100%"
                       />
@@ -509,16 +509,16 @@ function getSliderItems(
                   className={`my-2 ${styles.gallery_card_container}`}
                   onClick={() =>
                     isImage(
-                      galleryContent[0].AttachmentFiles[0].ServerRelativeUrl
+                      galleryContent[0]?.AttachmentFiles[0]?.ServerRelativeUrl
                     )
                       ? viewImage(
-                          galleryContent[0].AttachmentFiles[0]
-                            .ServerRelativeUrl,
+                          galleryContent[0]?.AttachmentFiles[0]
+                            ?.ServerRelativeUrl,
                           setIsopen,
                           setPhotoUrl
                         )
                       : viewVideo(
-                          galleryContent[0].VideoLink,
+                          galleryContent[0]?.VideoLink,
                           setPlay,
                           setVideoUrl,
                           setModalVisibility,
@@ -530,7 +530,7 @@ function getSliderItems(
                     <img
                       className={`${styles.gallery_card}`}
                       src={
-                        galleryContent[0].AttachmentFiles[0].ServerRelativeUrl
+                        galleryContent[0]?.AttachmentFiles[0]?.ServerRelativeUrl
                       }
                       alt={"ISDB"}
                       height="100%"
@@ -541,7 +541,7 @@ function getSliderItems(
                       <div
                         className={`${styles.video_play_btn}`}
                         onClick={() => {
-                          setVideoUrl(`${galleryContent[0].VideoLink}`);
+                          setVideoUrl(`${galleryContent[0]?.VideoLink}`);
                           setPlay(true);
                           setModalVisibility(true);
                           setAutoPlay(false);
@@ -554,7 +554,7 @@ function getSliderItems(
                       </div>
                       <img
                         alt={`ISDB`}
-                        src={galleryContent[0].VideoImage}
+                        src={galleryContent[0]?.VideoImage}
                         height="100%"
                         width="100%"
                       />
@@ -606,7 +606,7 @@ function getSliderItems(
                         className={`${styles.video_play_btn}`}
                         onClick={() => {
                           setVideoUrl(
-                            `${galleryContent[index].AttachmentFiles[0].ServerRelativeUrl}`
+                            `${galleryContent[index]?.AttachmentFiles[0]?.ServerRelativeUrl}`
                           );
                           setPlay(true);
                           setModalVisibility(true);
@@ -652,17 +652,17 @@ function getSliderItems(
                       onClick={() =>
                         /* history.push(`/gallery`) */
                         isImage(
-                          galleryContent[index - 2].AttachmentFiles[0]
+                          galleryContent[index - 2]?.AttachmentFiles[0]
                             .ServerRelativeUrl
                         )
                           ? viewImage(
-                              galleryContent[index - 2].AttachmentFiles[0]
+                              galleryContent[index - 2]?.AttachmentFiles[0]
                                 .ServerRelativeUrl,
                               setIsopen,
                               setPhotoUrl
                             )
                           : viewVideo(
-                              galleryContent[index - 2].VideoLink,
+                              galleryContent[index - 2]?.VideoLink,
                               setPlay,
                               setVideoUrl,
                               setModalVisibility,
@@ -675,8 +675,8 @@ function getSliderItems(
                         <img
                           className={`${styles.gallery_card}`}
                           src={
-                            galleryContent[index - 2].AttachmentFiles[0]
-                              .ServerRelativeUrl
+                            galleryContent[index - 2]?.AttachmentFiles[0]
+                              ?.ServerRelativeUrl
                           }
                           alt={"ISDB"}
                           height="100%"
@@ -690,7 +690,7 @@ function getSliderItems(
                             className={`${styles.video_play_btn}`}
                             onClick={() => {
                               setVideoUrl(
-                                `${galleryContent[index - 2].VideoLink}`
+                                `${galleryContent[index - 2]?.VideoLink}`
                               );
                               setPlay(true);
                               setModalVisibility(true);
@@ -704,7 +704,7 @@ function getSliderItems(
                           </div>
                           <img
                             alt={`ISDB`}
-                            src={galleryContent[index - 2].VideoImage}
+                            src={galleryContent[index - 2]?.VideoImage}
                             height="100%"
                             width="100%"
                           />
@@ -717,17 +717,17 @@ function getSliderItems(
                       className={`my-2 ${styles.gallery_card_container}`}
                       onClick={() =>
                         isImage(
-                          galleryContent[index - 1].AttachmentFiles[0]
-                            .ServerRelativeUrl
+                          galleryContent[index - 1]?.AttachmentFiles[0]
+                            ?.ServerRelativeUrl
                         )
                           ? viewImage(
-                              galleryContent[index - 1].AttachmentFiles[0]
-                                .ServerRelativeUrl,
+                              galleryContent[index - 1]?.AttachmentFiles[0]
+                                ?.ServerRelativeUrl,
                               setIsopen,
                               setPhotoUrl
                             )
                           : viewVideo(
-                              galleryContent[index - 1].VideoLink,
+                              galleryContent[index - 2]?.VideoImage,
                               setPlay,
                               setVideoUrl,
                               setModalVisibility,
@@ -735,13 +735,14 @@ function getSliderItems(
                             )
                       }
                     >
-                      {galleryContent[index - 1].ContentType0.toLowerCase() ===
-                      "image" ? (
+                      {galleryContent[
+                        index - 1
+                      ]?.ContentType0?.toLowerCase() === "image" ? (
                         <img
                           className={`${styles.gallery_card}`}
                           src={
-                            galleryContent[index - 1].AttachmentFiles[0]
-                              .ServerRelativeUrl
+                            galleryContent[index - 1]?.AttachmentFiles[0]
+                              ?.ServerRelativeUrl
                           }
                           alt={"ISDB"}
                           height="100%"
@@ -753,7 +754,7 @@ function getSliderItems(
                             className={`${styles.video_play_btn}`}
                             onClick={() => {
                               setVideoUrl(
-                                `${galleryContent[index - 1].VideoLink}`
+                                `${galleryContent[index - 2]?.VideoImage}`
                               );
                               setPlay(true);
                               setModalVisibility(true);
@@ -767,7 +768,7 @@ function getSliderItems(
                           </div>
                           <img
                             alt={`ISDB`}
-                            src={galleryContent[index - 1].VideoImage}
+                            src={galleryContent[index - 1]?.VideoImage}
                             height="100%"
                             width="100%"
                           />
@@ -781,17 +782,17 @@ function getSliderItems(
                       className={`my-2 ${styles.gallery_card_container}`}
                       onClick={() =>
                         isImage(
-                          galleryContent[index].AttachmentFiles[0]
-                            .ServerRelativeUrl
+                          galleryContent[index]?.AttachmentFiles[0]
+                            ?.ServerRelativeUrl
                         )
                           ? viewImage(
-                              galleryContent[index].AttachmentFiles[0]
-                                .ServerRelativeUrl,
+                              galleryContent[index]?.AttachmentFiles[0]
+                                ?.ServerRelativeUrl,
                               setIsopen,
                               setPhotoUrl
                             )
                           : viewVideo(
-                              galleryContent[index].VideoLink,
+                              galleryContent[index]?.VideoLink,
                               setPlay,
                               setVideoUrl,
                               setModalVisibility,
@@ -804,8 +805,8 @@ function getSliderItems(
                         <img
                           className={`${styles.gallery_card}`}
                           src={
-                            galleryContent[index].AttachmentFiles[0]
-                              .ServerRelativeUrl
+                            galleryContent[index]?.AttachmentFiles[0]
+                              ?.ServerRelativeUrl
                           }
                           alt={"ISDB"}
                           height="100%"
@@ -816,7 +817,9 @@ function getSliderItems(
                           <div
                             className={`${styles.video_play_btn}`}
                             onClick={() => {
-                              setVideoUrl(`${galleryContent[index].VideoLink}`);
+                              setVideoUrl(
+                                `${galleryContent[index]?.VideoLink}`
+                              );
                               setPlay(true);
                               setModalVisibility(true);
                               setAutoPlay(false);
@@ -829,7 +832,7 @@ function getSliderItems(
                           </div>
                           <img
                             alt={`ISDB`}
-                            src={galleryContent[index].VideoImage}
+                            src={galleryContent[index]?.VideoImage}
                             layout={`fill`}
                             height="100%"
                             width="100%"
@@ -847,7 +850,7 @@ function getSliderItems(
           <>
             <div
               className={`item ${styles.slider_container}`}
-              data-value={(galleryContent.length - 1).toString()}
+              data-value={(galleryContent?.length - 1).toString()}
             >
               <div className={` p-2 ${styles.slider_container_single}`}>
                 {galleryContent.length % 3 === 2 && (
@@ -857,16 +860,16 @@ function getSliderItems(
                       onClick={() =>
                         isImage(
                           galleryContent[galleryContent.length - 1]
-                            .AttachmentFiles[0].ServerRelativeUrl
+                            ?.AttachmentFiles[0]?.ServerRelativeUrl
                         )
                           ? viewImage(
                               galleryContent[galleryContent.length - 1]
-                                .AttachmentFiles[0].ServerRelativeUrl,
+                                ?.AttachmentFiles[0]?.ServerRelativeUrl,
                               setIsopen,
                               setPhotoUrl
                             )
                           : viewVideo(
-                              galleryContent[galleryContent.length - 1]
+                              galleryContent[galleryContent?.length - 1]
                                 .VideoLink,
                               setPlay,
                               setVideoUrl,
@@ -881,8 +884,8 @@ function getSliderItems(
                         <img
                           className={`${styles.gallery_card}`}
                           src={
-                            galleryContent[galleryContent.length - 1]
-                              .AttachmentFiles[0].ServerRelativeUrl
+                            galleryContent[galleryContent?.length - 1]
+                              ?.AttachmentFiles[0]?.ServerRelativeUrl
                           }
                           alt={"ISDB"}
                           height="100%"
@@ -897,8 +900,8 @@ function getSliderItems(
                             onClick={() => {
                               setVideoUrl(
                                 `${
-                                  galleryContent[galleryContent.length - 1]
-                                    .VideoLink
+                                  galleryContent[galleryContent?.length - 1]
+                                    ?.VideoLink
                                 }`
                               );
                               setPlay(true);
@@ -914,8 +917,8 @@ function getSliderItems(
                           <img
                             alt={`ISDB`}
                             src={
-                              galleryContent[galleryContent.length - 1]
-                                .VideoImage
+                              galleryContent[galleryContent?.length - 1]
+                                ?.VideoImage
                             }
                             height="100%"
                             width="100%"
@@ -930,16 +933,16 @@ function getSliderItems(
                       onClick={() =>
                         isImage(
                           galleryContent[galleryContent.length - 2]
-                            .AttachmentFiles[0].ServerRelativeUrl
+                            ?.AttachmentFiles[0]?.ServerRelativeUrl
                         )
                           ? viewImage(
                               galleryContent[galleryContent.length - 2]
-                                .AttachmentFiles[0].ServerRelativeUrl,
+                                ?.AttachmentFiles[0]?.ServerRelativeUrl,
                               setIsopen,
                               setPhotoUrl
                             )
                           : viewVideo(
-                              galleryContent[galleryContent.length - 2]
+                              galleryContent[galleryContent?.length - 2]
                                 .VideoLink,
                               setPlay,
                               setVideoUrl,
@@ -955,7 +958,7 @@ function getSliderItems(
                           className={`${styles.gallery_card}`}
                           src={
                             galleryContent[galleryContent.length - 2]
-                              .AttachmentFiles[0].ServerRelativeUrl
+                              ?.AttachmentFiles[0]?.ServerRelativeUrl
                           }
                           alt={"ISDB"}
                           height="100%"
@@ -969,7 +972,7 @@ function getSliderItems(
                               setVideoUrl(
                                 `${
                                   galleryContent[galleryContent.length - 2]
-                                    .VideoLink
+                                    ?.VideoLink
                                 }`
                               );
                               setPlay(true);
@@ -985,8 +988,8 @@ function getSliderItems(
                           <img
                             alt={`ISDB`}
                             src={
-                              galleryContent[galleryContent.length - 2]
-                                .VideoImage
+                              galleryContent[galleryContent?.length - 2]
+                                ?.VideoImage
                             }
                             height="100%"
                             width="100%"
@@ -1004,17 +1007,17 @@ function getSliderItems(
                         /* history.push(`/gallery`) */
                         isImage(
                           galleryContent[galleryContent.length - 1]
-                            .AttachmentFiles[0].ServerRelativeUrl
+                            ?.AttachmentFiles[0]?.ServerRelativeUrl
                         )
                           ? viewImage(
                               galleryContent[galleryContent.length - 1]
-                                .AttachmentFiles[0].ServerRelativeUrl,
+                                ?.AttachmentFiles[0]?.ServerRelativeUrl,
                               setIsopen,
                               setPhotoUrl
                             )
                           : viewVideo(
                               galleryContent[galleryContent.length - 1]
-                                .VideoLink,
+                                ?.VideoLink,
                               setPlay,
                               setVideoUrl,
                               setModalVisibility,
@@ -1029,7 +1032,7 @@ function getSliderItems(
                           className={`${styles.gallery_card}`}
                           src={
                             galleryContent[galleryContent.length - 1]
-                              .AttachmentFiles[0].ServerRelativeUrl
+                              ?.AttachmentFiles[0]?.ServerRelativeUrl
                           }
                           alt={"ISDB"}
                           height="100%"
@@ -1045,7 +1048,7 @@ function getSliderItems(
                               setVideoUrl(
                                 `${
                                   galleryContent[galleryContent.length - 1]
-                                    .VideoLink
+                                    ?.VideoLink
                                 }`
                               );
                               setPlay(true);
@@ -1062,7 +1065,7 @@ function getSliderItems(
                             alt={`ISDB`}
                             src={
                               galleryContent[galleryContent.length - 1]
-                                .VideoImage
+                                ?.VideoImage
                             }
                             height="100%"
                             width="100%"
@@ -1103,7 +1106,7 @@ function getSliderItems(
                           className={`${styles.gallery_card}`}
                           src={
                             galleryContent[galleryContent.length - 2]
-                              .AttachmentFiles[0].ServerRelativeUrl
+                              ?.AttachmentFiles[0]?.ServerRelativeUrl
                           }
                           alt={"ISDB"}
                           height="100%"
@@ -1117,7 +1120,7 @@ function getSliderItems(
                               setVideoUrl(
                                 `${
                                   galleryContent[galleryContent.length - 2]
-                                    .AttachmentFiles[0].ServerRelativeUrl
+                                    ?.AttachmentFiles[0]?.ServerRelativeUrl
                                 }`
                               );
                               setPlay(true);
@@ -1189,7 +1192,7 @@ function getSliderItems(
                         className={`${styles.video_play_btn}`}
                         onClick={() => {
                           setVideoUrl(
-                            `${galleryContent[index].AttachmentFiles[0].ServerRelativeUrl}`
+                            `${galleryContent[index]?.AttachmentFiles[0]?.ServerRelativeUrl}`
                           );
                           setPlay(true);
                           setModalVisibility(true);
@@ -1277,7 +1280,7 @@ export default function Gallery({ galleryContent }) {
     setAutoPlay,
     history
   );
-  console.log("content-->", galleryContent);
+
   return (
     <>
       <div
