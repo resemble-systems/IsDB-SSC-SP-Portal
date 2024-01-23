@@ -202,9 +202,7 @@ export default function GalleryImageCard({
                         <div
                           className={`${styles.video_play_btn}`}
                           onClick={() => {
-                            setVideoUrl(
-                              `${data?.AttachmentFiles[0]?.ServerRelativeUrl}`
-                            );
+                            setVideoUrl(`${data?.VideoLink}`);
                             setPlay(true);
                             setModalVisibility(true);
                             setAutoPlay(false);
@@ -380,9 +378,7 @@ export default function GalleryImageCard({
                           <div
                             className={`${styles.video_play_btn}`}
                             onClick={() => {
-                              setVideoUrl(
-                                `${data?.AttachmentFiles[0]?.ServerRelativeUrl}`
-                              );
+                              setVideoUrl(`${data?.VideoLink}`);
                               setPlay(true);
                               setModalVisibility(true);
                               setAutoPlay(false);

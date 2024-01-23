@@ -34,7 +34,7 @@ export default function Media({ routePath }) {
           `${CONST.BASE_URL}${CONST.API.LIST(
             "GalleryContent"
           )}${CONST.API.QUERY(
-            "Title,VideoImage,ContentType0,Id,AttachmentFiles"
+            "Title,VideoImage,ContentType0,Id,AttachmentFiles,VideoLink"
           )} ${CONST.API.ATTACHMENT}`
         )
         .then((res2) => {

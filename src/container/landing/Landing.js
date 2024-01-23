@@ -43,7 +43,7 @@ export default function Landing() {
     axios
       .get(
         `${CONST.BASE_URL}${CONST.API.LIST("GalleryContent")}${CONST.API.QUERY(
-          "Title,VideoImage,ContentType0,Id,AttachmentFiles"
+          "Title,VideoImage,ContentType0,Id,AttachmentFiles,VideoLink"
         )} ${CONST.API.ATTACHMENT}`
       )
       .then((res2) => {

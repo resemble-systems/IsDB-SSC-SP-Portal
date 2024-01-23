@@ -56,8 +56,7 @@ function getSliderItems(
                             setPhotoUrl
                           )
                         : viewVideo(
-                            galleryContent[index - 2].AttachmentFiles[0]
-                              .ServerRelativeUrl,
+                            galleryContent[index - 2].VideoLink,
                             setPlay,
                             setVideoUrl,
                             setModalVisibility,
@@ -85,10 +84,7 @@ function getSliderItems(
                           className={`${styles.video_play_btn}`}
                           onClick={() => {
                             setVideoUrl(
-                              `${
-                                galleryContent[index - 2].AttachmentFiles[0]
-                                  .ServerRelativeUrl
-                              }`
+                              `${galleryContent[index - 2].VideoLink}`
                             );
                             setPlay(true);
                             setModalVisibility(true);
@@ -125,8 +121,7 @@ function getSliderItems(
                             setPhotoUrl
                           )
                         : viewVideo(
-                            galleryContent[index - 1].AttachmentFiles[0]
-                              .ServerRelativeUrl,
+                            galleryContent[index - 1].VideoLink,
                             setPlay,
                             setVideoUrl,
                             setModalVisibility,
@@ -152,10 +147,7 @@ function getSliderItems(
                           className={`${styles.video_play_btn}`}
                           onClick={() => {
                             setVideoUrl(
-                              `${
-                                galleryContent[index - 1].AttachmentFiles[0]
-                                  .ServerRelativeUrl
-                              }`
+                              `${galleryContent[index - 1].VideoLink}`
                             );
                             setPlay(true);
                             setModalVisibility(true);
@@ -193,8 +185,7 @@ function getSliderItems(
                             setPhotoUrl
                           )
                         : viewVideo(
-                            galleryContent[index].AttachmentFiles[0]
-                              .ServerRelativeUrl,
+                            galleryContent[index].VideoLink,
                             setPlay,
                             setVideoUrl,
                             setModalVisibility,
@@ -219,9 +210,7 @@ function getSliderItems(
                         <div
                           className={`${styles.video_play_btn}`}
                           onClick={() => {
-                            setVideoUrl(
-                              `${galleryContent[index].AttachmentFiles[0].ServerRelativeUrl}`
-                            );
+                            setVideoUrl(`${galleryContent[index].VideoLink}`);
                             setPlay(true);
                             setModalVisibility(true);
                             setAutoPlay(false);
@@ -258,18 +247,14 @@ function getSliderItems(
                   className={`my-2 ${styles.gallery_card_container}`}
                   onClick={() =>
                     /* history.push(`/gallery`) */
-                    isImage(
-                      galleryContent[0].AttachmentFiles[0].ServerRelativeUrl
-                    )
+                    isImage(galleryContent[0].VideoLink)
                       ? viewImage(
-                          galleryContent[0].AttachmentFiles[0]
-                            .ServerRelativeUrl,
+                          galleryContent[0].VideoLink,
                           setIsopen,
                           setPhotoUrl
                         )
                       : viewVideo(
-                          galleryContent[0].AttachmentFiles[0]
-                            .ServerRelativeUrl,
+                          galleryContent[0].VideoLink,
                           setPlay,
                           setVideoUrl,
                           setModalVisibility,
@@ -294,9 +279,7 @@ function getSliderItems(
                       <div
                         className={`${styles.video_play_btn}`}
                         onClick={() => {
-                          setVideoUrl(
-                            `${galleryContent[0].AttachmentFiles[0].ServerRelativeUrl}`
-                          );
+                          setVideoUrl(`${galleryContent[0].VideoLink}`);
                           setPlay(true);
                           setModalVisibility(true);
                           setAutoPlay(false);
@@ -475,8 +458,7 @@ function getSliderItems(
                           setPhotoUrl
                         )
                       : viewVideo(
-                          galleryContent[1].AttachmentFiles[0]
-                            .ServerRelativeUrl,
+                          galleryContent[1].VideoLink,
                           setPlay,
                           setVideoUrl,
                           setModalVisibility,
@@ -501,9 +483,7 @@ function getSliderItems(
                       <div
                         className={`${styles.video_play_btn}`}
                         onClick={() => {
-                          setVideoUrl(
-                            `${galleryContent[1].AttachmentFiles[0].ServerRelativeUrl}`
-                          );
+                          setVideoUrl(`${galleryContent[1].VideoLink}`);
                           setPlay(true);
                           setModalVisibility(true);
                           setAutoPlay(false);
@@ -538,8 +518,7 @@ function getSliderItems(
                           setPhotoUrl
                         )
                       : viewVideo(
-                          galleryContent[0].AttachmentFiles[0]
-                            .ServerRelativeUrl,
+                          galleryContent[0].VideoLink,
                           setPlay,
                           setVideoUrl,
                           setModalVisibility,
@@ -562,9 +541,7 @@ function getSliderItems(
                       <div
                         className={`${styles.video_play_btn}`}
                         onClick={() => {
-                          setVideoUrl(
-                            `${galleryContent[0].AttachmentFiles[0].ServerRelativeUrl}`
-                          );
+                          setVideoUrl(`${galleryContent[0].VideoLink}`);
                           setPlay(true);
                           setModalVisibility(true);
                           setAutoPlay(false);
@@ -685,8 +662,7 @@ function getSliderItems(
                               setPhotoUrl
                             )
                           : viewVideo(
-                              galleryContent[index - 2].AttachmentFiles[0]
-                                .ServerRelativeUrl,
+                              galleryContent[index - 2].VideoLink,
                               setPlay,
                               setVideoUrl,
                               setModalVisibility,
@@ -714,10 +690,7 @@ function getSliderItems(
                             className={`${styles.video_play_btn}`}
                             onClick={() => {
                               setVideoUrl(
-                                `${
-                                  galleryContent[index - 2].AttachmentFiles[0]
-                                    .ServerRelativeUrl
-                                }`
+                                `${galleryContent[index - 2].VideoLink}`
                               );
                               setPlay(true);
                               setModalVisibility(true);
@@ -754,8 +727,7 @@ function getSliderItems(
                               setPhotoUrl
                             )
                           : viewVideo(
-                              galleryContent[index - 1].AttachmentFiles[0]
-                                .ServerRelativeUrl,
+                              galleryContent[index - 1].VideoLink,
                               setPlay,
                               setVideoUrl,
                               setModalVisibility,
@@ -781,10 +753,7 @@ function getSliderItems(
                             className={`${styles.video_play_btn}`}
                             onClick={() => {
                               setVideoUrl(
-                                `${
-                                  galleryContent[index - 1].AttachmentFiles[0]
-                                    .ServerRelativeUrl
-                                }`
+                                `${galleryContent[index - 1].VideoLink}`
                               );
                               setPlay(true);
                               setModalVisibility(true);
@@ -822,8 +791,7 @@ function getSliderItems(
                               setPhotoUrl
                             )
                           : viewVideo(
-                              galleryContent[index].AttachmentFiles[0]
-                                .ServerRelativeUrl,
+                              galleryContent[index].VideoLink,
                               setPlay,
                               setVideoUrl,
                               setModalVisibility,
@@ -848,9 +816,7 @@ function getSliderItems(
                           <div
                             className={`${styles.video_play_btn}`}
                             onClick={() => {
-                              setVideoUrl(
-                                `${galleryContent[index].AttachmentFiles[0].ServerRelativeUrl}`
-                              );
+                              setVideoUrl(`${galleryContent[index].VideoLink}`);
                               setPlay(true);
                               setModalVisibility(true);
                               setAutoPlay(false);
@@ -901,7 +867,7 @@ function getSliderItems(
                             )
                           : viewVideo(
                               galleryContent[galleryContent.length - 1]
-                                .AttachmentFiles[0].ServerRelativeUrl,
+                                .VideoLink,
                               setPlay,
                               setVideoUrl,
                               setModalVisibility,
@@ -932,7 +898,7 @@ function getSliderItems(
                               setVideoUrl(
                                 `${
                                   galleryContent[galleryContent.length - 1]
-                                    .AttachmentFiles[0].ServerRelativeUrl
+                                    .VideoLink
                                 }`
                               );
                               setPlay(true);
@@ -974,7 +940,7 @@ function getSliderItems(
                             )
                           : viewVideo(
                               galleryContent[galleryContent.length - 2]
-                                .AttachmentFiles[0].ServerRelativeUrl,
+                                .VideoLink,
                               setPlay,
                               setVideoUrl,
                               setModalVisibility,
@@ -1003,7 +969,7 @@ function getSliderItems(
                               setVideoUrl(
                                 `${
                                   galleryContent[galleryContent.length - 2]
-                                    .AttachmentFiles[0].ServerRelativeUrl
+                                    .VideoLink
                                 }`
                               );
                               setPlay(true);
@@ -1048,7 +1014,7 @@ function getSliderItems(
                             )
                           : viewVideo(
                               galleryContent[galleryContent.length - 1]
-                                .AttachmentFiles[0].ServerRelativeUrl,
+                                .VideoLink,
                               setPlay,
                               setVideoUrl,
                               setModalVisibility,
@@ -1079,7 +1045,7 @@ function getSliderItems(
                               setVideoUrl(
                                 `${
                                   galleryContent[galleryContent.length - 1]
-                                    .AttachmentFiles[0].ServerRelativeUrl
+                                    .VideoLink
                                 }`
                               );
                               setPlay(true);
@@ -1311,7 +1277,7 @@ export default function Gallery({ galleryContent }) {
     setAutoPlay,
     history
   );
-
+  console.log("content-->", galleryContent);
   return (
     <>
       <div
@@ -1323,7 +1289,7 @@ export default function Gallery({ galleryContent }) {
         <Row>
           {/* <div className={`${styles.gallery_container}`}> */}
           <div className={`container`}>
-            {galleryContent?.length > 6 && (
+            {galleryContent?.length > 6 ? (
               <CommonSectionHeader
                 title={"Gallery"}
                 sliderSection={true}
@@ -1332,6 +1298,8 @@ export default function Gallery({ galleryContent }) {
                 onClickPrev={slidePrev}
                 onClickNext={slideNext}
               />
+            ) : (
+              <CommonSectionHeader title={"Gallery"} sliderSection={true} />
             )}
           </div>
           <div className="container">
