@@ -69,7 +69,11 @@ export default function ServicesActivitiesCard({ data }) {
             <div>
               <h4 className={`${styles.services_card_text} mb-5`}>
                 {data && data?.Title ? (
-                  data?.Title
+                  data?.Title?.length > 30 ? (
+                    `${data?.Title.substring(0, 30)}...`
+                  ) : (
+                    data?.Title
+                  )
                 ) : (
                   <Skeleton.Input
                     style={{ width: 150 }}

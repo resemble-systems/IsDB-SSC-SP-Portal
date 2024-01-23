@@ -22,7 +22,6 @@ export default function ServicesActivitiesCardSection() {
   const [cardsData, setcardsData] = useState(null);
   useEffect(() => {
     if (services && services?.length > 0) {
-      console.log("url-->", window.location.href);
       if (window.location.href.includes("activities")) {
         setcardsData(services);
       } else setcardsData(services.slice(0, 9));
