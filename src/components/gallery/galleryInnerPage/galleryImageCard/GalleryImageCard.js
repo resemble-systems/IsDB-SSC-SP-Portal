@@ -218,6 +218,7 @@ export default function GalleryImageCard({
                           src={`${data.VideoImage}`}
                           layout={`fill`}
                           height="100%"
+                          width={"100%"}
                         />
                       </div>
                     </div>
@@ -394,6 +395,7 @@ export default function GalleryImageCard({
                             src={`${data.VideoImage}`}
                             layout={`fill`}
                             height="100%"
+                            width="100%"
                           />
                         </div>
                       </div>
