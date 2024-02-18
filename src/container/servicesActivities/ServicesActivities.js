@@ -70,8 +70,8 @@ export default function ServicesActivities() {
             </div>
           </div>
           <ServicesActivitiesIntro />
+          <VideoSection />
         </div>
-        <VideoSection />
       </Layout>
     </>
   );
